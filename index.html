@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto AL - Atividades Laboratoriais</title>
+    
+    <link rel="shortcut icon" href="Favicons/favicon.ico" type="image/x-icon">
+
+    <link rel="icon" href="Favicons/favicon.png" sizes="32x32" type="image/png">
+    
+    <link rel="apple-touch-icon-precomposed" href="Favicons/apple-icon-152x152.png" type="image/png" sizes="152x152">
+    <link rel="apple-touch-icon-precomposed" href="Favicons/apple-icon-120x120.png" type="image/png" sizes="120x120">
+    
+    <link rel="stylesheet" href="CSS/estilo.css">
+
+    <script src="JS/w3-Html-Includes.js"></script>
+    <script src="../../../JS/menu.js"></script>
+    <script src="../../../JS/explicar.js"></script>
+    
+</head>
+<body>
+    <div incluir="Layout/navbar.html" class="header"></div>
+    
+    <main>
+        <header>
+            <h1>Projeto AL</h1>
+        </header>
+        
+        <section>
+            <div>
+                <p>
+                    O nosso Objetivo é tornar as Atividades Laboratoriais (as ALs) de Física e de Química de todo o Secundário acessíveis a todos, em todo o lado.
+                </p>
+            </div>
+            <div class="m0">
+                <p>
+                    Para facilitar a tua exploração das ALs, podes aceder a, por exemplo:
+                </p>
+                <ul class="m30-bot">
+                    <li>Notas<sup class="exp-contas" onclick="mostrarExpContas(1)">[1]</sup></li>
+                    <p class="exp-contas" name="exp-contas" style="display: none;"><br><sup class="exp-contas" onclick="mostrarExpContas(1)">[1]</sup>Em notas como estas irás ver explicações, associadas aos cálculos ou deduções matemáticas. Para a fechar clica de novo no [1].</p>
+                    <li><span class="anchor" onclick="mostrarExtra('Informações-adicionais')">Informações adicionais</span></li>
+                    <div id="Informações-adicionais" class="explicar" style="display: none;"><button class="fechar" onclick="mostrarExtra('Informações-adicionais')">X</button>
+                        <p>
+                            Aqui vais encontrar Informações extra para te ajudar a compreender uma determinada palavra, expressão, instrumento de laboratório ou raciocínio científico.
+                        </p>
+                    </div>
+                </ul>
+                <p>
+                    Para além disso isso, o conteúdo correspondente a cada AL está dividido em 4 partes:
+                </p>
+                <ul class="m30-bot">
+                    <li>Teoria</li>
+                    <li>Material Necessário</li>
+                    <li>Procedimento Laboratorial</li>
+                    <li>Simulação dos Resultados</li>
+                </ul>
+                <p>
+                    Após reveres os conceitos teóricos necessários à compreensão da AL, podes Simular resultados experimentais realisticos, e usar as <span class="anchor" onclick="mostrarExtra('Sugestões-de-Exercícios')">Sugestões de Exercícios</span> apresentadas para verificar se entendes cada AL.
+                </p>
+                <div id="Sugestões-de-Exercícios" class="explicar" style="display: none;">
+                    <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
+                    <p>
+                        Após te familiarizares com a interface da Simulação, podes resolver os exercícos sugeridos.
+                    </p>
+                    <p>
+                        Cada exercício irá indicar que valores podes usar para chegar à sua resposta.
+                    </p>
+                    <p>
+                        Os resultados aos exercícios estão sempre incluidos entre os Resultados Experimentais apresentados.
+                    </p>
+                </div>
+            </div>
+            <div class="mobile-only">
+                <p>
+                    Como estás num dispositivo com um ecrã pequeno, podes arrastar
+                    da direita para a esquerda as fórmula que saem fora do ecrã:
+                </p>
+                <div class="contas">
+                    20! &equals; 20 &times; 19 &times; 18 &times; 17 &times; 16 &times; 15 &times; 14 &times; 13 &times; 12 &times; 11 &times; 10 &times; 9 &times; 8 &times; 7 &times; 6 &times; 5 &times; 4 &times; 3 &times; 2 &times; 1
+                </div>
+            </div>
+            <div class="m15">
+                <p class="m30-bot">Usa a barra de navegação acima para explorar o Site!</p>
+                <p class="nota">
+                    Este site ainda está em desenvolvimento, logo, o número de ALs que temos disponíveis irá aumentar ao longo do tempo, bem como o número de outros recursos e ferrementas.
+                </p>
+            </div>
+        </section>
+        
+        <button id="para-o-topo" onclick="paraOTopo()">&uparrow;</button>
+    </main>
+
+    <footer incluir='Layout/footer.html'></footer>
+
+    <script>
+        incluirHTML()
+    </script>
+    <script src="JS/para-o-topo.js"></script>
+</body>
+</html>

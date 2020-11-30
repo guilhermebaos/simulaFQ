@@ -1,0 +1,51 @@
+<h2 class="topico">Resultados</h2>
+<p>
+    Clica nos butões e seleciona diferentes sais, para veres a sua curva de Solubilidade.
+</p>
+<p class="m0">
+    <span class="anchor" onclick="mostrarExtra('Sugestões-de-Exercícios')">Sugestões de Exercícios</span>
+</p>
+<div id="Sugestões-de-Exercícios" class="explicar" style="display: none;">
+    <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
+    <p class="m5-bot">
+        Após veres a curva de Solubilidade, mas antes de veres as Conclusões:
+    </p>
+    <ul class="m0">
+        <li>
+            Determina se a dissociação do sal é um processo exotérmico, atérmico
+            ou endotérmico.
+        </li>
+        <li>
+            Determina a massa do Sal escolhido que pode ser dissolvida num
+            kilograma de água.
+        </li>
+    </ul>
+</div>
+
+<div class="centrada m30">
+    <p>Amostra de Sal:</p>
+    <div class="flex-slider">
+        <div class="btn"><button name="salSolubilidade" class="escolha-atual" onclick="escolherSal(0)">NaC&#8467;</button></div>
+        <div class="btn"><button name="salSolubilidade" class="escolha" onclick="escolherSal(1)">KNO<sub>3</sub></button></div>
+        <div class="btn"><button name="salSolubilidade" class="escolha" onclick="escolherSal(2)">KC&#8467;</button></div>
+        <div class="btn"><button name="salSolubilidade" class="escolha" onclick="escolherSal(3)">KBr</button></div>
+    </div>
+    
+    <button name="salSolubilidade" class="submit" onclick="escolherSal(4)">Comparar todas as Curvas de Solubilidade</button>
+</div>
+
+
+<div class="graf-overflow">
+    <div class="graf-container">
+        <div id="curva-Solubilidade"></div>
+    </div>
+</div>
+
+<div class="m30-top">
+    <p id="energiaValue">
+        A dissociação é aproximadamente atérmica, visto não ser nem favorecida nem desfavorecida por um aumento da temperatura.
+    </p>
+    <p id="massaValue">
+        Num kilograma de água, a 20ºC, conseguimos dissolver até 359.5g de Cloreto de Sódio.
+    </p>
+</div>

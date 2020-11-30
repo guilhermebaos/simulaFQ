@@ -1,0 +1,94 @@
+<h2 class="topico">Resultados</h2>
+<p>
+    Usa os Sliders para alterar os valores indicados, de forma a poderes ver diferentes resultados.
+</p>
+<p class="m0">
+    <span class="anchor" onclick="mostrarExtra('Sugestões-de-Exercícios')">Sugestões de Exercícios</span>
+</p>
+<div id="Sugestões-de-Exercícios" class="explicar" style="display: none;">
+    <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
+    <p class="m5-bot">
+        Após alterares os valores, mas antes de veres o gráfico:
+    </p>
+    <ul class="m0 m30-bot">
+        <li>Prevê se a altura do 1º Ressalto irá aumentar ou diminuir.</li>
+        <li>
+            A percentagem da Energia Mecânica dissipada em cada Ressalto será maior ou menor, comparado com antes de alterares os valores?
+        </li>
+    </ul>
+    <p class="m5-bot">
+        Após veres o gráfico e a Tabela com as alturas de Queda e Ressalto:
+    </p>
+    <ul class="m0">
+        <li>
+            Que percentagem da Energia Mecânica é dissipada em cada Colisão com o Solo?
+        </li>
+    </ul>
+</div>
+
+<div class="centrada m30-top">
+    <div class="flex-slider">
+        <div><label for="massaBola">Massa da Bola</label></div>
+        <div><span id="massaBolaValue">0.800</span>kg<br>
+        <input type="range" name="massaBola" id="massaBola" class="slider" min="500" max="2000" value="800"></div>
+    </div>
+    <div class="flex-slider">
+        <div><label for="raioBola">Raio da Bola</label></div>
+        <div><span id="raioBolaValue">4.0</span>cm<br>
+        <input type="range" name="raioBola" id="raioBola" class="slider" min="30" max="90" value="40"></div>
+    </div>
+    <div class="flex-slider">
+        <div><label for="alturaInicial">Altura Inicial</label></div>
+        <div><span id="alturaInicialValue">100</span>cm<br>
+        <input type="range" name="alturaInicial" id="alturaInicial" class="slider" min="100" max="300" value="100"></div>
+    </div><br>
+    <div class="flex-slider">
+        <div><label for="elasticidade">Elasticidade</label></div>
+        <div><input type="range" name="elasticidade" id="elasticidade" class="slider" min="1" max="90" value="40"></div>
+    </div>
+
+    <button id="fazer-curva-Ec" class="submit" onclick="curva()">Traçar a função <span class="serif">h = f(t)</span></button>
+</div><br><br>
+
+<div class="graf-overflow">
+    <div class="graf-container">
+        <div id="curva-xt" class="graf"></div>
+    </div>
+</div>
+
+<div class="centrada">
+    <div class="overflow" style="max-width: 72vw; margin-bottom: 50px;">
+        <table id="alturasTabela" class="resultados">
+            <tr class="vars">
+                <td>Altura de Queda/ cm</td>
+                <td>Altura de Ressalto/ cm</td>
+            </tr>
+        </table>
+    </div>
+    <div class="overflow" style="max-width: 72vw;">
+        <table class="resultados">
+            <tr class="vars">
+                <td><sup>h<sub>Ressalto</sub></sup> &frasl; <sub>h<sub>Queda</sub></sub></td>
+                <td>Percentagem da Energia Mecânica Dissipada em cada Colisão</td>
+            </tr>
+            <tr>
+                <td><span id="razaoValue"></span></td>
+                <td><span id="EmDissipadaValue"></span></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="nota" style="margin-top: 40px;">
+    <p>
+        A 'Altura da Bola' refere-se à distância do ponto da bola mais próximo do solo
+        ao solo, medida na vertical.
+    </p>
+    <p>
+         A 'Elasticidade' está apenas relacionada com a Energia Mecânica conservada
+        durante a colisão com o solo.
+    </p>
+    <p>
+        Como a Resistência do Ar foi desprezada, a massa da bola não irá afetar
+        o seu Movimento.
+    </p>
+</div>

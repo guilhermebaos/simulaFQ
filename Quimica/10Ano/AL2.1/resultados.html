@@ -1,0 +1,132 @@
+<h2 class="topico">Resultados</h2>
+<p>
+    Seleciona diferentes pares de liquídos para verificar se são ou não miscíveis. Clica num líquido para o selecionar e clica de novo para o desselecionares.
+</p>
+<p class="m0">
+    <span class="anchor" onclick="mostrarExtra('Sugestões-de-Exercícios')">Sugestões de Exercícios</span>
+</p>
+<div id="Sugestões-de-Exercícios" class="explicar" style="display: none;">
+    <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
+    <p class="m5-bot">Antes de veres a Tabela de Polaridade:</p>
+    <ul class="m0 m30-bot">
+        <li>
+            Se conseguires, prevê se as moléculas constituintes dos líquidos apresentados são Polares ou Apolares.
+        </li>
+    </ul>
+    <p class="m5-bot">Após veres a Tabela de Polaridade:</p>
+    <ul class="m0">
+        <li>
+            Prevê se dois líquidos irão ser miscíveis (sendo que a regra geral
+            apresentada na Teoria admite exceções).
+        </li>
+    </ul>
+</div>
+
+<div class="centrada m30-top">
+    <p>Líquidos disponíveis:</p>
+    <div class="flex-slider">
+        <div class="btn"><button name="líquido" class="escolha" onclick="escolherLiq(0)">Água</button></div>
+        <div class="btn"><button name="líquido" class="escolha" onclick="escolherLiq(1)">Etanol</button></div>
+        <div class="btn"><button name="líquido" class="escolha" onclick="escolherLiq(2)">Acetona</button></div>
+        <div class="btn"><button name="líquido" class="escolha" onclick="escolherLiq(3)">ACN</button></div>
+        <div class="btn"><button name="líquido" class="escolha" onclick="escolherLiq(4)">Hexano</button></div>
+        <div class="btn"><button name="líquido" class="escolha" onclick="escolherLiq(5)">Xileno</button></div>
+    </div>
+</div>
+<p class="m0 m30-top">
+    <span class="anchor" onclick="mostrarExtra('Tabela-de-Polaridade')">Tabela de Polaridade</span>
+</p>
+<div class="centrada">
+    <div id="Tabela-de-Polaridade" class="explicar">
+        <button class="fechar m0" onclick="mostrarExtra('Tabela-de-Polaridade')">X</button>
+        <div class="overflow" style="max-width: 72vw;">
+            <table class="resultados">
+                <tr class="vars">
+                    <td>Molécula</td>
+                    <td>Polaridade</td>
+                </tr>
+                <tr>
+                    <td>Água (H<sub>2</sub>O)</td>
+                    <td>Polar</td>
+                </tr>
+                <tr>
+                    <td>Etanol (C<sub>2</sub>H<sub>6</sub>O)</td>
+                    <td>Polar e Apolar<sup class="exp-contas" onclick="mostrarExpContas(1)">[1]</sup></td>
+                </tr>
+                <tr>
+                    <td>Acetona (C<sub>3</sub>H<sub>6</sub>O)</td>
+                    <td>Polar</td>
+                </tr>
+                <tr>
+                    <td>ACN - Acetonitrila (CH<sub>3</sub>CN)</td>
+                    <td>Polar</td>
+                </tr>
+                <tr>
+                    <td>Hexano (C<sub>6</sub>H<sub>14</sub>)</td>
+                    <td>Apolar</td>
+                </tr>
+                <tr>
+                    <td>Xileno (C<sub>8</sub>H<sub>10</sub>)</td>
+                    <td>Apolar</td>
+                </tr>
+            </table>
+        </div>
+        <p class="exp-contas" name="exp-contas" style="display: none;"><sup class="exp-contas" onclick="mostrarExpContas(1)">[1]</sup>O Etanol tem uma parte Polar devido ao seu grupo Hidróxido (OH), e uma parte Apolar, visto ter uma cadeia de Carbono.
+        </p>
+    </div>
+</div>
+<button class="submit m45-top" onclick="curva()">Misturar os Líquidos</button>
+<div class="texto-centrado m30-top">
+    <div id="a-menos" class="explicar is-visible">
+        <p>Escolhe 2 Líquidos para misturar.</p>
+    </div>
+    <div id="110000" class="explicar">
+        <p>A Água e o Etanol misturaram-se.</p>
+    </div>
+    <div id="101000" class="explicar">
+        <p>A Água e a Acetona misturaram-se.</p>
+    </div>
+    <div id="100100" class="explicar">
+        <p>A Água e a Acetonitrila (ACN) misturaram-se.</p>
+    </div>
+    <div id="100010" class="explicar">
+        <p>A Água e o Hexano formaram duas camadas (são imiscíveis).</p>
+    </div>
+    <div id="100001" class="explicar">
+        <p>A Água e o Xileno formaram duas camadas (são imiscíveis).</p>
+    </div>
+    <div id="011000" class="explicar">
+        <p>O Etanol e a Acetona misturaram-se.</p>
+    </div>
+    <div id="010100" class="explicar">
+        <p>O Etanol e a Acetonitrila (ACN) misturaram-se.</p>
+    </div>
+    <div id="010010" class="explicar">
+        <p>O Etanol e o Hexano misturaram-se.</p>
+    </div>
+    <div id="010001" class="explicar">
+        <p>O Etanol e o Xileno misturaram-se.</p>
+    </div>
+    <div id="001100" class="explicar">
+        <p>A Acetona e a Acetonitrila (ACN) misturaram-se.</p>
+    </div>
+    <div id="001010" class="explicar">
+        <p>A Acetona e o Hexano misturaram-se.</p>
+    </div>
+    <div id="001001" class="explicar">
+        <p>A Acetona e o Xileno misturaram-se.</p>
+    </div>
+    <div id="000110" class="explicar">
+        <p>A Acetonitrila (ACN) e o Hexano formaram duas camadas (são imiscíveis).</p>
+    </div>
+    <div id="000101" class="explicar">
+        <p>A Acetonitrila (ACN) e o Xileno misturaram-se.</p>
+    </div>
+    <div id="000011" class="explicar">
+        <p>O Hexano e o Xileno misturaram-se.</p>
+    </div>
+    <div id="a-mais" class="explicar">
+        <p>Escolhe apenas 2 Líquidos para misturar.</p>
+    </div>
+</div>
+<!--Fonte adicional: https://www.csustan.edu/sites/default/files/chemistry/faculty/mdrake/resources/Solvent%20Miscibility%20Table.pdf-->

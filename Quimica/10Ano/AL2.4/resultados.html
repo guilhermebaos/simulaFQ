@@ -1,0 +1,156 @@
+<h2 class="topico">Resultados</h2>
+<p>
+    Altera os Embulhos dos tubos de ensaio A, B, C, D e E, de forma a poderes ver diferentes resultados.
+</p>
+<p class="m0">
+    <span class="anchor" onclick="mostrarExtra('Sugestões-de-Exercícios')">Sugestões de Exercícios</span>
+</p>
+<div id="Sugestões-de-Exercícios" class="explicar" style="display: none;">
+    <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
+    <p class="m5-bot">Após alterares os embrulhos:</p>
+    <ul class="m0 m15-bot">
+        <li>
+            Prevê a ordem, do mais claro para o mais escuro, do conteúdo dos tubos após exposição à luz.
+        </li>
+    </ul>
+    <p>
+        Podes também tentar embrulhar os tubos de forma a que a essa ordem seja A,B,C,D,E e, depois, E,D,C,B,A.
+    </p>
+</div>
+<div class="centrada m30-top m45-bot">
+    <p class="m30-bot">
+        Cada tubo de ensaio irá ter um embrulho diferente, para podermos comparar como irá escurecer o Cloreto de Prata quando incide sobre ele luz de diferentes intensidades.
+    </p>
+    <div class="flex-slider" style="margin-bottom: 10px;">
+        <div><strong>Embrulhos:</strong></div>
+        <div><strong>Tubos de Ensaio:</strong></div>
+    </div>
+    <div class="flex-slider">
+        <div><label>Folha de Alumínio</label></div>
+        <div class="flex-slider">
+            <div class="small-btns">
+                <button name="tubo" class="escolha-atual" onclick="escolherTubo('A', 0)">A</button>
+                <button name="tubo" class="escolha" onclick="escolherTubo('B', 0)">B</button>
+                <button name="tubo" class="escolha" onclick="escolherTubo('C', 0)">C</button>
+                <button name="tubo" class="escolha" onclick="escolherTubo('D', 0)">D</button>
+                <button name="tubo" class="escolha" onclick="escolherTubo('E', 0)">E</button>
+            </div>
+        </div>
+    </div>
+    <div class="flex-slider">
+        <div><label>Papel de Celofane Azul</label></div>
+        <div class="flex-slider">
+            <div class="small-btns">
+                <button name="tubo" class="escolha" onclick="escolherTubo('A', 1)">A</button>
+                <button name="tubo" class="escolha-atual" onclick="escolherTubo('B', 1)">B</button>
+                <button name="tubo" class="escolha" onclick="escolherTubo('C', 1)">C</button>
+                <button name="tubo" class="escolha" onclick="escolherTubo('D', 1)">D</button>
+                <button name="tubo" class="escolha" onclick="escolherTubo('E', 1)">E</button>
+            </div>
+        </div>
+    </div>
+    <div class="flex-slider">
+        <div><label>Papel de Celofane Vermelho</label></div>
+        <div class="flex-slider">
+            <div class="small-btns">
+                <button name="tubo" class="escolha" onclick="escolherTubo('A', 2)">A</button>
+                <button name="tubo" class="escolha" onclick="escolherTubo('B', 2)">B</button>
+                <button name="tubo" class="escolha-atual" onclick="escolherTubo('C', 2)">C</button>
+                <button name="tubo" class="escolha" onclick="escolherTubo('D', 2)">D</button>
+                <button name="tubo" class="escolha" onclick="escolherTubo('E', 2)">E</button>
+            </div>
+        </div>
+    </div>
+    <div class="flex-slider">
+        <div><label>Papel de Celofane Verde</label></div>
+        <div class="flex-slider">
+            <div class="small-btns">
+                <button name="tubo" class="escolha" onclick="escolherTubo('A', 3)">A</button>
+                <button name="tubo" class="escolha" onclick="escolherTubo('B', 3)">B</button>
+                <button name="tubo" class="escolha" onclick="escolherTubo('C', 3)">C</button>
+                <button name="tubo" class="escolha-atual" onclick="escolherTubo('D', 3)">D</button>
+                <button name="tubo" class="escolha" onclick="escolherTubo('E', 3)">E</button>
+            </div>
+        </div>
+    </div>
+    <div class="flex-slider">
+        <div><label>Sem Embrulho</label></div>
+        <div class="flex-slider">
+            <div class="small-btns">
+                <button name="tubo" class="escolha" onclick="escolherTubo('A', 4)">A</button>
+                <button name="tubo" class="escolha" onclick="escolherTubo('B', 4)">B</button>
+                <button name="tubo" class="escolha" onclick="escolherTubo('C', 4)">C</button>
+                <button name="tubo" class="escolha" onclick="escolherTubo('D', 4)">D</button>
+                <button name="tubo" class="escolha-atual" onclick="escolherTubo('E', 4)">E</button>
+            </div>
+        </div>
+    </div>
+    
+    <button id="fazer-solução" class="submit" onclick="curva()">Expor o Cloreto de Prata à luz</button>
+</div>
+<p>Tubos ordenados do mais claro para o mais escuro:</p>
+<div class="overflow">
+    <div class="centrada">
+        <span name="claridadeTubo" class="anchor" onclick="mostrarExtra('tuboAlumínio')">Tubo A</span> &rarr;
+        <span name="claridadeTubo" class="anchor" onclick="mostrarExtra('tuboVermelho')">Tubo C</span> &rarr;
+        <span name="claridadeTubo" class="anchor" onclick="mostrarExtra('tuboVerde')">Tubo D</span> &rarr;
+        <span name="claridadeTubo" class="anchor" onclick="mostrarExtra('tuboAzul')">Tubo B</span> &rarr;
+        <span name="claridadeTubo" class="anchor" onclick="mostrarExtra('tuboSemEmbrulho')">Tubo E</span>
+    </div>
+</div>
+<div id="tuboAlumínio" class="explicar" style="display: none;">
+    <button class="fechar" onclick="mostrarExtra('tuboAlumínio')">X</button>
+    <p>
+        O <span name="embrulhoTubo">Tubo A</span> estava embrulhado com
+        folha de alumínio, logo, praticamente nenhuma da radiação solar atingia
+        o Cloreto de Prata.
+    </p>
+    <p>
+        Como tal, praticamente não houve decomposição deste Sal,
+        estando por isso o conteúdo do tubo ainda claro.
+    </p>
+</div>
+<div id="tuboVermelho" class="explicar" style="display: none;">
+    <button class="fechar" onclick="mostrarExtra('tuboVermelho')">X</button>
+    <p>
+        O <span name="embrulhoTubo">Tubo C</span> estava embrulhado com
+        papel de celofane vermelho, logo, apenas a radiação vermelha, pouco intensa,
+        atingia o Cloreto de Prata.
+    </p>
+    <p>
+        Como tal, apenas uma pequena parte deste Sal se decompôs.
+    </p>
+</div>
+<div id="tuboVerde" class="explicar" style="display: none;">
+    <button class="fechar" onclick="mostrarExtra('tuboVerde')">X</button>
+    <p>
+        O <span name="embrulhoTubo">Tubo D</span> estava embrulhado com,
+        papel de celofane verde, logo, apenas a radiação verde, de intensidade intermédia,
+        atingia o Cloreto de Prata.
+    </p>
+    <p>
+        Como tal, uma parte significativa deste Sal decompôs-se.
+    </p>
+</div>
+<div id="tuboAzul" class="explicar" style="display: none;">
+    <button class="fechar" onclick="mostrarExtra('tuboAzul')">X</button>
+    <p>
+        O <span name="embrulhoTubo">Tubo B</span> estava embrulhado com,
+        papel de celofane azul, logo, apenas a radiação azul, muito energética,
+        atingia o Cloreto de Prata.
+    </p>
+    <p>
+        Como tal, muito deste Sal decompôs-se.
+    </p>
+</div>
+<div id="tuboSemEmbrulho" class="explicar" style="display: none;">
+    <button class="fechar" onclick="mostrarExtra('tuboSemEmbrulho')">X</button>
+    <p>
+        O <span name="embrulhoTubo">Tubo E</span> não tinha embrulho, logo,
+        toda a radiação irá incidir sobre o Cloreto de Prata.
+    </p>
+    <p>
+        Como tal, a maioria deste Sal ter-se-à decomposto, escurecendo
+        assim o conteúdo do tubo.
+    </p>
+</div>

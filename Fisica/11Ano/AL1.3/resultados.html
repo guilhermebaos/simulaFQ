@@ -1,0 +1,62 @@
+<h2 class="topico">Resultados</h2>
+<p>
+    Usa os Sliders para alterar os valores indicados, de forma a poderes ver diferentes resultados.
+</p>
+<p class="m0">
+    <span class="anchor" onclick="mostrarExtra('Sugestões-de-Exercícios')">Sugestões de Exercícios</span>
+</p>
+<div id="Sugestões-de-Exercícios" class="explicar" style="display: none;">
+    <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
+    <p class="m5-bot">
+        Após alterares os valores, mas antes de veres o gráfico:
+    </p>
+    <ul class="m0 m30-bot">
+        <li>Prevê se o declive irá aumentar ou diminuir.</li>
+    </ul>
+    <p class="m5-bot">
+        Depois de veres o gráfico, mas antes de veres a Tabela com os Resultados:
+    </p>
+    <ul class="m0">
+        <li>
+            Usando alguns dos pontos assinalados, calcula o módulo da aceleração do Carrinho ao longo da travagem.
+        </li>
+        <li>
+            Usando o módulo da aceleração calculado e a massa do Carrinho, determina a intensidade da Resultante das Forças de Atrito.
+        </li>
+    </ul>
+</div>
+
+<div class="centrada m30-top">
+    <div class="flex-slider">
+        <div><label for="massaCarrinho">Massa do Carrinho</label></div>
+        <div><span id="massaCarrinhoValue">0.500</span>kg<br>
+        <input type="range" name="massaCarrinho" id="massaCarrinho" class="slider" min="300" max="2000" value="500"></div>
+    </div>
+    <div class="flex-slider">
+        <div><label for="fAtrito">Força de Atrito</label></div>
+        <div><input type="range" name="fAtrito" id="fAtrito" class="slider" min="10" max="50" value="30"></div>
+    </div>
+
+    <button id="fazer-curva-Velocidade-Deslocamento" class="submit" onclick="curva()">Traçar o Gráfico <span class="serif">v<sub>0</sub><sup>2</sup> &equals; f(&Delta;x)</span></button>
+</div>
+
+<div class="graf-overflow m30-top">
+    <div class="graf-container">
+        <div id="curva-v2x"></div>
+    </div>
+</div>
+
+<div class="centrada m30-top">
+    <div class="overflow" style="max-width: 72vw;">
+        <table class="resultados">
+            <tr class="vars">
+                <td>|a|<sub>travagem</sub>/ ms<sup>-2</sup></td>
+                <td>|F<sub>a</sub>|/N</td>
+            </tr>
+            <tr>
+                <td><span id="aTravagemValue"></span></td>
+                <td><span id="fAtritoTravagemValue"></span></td>
+            </tr>
+        </table>
+    </div>
+</div>

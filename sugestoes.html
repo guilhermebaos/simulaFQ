@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sugestões/ Erros</title>
+    
+    <link rel="shortcut icon" href="Favicons/favicon.ico" type="image/x-icon">
+
+    <link rel="icon" href="Favicons/favicon.png" sizes="32x32" type="image/png">
+    
+    <link rel="apple-touch-icon-precomposed" href="Favicons/apple-icon-152x152.png" type="image/png" sizes="152x152">
+    <link rel="apple-touch-icon-precomposed" href="Favicons/apple-icon-120x120.png" type="image/png" sizes="120x120">
+    
+    <link rel="stylesheet" href="CSS/estilo.css">
+
+    <script src="JS/w3-Html-Includes.js"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.3.2/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("user_atuqEWkIR5Jm0TZxE2QEI");
+        })();
+    </script>
+</head>
+<body>
+    <div incluir="Layout/navbar.html" class="header"></div>
+    
+    <main>
+        <header>
+            <h1>Sugestões ou Erros</h1>
+        </header>
+
+        <section>
+            <p class="m30-bot">
+                Podes usar o Modelo abaixo para enviar a tua Sugestão/ Ideia ou avisar que detetaste um Erro nalguma das Atividades Laboratoriais!
+            </p>
+
+            <form method="GET">
+                <label for="tema">Assunto:</label><br>
+                <select id="tema" name="tema" class="m30-bot">
+                    <option value="Sugestão ou Ideia">Sugestão/ Ideia</option>
+                    <option value="Erro">Erro</option>
+                </select><br>
+                <label for="textoAL">Atividade Laboratorial a que se refere:</label><br>
+                <select id="textoAL" name="textoAL" class="m30-bot">
+                    <optgroup label="Física">
+                        <option value="Física - 10º Ano - AL1.1">10º Ano - AL1.1</option>
+                        <option value="Física - 10º Ano - AL1.2">10º Ano - AL1.2</option>
+                        <option value="Física - 10º Ano - AL2.1">10º Ano - AL2.1</option>
+                        <option value="Física - 10º Ano - AL3.1">10º Ano - AL3.1</option>
+                        <option value="Física - 10º Ano - AL3.2">10º Ano - AL3.2</option>
+                        <option value="Física - 10º Ano - AL3.3">10º Ano - AL3.3</option>
+                        <option value="Física - 11º Ano - AL1.1">11º Ano - AL1.1</option>
+                        <option value="Física - 11º Ano - AL1.2">11º Ano - AL1.2</option>
+                        <option value="Física - 11º Ano - AL1.3">11º Ano - AL1.3</option>
+                        <option value="Física - 11º Ano - AL2.1">11º Ano - AL2.1</option>
+                        <option value="Física - 11º Ano - AL2.2">11º Ano - AL2.2</option>
+                        <option value="Física - 11º Ano - AL3.1">11º Ano - AL3.1</option>
+                        <option value="Física - 11º Ano - AL3.3">11º Ano - AL3.2</option>
+                    </optgroup>
+                    <optgroup label="Química">
+                        <option value="Química - 10º Ano - AL1.1">10º Ano - AL1.1</option>
+                        <option value="Química - 10º Ano - AL1.2">10º Ano - AL1.2</option>
+                        <option value="Química - 10º Ano - AL1.3">10º Ano - AL1.3</option>
+                        <option value="Química - 10º Ano - AL2.1">10º Ano - AL2.1</option>
+                        <option value="Química - 10º Ano - AL2.2">10º Ano - AL2.2</option>
+                        <option value="Química - 10º Ano - AL2.3">10º Ano - AL2.3</option>
+                        <option value="Química - 10º Ano - AL2.4">10º Ano - AL2.4</option>
+                        <option value="Química - 11º Ano - AL1.1">11º Ano - AL1.1</option>
+                        <option value="Química - 11º Ano - AL1.2">11º Ano - AL1.2</option>
+                        <option value="Química - 11º Ano - AL2.1">11º Ano - AL2.1</option>
+                        <option value="Química - 11º Ano - AL2.2">11º Ano - AL2.2</option>
+                        <option value="Química - 11º Ano - AL2.3">11º Ano - AL2.3</option>
+                    </optgroup>
+                    <option value="Outra">Outra/ Não Aplicável</option>
+                </select><br>
+                <label for="zona">Zona da AL onde está o erro:</label><br>
+                <select id="zona" name="zona" class="m30-bot">
+                    <option value="Teoria">Teoria</option>
+                    <option value="Material">Material</option>
+                    <option value="Procedimento">Procedimento</option>
+                    <option value="Resultados">Resultados</option>
+                </select><br>
+                <label for="principal">Observações a enviar:</label><br>
+                <textarea type="text" name="principal" id="principal"></textarea>
+                <br>
+                <button type="button" class="submit" id="enviar" onclick="enviarEmail()">Enviar!</button>
+            </form>
+        </section>
+        
+        <button id="para-o-topo" onclick="paraOTopo()">&uparrow;</button>
+    </main>
+
+    <footer incluir="Layout/footer.html"></footer>
+
+    <script>
+        incluirHTML()
+    </script>
+    <script src="JS/para-o-topo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="JS/sugestoes.js"></script>
+</body>
+</html>

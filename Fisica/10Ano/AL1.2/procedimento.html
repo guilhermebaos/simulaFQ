@@ -1,0 +1,42 @@
+<h2 class="topico">Procedimento</h2>
+<p>
+    <ol class="procedimento">
+        <li>Escolher uma bola e um piso.</li>
+        <li>
+            Montar o sistema escolhido para medir a posição da bola.
+        </li>
+        <li class="m0">
+            Recolher a informação de acordo com o método usado: <span class="anchor" onclick="mostrarExtra('sistema-digital')">Sistema Digital</span> - <span class="anchor" onclick="mostrarExtra('fita-métrica')">Fita Métrica/ Régua</span>
+        </li>
+        <div id="sistema-digital" class="explicar" style="display: none;">
+            <button class="fechar" onclick="mostrarExtra('sistema-digital')">X</button>
+            <p><strong>Sistema Digital</strong></p>
+            <ol class="procedimento m30-bot">
+                <li>
+                    Definir o gráfico que o sistema deve traçar &rarr; Posição em função do tempo.
+                </li>
+                <li>
+                    Abandonar a bola de forma a que apenas realize Movimento Vertical, com velocidade inicial nula.
+                </li>
+                <li>
+                    Após o sistema Recolher a informação, retirar do gráfico as alturas de Queda e Respetivas alturas de Ressalto.
+                </li>
+            </ol>
+        </div>
+        <div id="fita-métrica" class="explicar" style="display: none;">
+            <button class="fechar" onclick="mostrarExtra('fita-métrica')">X</button>
+            <p><strong>Fita Métrica/ Régua</strong></p>
+            <ol class="procedimento m30-bot">
+                <li>
+                    Abandonar a bola de forma a que apenas realize Movimento Vertical, com velocidade inicial nula.
+                </li>
+                <li>
+                    Registar as sucessivas alturas máximas da bola, perpendicularmente à fita métrica/ régua.
+                </li>
+            </ol>
+        </div>
+        <li>
+            Traçar a Reta de melhor ajuste ao conjunto dos pontos obtidos: <span class="serif">h<sub>Ressalto</sub> &equals; h<sub>Queda</sub> &times; R</span>, sendo o seu declive o valor mais provável da Razão que queremos determinar.
+        </li>
+    </ol>
+</p>

@@ -1,0 +1,97 @@
+<h2 class="topico">Resultados</h2>
+
+<p>
+    Usa os Sliders para alterar os valores indicados, de forma a poderes ver diferentes resultados.
+</p>
+<p class="m0">
+    <span class="anchor" onclick="mostrarExtra('Sugestões-de-Exercícios')">Sugestões de Exercícios</span>
+</p>
+<div id="Sugestões-de-Exercícios" class="explicar" style="display: none;">
+    <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
+    <p class="m5-bot">Procedimento 1:</p>
+    <ul class="m0 m30-bot">
+        <li>
+            Após simular o Assobio, usar o Intervalo de Tempo apresentado para calcular o Módulo da Velocidade de Propagação do Som no Ar.
+        </li>
+    </ul>
+    <p class="m5-bot">Procedimento 2:</p>
+    <ul class="m0">
+        <li>
+            Após fixar uma Frequência e uma Amplitude, afastar o Microfone do Altifalante, até que as duas ondas estejam em fase (com os picos e vales coincidentes) e calcular o Módulo da Velocidade de Propagação do Som no Ar.
+        </li>
+    </ul>
+</div>
+
+<div class="centrada m30-top">
+    <div class="flex-slider">
+        <div><label for="temperaturaAr">Temperatura do Ar</label></div>
+        <div><span id="temperaturaArValue">20.0</span>ºC<br>
+        <input type="range" name="temperaturaAr" id="temperaturaAr" class="slider" min="50" max="350" value="200"></div>
+    </div>
+    <p class="m30-top">Definições do <mark class="normal"> Osciloscópio </mark>:</p>
+    <div class="flex-slider">
+        <div><label for="voltsDiv">VOLTS/ DIV</label></div>
+        <div><span id="voltsDivValue">1V</span><br>
+        <input type="range" name="voltsDiv" id="voltsDiv" class="slider" min="1" max="6" value="4"></div>
+    </div>
+    <div class="flex-slider">
+        <div><label for="segundosDiv">SEGUNDOS/ DIV</label></div>
+        <div><span id="segundosDivValue">500&micro;s</span><br>
+        <input type="range" name="segundosDiv" id="segundosDiv" class="slider" min="1" max="6" value="4"></div>
+    </div>
+    <div class="m45-top">Procedimento:</div>
+    <div class="flex-slider">
+        <div class="flex-slider">
+            <div class="btn"><button id="Procedimento1" class="escolha-atual" onclick="procedimento(1)">Procedimento 1</button></div>
+            <div class="btn"><button id="Procedimento2" class="escolha" onclick="procedimento(2)">Procedimento 2</button></div>  
+        </div>
+    </div>
+</div>
+<div id="Procedimento1-Div" class="explicar is-visible m30-top" style="margin-bottom: 20px;">
+    <p>
+        Irá ser emitido um <em>bip</em> com frequência de 1000Hz para simular um assobio curto.
+    </p>
+    <div class="flex-slider">
+        <div><label for="mangueira">Comprimento da Mangueira:</label></div>
+        <div><span id="mangueiraValue">100</span>m<br>
+        <input type="range" name="mangueira" id="mangueira" class="slider" min="90" max="150" value="100"></div>
+    </div>
+    <p><button id="fazer-bip" class="submit" onclick="curva()">Assobiar</button></p>
+    <p class="m30-top"><span id="intervaloTempoValue"></span></p>
+</div>
+<div id="Procedimento2-Div" class="explicar" style="display: none; margin-bottom: 20px;">
+    <p>Definições do <mark class="normal">Gerador de Sinais</mark>:</p>
+    <div class="flex-slider">
+        <div><label for="freqSinal">Frequência do Sinal</label></div>
+        <div><span id="freqSinalValue">1000</span>Hz<br>
+        <input type="range" name="freqSinal" id="freqSinal" class="slider" min="10" max="10000" value="1000"></div>
+    </div>
+    <div class="flex-slider">
+        <div><label for="amplitudeSinal">Amplitude do Sinal</label></div>
+        <div><span id="amplitudeSinalValue">1.000</span>V<br>
+        <input type="range" name="amplitudeSinal" id="amplitudeSinal" class="slider" min="50" max="4000" value="1000"></div>
+    </div>
+    <div class="flex-slider m30">
+        <div><label for="distMicrofone">Distância do Microfone ao Altifalante</label></div>
+        <div><span id="distMicrofoneValue">2.00</span>cm<br>
+        <input type="range" name="distMicrofone" id="distMicrofone" class="slider" min="20" max="800" value="20"></div>
+    </div>
+    <p class="nota">
+        A intesidade do Som captada pelo Microfone é suposta constante e igual à intensidade do Som junto ao Altifalante.
+    </p>
+</div>
+<p>Ecrã do Osciloscópio:</p>
+<div class="graf-overflow">
+    <div class="graf-container">
+        <div id="curva-oscilos" class="graf-background" style="background-image: url('Imagens/Osci-background.png')"></div>
+    </div>
+</div>
+
+<table class="resultados m45-top">
+    <tr class="vars">
+        <td>Módulo da Velocidade de Propagação do Som no Ar (m/s)</td>
+    </tr>
+    <tr>
+        <td><span id="velocidadeDoSomValue">343.4</span></td>
+    </tr>
+</table>

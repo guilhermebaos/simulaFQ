@@ -1,0 +1,98 @@
+<h2 class="topico">Resultados</h2>
+<p>
+    Seleciona diferentes pares de metais e catiões metálicos para verificar se irão reagir.
+</p>
+<p class="m0">
+    <span class="anchor" onclick="mostrarExtra('Sugestões-de-Exercícios')">Sugestões de Exercícios</span>
+</p>
+<div id="Sugestões-de-Exercícios" class="explicar" style="display: none;">
+    <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
+    <p class="m5-bot">Antes de veres a Série Eletroquímica:</p>
+    <ul class="m0 m30-bot">
+        <li>
+            A partir dos resultados experimentais para os vários pares metal-catião, constroí uma Série Eletroquímica para os oxidantes e uma para os redutores.
+        </li>
+    </ul>
+    <p class="m5-bot">Usando as Série Eletroquímicas dada:</p>
+    <ul class="m0">
+        <li>
+            Prevê se um determinado par metal-catião irá reagir.
+        </li>
+    </ul>
+</div>
+
+<div class="centrada m30">
+    <p>Metais disponíveis:</p>
+    <div class="flex-slider">
+        <div class="btn minw-140"><button name="metal" class="escolha-atual" onclick="escolherMet(0)">Ferro (Fe)</button></div>
+        <div class="btn minw-140"><button name="metal" class="escolha" onclick="escolherMet(1)">Alumínio (A&#8467;)</button></div>
+        <div class="btn minw-140"><button name="metal" class="escolha" onclick="escolherMet(2)">Zinco (Zn)</button></div>
+        <div class="btn minw-140"><button name="metal" class="escolha" onclick="escolherMet(3)">Cobre (Cu)</button></div>
+    </div>
+    <div class="flex-slider m30">
+        <div class="btn minw-140"><button name="catião" class="escolha" onclick="escolherCat(0)">Fe<sup>2+</sup></button></div>
+        <div class="btn minw-140"><button name="catião" class="escolha-atual" onclick="escolherCat(1)">A&#8467;<sup>3+</sup></button></div>
+        <div class="btn minw-140"><button name="catião" class="escolha" onclick="escolherCat(2)">Zn<sup>2+</sup></button></div>
+        <div class="btn minw-140"><button name="catião" class="escolha" onclick="escolherCat(3)">Cu<sup>2+</sup></button></div>
+    </div>
+
+    <button class="submit" onclick="curva()">Colocar o Metal numa Solução Aquosa do Catião</button>
+</div>
+
+<div class="texto-centrado">
+    <div id="erro" class="explicar">
+        <p>
+            Coloca o Metal numa Solução Aquosa contendo iões de <strong>outro</strong> metal!
+        </p>
+    </div>
+    <div id="01" class="explicar is-visible">
+        <p>O Ferro Metálico não reagiu com o Catião Alumínio.</p>
+    </div>
+    <div id="02" class="explicar">
+        <p>O Ferro Metálico não reagiu com o Catião Zinco.</p>
+    </div>
+    <div id="03" class="explicar">
+        <p>O Ferro Metálico reagiu com o Catião Cobre (<span class="serif">II</span>).</p>
+    </div>
+    <div id="10" class="explicar">
+        <p>O Alumínio Metálico reagiu com o Catião Ferro (<span class="serif">II</span>).</p>
+    </div>
+    <div id="12" class="explicar">
+        <p>O Alumínio Metálico reagiu com o Catião Zinco.</p>
+    </div>
+    <div id="13" class="explicar">
+        <p>O Alumínio Metálico reagiu com o Catião Cobre (<span class="serif">II</span>).</p>
+    </div>
+    <div id="20" class="explicar">
+        <p>O Zinco Metálico reagiu com o Catião Ferro (<span class="serif">II</span>).</p>
+    </div>
+    <div id="21" class="explicar">
+        <p>O Zinco Metálico não reagiu com o Catião Alumínio.</p>
+    </div>
+    <div id="23" class="explicar">
+        <p>O Zinco Metálico reagiu com o Catião Cobre (<span class="serif">II</span>).</p>
+    </div>
+    <div id="30" class="explicar">
+        <p>O Cobre Metálico não reagiu com o Catião Ferro (<span class="serif">II</span>).</p>
+    </div>
+    <div id="31" class="explicar">
+        <p>O Cobre Metálico não reagiu com o Catião Alumínio.</p>
+    </div>
+    <div id="32" class="explicar">
+        <p>O Cobre Metálico não reagiu com o Catião Zinco.</p>
+    </div>
+</div>
+
+<p class="m45-top">Ver a <span class="anchor" onclick="mostrarExtra('Série-Eletroquímica-Img')">Série Eletroquímica</span></p>
+<div id="Série-Eletroquímica-Img" class="explicar" style="display: none;">
+    <button class="fechar" onclick="mostrarExtra('Série-Eletroquímica-Img')">X</button>
+    <p>Redutores segundo o seu poder redutor:</p>
+    <div class="overflow">
+        <img id="Redutores-Q11-AL22" src="Imagens/Redutores-Q11-AL22.png" alt="Redutores organizados pelo poder redutor crescente: Cu; Fe; Zn; A&#8467;" width="300" height="60">
+    </div>
+    
+    <p class="m30-top">Oxidantes segundo o seu poder oxidante:</p>
+    <div class="overflow">
+        <img id="Oxidantes-Q11-AL22" src="Imagens/Oxidantes-Q11-AL22.png" alt="Oxidantes organizados pelo poder oxidantes crescente: A&#8467;(3+); Zn(2+); Fe(2+); Cu(2+);" width="300" height="60">
+    </div>
+</div>

@@ -1,0 +1,182 @@
+<h2 class="topico">Objetivo</h2>
+<p>
+    Determinar os valores das grandezas características de uma Pilha, a sua Força Eletromotriz e a sua Resistência Interna.
+</p>
+
+<h2 class="topico">Relação Teórica</h2>
+<p>
+    Começamos por analisar a Potência Gerada pela Pilha, dividindo-a na Potência Dissipada e na Potência Útil:
+</p>
+<div class="contas">
+    <span class="invi">&hArr;</span> P<sub>Pilha</sub><sup class="exp-contas" onclick="mostrarExpContas(1)">[1]</sup> &equals; &epsi; &times; I <br>
+    <span class="invi">&hArr;</span> P<sub>Dissipada</sub><sup class="exp-contas" onclick="mostrarExpContas(2)">[2]</sup> &equals; r &times; I<sup>2</sup> <br>
+    <span class="invi">&hArr;</span> P<sub>Útil</sub><sup class="exp-contas" onclick="mostrarExpContas(3)">[3]</sup> &equals; U &times; I <br>
+</div>
+<div>
+    <div class="exp-contas" name="exp-contas" style="display: none;">
+        <p>
+            <sup class="exp-contas" onclick="mostrarExpContas(1)">[1]</sup>A Potência total disponibilizada pela Pilha apenas depende da sua força eletromotriz (em Volt) e da corrente que a atravessa (em Ampere).
+        </p>
+        <p>
+            A força eletromotriz da Pilha (<span class="serif">&epsi;</span>) é a energia disponibilizada pelo gerador por unidade de carga que o atravessa:
+        </p>
+        <div class="contas">
+            <span class="invi">&hArr;</span> &epsi; &equals; <div class="frac"><span>E</span><span class="denom">Q</span></div>
+        </div>
+        <table class="explicar">
+            <tr>
+                <td>E</td>
+                <td>&rarr;</td>
+                <td>Energia disponibilizada pela Pilha</td>
+            </tr>
+            <tr>
+                <td>Q</td>
+                <td>&rarr;</td>
+                <td>Carga</td>
+            </tr>
+        </table>
+        <p>
+            E a Corrente corresponde à carga que atravessa uma secção reta de um condutor por unidade de tempo:
+        </p>
+        <div class="contas">
+            <span class="invi">&hArr;</span> I &equals; <div class="frac"><span>Q</span><span class="denom">&Delta;t</span></div>
+        </div><br>
+        <p>
+            Logo, a Potência disponibilizada pela Pilha é dada por:
+        </p>
+        <div class="contas">
+            <span class="invi">&hArr;</span> P<sub>Pilha</sub> &equals; &epsi; &times; I &hArr; <br>
+            &hArr; P<sub>Pilha</sub> &equals; <div class="frac"><span>E</span><span class="denom">Q</span></div> &times; <div class="frac"><span>Q</span><span class="denom">&Delta;t</span></div> &hArr; <br>
+            &hArr; P<sub>Pilha</sub> &equals; <div class="frac"><span>E</span><span class="denom">&Delta;t</span></div>
+        </div>
+    </div>
+    <div class="exp-contas" name="exp-contas" style="display: none;">
+        <p>
+            <sup class="exp-contas" onclick="mostrarExpContas(2)">[2]</sup>Como diz o Efeito Joule, a Potência Dissipada é dada por: <span class="serif">RI<sup>2</sup></span>
+        </p>
+        <p>
+            Sendo a Resistência Interna da Pilha r, então a Potência Disspada na Pilha é: <span class="serif">rI<sup>2</sup></span>
+        </p>
+    </div>
+    <div name="exp-contas" style="display: none;">
+        <p>
+            <sup class="exp-contas" onclick="mostrarExpContas(3)">[3]</sup>A Potência Útil disponibilizada pela Pilha depende da diferença de potencial (ddp) no seus terminais e da corrente que a atravessa.
+        </p>
+        <p>
+            A ddp nos terminais da Pilha (<span class="serif">U</span>) é a energia transferida para o condutor (por trabalho das forças elétricas) por unidade de carga que o atravessa, ou seja, a energia útil disponibilizada pela Pilha:
+        </p>
+        <div class="contas">
+            <span class="invi">&hArr;</span> U &equals; <div class="frac"><span>E<sub>útil</sub></span><span class="denom">Q</span></div>
+        </div>
+        <table class="explicar">
+            <tr>
+                <td>E<sub>Útil</sub></td>
+                <td>&rarr;</td>
+                <td>Energia útil disponibilizada pela Pilha</td>
+            </tr>
+            <tr>
+                <td>Q</td>
+                <td>&rarr;</td>
+                <td>Carga</td>
+            </tr>
+        </table>
+        <p>
+            E a Corrente corresponde à carga que atravessa uma secção reta de um
+            condutor por unidade de tempo:
+        </p>
+        <div class="contas">
+            <span class="invi">&hArr;</span> I &equals; <div class="frac"><span>Q</span><span class="denom">&Delta;t</span></div>
+        </div>
+        <p>
+            Logo, a Potência útil disponibilizada pela Pilha é dada por:
+        </p>
+        <div class="contas">
+            <span class="invi">&hArr;</span> P<sub>Útil</sub> &equals; U &times; I &hArr; <br>
+            &hArr; P<sub>Útil</sub> &equals; <div class="frac"><span>E<sub>útil</sub></span><span class="denom">Q</span></div> &times; <div class="frac"><span>Q</span><span class="denom">&Delta;t</span></div> &hArr; <br>
+            &hArr; P<sub>Pilha</sub> &equals; <div class="frac"><span>E</span><span class="denom">&Delta;t</span></div>
+        </div>
+    </div>
+</div>
+<table class="explicar">
+    <tr>
+        <td>P<sub>Pilha</sub></td>
+        <td>&rarr;</td>
+        <td>Potência disponibilizada pela Pilha</td>
+    </tr>
+    <tr>
+        <td>P<sub>Dissipada</sub></td>
+        <td>&rarr;</td>
+        <td>Potência dissipada na Pilha</td>
+    </tr>
+    <tr>
+        <td>P<sub>Útil</sub></td>
+        <td>&rarr;</td>
+        <td>Potência útil disponibilizada pela Pilha</td>
+    </tr>
+    <tr>
+        <td>&epsi;</td>
+        <td>&rarr;</td>
+        <td>Força Eletromotriz da Pilha</td>
+    </tr>
+    <tr>
+        <td>r</td>
+        <td>&rarr;</td>
+        <td>Resistência Interna da Pilha</td>
+    </tr>
+    <tr>
+        <td>I</td>
+        <td>&rarr;</td>
+        <td>Corrente que atravessa a Pilha</td>
+    </tr>
+    <tr>
+        <td>U</td>
+        <td>&rarr;</td>
+        <td>Diferença de Potencial nos Terminais da Pilha</td>
+    </tr>
+</table>
+<p>
+    A partir destas igualdades, podemos deduzir a fórmula que traduz a Curva
+    Característica da Pilha:
+</p>
+<div class="contas">
+    <span class="invi">&hArr;</span> P<sub>Pilha</sub> &equals; P<sub>Dissipada</sub> &plus; P<sub>Útil</sub> &hArr; <br>
+    &hArr; &epsi; &times; I &equals; r &times; I<sup>2</sup> &plus; U &times; I &hArr; <br>
+    &hArr; &epsi; &equals; r &times; I &plus; U &hArr; <br>
+    &hArr; U &equals; &epsi; &minus; rI
+</div>
+<p>
+    Nesta expressão, <span class="serif">&epsi;</span> e <span class="serif">r</span>
+    são constantes e característicos da Pilha, enquanto
+    <span class="serif">U</span> e <span class="serif">I</span> variam de acordo
+    com a Resistência do circuito onde está a Pilha.
+</p>
+
+<h2 class="topico">Método</h2>
+<p>
+    Como podemos ver, se soubermos esta equação para uma dada Pilha, iremos
+    conseguir deduzir os valores das suas grandezas características.
+</p>
+<p>
+    Para o fazer, iremos montar um circuito que inclua a Pilha, um Reóstato
+    (Resistência Variável), um Voltímetro e um Amperímetro.
+</p>
+<p>
+    O Voltímetro irá medir os valores da diferença de potencial (<span class="serif">U</span>)
+    nos terminais da Pilha e o Amperímetro irá medir a corrente que a
+    atravessa (<span class="serif">I</span>). Ao variar a Resistência do Reóstato,
+    iremos fazer variar tanto a diferença de potencial como a corrente.
+</p>
+<p>
+    Como a Curva Característica da Pilha é uma função <span class="nbsp serif">U = f(I)</span>,
+    então iremos usar os pares de valores obtidos para formar pontos de abcissa
+    <span class="serif">I</span> e ordenada <span class="serif">U</span>.
+</p>
+<p>
+    De seguida traçamos uma reta de melhor ajuste ao conjunto de pontos obtido,
+    ficando a saber a sua equação, sendo que:
+</p>
+<ul>
+    <li>A ordenada na origem será igual à Força Eletromotriz</li>
+    <li>O módulo do declive será igual à Resistência Interna</li>
+</ul>
+<!--Extra: Curto Circuito-->

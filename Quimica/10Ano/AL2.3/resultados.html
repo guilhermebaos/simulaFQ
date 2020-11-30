@@ -1,0 +1,57 @@
+<h2 class="topico">Resultados</h2>
+<p>
+    Usa os Sliders para alterar os valores indicados, de forma a poderes ver diferentes resultados.
+</p>
+<p class="m0">
+    <span class="anchor" onclick="mostrarExtra('Sugestões-de-Exercícios')">Sugestões de Exercícios</span>
+</p>
+<div id="Sugestões-de-Exercícios" class="explicar" style="display: none;">
+    <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
+    <p class="m5-bot">
+        Após definires os valores, mas antes de veres a Tabela dos Resultados:
+    </p>
+    <ul class="m0">
+        <li>Calcula o Fator de Diluição.</li>
+        <li>
+            Calcula o Volume de Solução inicial necessário para prepar a Solução.
+        </li>
+    </ul>
+</div>
+
+<div class="centrada m30-top">
+    <div class="flex-slider">
+        <div><label for="concInicial">Concentração Solução Inicial</label></div>
+        <div><span id="concInicialValue">0.050</span>mol/dm<sup>3</sup><br>
+        <input type="range" name="concInicial" id="concInicial" class="slider" min="1" max="250" value="50"></div>
+    </div>
+    <div class="flex-slider">
+        <div><label for="concDiluida">Concentração Solução Diluída</label></div>
+        <div><span id="concDiluidaValue">0.010</span>mol/dm<sup>3</sup><br>
+        <input type="range" name="concDiluida" id="concDiluida" class="slider" min="10" max="2500" value="1000"></div>
+    </div>
+    <div class="flex-slider">
+        <div><label for="volumeSolu">Volume de Solução</label></div>
+        <div><span id="volumeSoluValue">250</span>ml<br>
+        <input type="range" name="volumeSolu" id="volumeSolu" class="slider" min="1" max="4" value="2"></div>
+    </div>
+    <p class="nota">
+        O Volume de Solução Diluida tem de ser igual ao Volume de um Balão Volumétrico disponível.
+    </p>
+    
+    <button id="fazer-solução" class="submit" onclick="curva()">Calcular valores necessários para preparar a Solução</button>
+</div>
+
+<div class="centrada m45-top">
+    <div class="overflow tabela-container">
+        <table class="resultados">
+            <tr class="vars">
+                <td>Fator de Diluição</td>
+                <td>Volume de Solução Inicial (ml)</td>
+            </tr>
+            <tr>
+                <td><span id="fatorValue">5.00</span></td>
+                <td><span id="volumeInicialValue">50.0</span></td>
+            </tr>
+        </table>
+    </div>
+</div>

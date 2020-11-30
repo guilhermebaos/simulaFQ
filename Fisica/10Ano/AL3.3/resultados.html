@@ -1,0 +1,82 @@
+<h2 class="topico">Resultados</h2>
+<p>
+    Usa os Sliders para alterar os valores indicados, de forma a poderes ver diferentes resultados.
+</p>
+<p class="m0">
+    <span class="anchor" onclick="mostrarExtra('Sugestões-de-Exercícios')">Sugestões de Exercícios</span>
+</p>
+<div id="Sugestões-de-Exercícios" class="explicar" style="display: none;">
+    <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
+    <p class="m5-bot">Antes de veres a Tabela dos Resultados:</p>
+    <ul class="m0 m30-bot">
+        <li>
+            Misutura duas amostras de água e prevê a temperatura final do Sistema, após ser atingido o Equilíbrio Térmico, assumindo que este Sistema é isolado.
+        </li>
+    </ul>
+    <p class="m5-bot">
+        Mistura água e Gelo Fundente e, após veres a temperatura final do Sistema:
+    </p>
+    <ul class="m0">
+        <li>
+            Calcula a Variação de Entalpia Mássica de Fusão do Gelo, assumindo que o Sistema é isolado.
+        </li>
+    </ul><br>
+</div>
+
+<div class="centrada m30-top">
+    <div class="flex-slider">
+        <div><label for="massaQuente">Massa de Água Quente</label></div>
+        <div><span id="massaQuenteValue">400.0</span>g<br>
+        <input type="range" name="massaQuente" id="massaQuente" class="slider" min="2500" max="10000" value="4000"></div>
+    </div>
+    <div class="flex-slider">
+        <div><label for="tempQuente">Temperatura da Água Quente</label></div>
+        <div><span id="tempQuenteValue">40.0</span>ºC<br>
+        <input type="range" name="tempQuente" id="tempQuente" class="slider" min="350" max="600" value="400"></div>
+    </div><br><br>
+    <p class="m5-bot">Misturar a água aquecida com:</p>
+    <div class="flex-slider">
+        <div class="btn minw-260"><button name="escolhaMistura" class="escolha-atual" onclick="escolherMistura(0)">Água à temperatura ambiente</button></div>
+        <div class="btn minw-260"><button name="escolhaMistura" class="escolha" onclick="escolherMistura(1)">Gelo Fundente</button></div>
+    </div>
+</div>
+<div class="centrada p0">
+    <div id="mistura0" class="explicar is-visible">
+        <div class="flex-slider">
+            <div><label for="massaFria">Massa de água à temperatura ambiente</label></div>
+            <div><span id="massaFriaValue">400.0</span>g<br>
+            <input type="range" name="massaFria" id="massaFria" class="slider" min="2500" max="10000" value="4000"></div>
+        </div>
+        <div class="flex-slider">
+            <div><label for="tempFria">Temperatura ambiente</label></div>
+            <div><span id="tempFriaValue">10.0</span>ºC<br>
+            <input type="range" name="tempFria" id="tempFria" class="slider" min="50" max="250" value="100"></div>
+        </div>        
+    </div>
+</div>
+<div class="centrada p0">
+    <div id="mistura1" class="explicar" style="display: none;">
+        <div class="flex-slider">
+            <div><label for="massaGelo">Massa de Gelo Fundente</label></div>
+            <div><span id="massaGeloValue">20.0</span>g<br>
+            <input type="range" name="massaGelo" id="massaGelo" class="slider" min="100" max="1000" value="200"></div>
+        </div>
+    </div>
+</div>
+<button id="misturar-água" class="submit" onclick="curva()">Simular a mistura</button>
+
+<div class="centrada m30">
+    <div class="overflow" style="max-width: 72vw;">
+        <table id="tabelaResultados" class="resultados">
+            <tr class="vars">
+                <td>Temperatura Final (ºC)</td>
+            </tr>
+            <tr>
+                <td id="tempFinalValue">25.00</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="centrada">
+    <p id="varEntalpiaGelo"></p>
+</div>

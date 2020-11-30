@@ -1,0 +1,75 @@
+<h2 class="topico">Resultados</h2>
+<p>
+    Usa os Butões para alterar a composição das esferas cuja densidade relativa está a ser medida
+</p>
+<p class="m0">
+    <span class="anchor" onclick="mostrarExtra('Sugestões-de-Exercícios')">Sugestões de Exercícios</span>
+</p>
+<div id="Sugestões-de-Exercícios" class="explicar" style="display: none;">
+    <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
+    <p class="m5-bot">
+        Após alterares os valores, mas antes de veres os Resultados:
+    </p>
+    <ul class="m0 m30-bot">
+        <li>Determina o Valor das massas <span class="serif">m<sub>A</sub></span> e <span class="serif">m<sub>B</sub></span>.</li>
+    </ul>
+    <p class="m5-bot">
+        Após veres apenas a 1ª Tabela com os Resultados:
+    </p>
+    <ul class="m0">
+        <li>
+            Calcula a Densidade Relativa obtida experimental do metal de que são feitas as esferas.
+        </li>
+        <li>Calcula o Erro Relativo, em Percentagem, da Densidade calculada.</li>
+    </ul>
+</div>
+
+<div class="centrada m45-top">
+    <p>Metal que compõe as Esferas:</p>
+    <div class="flex-slider">
+        <div class="btn"><button name="metalPicnometria" class="escolha-atual" onclick="escolherMetal(0)">Alumínio</button></div>
+        <div class="btn"><button name="metalPicnometria" class="escolha" onclick="escolherMetal(1)">Chumbo</button></div>
+        <div class="btn"><button name="metalPicnometria" class="escolha" onclick="escolherMetal(2)">Cobre</button></div>
+        <div class="btn"><button name="metalPicnometria" class="escolha" onclick="escolherMetal(3)">Ferro</button></div>
+        <div class="btn"><button name="metalPicnometria" class="escolha" onclick="escolherMetal(4)">Níquel</button></div>
+        <div class="btn"><button name="metalPicnometria" class="escolha" onclick="escolherMetal(5)">Ouro</button></div>
+    </div><br>
+    <div class="flex-slider">
+        <div><label for="massaEsfera">Massa Total das Esferas</label></div>
+        <div><span id="massaEsferaValue">15.0</span>g<br>
+        <input type="range" name="massaEsfera" id="massaEsfera" class="slider" min="100" max="600" value="150"></div>
+    </div>
+    <div class="flex-slider">
+        <div><label for="massaPic">Massa do Picnómetro com água</label></div>
+        <div><span id="massaPicValue">150.0</span>g<br>
+        <input type="range" name="massaPic" id="massaPic" class="slider" min="1000" max="3000" value="1500"></div>
+    </div>
+    
+    <button class="submit m45-bot" onclick="curva()">Simular a Picnometria</button>
+
+    <div class="overflow tabela-container">
+        <table class="resultados">
+            <tr class="vars">
+                <td>m<sub>A</sub>/ g</td>
+                <td>m<sub>B</sub>/ g</td>
+                <td>m<sub>C</sub>/ g</td>
+            </tr>
+            <tr>
+                <td><span id="massaAValue">15.0</span></td>
+                <td><span id="massaBValue">165.0</span></td>
+                <td><span id="massaCValue">159.4</span></td>
+            </tr>
+        </table>
+        <p class="m50-top">A Densidade Relativa tabelada é: <span id="dTabeladoValue">2.70</span></p>
+        <table class="resultados m45-top">
+            <tr class="vars">
+                <td>Densidade Relativa</td>
+                <td>Erro Relativo (%)</td>
+            </tr>
+            <tr>
+                <td><span id="dRelativaValue">2.68</span></td>
+                <td><span id="erroRelativoValue">0.74</span></td>
+            </tr>
+        </table>
+    </div>
+</div>

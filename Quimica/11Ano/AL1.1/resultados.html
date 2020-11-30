@@ -1,0 +1,65 @@
+<h2 class="topico">Resultados</h2>
+<p>
+    Usa os Sliders para alterar os valores indicados, de forma a poderes ver diferentes resultados.
+</p>
+<p class="m0">
+    <span class="anchor" onclick="mostrarExtra('Sugestões-de-Exercícios')">Sugestões de Exercícios</span>
+</p>
+<div id="Sugestões-de-Exercícios" class="explicar" style="display: none;">
+    <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
+    <p class="m5-bot">
+        Após alterares os valores, mas antes de veres a Tabela dos Resultados.
+    </p>
+    <ul class="m0">
+        <li>Determina o Reagente Limitante.</li>
+        <li>Calcula o Rendimento.</li>
+    </ul>
+</div>
+
+<div class="centrada m30-top">
+    <div class="flex-slider">
+        <div><label for="massaReagente1">Massa Ácido Salicílico: </label></div>
+        <div><span id="massaReagente1Value">2.00</span>g<br>
+        <input type="range" name="massaReagente1" id="massaReagente1" class="slider" min="50" max="600" value="200"></div>
+    </div>
+    <div class="flex-slider">
+        <div><label for="volumeReagente2">Volume Anidrido Etanoico: </label></div>
+        <div><span id="volumeReagente2Value">5.00</span>ml<br>
+        <input type="range" name="volumeReagente2" id="volumeReagente2" class="slider" min="100" max="600" value="500"></div>
+    </div>
+    <div class="flex-slider">
+        <div><label for="massaProduto">Massa de Ácido Acetilsalícilico Recuperada: </label></div>
+        <div><span id="massaProdutoValue">2.00</span>g<br>
+        <input type="range" name="massaProduto" id="massaProduto" class="slider" min="10" max="258" value="200"></div>
+    </div>
+    
+    <button id="fazer-curva-Síntese" class="submit" onclick="curva()">Simular a Reação</button>
+
+    <div class="overflow tabela-container m45-top">
+        <table class="resultados">
+            <tr class="vars">
+                <td colspan="3">Quantidade Química/ mol</td>
+                <td>Reagente Limitante</td>
+                <td>Rendimento (%)</td>
+            </tr>
+            <tr>
+                <td><b>Ácido Salicílico (C<sub>7</sub>H<sub>6</sub>O<sub>3</sub>)</b></td>
+                <td><b>Anidrido Etanoico (C<sub>4</sub>H<sub>6</sub>O<sub>3</sub>)</b></td>
+                <td><b>Ácido Acetilsalicílico (C<sub>9</sub>H<sub>8</sub>O<sub>4</sub>)</b></td>
+                <td rowspan="2"><span id="reagenteLimitanteValue"></span></td>
+                <td rowspan="2"><span id="rendimentoValue"></span></td>
+            </tr>
+            <tr>
+                <td><span id="nC7H6O3Value">0.01448</span></td>
+                <td><span id="nC4H6O3Value">0.05289</span></td>
+                <td><span id="nC9H8O4Value">0.01110</span></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="nota m45-top">
+    <p>O Rendimento máximo é de 99%.</p>
+    <p>
+        Para que o Rendimento calculado seja mais exato, ao realizar a AL, é necessário que o Reagente Limitante seja o Ácido Salicílico. Pois, se estiver em Excesso, ao fazer a filtração poderá ficar no papel de filtro juntamente com o Ácido Acetilsalicílico, visto que este ácido também se encontra no estado sólido.
+    </p>
+</div>

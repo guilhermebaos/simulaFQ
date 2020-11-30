@@ -1,0 +1,147 @@
+<h2 class="topico">Objetivo</h2>
+<p>
+    Determinar a capacidade térmica mássica de um material.
+</p>
+
+<h2 class="topico">Método</h2>
+<p class="m0">
+    Iremos determinar a <span class="anchor" onclick="mostrarExtra('capacidade-térmica-mássica')">capacidade térmica mássica</span> de um material, neste caso, um metal, com recurso a um <span class="anchor" onclick="mostrarExtra('bloco-calorimétrico')">bloco calorimétrico</span> feito desse metal.
+</p>
+<div id="capacidade-térmica-mássica" class="explicar" style="display: none;">
+    <button class="fechar" onclick="mostrarExtra('capacidade-térmica-mássica')">X</button><br>
+    <p>
+        A capacidade térmica mássica de um material, c, representa a quantidade de energia que tem de ser fornecida a um corpo feito apenas desse material, com massa de 1kg, para aumentar a sua temperatura em 1ºC.
+    </p>
+    <p>É dada pela expressão:</p>
+    <div class="contas">
+        <span class="invi">&hArr;</span> c &equals; <div class="frac"><span>E</span><span class="denom">m &times; &Delta;T</span></div>
+    </div>
+    <table class="explicar">
+        <tr>
+            <td>c</td>
+            <td>&rarr;</td>
+            <td>Capacidade térmica mássica do material escolhido</td>
+        </tr>
+        <tr>
+            <td>E</td>
+            <td>&rarr;</td>
+            <td>Energia fornecida a um corpo feito apenas desse material</td>
+        </tr>
+        <tr>
+            <td>m</td>
+            <td>&rarr;</td>
+            <td>Massa do corpo</td>
+        </tr>
+        <tr>
+            <td>&Delta;T</td>
+            <td>&rarr;</td>
+            <td>Variação de temperatura do corpo, após absorver a energia E</td>
+        </tr>
+    </table>
+    <p class="m30-bot">
+        Logo, as suas unidades são J/kg/ºC ou JKg<sup>&minus;1</sup>ºC<sup>&minus;1</sup>
+    </p>
+</div>
+<div id="bloco-calorimétrico" class="explicar" style="display: none;">
+    <button class="fechar" onclick="mostrarExtra('bloco-calorimétrico')">X</button>
+    <p>
+        Um bloco calorimétrico é um cilindro metálico constituido apenas por um único metal, com dois orifícios onde se colocam:
+    </p>
+    <ul>
+        <li>Um termómetro ou um sensor de temperatura.</li>
+        <li>Uma resistência de aquecimento.</li>
+    </ul>
+</div>
+<p class="m0 m15-top">
+    Vamos fornecer energia ao bloco, através de uma resistência de aquecimento, sendo que teremos que saber a Potência dessa resistência, para poder <span class="anchor" onclick="mostrarExtra('calcular-a-energia')">calcular a energia</span> por ela fornecida.
+</p>
+<div id="calcular-a-energia" class="explicar" style="display: none;">
+    <button class="fechar" onclick="mostrarExtra('calcular-a-energia')">X</button><br>
+    <p>
+        Para sabermos a eneriga emitida pela resistência, temos de medir a diferença de potencial nos seus terminais e a corrente que atravessa, bem como o tempo que esteve em funcionamento.
+    </p>
+    <p>
+        A energia fornecida pela resistência é dada pela expressão:
+    </p>
+    <div class="contas">
+        <span class="invi">&hArr;</span> E<sub>fornecida</sub> &equals; P &times; &Delta;t &hArr; <br>
+        &hArr; E<sub>fornecida</sub> &equals; U &times; I &times; &Delta;t 
+    </div>
+    <table class="explicar">
+        <tr>
+            <td>E<sub>fornecida</sub></td>
+            <td>&rarr;</td>
+            <td>Energia fornecida pela resistência</td>
+        </tr>
+        <tr>
+            <td>&Delta;t </td>
+            <td>&rarr;</td>
+            <td>Intervalo de tempo durante o qual a resistência esteve ligada</td>
+        </tr>
+        <tr>
+            <td>U</td>
+            <td>&rarr;</td>
+            <td>Diferença de potencial nos terminais da resistência</td>
+        </tr>
+        <tr>
+            <td>I</td>
+            <td>&rarr;</td>
+            <td>Corrente que atravessa a resistência</td>
+        </tr>
+    </table>
+</div>
+<p class="m15-top">
+    O bloco, devido a energia que irá receber, irá aquecer. Então, podemos relacionar da seguinte forma a energia fornecida com a variação de temperatura do bloco:
+</p>
+<div class="contas">
+    <span class="invi">&hArr;</span> c &equals; <div class="frac"><span>E</span><span class="denom">m &times; &Delta;T</span></div> &hArr; <br>
+    &hArr; &Delta;T &equals; <div class="frac"><span>E</span><span class="denom">m &times; c</span></div> &hArr; <br>
+    &hArr; &Delta;T &equals; <div class="frac"><span>1</span><span class="denom">m &times; c</span></div> &times; E
+</div>
+<table class="explicar">
+    <tr>
+        <td>c</td>
+        <td>&rarr;</td>
+        <td>Capacidade térmica mássica do metal escolhido</td>
+    </tr>
+    <tr>
+        <td>E</td>
+        <td>&rarr;</td>
+        <td>Energia fornecida ao bloco calorimétrico</td>
+    </tr>
+    <tr>
+        <td>m</td>
+        <td>&rarr;</td>
+        <td>Massa do bloco calorimétrico</td>
+    </tr>
+    <tr>
+        <td>&Delta;T</td>
+        <td>&rarr;</td>
+        <td>Variação de temperatura do bloco, após absorver a energia E</td>
+    </tr>
+</table>
+<p>
+    Ou seja, a partir do declive da função <span class="serif">&Delta;T &equals; f(E)</span>, podemos calcular a capacidade térmica mássica do metal:
+</p>
+<div class="contas">
+    <span class="invi">&hArr;</span> declive<sup class="exp-contas" onclick="mostrarExpContas(1)">[1]</sup> &equals; <div class="frac"><span>1</span><span class="denom">m &times; c</span></div> &hArr; <br>
+    &hArr; c &equals; <div class="frac"><span>1</span><span class="denom">m &times; declive</span></div>
+</div>
+<p name="exp-contas" style="display: none;"><sup class="exp-contas" onclick="mostrarExpContas(1)">[1]</sup>Iremos determinar o valor do declive da função usando uma reta de melhor ajuste ao conjunto de pontos de abcissa <span class="serif">E</span> e ordenada <span class="serif">&Delta;T</span>.</p>
+<table class="explicar">
+    <tr>
+        <td>c</td>
+        <td>&rarr;</td>
+        <td>Capacidade térmica mássica do metal escolhido</td>
+    </tr>
+    <tr>
+        <td>m</td>
+        <td>&rarr;</td>
+        <td>Massa do bloco calorimétrico</td>
+    </tr>
+    <tr>
+        <td>declive</td>
+        <td>&rarr;</td>
+        <td>Declive da função <span class="serif">&Delta;T &equals; f(E)</span></td>
+    </tr>
+</table>

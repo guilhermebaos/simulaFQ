@@ -1,0 +1,91 @@
+<h2 class="topico">Objetivo</h2>
+<p class="m0">
+    Análisar o fenómeno da <span class="anchor" onclick="mostrarExtra('difração-da-luz')">difração da luz</span>, e determinar o comprimento de onda da luz emitida por um laser.
+</p>
+<div id="difração-da-luz" class="explicar" style="display: none;">
+    <button class="fechar" onclick="mostrarExtra('difração-da-luz')">X</button>
+    <p>
+        A difração de uma onda ocorre quando esta encontra um obstáculo ou uma fenda. É definido pela mudança de direção das ondas em torno de um obstáculo ou através de uma fenda.
+    </p>
+    <p>
+        Este fenómeno é especialmente percetível quando a onda atravessa uma fenda com uma largura semelhante ao seu comprimento de onda.
+    </p>
+</div>
+
+<h2 class="topico">Método</h2>
+<p>
+    Primeiro, fazemos incidir o laser numa fenda de abertura variável, observando o padrão formado no alvo para diferentes aberturas. Depois, vamos colocando mais fendas entre o laser e o alvo, observando de que forma muda o padrão formado.
+</p>
+<p>
+    Ao fazermos incidir um feixe laser numa rede de difração, esse feixe será difratado, sendo observado um padrão de pontos luminosos num alvo onde se projeta a luz difratada.
+</p>
+<p>
+    No alvo irão ser visíveis vários pontos onde a intensidade da luz é máxima e outros onde esta é mínima.
+</p>
+<p>A posição dos pontos no alvo é determinada pela expressão:</p>
+<div class="contas">
+    <span class="invi">&hArr;</span>n &times; &lambda; &equals; d &times; sin(&theta;)
+</div>
+<p class="m0 m15-top">
+    Em que:
+    <ul class="m5-top">
+        <li>
+            <span class="serif">n</span> é um número inteiro que indica a ordem
+            do máximo: <span class="serif">n &equals; 0</span> para o ponto
+            central; <span class="serif">n &equals; 1</span> para os máximos
+            mais próximos do central, etc.
+        </li>
+        <li>
+            <span class="serif">&lambda;</span> é o comprimento de onda da luz.
+        </li>
+        <li>
+            <span class="serif">d</span> é a distância entre as fendas
+            da rede de difração.
+        </li>
+        <li>
+            <span class="serif">&theta;</span> é o ângulo entre a direção
+            perpendicular à rede e a direção correspondete a um máximo.
+        </li>
+    </ul>
+</p>
+<p>Como se mostra na imagem:</p>
+<div class="overflow m15">
+    <img id="Difração-F11-AL32" src="Imagens/Difração-F11-AL32.png" alt="Feixe laser a sofrer difração">
+</div>
+<p>
+    Para calcularmos <span class="serif">d</span> temos de saber quantas linhas por milímetro tem a rede utilizada. Sendo <span class="serif">p</span> o número de linhas por milímetro, sabemos que:
+</p>
+<div class="contas">
+    <span class="invi">&hArr;</span> d &equals; <div class="frac"><span>1</span><span class="denom">p</span></div> &times; 10<sup>-3</sup> (em metros)
+</div>
+<p class="m30-top">
+    Podemos então calcular o comprimento da onda da luz monocromática que compõe o feixe laser fazendo as seguintes medições:
+</p>
+<div class="overflow m15">
+    <img id="Comprimento-de-Onda-F11-AL32" src="Imagens/Comprimento-de-Onda-F11-AL32.png" alt="Feixe laser a sofrer difração">
+</div>
+<p>Usando os valores medidos, fazemos os seguintes cálculos:</p>
+<div class="contas">
+    <span class="invi">&hArr;</span>n &times; &lambda; &equals; d &times; sin(&theta;) &hArr; <br>
+    &hArr; 1<sup class="exp-contas" onclick="mostrarExpContas(1)">[1]</sup> &times; &lambda; &equals; d &times; <div class="frac"><span>cateto oposto</span><span class="denom">hipotenusa</span></div> &hArr; <br>
+    &hArr; &lambda; &equals; d &times; <div class="frac"><span>a</span><span class="denom">&radic;<span class="sqrt">L<sup>2</sup> &plus; a<sup>2</sup></span></span></div><sup class="exp-contas" onclick="mostrarExpContas(2)">[2]</sup>
+</div>
+<p class="exp-contas" name="exp-contas" style="display: none;"><sup class="exp-contas" onclick="mostrarExpContas(1)">[1]</sup>Vamos calcular o comprimento de onda com base no máximo de ordem 1, ou seja, <span class="serif">n &equals; 1</span>.
+</p>
+<div class="exp-contas"  name="exp-contas" style="display: none;"><sup class="exp-contas" onclick="mostrarExpContas(2)">[2]</sup>
+    <p>
+        O cateto oposto do triângulo retângulo que contém o ângulo &theta; será <span class="serif">a</span>, ou seja, a distância entre o máxmio de ordem 0 e o máximo de ordem 1 e o seu cateto adjacente será <span class="serif">L</span>, a distância entre a rede de difração e o alvo.
+    </p>
+    <p class="m0">Logo, como:</p>
+    <div class="contas">
+        <span class="invi">&hArr;</span>hipotenusa<sup>2</sup> &equals; cateto oposto<sup>2</sup> &plus; cateto adjacente<sup>2</sup> &hArr; <br>
+        &hArr; hipotenusa &equals; &radic;<span class="sqrt">L<sup>2</sup> &plus; a<sup>2</sup></span>
+    </div><br>
+    <p class="m0">Sabemos que:</p>
+    <div class="contas">
+        <span class="invi">&hArr;</span>sen(&theta;) &equals; <div class="frac"><span>a</span><span class="denom">&radic;<span class="sqrt">L<sup>2</sup> &plus; a<sup>2</sup></span></span></div>
+    </div>
+</div>
+<p>
+    Obtemos assim o comprimento de onda da luz emitida pelo ponteiro laser.
+</p>

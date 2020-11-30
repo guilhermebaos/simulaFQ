@@ -1,0 +1,30 @@
+<h2 class="topico">Resultados</h2>
+<p>
+    Usa os Butões para alterar que sal está sobre a chama, de forma a poderes ver diferentes resultados.
+</p>
+
+<div class="centrada">
+    <div><p>Amostra de Sal:</p></div>
+    <div class="flex-slider">
+        <div class="btn"><button name="salChama" class="escolha-atual" onclick="escolherSal(0)">NaC&#8467;</button></div>
+        <div class="btn"><button name="salChama" class="escolha" onclick="escolherSal(1)">CaC&#8467;<sub>2</sub></button></div>
+        <div class="btn"><button name="salChama" class="escolha" onclick="escolherSal(2)">KC&#8467;</button></div>
+        <div class="btn"><button name="salChama" class="escolha" onclick="escolherSal(3)">BaC&#8467;<sub>2</sub></button></div>
+        <div class="btn"><button name="salChama" class="escolha" onclick="escolherSal(4)">LiC&#8467;</button></div>
+        <div class="btn"><button name="salChama" class="escolha" onclick="escolherSal(5)">CuC&#8467;<sub>2</sub></button></div>
+    </div>
+</div>
+<div class="centrada m45-top">
+    <div class="overflow tabela-container">
+        <table class="resultados">
+            <tr class="vars">
+                <td>Sal Escolhido</td>
+                <td>Cor da Chama</td>
+            </tr>
+            <tr>
+                <td><span id="salEscolhidoValue">Cloreto de Sódio</span></td>
+                <td><span id="corChamaValue">Amarelo</span></td>
+            </tr>
+        </table>
+    </div>
+</div>

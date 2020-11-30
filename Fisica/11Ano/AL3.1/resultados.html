@@ -1,0 +1,115 @@
+<h2 class="topico">Resultados</h2>
+<p>
+    Usa os Sliders para alterar os valores indicados, de forma a poderes ver diferentes resultados.
+</p>
+<p class="m0">
+    <span class="anchor" onclick="mostrarExtra('Sugestões-de-Exercícios')">Sugestões de Exercícios</span>
+</p>
+<div id="Sugestões-de-Exercícios" class="explicar" style="display: none;">
+    <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
+    <p class="m5-bot">Usando a Simulação da Refração:</p>
+    <ol class="m0 m15-bot">
+        <li>
+            Fazer com que o feixe incida na parte curva do acrílico com um ângulo de incidência de 1º.
+        </li>
+        <li>
+            Ir aumentando o ângulo até que ocorra Reflexão Total e determinar o ângulo crítico.
+        </li>
+    </ol>
+    <ol>
+        <li>
+            Para uma <span class="anchor" onclick="mostrarExtra('Refringência')">Refringência</span> fixa, variar o ângulo de incidência e medir o ângulo de refração, se possível, com um transferidor, se não, usar o valor dado abaixo da simulação.
+        </li>
+        <div id="Refringência" class="explicar" style="display: none;">
+            <button class="fechar" onclick="mostrarExtra('Refringência')">X</button>
+            <p>
+                Um material onde a luz viage mais lentamente terá um maior índice de refração. Então, o material diz-se muito refringente.
+            </p>
+            <p>
+                Da mesma forma, se a luz viajar mais rapidamente num determinado material, este terá um menor índice de refração. Então, o material diz-se pouco refringente.
+            </p>
+        </div>
+        <li>
+            Repetir o passo 1. para vários ângulos de incidência e, usando uma
+            calculadora gráfica, calcular o índice de refração do Acrílico,
+            através de uma regressão linear.
+        </li>
+    </ol>
+</div>
+
+<div class="centrada m30-top">
+    <p>Fenómeno a estudar:</p>
+    <div class="flex-slider">
+        <div class="btn minw-180"><button name="Fenómenos" class="escolha-atual" onclick="fenomeno(0)">Reflexão</button></div>
+        <div class="btn minw-180"><button name="Fenómenos" class="escolha" onclick="fenomeno(1)">Refração</button></div>
+        <div class="btn minw-180"><button name="Fenómenos" class="escolha" onclick="fenomeno(2)">Reflexão Total</button></div>
+    </div>
+</div>
+<div id="Fenómeno0" class="explicar is-visible">
+    <p class="m15">
+        O laser vermelho irá incidir numa superfície metálica muito refletora.
+    </p>
+    <div class="flex-slider">
+        <div><label for="angIncide">Ângulo de Incidência</label></div>
+        <div><span id="angIncideValue">30.0</span>º<br>
+        <input type="range" name="angIncide" id="angIncide" class="slider" min="10" max="890" value="300"></div>
+    </div>
+</div>
+<div id="Fenómeno1" class="explicar">
+    <p class="m15">
+        O laser vermelho irá incidir na placa semicircular de acrílico.
+    </p>
+    <div class="flex-slider">
+        <div><label for="angIncideRefra">Ângulo de Incidência</label></div>
+        <div><span id="angIncideRefraValue">30.0</span>º<br>
+        <input type="range" name="angIncideRefra" id="angIncideRefra" class="slider" min="10" max="1790" value="300"></div>
+    </div>
+    <div class="flex-slider">
+        <div><label for="indiceRefra">Refringência do Acrílico</label></div>
+        <div><span id="indiceRefraValue">Intermédia</span><br>
+        <input type="range" name="indiceRefra" id="indiceRefra" class="slider" min="5" max="50" value="30"></div>
+    </div>
+</div>
+<div id="Fenómeno2" class="explicar">
+    <p class="m15">
+        O laser vermelho irá incidir no interior de uma fibra ótica.
+    </p>
+    <div class="flex-slider">
+        <div><label for="angIncideRefleTot">Ângulo de Incidência</label></div>
+        <div><span id="angIncideRefleTotValue">30.0</span>º<br>
+        <input type="range" name="angIncideRefleTot" id="angIncideRefleTot" class="slider" min="250" max="800" value="300"></div>
+    </div>
+    <div class="flex-slider">
+        <div><label for="larguraFibra">Largura da Fibra Ótica</label></div>
+        <div><span id="larguraFibraValue">10</span>&micro;m<br>
+        <input type="range" name="larguraFibra" id="larguraFibra" class="slider" min="1" max="15" value="10"></div>
+    </div>
+</div>
+
+<div id="graf-anim" class="explicar is-visible">
+    <div class="graf-overflow">
+        <div class="graf-container">
+            <div id="curva-laser" class="graf-background" style="background-image: url('Imagens/Metal-background.png');"></div>
+        </div>
+    </div>
+</div>
+
+<div id="respostas" class="explicar">
+    <p class="m15-top m30-bot">
+        Ângulo de Refração/ Reflexão: <span id="angRefValue">22.62</span>
+    </p>
+    <table class="resultados">
+        <tr class="vars">
+            <td>Ângulo Crítico</td>
+            <td>Índice de Refração do Acrílico</td>
+        </tr>
+        <tr>
+            <td><span id="angCritValue">1.30</span></td>
+            <td><span id="nAcrValue">1.30</span></td>
+        </tr>
+    </table>
+</div>
+
+<p class="nota m15">
+    Nas três situações considera-se que o laser não perde intensidade à medida que se propaga.
+</p>

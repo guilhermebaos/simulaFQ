@@ -1,0 +1,811 @@
+:root {
+    --background-color: rgba(0, 125, 255, 0.3);
+    --button-azul-claro: rgba(0, 120, 255, 0.5);
+    --button-azul-escuro: rgba(0, 120, 255, 1);
+
+    --footer-height: 50px
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--background-color);
+    font-size: 13.2pt;
+    font-family: 'Trebuchet MS', Helvetica, Arial, sans-serif;
+    /*font-family: "Comic Sans MS", cursive, sans-serif;*/
+    margin: 0px;
+}
+
+
+header {
+    text-align: center;
+    padding-top: 5px;
+}
+
+@media not screen and (max-width: 600px) {
+    main {
+        background: white;
+        margin: auto;
+        padding: 10px 20px 10px 20px;
+        width: 80%;
+        max-width: 1500px;
+        min-height: calc(100vh - 10px - 10px - 40px - var(--footer-height) + 1px);
+    }
+    div.mobile-only {
+        display: none;
+    }
+}
+@media screen and (max-width: 600px) {
+    main {
+        background: white;
+        margin: auto;
+        padding: 10px 20px 10px 20px;
+        width: 80%;
+        min-height: calc(100vh - 10px - 10px - 40px - var(--footer-height) + 1px);
+    }
+    div.mobile-only {
+        display: initial;
+    }
+}
+
+
+.maxw-fc {
+    max-width: fit-content;
+}
+
+.minw-140 {
+    min-width: 140px !important;
+}
+.minw-180 {
+    min-width: 180px !important;
+}
+.minw-260 {
+    min-width: 260px !important;
+}
+
+
+.margin-auto {
+    margin: auto;
+}
+
+.m0 {
+    margin: 0px;
+}
+
+.m5 {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+}
+.m15 {
+    margin-top: 15px !important;
+    margin-bottom: 15px !important;
+}
+.m30 {
+    margin-top: 30px !important;
+    margin-bottom: 30px !important;
+}
+.m45 {
+    margin-top: 45px !important;
+    margin-bottom: 45px !important;
+}
+
+.m5-top {
+    margin-top: 5px !important;
+}
+.m15-top {
+    margin-top: 15px !important;
+}
+.m30-top {
+    margin-top: 30px !important;
+}
+.m45-top {
+    margin-top: 45px !important;
+}
+
+.m5-bot {
+    margin-bottom: 5px !important;
+}
+.m15-bot {
+    margin-bottom: 15px !important;
+}
+.m30-bot {
+    margin-bottom: 30px !important;
+}
+.m45-bot {
+    margin-bottom: 45px !important;
+}
+
+
+.p0 {
+    padding: 0px;
+}
+.p-sub {
+    padding-bottom: 2px !important;
+}
+
+
+.nbsp {
+    white-space: nowrap;
+}
+
+
+.linha-alta {
+    line-height: 130%;
+}
+
+
+.grande {
+    font-size: 120%;
+}
+
+.nota {
+    font-size: 90%;
+}
+
+.pequeno {
+    font-size: 80%;
+}
+
+
+.serif {
+    font-family: serif;
+    font-size: 110%;
+    white-space: nowrap;
+}
+.serif100 {
+    font-family: serif;
+    font-size: 95%;
+    white-space: nowrap;
+}
+
+
+a {
+    text-decoration: underline;
+    color: rgb(0, 0, 200);
+}
+a:hover {
+    text-decoration: none;
+}
+
+
+p {
+    text-indent: 10px;
+    margin-top: 0px;
+    margin-bottom: 15px;
+}
+
+p.exp-contas, div.exp-contas {
+    margin: 25px 0px 40px 0px;
+    padding: 0px;
+}
+
+p.contas {
+    line-height: 180%;
+    font-size: 110%;
+    text-indent: 0px;
+    white-space: nowrap;
+    font-family: serif;
+}
+
+
+mark.simples {
+    background-color: white;
+    text-decoration: underline dotted gray;
+}
+
+mark.normal {
+    background-color: white;
+    text-decoration: underline solid black;
+}
+
+
+em.ex {
+    font-size: 95%;
+}
+
+
+h1 {
+    font-weight: 500;
+}
+
+h1.disciplina {
+    margin-bottom: 0px;
+}
+
+h2.contactos {
+    margin: 40px 0px 10px 0px;
+    font-size: 1.3em;
+}
+
+h2.ano {
+    margin-top: 0px;
+}
+
+h2.topico {
+    text-align: center;
+    font-size: 1.25em;
+    margin-top: 50px;
+}
+
+
+h3.sub-topico {
+    font-size: 1.08em;
+    margin: 35px 0px 10px 0px;
+}
+
+h3.unidade {
+    text-align: left;
+    margin-top: 40px;
+    margin-bottom: 15px;
+}
+
+hr.frac {
+    margin: 0px;
+}
+
+
+span.invi {
+    color: white;
+}
+
+span.anchor {
+    text-decoration: underline;
+    color: rgb(0, 0, 200);
+}
+span.anchor:hover {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+span.contas {
+    white-space: nowrap;
+    font-family: serif;
+}
+
+span.sqrt {
+    border-top: 1px solid black;
+    padding-top: 1.5px;
+}
+
+sup.exp-contas {
+    text-decoration: none;
+    font-family: serif;
+    line-height: normal;
+    color: rgb(0, 0, 200);
+}
+sup.exp-contas:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+sup.sobre-sub {
+    position: relative;
+    right: 0.5em;
+}
+
+sup sup {
+    font-size: 100%;
+}
+
+sub {
+    line-height: 0;
+}
+
+sub sup {
+    font-size: 100%;
+}
+
+
+canvas {
+    margin: auto;
+    z-index: -1;
+}
+
+
+div {
+    padding: 5px;
+    max-width: 100%;
+}
+
+div#div-teoria, div#div-material, div#div-procedimento, div#div-resultados {
+    padding: 0px;
+}
+
+div.tabela-container {
+    padding: 0px;
+}
+
+div.graf-overflow {
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100%;
+    margin: 0px 0px 20px 0px;
+    padding: 0px;
+}
+
+div.graf-background {
+    background-size: 100% 100%;
+    padding: 0px;
+    border-radius: 5px;
+}
+
+div.graf-container {
+    margin: auto;
+    padding: 0px;
+    min-width: 600px;
+    min-height: 300px;
+    max-width: 1000px;
+    max-height: 500px;
+}
+
+div.header {
+    width: 100%;
+    top: 0px;
+    position: sticky;
+    position: -webkit-sticky;
+    margin: 0px;
+    padding: 0px;
+    z-index: 10;
+}
+
+div.lista-AL {
+    margin-top: 50px;
+    text-align: left;
+}
+
+div.centrada {
+    width: fit-content;
+    margin: auto;
+    justify-content: center;
+}
+
+div.texto-centrado {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+}
+
+div.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    padding: 0px;
+}
+div.flex div {
+    flex: 1 1 100px;
+    margin: 5px;
+    padding: 0px;
+}
+
+div.flex-slider {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    padding: 0px;
+}
+div.flex-slider div {
+    flex: 1 1 100px;
+    margin: 5px;
+    padding: 0px;
+}
+div.flex-slider div.label {
+    flex: 1 1 0px;
+}
+div.flex-slider div.btn {
+    flex: 1 1 100px;
+    min-width: 100px;
+}
+div.flex-slider div.small-btns {
+    flex: 1 1 0px;
+    min-width: 200px;
+}
+
+div.small-btns button {
+    width: fit-content;
+    padding: 4px 10px 4px 10px;
+    transition: background-color 0.2s;
+}
+
+div.contas {
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-size: 110%;
+    font-family: serif;
+    white-space: nowrap;
+    line-height: 180%;
+    text-indent: 0px;
+}
+div.overflow {
+    overflow-x: auto;
+    margin: 0px;
+    padding: 0px;
+    white-space: nowrap;
+}
+div.explicar {
+	display: none;
+	height: 0;
+    margin: 0px;
+    padding: 0px 8px 0px 20px;
+	overflow: hidden;
+	transition: height 350ms ease;
+}
+div.explicar button {
+    margin: 12px 0px 4px 0px;
+}
+div.explicar.is-visible {
+	display: block;
+	height: auto;
+}
+div.explicar p {
+    text-indent: 10px;
+    margin: 0px 0px 12px 0px;
+}
+
+div.frac {
+    display: inline-block;
+    position: relative;
+    margin: 2px 0px 4px 0px;
+    padding: 0px;
+    vertical-align: middle;
+    letter-spacing: 0.001em;
+    text-align: center;
+}
+div.frac > span {
+    display: block;
+    padding: 0 0.1em 0 0.1em;
+    line-height: 130%;
+    font-size: 90%;
+}
+div.frac span.denom {
+    border-top: thin solid black;
+}
+
+
+
+form {
+    font-size: 110%;
+}
+
+form select {
+    font-size: 80%;
+}
+
+form textarea {
+    width: 40%;
+    min-width: 220px;
+    height: 80px;
+}
+
+
+
+table {
+    padding: 0px;
+    border-collapse: collapse;
+}
+
+table.centrada {
+    margin: auto;
+    width: fit-content;
+}
+
+table.explicar {
+    font-size: 85%;
+    text-indent: 0px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+table.explicar tr {
+    border-bottom: 1px solid lightgray;
+}
+table.explicar tr td {
+    padding: 1px 4px 0px 2px;
+}
+table.explicar tr td:first-child {
+    font-family: serif;
+}
+
+table.resultados {
+    width: 100%;
+    margin: auto;
+    padding: 0px;
+}
+table.resultados tr.vars {
+    font-weight: bold;
+}
+table.resultados tr.vars td {
+    text-align: center;
+}
+table.resultados tr {
+    border-bottom: 2px solid lightgray;
+}
+table.resultados tr td {
+    padding: 10px;
+    border-right: 2px solid lightgray;
+    text-align: center;
+}
+table.resultados tr td:last-child{
+    border-right: 0px;
+}
+
+
+
+tr.menu td {
+    padding: 10px 15px 0px 15px;
+    border-bottom: 1px solid #ddd;
+}
+tr.menu td:hover {
+    cursor: pointer;
+}
+
+
+td p {
+    height: 10px;
+    margin: 0px;
+}
+
+
+input.slider {
+    height: 100%;
+    width: 30vw;
+    margin: 0px;
+    outline: none;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+input.slider:hover{
+    opacity: 100%;
+}
+input.slider::-webkit-slider-thumb {
+    cursor: pointer;
+}
+input.slider::-moz-range-thumb {
+    cursor: pointer;
+}
+
+
+select:hover {
+    border-color: transparent transparent #fff transparent;
+    top: 7px;
+}
+
+
+button {
+    outline: none;
+}
+button:hover {
+    cursor: pointer;
+}
+button::-moz-focus-inner {
+    border: 0;
+}
+
+button.escolha {
+    font-size: 12pt;
+    color: white;
+    width: 100%;
+    margin: 2px 0px 2px 0px;
+    padding: 5px 20px 5px 20px;
+    background-color: rgba(50, 140, 255, 0.6);
+    border-radius: 10px;
+    border-color: var(--button-azul-claro);
+    transition: background-color 0.2s;
+}
+button.escolha:hover {
+    background-color: var(--button-azul-escuro);
+}
+
+button.escolha-atual {
+    font-size: 12pt;
+    color: white;
+    width: 100%;
+    margin: 2px 0px 2px 0px;
+    padding: 5px 20px 5px 20px;
+    background-color: rgba(50, 140, 255, 1);
+    border-radius: 10px;
+    border-color: var(--button-azul-claro);
+}
+
+button.submit {
+    font-size: 12pt;
+    color: white;
+    width: fit-content;
+    max-width: 70vw;
+    margin: 15px 0px 0px 5px;
+    padding: 5px 12px 5px 12px;
+    background-color: rgba(50, 140, 255, 0.8);
+    border-radius: 10px;
+    border-color: var(--button-azul-claro);
+    transition: background-color 0.2s;
+}
+button.submit:hover {
+    background-color: var(--button-azul-escuro);
+}
+
+button.fechar {
+    color: black;
+    font-weight: bolder;
+    width: 26px;
+    height: 26px;
+    margin: 0px;
+    padding: 0px;
+    background-color: rgba(0, 0, 0, 0.05);
+    border: 2px solid black;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+button.fechar:hover {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+button#para-o-topo {
+    display: none;
+    position: fixed;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    height: fit-content;
+    padding: 8px 15px 12px 15px;
+    right: 20px;
+    bottom: 20px;
+    z-index: 10;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    background-color: rgba(50, 140, 255, 0.6);
+    transition: background-color 0.2s;
+}
+button#para-o-topo:hover {
+    background-color: var(--button-azul-escuro);
+}
+
+
+ul.navbar {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    background-color: rgb(128, 128, 128);
+}
+ul.navbar li {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    margin: 0px;
+    padding: 10px 0px 10px 0px;
+    transition: background-color 0.2s;
+}
+ul.navbar li:hover {
+    background-color: rgb(96, 96, 96);
+}
+ul.navbar li a {
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+}
+
+ul.menu {
+    margin: auto;
+    padding: 0px;
+    width: fit-content;
+    list-style: none;
+    border-bottom: 1px solid #ddd;
+}
+ul.menu li {
+    padding: 10px 15px 0px 15px;
+    display: inline-block;
+}
+ul.menu li:hover {
+    cursor: pointer;
+}
+
+ul.material {
+    display: table;
+    margin: auto;
+    padding: 0px;
+    text-align: left;
+    list-style-position: inside;
+}
+
+ul.teoria li {
+    margin-bottom: 8px;
+}
+
+
+ol li {
+    margin-top: 5px;
+}
+
+ol.junto li {
+    margin-top: 0px;
+}
+
+ol.procedimento {
+    line-height: 120%;
+}
+ol.procedimento li {
+    margin-top: 10px;
+}
+
+dl dt {
+    display: inline;
+}
+dl dd {
+    display: inline;
+    margin-inline-start: 0px;
+}
+
+
+img {
+    max-width: 100%;
+    min-width: 50px;
+    height: auto;
+}
+img#Rampa-F10-AL11 {
+    min-width: 100px;
+}
+img#Queda-e-Ressalto-F10-AL12 {
+    min-width: 250px;
+}
+img#Osci-explicado-F11-AL21, img#Periodo-explicado-F11-AL21 {
+    display: block;
+    margin: auto;
+    min-width: 300px;
+    border-radius: 5px;
+}
+img#Oxidantes-Q11-AL22, img#Redutores-Q11-AL22 {
+    display: block;
+    margin: auto;
+    min-width: 200px;
+    border-radius: 5px;
+}
+img#Ar-Vidro-F11-AL31 {
+    display: block;
+    min-width: 200px;
+    margin: 20px 0px 15px 0px;
+}
+img#Difração-F11-AL32 img#Comprimento-de-Onda-F11-AL32{
+    display: block;
+    margin: auto;
+    min-width: 250px;
+}
+img#TP-Exame {
+    display: block;
+    margin: auto;
+    min-width: 400px;
+    border-radius: 5px;
+}
+
+
+footer {
+    width: 100%;
+    max-width: 100vw;
+    height: var(--footer-height);
+    text-align: center;
+    margin-top: 0px;
+    padding: 0px;
+    color: white;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    background-color: rgb(128, 128, 128);
+}
+footer p {
+    min-width: fit-content;
+    margin: 0px;
+    padding: 13px 0px 13px calc(100vw - 100%);
+}
+footer a {
+    color: white;
+}

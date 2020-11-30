@@ -1,0 +1,51 @@
+<h2 class="topico">Resultados</h2>
+<p>
+    Usa os Sliders para alterar os valores indicados, de forma a poderes ver diferentes resultados.
+</p>
+<p class="m0">
+    <span class="anchor" onclick="mostrarExtra('Sugestões-de-Exercícios')">Sugestões de Exercícios</span>
+</p>
+<div id="Sugestões-de-Exercícios" class="explicar" style="display: none;">
+    <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
+    <p class="m5-bot">
+        Após alterares os valores, mas antes de ver a Tabela dos Resultados.
+    </p>
+    <ul class="m0">
+        <li>Calcula o Número de Moléculas de uma gota de água.</li>
+    </ul>
+</div>
+
+<div class="centrada m30-top">
+    <div class="flex-slider">
+        <div><label for="volumeCemGotas">Volume de 100 gotas: </label></div>
+        <div><span id="volumeCemGotasValue">3.96</span>ml<br>
+        <input type="range" name="volumeCemGotas" id="volumeCemGotas" class="slider" min="100" max="600" value="396"></div>
+    </div>
+    <div class="flex-slider">
+        <div><label for="massaCemGotas">Massa de 100 gotas: </label></div>
+        <div><span id="massaCemGotasValue">4000</span>mg<br>
+        <input type="range" name="massaCemGotas" id="massaCemGotas" class="slider" min="100" max="600" value="400"></div>
+    </div>
+    
+    <button id="fazer-curva-Gota" class="submit m45" onclick="curva()">Calcular características de uma Gota de Água</button>
+
+    <div class="overflow tabela-container">
+        <table class="resultados">
+            <tr class="vars">
+                <td>Volume/ &micro;l</td>
+                <td>Massa/ mg</td>
+                <td>Número de Moléculas</td>
+            </tr>
+            <tr>
+                <td><span id="volumeGotaValue">39.60</span></td>
+                <td><span id="massaGotaValue">40.00</span></td>
+                <td><span id="nGotaValue">1.336 &times; 10<sup>21</sup></span></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div>
+    <p class="nota m15-top">
+        O Volume e a Massa estão relacionados de forma a que a densidade da água seja maior ou igual a 0,98 e menor ou igual a 1,00 <span class="nbsp">(&rho;<sub>água</sub> &in; [0,98; 1,00])</span>.
+    </p>
+</div>

@@ -1,0 +1,190 @@
+<h2 class="topico">Objetivo</h2>
+<p>
+    Pretende-se relacionar a altura de queda de um bola com a altura do seu ressalto e analisar as transferências de energia que ocorrem ao longo de todo o Movimento.
+</p>
+
+<h2 class="topico">Relação Teórica</h2>
+<p>
+    A bola é abandonada - de forma a que a sua velocidade inicial seja nula - a uma certa distância do Solo, sendo que irá cair e ressaltar várias vezes.
+</p>
+
+<h3 class="sub-topico">Queda e Subida</h3>
+<p>
+    Sendo a Resistência do Ar desprezável ao longo de todo o Movimento, sabemos que durante a Queda e a Subida apenas irá atuar sobre a bola o seu Peso.
+</p>
+<p>
+    Como o Peso é uma força Conservativa, a Energia Mecânica da bola será constante durante esta parte do movimento.
+</p>
+
+<h3 class="sub-topico">Colisão com o Solo</h3>
+<p>
+    Durante a colisão com o Solo, irá atuar sobre a bola a Reação Normal.
+</p>
+<p>
+    A Reação Normal é, neste caso, uma força Dissipativa, logo, a Energia Mecânica da bola irá diminuir durante a colisão.
+</p>
+
+<h3 class="sub-topico">Energia ao Longo do Movimento</h3>
+<p>
+    Como a sua trajetória é Vertical a Bola passa por alguns pontos várias vezes. Na imagem abaixo estão várias partes dessa trajetória, que foram separadas de forma a evitar sobreposição.
+</p>
+<div class="flex">
+    <div>
+        <img id="Queda-e-Ressalto-F10-AL12" src="Imagens/Queda-e-Ressalto-F10-AL12.png" alt="Imagem com vários pontos da trajetória" width="455" height="273">
+    </div>
+    <div>
+        <table class="explicar">
+            <tr>
+                <td>A, D, E</td>
+                <td>&rarr;</td>
+                <td>Pontos onde a altura é máxima</td>
+            </tr>
+            <tr>
+                <td>B, F</td>
+                <td>&rarr;</td>
+                <td>Pontos imediatamente antes da bola atingir o Solo</td>
+            </tr>
+            <tr>
+                <td>C</td>
+                <td>&rarr;</td>
+                <td>Ponto imediatamente após a bola perder o contacto com o Solo</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<p>
+    Como a Energia Mecânica é Conservada durante a Queda e a Subida:
+</p>
+<div class="contas">
+    <span class="invi">&hArr;</span> E<sub>m<sub>A</sub></sub> &equals; E<sub>m<sub>B</sub></sub> <br>
+    <span class="invi">&hArr;</span> E<sub>m<sub>C</sub></sub> &equals; E<sub>m<sub>D</sub></sub> &equals; E<sub>m<sub>D</sub></sub> &equals; E<sub>m<sub>F</sub></sub>
+</div>
+<p style="margin-top: 35px;">
+    E, partindo a partir da 1ª equação, por exemplo, podemos deduzir o seguinte:
+</p>
+<div class="contas">
+    <span class="invi">&hArr;</span> E<sub>m<sub>A</sub></sub> &equals; E<sub>m<sub>B</sub></sub> &hArr; <br>
+    &hArr; E<sub>c<sub>A</sub></sub> &plus; E<sub>pg<sub>A</sub></sub> &equals; E<sub>c<sub>B</sub></sub> &plus; E<sub>pg<sub>B</sub></sub> &hArr; <br>
+    &hArr; 0<sup class="exp-contas" onclick="mostrarExpContas(1)">[1]</sup> + E<sub>pg<sub>A</sub></sub> &equals; E<sub>c<sub>B</sub></sub> + 0<sup class="exp-contas" onclick="mostrarExpContas(2)">[2]</sup> &hArr; <br>
+    &hArr; E<sub>pg<sub>A</sub></sub> &equals; E<sub>c<sub>B</sub></sub>
+</div>
+<div>
+    <p class="exp-contas" name="exp-contas" style="display: none;"><sup class="exp-contas" onclick="mostrarExpContas(1)">[1]</sup>Num ponto de altura máxima, a velocidade da bola é nula, logo a sua Energia Cinética é 0.</p>
+    <p class="exp-contas" name="exp-contas" style="display: none;"><sup class="exp-contas" onclick="mostrarExpContas(2)">[2]</sup>Num ponto de altura mínima, a sua altura é 0, logo, a sua Energia Potencial Gravítica é 0 (sendo o solo o nível de referência para a altura).</p>
+</div>
+<table class="explicar">
+    <tr>
+        <td>E<sub>m<sub>X</sub></sub></td>
+        <td>&rarr;</td>
+        <td>Energia Mecânica da Bola no ponto X</td>
+    </tr>
+    <tr>
+        <td>E<sub>c<sub>X</sub></sub></td>
+        <td>&rarr;</td>
+        <td>Energia Cinética da Bola no ponto X</td>
+    </tr>
+    <tr>
+        <td>E<sub>pg<sub>X</sub></sub></td>
+        <td>&rarr;</td>
+        <td>Energia Potencial Gravítica da Bola no ponto X</td>
+    </tr>
+</table>
+<p style="margin-bottom: 25px;">
+    Um método semelhante pode ser aplicado a quaisquer dois pontos com a mesma Energia  Mecânica.
+</p>
+<p class="m0">Concluimos assim que:</p>
+<ul class="m5-top">
+    <li>
+        Ao longo da Queda a Energia Potencial Gravítica da Bola é transformada em Energia Cinética, por ação do seu Peso.
+    </li>
+    <li>
+        Ao longo da Subida a Energia Cinética da Bola é transformada em Energia Potencial Gravítica.
+    </li>
+</ul>
+
+<h2 class="topico">Método</h2>
+<p>
+    Experimentalmente, teremos que medir a altura de Queda e a altura de Ressalto, de forma a podermos relacioná-las.
+</p>
+<p>
+    Tal será feito usando uma fita métrica, um sensor de aquisição de posição e respetivo software ou outro método equivalente.
+</p>
+<p>
+    Após termos uma tabela com as alturas máximas da bola, podemos calcular a Razão entre as alturas de Ressalto e as respetivas alturas de Queda. Vamos perceber que é aproximadamente constante e menor que 1:
+</p>
+<div class="contas">
+    <div class="frac"><span>h<sub>Ressalto</sub></span><span class="denom">h<sub>Queda</sub></span></div>  &equals; R, &nbsp;R &lt; 1 <br>
+</div>
+<table class="explicar">
+    <tr>
+        <td>h</td>
+        <td>&rarr;</td>
+        <td>Altura</td>
+    </tr>
+</table>
+<p>
+    Para calcular o seu valor mais provável, ao realizar a experiência iremos usar a reta de melhor ajuste: <span class="serif">h<sub>Ressalto</sub> &equals; h<sub>Queda</sub> &times; R</span> 
+</p>
+<p>
+    Repetindo este processo para várias bolas de materiais diferentes e em várias superfícies irá fazer variar a Razão, uma vez que ela depende da elasticidade dos materiais em colisão.
+</p>
+<p>
+    Podemos pensar nesta Relação de <u class="simples">várias formas</u>, usando as diferentes Energias envolvidas neste Sistema e os Pontos da <span class="anchor" onclick="mostrarExtra('imagem-acima')">imagem acima</span>:
+</p>
+<div id="imagem-acima" class="explicar" style="display: none;">
+    <button class="fechar" onclick="mostrarExtra('imagem-acima')">X</button>
+    <div class="overflow">
+        <img id="Queda-e-Ressalto-F10-AL12" src="Imagens/Queda-e-Ressalto-F10-AL12.png" alt="Imagem com vários pontos da trajetória" width="455" height="273">
+    </div>
+</div>
+
+<div class="contas">
+    <span class="invi">&hArr;</span> h<sub>Queda</sub> &times; R &equals; h<sub>Ressalto</sub> &hArr; <br>
+    &hArr; h<sub>A</sub> &times; R &equals; h<sub>D</sub> &hArr; <br>
+    &hArr; mgh<sub>A</sub> &times; R &equals; mgh<sub>D</sub> &hArr; <br>
+    &hArr; E<sub>pg<sub>A</sub></sub> &times; R &equals; E<sub>pg<sub>D</sub></sub> &hArr; <br>
+    &hArr; E<sub>m<sub>A</sub></sub><sup class="exp-contas" onclick="mostrarExpContas(3)">[3]</sup> &times; R &equals; E<sub>m<sub>D</sub></sub><sup class="exp-contas" onclick="mostrarExpContas(3)">[3]</sup> &hArr; <br>
+    &hArr; E<sub>m<sub>B</sub></sub> &times; R &equals; E<sub>m<sub>C</sub></sub> &hArr; <br>
+    &hArr; E<sub>c<sub>B</sub></sub><sup class="exp-contas" onclick="mostrarExpContas(4)">[4]</sup> &times; R &equals; E<sub>c<sub>C</sub></sub><sup class="exp-contas" onclick="mostrarExpContas(4)">[4]</sup>
+</div>
+<div>
+    <p class="exp-contas" name="exp-contas" style="display: none;"><sup class="exp-contas" onclick="mostrarExpContas(3)">[3]</sup>Num ponto de altura máxima, a velocidade da bola é nula, logo a sua Energia Cinética é 0, então, toda a sua Energia Mecânica é Energia Potencial Gravítica <span class="serif">(E<sub>m</sub> &equals; E<sub>pg</sub>)</span>.</p>
+    <p class="exp-contas" name="exp-contas" style="display: none;"><sup class="exp-contas" onclick="mostrarExpContas(4)">[4]</sup>Num ponto de altura mínima, a sua altura é 0, logo, a sua Energia Potencial Gravítica é 0 (sendo o solo o nível de referência para a altura), então, toda a sua Energia Mecânica é Energia Cinética <span class="serif">(E<sub>m</sub> &equals; E<sub>c</sub>)</span>.</p>
+</div>
+<table class="explicar">
+    <tr>
+        <td>R</td>
+        <td>&rarr;</td>
+        <td>Razão entre alturas de Queda e Ressalto Sucessivas</td>
+    </tr>
+    <tr>
+        <td>h<sub>X</sub></td>
+        <td>&rarr;</td>
+        <td>Altura da Bola no ponto X</td>
+    </tr>
+    <tr>
+        <td>m</td>
+        <td>&rarr;</td>
+        <td>Massa da Bola</td>
+    </tr>
+    <tr>
+        <td>g</td>
+        <td>&rarr;</td>
+        <td>Módulo da Aceleração Gravítica</td>
+    </tr>
+    <tr>
+        <td>E<sub>m<sub>X</sub></sub></td>
+        <td>&rarr;</td>
+        <td>Energia Mecânica da Bola no ponto X</td>
+    </tr>
+    <tr>
+        <td>E<sub>c<sub>X</sub></sub></td>
+        <td>&rarr;</td>
+        <td>Energia Cinética da Bola no ponto X</td>
+    </tr>
+    <tr>
+        <td>E<sub>pg<sub>X</sub></sub></td>
+        <td>&rarr;</td>
+        <td>Energia Potencial Gravítica da Bola no ponto X</td>
+    </tr>
+</table>

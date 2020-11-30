@@ -1,0 +1,53 @@
+<h2 class="topico">Resultados</h2>
+<p>
+    Usa os Sliders para alterar os valores indicados, de forma a poderes ver diferentes resultados.
+</p>
+<p>
+    <span class="anchor" onclick="mostrarExtra('Sugestões-de-Exercícios')">Sugestões de Exercícios</span>
+</p>
+<div id="Sugestões-de-Exercícios" class="explicar" style="display: none;">
+    <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
+    <p class="m5-bot">
+        Após alterares os valores, mas antes de veres o gráfico:
+    </p>
+    <ul class="m0">
+        <li>
+            Calcula a Energia Cinética que o Carrinho terá após percorrer 60cm.
+        </li>
+        <li>
+            Determina o declive da função <span class="serif">E<sub>c</sub> = f(d)</span>.
+        </li>
+    </ul>
+</div>
+
+<div class="centrada m30">
+    <div class="flex-slider">
+        <div><label for="massaCarrinho">Massa do Carrinho</label></div>
+        <div><span id="massaCarrinhoValue">200</span>g<br>
+        <input type="range" name="massaCarrinho" id="massaCarrinho" class="slider" min="10" max="99" value="20"></div>
+    </div>
+    <div class="flex-slider">
+        <div><label for="angPlanoInclinado">Ângulo do Plano Inclinado </label></div>
+        <div><span id="angPlanoInclinadoValue">20.0</span>º<br>
+        <input type="range" name="angPlanoInclinado" id="angPlanoInclinado" class="slider" min="100" max="450" value="200"></div>
+    </div>
+    <div class="flex-slider">
+        <div><label for="forçaAtrito">Força de Atrito </label></div>
+        <div><span id="forçaAtritoValue">0.100</span>N<br>
+        <input type="range" name="forçaAtrito" id="forçaAtrito" class="slider" min="0" max="184" value="100"></div>
+    </div>
+
+    <button id="fazer-curva-Ec" class="submit" onclick="curva()">Traçar a função <span class="serif">E<sub>c</sub> = f(d)</span></button>
+</div>
+
+<div class="graf-overflow">
+    <div class="graf-container">
+        <div id="curva-Ec"></div>
+    </div>
+</div>
+
+<div>
+    <p class="nota">
+        A Força de Atrito máxima está limitada de acordo com a massa do Carrinho e a inclinação do Plano, de forma a termos resultados mais realistas Coeficiente de Atrito Dinâmico Máximo &equals; 0.1).
+    </p>
+</div>
