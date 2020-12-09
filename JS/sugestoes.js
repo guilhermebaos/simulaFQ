@@ -1,6 +1,6 @@
 // Selecionar os parametros para o Serviço de Emails
-let service_id = 'default_service'
-let template_id = 'projetoal'
+const service_id = 'default_service'
+const template_id = 'projetoal'
 
 // Selecionar os Select com a informação
 let temaSelect = document.getElementById('tema')
