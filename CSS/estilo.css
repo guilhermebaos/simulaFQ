@@ -817,16 +817,22 @@ footer div.sub-footer {
     background-color: rgb(64, 64, 64);
 }
 footer div.sub-footer div.social-container {
-    float: right;
+    float: left;
     max-width: 30%;
     margin: auto;
     white-space: normal;
 }
+footer div.sub-footer div.social-container div.icone-social {
+    display: inline;
+    width: 30px;
+    padding: 0px;
+}
 footer div.sub-footer div.info {
-    float: left;
-    max-width: 60%;
+    float: right;
+    max-width: 55%;
     margin: auto;
-    padding-left: 15px;
+    padding-top: 8px;
+    padding-right: 15px;
     font-size: 60%;
     white-space: normal;
 }
