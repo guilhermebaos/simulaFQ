@@ -7,7 +7,7 @@
  
 # Projeto AL
 
-O Projeto AL é um site onde alunos do Secundário podem rever e praticar as Atividades Laboratoriais (ALs) de Física e Química A (10º e 11º), de Física (12º) e de Química (12º).
+O Projeto AL é a parte do SimulaFQ onde alunos do Secundário podem rever e praticar as Atividades Laboratoriais (ALs) de Física e Química A (10º e 11º), de Física (12º) e de Química (12º).
 
 ---
 
