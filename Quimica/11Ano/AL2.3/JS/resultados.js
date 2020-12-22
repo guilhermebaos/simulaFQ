@@ -262,13 +262,13 @@ function resultadosExtra() {
             case 0:
                 nomeSal = 'Cloreto de Sódio'
                 break
-            case 0:
+            case 1:
                 nomeSal = 'Nitrato de Potássio'
                 break
-            case 0:
+            case 2:
                 nomeSal = 'Cloreto de Potássio'
                 break
-            case 0:
+            case 3:
                 nomeSal = 'Brometo de Potássio'
                 break
             default:
@@ -276,6 +276,6 @@ function resultadosExtra() {
         }
 
 
-        massaResp.innerText = `Num kilograma de água, a 20ºC, conseguimos dissolver até ${m.toFixed(1)}g de ${nomeSal}.`
+        massaResp.innerHTML = `Num kilograma de água, a 20&#8451;, conseguimos dissolver até ${m.toFixed(1)}g de ${nomeSal}.`
     }
 }
