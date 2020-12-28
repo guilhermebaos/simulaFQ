@@ -17,6 +17,9 @@ function prepararResultados() {
     F10_AL31.divCurvaIU = document.getElementById('curva-painel-I=f(U)')
     F10_AL31.divCurvaPU = document.getElementById('curva-painel-P=f(U)')
 
+    // Verificar que as divs já estão carregadas
+    F10_AL31.divCurvaIU.innerText
+
     F10_AL31.preparado = true
     curva()
 }

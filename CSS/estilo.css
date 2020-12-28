@@ -1,5 +1,5 @@
 :root {
-    --background-color: rgba(0, 125, 255, 0.3);
+    --background-color: rgba(50, 139, 255, 0.7);
     --button-azul-claro: rgba(0, 120, 255, 0.5);
     --button-azul-escuro: rgba(0, 120, 255, 1);
 
@@ -37,6 +37,9 @@ header {
     div.mobile-only {
         display: none;
     }
+    div.pc-only {
+        display: initial;
+    }
 }
 @media screen and (max-width: 600px) {
     main {
@@ -48,6 +51,9 @@ header {
     }
     div.mobile-only {
         display: initial;
+    }
+    div.pc-only {
+        display: none;
     }
 }
 
@@ -178,7 +184,7 @@ p {
 }
 
 p.exp-contas, div.exp-contas {
-    margin: 25px 0px 40px 0px;
+    margin: 25px 0px 40px 30px;
     padding: 0px;
 }
 
@@ -435,17 +441,17 @@ div.overflow {
 div.explicar {
 	display: none;
 	height: 0;
-    margin: 0px;
-    padding: 0px 8px 0px 20px;
-	overflow: hidden;
-	transition: height 350ms ease;
-}
-div.explicar button {
-    margin: 12px 0px 4px 0px;
+    margin: 0px 8px 0px 30px;
+    padding: 0px;
+    overflow: hidden;
+    transition: height 350ms ease;
 }
 div.explicar.is-visible {
 	display: block;
 	height: auto;
+}
+div.explicar button {
+    margin: 15px 0px 4px 0px;
 }
 div.explicar p {
     text-indent: 10px;
