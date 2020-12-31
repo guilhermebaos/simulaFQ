@@ -44,9 +44,11 @@ function mostrarExtra(keyWord) {
         // Dá a altura atual do elemento
         extra.style.height = extra.scrollHeight + 'px'
     
-        // Pôe a altura a 0
+        // Pôe a altura, margem e padding a 0
         window.setTimeout(function () {
             extra.style.height = '0'
+            extra.style.marginTop = '0'
+            extra.style.marginBottom = '0'
         }, 1)
     
         // Quando a transição está completa, esconde o elemento
@@ -66,6 +68,8 @@ function mostrarExtra(keyWord) {
 
         extra.classList.add('is-visible') // Torna o elemento visível
         extra.style.height = height // Atualiza a altura máxima
+        extra.style.marginTop = '15px' // Atualiza a margem
+        extra.style.marginBottom = '15px'
 
         // Quando a transição estiver completa, remove a inline max-height para que o contentor possa mudar de dimensões
         window.setTimeout(function () {

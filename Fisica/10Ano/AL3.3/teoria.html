@@ -2,8 +2,9 @@
 <p class="m0">
     Estudar as transferências de energia entre amostras de água a temperaturas diferentes e calcular a <span class="anchor" onclick="mostrarExtra('Variação-de-Entalpia-Mássica-de-Fusão-do-Gelo')">Variação de Entalpia Mássica de Fusão do Gelo</span>.
 </p>
-<div id="Variação-de-Entalpia-Mássica-de-Fusão-do-Gelo" class="explicar" style="display: none;">
+<div id="Variação-de-Entalpia-Mássica-de-Fusão-do-Gelo" class="explicar">
     <button class="fechar" onclick="mostrarExtra('Variação-de-Entalpia-Mássica-de-Fusão-do-Gelo')">X</button><br>
+    <h4 class="explicar">Variação de Entalpia Mássica de Fusão do Gelo</h4>
     <p>
         A Variação de Entalpia, <span class="serif">&Delta;H</span>, é a energia que um corpo recebe ou liberta numa mudança de estado físico.
     </p>
@@ -39,8 +40,9 @@
 <p class="m0">
     Vamos usar um Gobelé envolvido num material isolador térmico para realizarmos a Atividade Laboratorial. Desta forma, podemos considerar que o Sistema em estudo é um <span class="anchor" onclick="mostrarExtra('sistema-isolado')">sistema isolado</span>.
 </p>
-<div id="sistema-isolado" class="explicar" style="display: none;">
+<div id="sistema-isolado" class="explicar">
     <button class="fechar" onclick="mostrarExtra('sistema-isolado')">X</button>
+    <h4 class="explicar">Sistema Isolado</h4>
     <p>
         Um Sistema isolado não efetua trocas com o exterior, logo a sua energia interna é constante.
     </p>
@@ -51,8 +53,9 @@
 <p class="m0 m15-top">
     Iremos também considerar que a energia que o Gobelé possa <span class="anchor" onclick="mostrarExtra('absorver-ou-libertar')">absorver ou libertar</span> é desprezável.
 </p>
-<div id="absorver-ou-libertar" class="explicar" style="display: none;">
+<div id="absorver-ou-libertar" class="explicar">
     <button class="fechar" onclick="mostrarExtra('absorver-ou-libertar')">X</button>
+    <h4 class="explicar">Energia absorvida ou libertada pelo Gobelé</h4>
     <p>
         O Gobelé irá estar em contacto com água quente e com gelo, portanto, poderá aquecer (absorver energia) ou arrefecer (libertar energia).
     </p>
@@ -149,7 +152,7 @@
 <p>
     (<span class="anchor" onclick="mostrarExtra('Dedução1')">Ver dedução</span>)
 </p>
-<div id="Dedução1" class="explicar" style="display: none;">
+<div id="Dedução1" class="explicar" style="display: none; border: none; margin-left: 0px; padding-left: 0px;">
     <button class="fechar" onclick="mostrarExtra('Dedução1')">X</button><br>
     <div class="contas">
         <span class="invi">&hArr;</span> m<sub>1</sub> &times; (T<sub>f</sub> &minus; T<sub>1</sub>) &equals; &minus; m<sub>2</sub> &times; (T<sub>f</sub> &minus; T<sub>2</sub>) &hArr; <br>
@@ -168,22 +171,23 @@
 </p>
 
 <h3 class="sub-topico">Determinar <span class="serif">&Delta;H<sub>Fusão do Gelo</sub></span></h3>
-<p class="m0">
+<p>
     Para calcularmos a Variação de Entalpia Mássica de Fusão do Gelo iremos seguir um processo semelhante ao anterior, sendo que uma das amostras de água irá ser substituida por uma amostra de <span class="anchor" onclick="mostrarExtra('Gelo-Fundente')">Gelo Fundente</span>.
 </p>
-<div id="Gelo-Fundente" class="explicar" style="display: none;">
-    <button class="fechar" onclick="mostrarExtra('Gelo-Fundente')">X</button><br>
+<div id="Gelo-Fundente" class="explicar">
+    <button class="fechar" onclick="mostrarExtra('Gelo-Fundente')">X</button>
+    <h4 class="explicar">Gelo Fundente</h4>
     <p>
         O Gelo Fundente é gelo a 0&#8451;, logo, toda a energia que recebe irá ser usada para a sua Fusão, não para aquecimento.
     </p>
 </div>
-<p class="m15-top">
+<p>
     Mas, como não sabemos ainda o valor do <span class="serif">&Delta;H</span>, não podemos fazer nenhuma previsão em relação à temperatura final do sistema.
 </p>
-<p class="m0">
+<p>
     Então, iremos determiná-lo substituindo o <span class="serif">Q<sub>1</sub></span> da <span class="anchor" onclick="mostrarExtra('equação-acima')">equação acima</span> pela energia recebida pelo gelo, <span class="serif">Q<sub>gelo</sub></span>:
 </p>
-<div id="equação-acima" class="explicar" style="display: none;">
+<div id="equação-acima" class="explicar" style="display: none; border: none; margin-left: 0px; padding-left: 0px;">
     <button class="fechar m30-top" onclick="mostrarExtra('equação-acima')">X</button><br>
     <div class="contas">
         <span class="invi">&hArr;</span> &Delta;U &equals; 0 &hArr; <br>
@@ -191,7 +195,7 @@
         &hArr; Q<sub>1</sub> &plus; Q<sub>2</sub> &plus; 0 &equals; 0
     </div>
 </div>
-<div class="contas m15-top">
+<div class="contas">
     <span class="invi">&hArr;</span> Q<sub>gelo</sub> &equals; E<sub>fusão</sub><sup class="exp-contas" onclick="mostrarExpContas(6)">[6]</sup> &plus; E<sub>aquecimento</sub><sup class="exp-contas" onclick="mostrarExpContas(7)">[7]</sup> &hArr; <br>
     &hArr; Q<sub>gelo</sub> &equals; &Delta;H<sub>Fusão do Gelo</sub> &times; m<sub>gelo</sub> &plus; c<sub>água</sub> &times; m<sub>gelo</sub> &times; T<sub>f</sub>
 </div>
@@ -273,6 +277,4 @@
 <p>
     De seguida, misturamos o gelo fundende e a água, medimos a temperatura final do sistema e calculamos o <span class="serif">&Delta;H<sub>Fusão do Gelo</sub></span>.
 </p>
-<p>
-    Por fim, calculamos o erro em relação ao valor tabelado.
-</p>
+<p>Por fim, calculamos o erro em relação ao valor tabelado.</p>

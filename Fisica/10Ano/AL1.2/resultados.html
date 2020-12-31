@@ -5,12 +5,13 @@
 <p class="m0">
     <span class="anchor" onclick="mostrarExtra('Sugestões-de-Exercícios')">Sugestões de Exercícios</span>
 </p>
-<div id="Sugestões-de-Exercícios" class="explicar" style="display: none;">
+<div id="Sugestões-de-Exercícios" class="explicar">
     <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
+    <h4 class="explicar">Sugestões de Exercícios</h4>
     <p class="m5-bot">
         Após alterares os valores, mas antes de veres o gráfico:
     </p>
-    <ul class="m0 m30-bot">
+    <ul>
         <li>Prevê se a altura do 1º Ressalto irá aumentar ou diminuir.</li>
         <li>
             A percentagem da Energia Mecânica dissipada em cada Ressalto será maior ou menor, comparado com antes de alterares os valores?
@@ -19,7 +20,7 @@
     <p class="m5-bot">
         Após veres o gráfico e a Tabela com as alturas de Queda e Ressalto:
     </p>
-    <ul class="m0">
+    <ul>
         <li>
             Que percentagem da Energia Mecânica é dissipada em cada Colisão com o Solo?
         </li>
@@ -60,16 +61,16 @@
     <div class="overflow" style="max-width: 72vw; margin-bottom: 50px;">
         <table id="alturasTabela" class="resultados">
             <tr class="vars">
-                <td>Altura de Queda/ cm</td>
-                <td>Altura de Ressalto/ cm</td>
+                <th scope="col">Altura de Queda/ cm</th>
+                <th scope="col">Altura de Ressalto/ cm</th>
             </tr>
         </table>
     </div>
     <div class="overflow" style="max-width: 72vw;">
         <table class="resultados">
             <tr class="vars">
-                <td><sup>h<sub>Ressalto</sub></sup> &frasl; <sub>h<sub>Queda</sub></sub></td>
-                <td>Percentagem da Energia Mecânica Dissipada em cada Colisão</td>
+                <th scope="col"><sup>h<sub>Ressalto</sub></sup> &frasl; <sub>h<sub>Queda</sub></sub></th>
+                <th scope="col">Percentagem da Energia Mecânica Dissipada em cada Colisão</th>
             </tr>
             <tr>
                 <td><span id="razaoValue"></span></td>

@@ -36,6 +36,9 @@ function prepararResultados() {
     claridadeTubos = document.getElementsByName('claridadeTubo')
     embrulhosTubos = document.getElementsByName('embrulhoTubo')
 
+    // Verificar que o HTML já carregou
+    tubos.length
+
     Q10_AL24.preparado = true
     curva()
 }

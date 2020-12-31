@@ -2,15 +2,16 @@
 <p>
     Usa os Sliders para alterar os valores indicados, de forma a poderes ver diferentes resultados.
 </p>
-<p class="m0">
+<p>
     <span class="anchor" onclick="mostrarExtra('Sugestões-de-Exercícios')">Sugestões de Exercícios</span>
 </p>
-<div id="Sugestões-de-Exercícios" class="explicar" style="display: none;">
+<div id="Sugestões-de-Exercícios" class="explicar">
     <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
+    <h4 class="explicar">Sugestões de Exercícios</h4>
     <p class="m5-bot">
         Após alterares os valores, mas antes de ver a Tabela dos Resultados.
     </p>
-    <ul class="m0">
+    <ul>
         <li>Calcula o Número de Moléculas de uma gota de água.</li>
     </ul>
 </div>
@@ -32,9 +33,9 @@
     <div class="overflow tabela-container">
         <table class="resultados">
             <tr class="vars">
-                <td>Volume/ &micro;l</td>
-                <td>Massa/ mg</td>
-                <td>Número de Moléculas</td>
+                <th scope="col">Volume/ &micro;l</th>
+                <th scope="col">Massa/ mg</th>
+                <th scope="col">Número de Moléculas</th>
             </tr>
             <tr>
                 <td><span id="volumeGotaValue">39.60</span></td>

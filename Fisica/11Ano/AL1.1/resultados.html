@@ -5,12 +5,13 @@
 <p class="m0">
     <span class="anchor" onclick="mostrarExtra('Sugestões-de-Exercícios')">Sugestões de Exercícios</span>
 </p>
-<div id="Sugestões-de-Exercícios" class="explicar" style="display: none;">
+<div id="Sugestões-de-Exercícios" class="explicar">
     <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
+    <h4 class="explicar">Sugestões de Exercícios</h4>
     <p class="m5-bot">
         Após alterares os valores, mas antes de veres a 1ª Tabela com os Resultados:
     </p>
-    <ul class="m0 m30-bot">
+    <ul>
         <li>
             Desprezando a Resistência do Ar, prevê se uma variação na Massa irá variar a aceleração gravítica obtida.
         </li>
@@ -19,7 +20,7 @@
         </li>
     </ul>
     <p class="m5-bot">Após veres apenas a 1ª Tabela com os Resultados:</p>
-    <ul class="m0">
+    <ul>
         <li>
             Calcula o valor experimental para a aceleração gravítica.
         </li>
@@ -58,9 +59,9 @@
     <div class="overflow m45-top">
         <table class="resultados">
             <tr class="vars">
-                <td>&Delta;t <sub>passagem pela 2ª Célula</sub>/ ms</td>
-                <td>&Delta;t <sub>queda entre as Células</sub>/ ms</td>
-                <td>v <sub>passagem pela 2ª Célula</sub>/ <span class="nbsp">ms<sup>-1</sup></span></td>
+                <th scope="col">&Delta;t <sub>passagem pela 2ª Célula</sub>/ ms</th>
+                <th scope="col">&Delta;t <sub>queda entre as Células</sub>/ ms</th>
+                <th scope="col">v <sub>passagem pela 2ª Célula</sub>/ <span class="nbsp">ms<sup>-1</sup></span></th>
             </tr>
             <tr>
                 <td><span id="deltaT-celula2"></span></td>
@@ -72,8 +73,8 @@
     <div class="overflow m45-top">
         <table class="resultados">
             <tr class="vars">
-                <td>g/ ms<sup>-2</sup></td>
-                <td>Erro Relativo (%)</td>
+                <th scope="col">g/ ms<sup>-2</sup></th>
+                <th scope="col">Erro Relativo (%)</th>
             </tr>
             <tr>
                 <td><span id="gravidade-experimental"></span></td>
@@ -93,7 +94,7 @@
 <p>
     <span class="anchor" onclick="mostrarExtra('gráficos-extra')">Ver Gráficos Extra - Leis x(t), v(t), a(t) e j(t)</span>
 </p>
-<div id="gráficos-extra" class="explicar" style="display: none;">
+<div id="gráficos-extra" class="explicar">
     <button class="fechar" onclick="mostrarExtra('gráficos-extra')">X</button>
     <p class="m15-top">
         O Eixo usado tem origem na posição incial da esfera e o sentido do Movimento
@@ -105,7 +106,7 @@
         <li><span class="anchor" onclick="mostrarExtra('gráfico-extra-jt')">Ver Gráfico j(t) - Jerk-Tempo</span></li>
     </ul>
     
-    <div id="gráfico-extra-xt" class="explicar" style="display: none;">
+    <div id="gráfico-extra-xt" class="explicar explicar-no-border">
         <button class="fechar" onclick="mostrarExtra('gráfico-extra-xt')">X</button>
         <div class="graf-overflow m30-top">
             <div class="graf-container">
@@ -113,7 +114,7 @@
             </div>
         </div>
     </div>
-    <div id="gráfico-extra-vt" class="explicar" style="display: none;">
+    <div id="gráfico-extra-vt" class="explicar explicar-no-border">
         <button class="fechar" onclick="mostrarExtra('gráfico-extra-vt')">X</button>
         <div class="graf-overflow m30-top">
             <div class="graf-container">
@@ -121,7 +122,7 @@
             </div>
         </div>
     </div>
-    <div id="gráfico-extra-at" class="explicar" style="display: none;">
+    <div id="gráfico-extra-at" class="explicar explicar-no-border">
         <button class="fechar" onclick="mostrarExtra('gráfico-extra-at')">X</button>
         <div class="graf-overflow m30-top">
             <div class="graf-container">
@@ -129,7 +130,7 @@
             </div>
         </div>
     </div>
-    <div id="gráfico-extra-jt" class="explicar" style="display: none;">
+    <div id="gráfico-extra-jt" class="explicar explicar-no-border">
         <button class="fechar" onclick="mostrarExtra('gráfico-extra-jt')">X</button>
         <div class="graf-overflow m30-top">
             <div class="graf-container">

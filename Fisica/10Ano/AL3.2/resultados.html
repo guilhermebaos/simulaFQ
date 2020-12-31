@@ -5,10 +5,11 @@
 <p class="m0">
     <span class="anchor" onclick="mostrarExtra('Sugestões-de-Exercícios')">Sugestões de Exercícios</span>
 </p>
-<div id="Sugestões-de-Exercícios" class="explicar" style="display: none;">
+<div id="Sugestões-de-Exercícios" class="explicar">
     <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
+    <h4 class="explicar">Sugestões de Exercícios</h4>
     <p class="m5-bot">Após veres o gráfico:</p>
-    <ul class="m0">
+    <ul>
         <li>
             Calcula o seu declive, com recurso à calculadora gráfica e a uma reta de melhor ajuste.
         </li>
@@ -61,8 +62,8 @@
     <div class="overflow" style="max-width: 72vw;">
         <table class="resultados">
             <tr class="vars">
-                <td>Declive</td>
-                <td>Capacidade térmica mássica (J/kg/&#8451;)</td>
+                <th scope="col">Declive</th>
+                <th scope="col">Capacidade térmica mássica (J/kg/&#8451;)</th>
             </tr>
             <tr>
                 <td><span id="decliveValue">0.00110</span></td>

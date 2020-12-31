@@ -184,8 +184,13 @@ p {
 }
 
 p.exp-contas, div.exp-contas {
-    margin: 25px 0px 40px 30px;
-    padding: 0px;
+    margin: 25px 0px 40px 0px;
+    padding: 10px 0px 5px 5px;
+}
+
+div.exp-contas {
+    border-left: 2px solid grey;
+    border-radius: 5px;
 }
 
 p.contas {
@@ -246,6 +251,11 @@ h3.unidade {
     text-align: left;
     margin-top: 40px;
     margin-bottom: 15px;
+}
+
+h4.explicar {
+    text-indent: 10px;
+    margin: 0px 0px 15px 0px;
 }
 
 hr.frac {
@@ -441,21 +451,34 @@ div.overflow {
 div.explicar {
 	display: none;
 	height: 0;
-    margin: 0px 8px 0px 30px;
-    padding: 0px;
+    margin: 0px 8px 0px 25px;
+    padding: 0px 0px 0px 5px;
+    border-left: 2px solid grey;
+    border-radius: 5px;
     overflow: hidden;
-    transition: height 350ms ease;
+    -webkit-transition: all 350ms ease;
+    -moz-transition: all 350ms ease;
+    -o-transition: all 350ms ease;
+    transition: all 350ms ease;
+}
+div.explicar-no-border {
+    border: none;
+    margin-left: 0px;
+    padding-left: 0px;
 }
 div.explicar.is-visible {
 	display: block;
 	height: auto;
 }
 div.explicar button {
-    margin: 15px 0px 4px 0px;
+    margin: 5px 0px 4px 0px;
 }
-div.explicar p {
-    text-indent: 10px;
-    margin: 0px 0px 12px 0px;
+div.explicar ul {
+    margin-top: 0px;
+    margin-bottom: 30px;
+}
+div.explicar > *:last-child {
+    margin-bottom: 10px;
 }
 
 div.frac {
@@ -529,18 +552,18 @@ table.resultados {
 table.resultados tr.vars {
     font-weight: bold;
 }
-table.resultados tr.vars td {
+table.resultados tr.vars th {
     text-align: center;
 }
 table.resultados tr {
     border-bottom: 2px solid lightgray;
 }
-table.resultados tr td {
+table.resultados tr td, table.resultados tr th {
     padding: 10px;
     border-right: 2px solid lightgray;
     text-align: center;
 }
-table.resultados tr td:last-child{
+table.resultados tr td:last-child, table.resultados tr th:last-child{
     border-right: 0px;
 }
 

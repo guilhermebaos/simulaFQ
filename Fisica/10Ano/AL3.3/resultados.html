@@ -5,10 +5,11 @@
 <p class="m0">
     <span class="anchor" onclick="mostrarExtra('Sugestões-de-Exercícios')">Sugestões de Exercícios</span>
 </p>
-<div id="Sugestões-de-Exercícios" class="explicar" style="display: none;">
+<div id="Sugestões-de-Exercícios" class="explicar">
     <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
+    <h4 class="explicar">Sugestões de Exercícios</h4>
     <p class="m5-bot">Antes de veres a Tabela dos Resultados:</p>
-    <ul class="m0 m30-bot">
+    <ul>
         <li>
             Misutura duas amostras de água e prevê a temperatura final do Sistema, após ser atingido o Equilíbrio Térmico, assumindo que este Sistema é isolado.
         </li>
@@ -16,11 +17,11 @@
     <p class="m5-bot">
         Mistura água e Gelo Fundente e, após veres a temperatura final do Sistema:
     </p>
-    <ul class="m0">
+    <ul>
         <li>
             Calcula a Variação de Entalpia Mássica de Fusão do Gelo, assumindo que o Sistema é isolado.
         </li>
-    </ul><br>
+    </ul>
 </div>
 
 <div class="centrada m30-top">
@@ -41,7 +42,7 @@
     </div>
 </div>
 <div class="centrada p0">
-    <div id="mistura0" class="explicar is-visible">
+    <div id="mistura0" class="explicar explicar-no-border is-visible">
         <div class="flex-slider">
             <div><label for="massaFria">Massa de água à temperatura ambiente</label></div>
             <div><span id="massaFriaValue">400.0</span>g<br>
@@ -55,7 +56,7 @@
     </div>
 </div>
 <div class="centrada p0">
-    <div id="mistura1" class="explicar" style="display: none;">
+    <div id="mistura1" class="explicar explicar-no-border">
         <div class="flex-slider">
             <div><label for="massaGelo">Massa de Gelo Fundente</label></div>
             <div><span id="massaGeloValue">20.0</span>g<br>
@@ -69,7 +70,7 @@
     <div class="overflow" style="max-width: 72vw;">
         <table id="tabelaResultados" class="resultados">
             <tr class="vars">
-                <td>Temperatura Final (ºC)</td>
+                <th scope="col">Temperatura Final (&#8451;)</th>
             </tr>
             <tr>
                 <td id="tempFinalValue">25.00</td>

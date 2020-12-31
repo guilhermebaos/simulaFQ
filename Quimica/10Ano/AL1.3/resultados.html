@@ -5,18 +5,19 @@
 <p class="m0">
     <span class="anchor" onclick="mostrarExtra('Sugestões-de-Exercícios')">Sugestões de Exercícios</span>
 </p>
-<div id="Sugestões-de-Exercícios" class="explicar" style="display: none;">
+<div id="Sugestões-de-Exercícios" class="explicar">
     <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
+    <h4 class="explicar">Sugestões de Exercícios</h4>
     <p class="m5-bot">
         Após alterares os valores, mas antes de veres os Resultados:
     </p>
-    <ul class="m0 m30-bot">
+    <ul>
         <li>Determina o Valor das massas <span class="serif">m<sub>A</sub></span> e <span class="serif">m<sub>B</sub></span>.</li>
     </ul>
     <p class="m5-bot">
         Após veres apenas a 1ª Tabela com os Resultados:
     </p>
-    <ul class="m0">
+    <ul>
         <li>
             Calcula a Densidade Relativa obtida experimental do metal de que são feitas as esferas.
         </li>
@@ -50,9 +51,9 @@
     <div class="overflow tabela-container">
         <table class="resultados">
             <tr class="vars">
-                <td>m<sub>A</sub>/ g</td>
-                <td>m<sub>B</sub>/ g</td>
-                <td>m<sub>C</sub>/ g</td>
+                <th scope="col">m<sub>A</sub>/ g</th>
+                <th scope="col">m<sub>B</sub>/ g</th>
+                <th scope="col">m<sub>C</sub>/ g</th>
             </tr>
             <tr>
                 <td><span id="massaAValue">15.0</span></td>
@@ -63,8 +64,8 @@
         <p class="m50-top">A Densidade Relativa tabelada é: <span id="dTabeladoValue">2.70</span></p>
         <table class="resultados m45-top">
             <tr class="vars">
-                <td>Densidade Relativa</td>
-                <td>Erro Relativo (%)</td>
+                <th scope="col">Densidade Relativa</th>
+                <th scope="col">Erro Relativo (%)</th>
             </tr>
             <tr>
                 <td><span id="dRelativaValue">2.68</span></td>

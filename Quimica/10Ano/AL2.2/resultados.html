@@ -5,27 +5,29 @@
 <p class="m0">
     <span class="anchor" onclick="mostrarExtra('Sugestões-de-Exercícios')">Sugestões de Exercícios</span>
 </p>
-<div id="Sugestões-de-Exercícios" class="explicar" style="display: none;">
+<div id="Sugestões-de-Exercícios" class="explicar">
     <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
+    <h4 class="explicar">Sugestões de Exercícios</h4>
     <p class="m5-bot">
-        Com Recurso à Tabela Períodica mais próxima (ou a <span class="anchor" onclick="mostrarExtra('esta')">esta</span>):
+        Com Recurso à Tabela Periódica mais próxima (ou a <span class="anchor" onclick="mostrarExtra('esta')">esta</span>):
     </p>
-    <ul class="m0">
+    <ul>
         <li>Calula a Massa Molar do Soluto escolhido.</li>
     </ul>
-    <div id="esta" class="explicar" style="display: none;">
+    <div id="esta" class="explicar">
         <button class="fechar" onclick="mostrarExtra('esta')">X</button>
+        <h4 class="explicar">Tabela Periódica</h4>
         <div class="overflow">
-            <img id="TP-Exame" src="../../Imagens/TP-Exame2020.png" alt="Tabela Períodica">
+            <img id="TP-Exame" src="../../Imagens/TP-Exame2020.png" alt="Tabela Periódica">
         </div>
         <p class="nota">
-            Esta Tabela Períodica foi a utilizada no Exame de Física e Química A de 2020, partilhada pelo IAVE (<a href="http://http://www.iave.pt/images/FicheirosPDF/Docs_Avalia%C3%A7%C3%A3o_Alunos/Info-provas/2019_2020/IP-EX-FQA715-2020.pdf" target="_blank" rel="noopener noreferrer">Ver o original</a>).
+            Esta Tabela Periódica foi a utilizada no Exame de Física e Química A de 2020, partilhada pelo IAVE (<a href="http://http://www.iave.pt/images/FicheirosPDF/Docs_Avalia%C3%A7%C3%A3o_Alunos/Info-provas/2019_2020/IP-EX-FQA715-2020.pdf" target="_blank" rel="external">Ver o original</a>).
         </p>
     </div>
-    <p class="m30-top m5-bot">
+    <p class="m5-bot">
         Utilizando a Massa Molar dada, mas antes de veres a Tabela dos Resultados:
     </p>
-    <ul class="m0 m30-bot">
+    <ul>
         <li>
             Calcula a quantidade química e a massa de Solvente necessária para preparar a Solução.
         </li>
@@ -70,8 +72,8 @@
     <div class="overflow tabela-container">
         <table class="resultados">
             <tr class="vars">
-                <td>Quantidade Química de Soluto (mol)</td>
-                <td>Massa de Soluto (g)</td>
+                <th scope="col">Quantidade Química de Soluto (mol)</th>
+                <th scope="col">Massa de Soluto (g)</th>
             </tr>
             <tr>
                 <td><span id="quantidadeSolutoValue">0.0075</span> &times; 10<sup>-3</sup></td>

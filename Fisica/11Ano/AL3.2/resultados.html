@@ -5,18 +5,19 @@
 <p class="m0">
     <span class="anchor" onclick="mostrarExtra('Sugestões-de-Exercícios')">Sugestões de Exercícios</span>
 </p>
-<div id="Sugestões-de-Exercícios" class="explicar" style="display: none;">
+<div id="Sugestões-de-Exercícios" class="explicar">
     <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
+    <h4 class="explicar">Sugestões de Exercícios</h4>
     <p class="m5-bot">
         Após alterares os valores, mas antes de veres a Tabela com os Resultados:
     </p>
-    <ul class="m0">
+    <ul>
         <li>
             Mede a distância entre os máximos de ordem 1 (<span class="serif">2a</span>), usando a escala indicada e confere <span class="anchor" onclick="mostrarExtra('aqui')">aqui</span> o valor medido.
         </li>
-        <div id="aqui" class="explicar" style="display: none;">
+        <div id="aqui" class="explicar">
             <button class="fechar" onclick="mostrarExtra('aqui')">X</button>
-            <p class="m30-bot">
+            <p>
                 A distância entre os máximos de ordem 1 é: <span id="distN1Value"></span>cm.
             </p>
         </div>
@@ -30,6 +31,7 @@
     <p>
         O laser irá incidir numa rede de difração. A Simulação mostra o que irá ser visto, aproximadamente, no alvo.
     </p>
+    <p>Cor do feixe laser:</p>
     <div class="flex-slider">
         <div class="btn"><button name="cor-laser" class="escolha-atual" onclick="corLaser(0)">Vermelho</button></div>
         <div class="btn"><button name="cor-laser" class="escolha" onclick="corLaser(1)">Verde</button></div>
@@ -56,7 +58,7 @@
 
 <table class="resultados m30-top">
     <tr class="vars">
-        <td>Comprimento de onda (metros)</td>
+        <th scope="col">Comprimento de onda (metros)</th>
     </tr>
     <tr>
         <td><span id="lambdaValue">6.33 &times; 10<sup>-7</sup></span></td>

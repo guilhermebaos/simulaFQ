@@ -5,12 +5,13 @@
 <p class="m0">
     <span class="anchor" onclick="mostrarExtra('Sugestões-de-Exercícios')">Sugestões de Exercícios</span>
 </p>
-<div id="Sugestões-de-Exercícios" class="explicar" style="display: none;">
+<div id="Sugestões-de-Exercícios" class="explicar">
     <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
+    <h4 class="explicar">Sugestões de Exercícios</h4>
     <p class="m5-bot">
         Após definires os valores, mas antes de veres a Tabela dos Resultados:
     </p>
-    <ul class="m0">
+    <ul>
         <li>Calcula o Fator de Diluição.</li>
         <li>
             Calcula o Volume de Solução inicial necessário para prepar a Solução.
@@ -45,8 +46,8 @@
     <div class="overflow tabela-container">
         <table class="resultados">
             <tr class="vars">
-                <td>Fator de Diluição</td>
-                <td>Volume de Solução Inicial (ml)</td>
+                <th scope="col">Fator de Diluição</th>
+                <th scope="col">Volume de Solução Inicial (ml)</th>
             </tr>
             <tr>
                 <td><span id="fatorValue">5.00</span></td>

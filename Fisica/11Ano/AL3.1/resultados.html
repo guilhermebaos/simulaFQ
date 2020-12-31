@@ -7,8 +7,9 @@
 </p>
 <div id="Sugestões-de-Exercícios" class="explicar" style="display: none;">
     <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
+    <h4 class="explicar">Sugestões de Exercícios</h4>
     <p class="m5-bot">Usando a Simulação da Refração:</p>
-    <ol class="m0 m15-bot">
+    <ol>
         <li>
             Fazer com que o feixe incida na parte curva do acrílico com um ângulo de incidência de 1º.
         </li>
@@ -22,6 +23,7 @@
         </li>
         <div id="Refringência" class="explicar" style="display: none;">
             <button class="fechar" onclick="mostrarExtra('Refringência')">X</button>
+            <h4 class="explicar">Refringência</h4>
             <p>
                 Um material onde a luz viage mais lentamente terá um maior índice de refração. Então, o material diz-se muito refringente.
             </p>
@@ -45,7 +47,7 @@
         <div class="btn minw-180"><button name="Fenómenos" class="escolha" onclick="fenomeno(2)">Reflexão Total</button></div>
     </div>
 </div>
-<div id="Fenómeno0" class="explicar is-visible">
+<div id="Fenómeno0" class="explicar explicar-no-border is-visible">
     <p class="m15">
         O laser vermelho irá incidir numa superfície metálica muito refletora.
     </p>
@@ -55,7 +57,7 @@
         <input type="range" name="angIncide" id="angIncide" class="slider" min="10" max="890" value="300"></div>
     </div>
 </div>
-<div id="Fenómeno1" class="explicar">
+<div id="Fenómeno1" class="explicar explicar-no-border">
     <p class="m15">
         O laser vermelho irá incidir na placa semicircular de acrílico.
     </p>
@@ -70,7 +72,7 @@
         <input type="range" name="indiceRefra" id="indiceRefra" class="slider" min="5" max="50" value="30"></div>
     </div>
 </div>
-<div id="Fenómeno2" class="explicar">
+<div id="Fenómeno2" class="explicar explicar-no-border">
     <p class="m15">
         O laser vermelho irá incidir no interior de uma fibra ótica.
     </p>
@@ -86,7 +88,7 @@
     </div>
 </div>
 
-<div id="graf-anim" class="explicar is-visible">
+<div id="graf-anim" class="explicar explicar-no-border is-visible">
     <div class="graf-overflow">
         <div class="graf-container">
             <div id="curva-laser" class="graf-background" style="background-image: url('Imagens/Metal-background.png');"></div>
@@ -94,14 +96,14 @@
     </div>
 </div>
 
-<div id="respostas" class="explicar">
+<div id="respostas" class="explicar explicar-no-border">
     <p class="m15-top m30-bot">
         Ângulo de Refração/ Reflexão: <span id="angRefValue">22.62</span>
     </p>
     <table class="resultados">
         <tr class="vars">
-            <td>Ângulo Crítico</td>
-            <td>Índice de Refração do Acrílico</td>
+            <th scope="col">Ângulo Crítico</th>
+            <th scope="col">Índice de Refração do Acrílico</th>
         </tr>
         <tr>
             <td><span id="angCritValue">1.30</span></td>

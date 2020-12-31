@@ -5,16 +5,17 @@
 <p class="m0">
     <span class="anchor" onclick="mostrarExtra('Sugestões-de-Exercícios')">Sugestões de Exercícios</span>
 </p>
-<div id="Sugestões-de-Exercícios" class="explicar" style="display: none;">
+<div id="Sugestões-de-Exercícios" class="explicar">
     <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
+    <h4 class="explicar">Sugestões de Exercícios</h4>
     <p class="m5-bot">Antes de veres a Tabela de Polaridade:</p>
-    <ul class="m0 m30-bot">
+    <ul>
         <li>
             Se conseguires, prevê se as moléculas constituintes dos líquidos apresentados são Polares ou Apolares.
         </li>
     </ul>
     <p class="m5-bot">Após veres a Tabela de Polaridade:</p>
-    <ul class="m0">
+    <ul>
         <li>
             Prevê se dois líquidos irão ser miscíveis (sendo que a regra geral
             apresentada na Teoria admite exceções).
@@ -22,7 +23,7 @@
     </ul>
 </div>
 
-<div class="centrada m30-top">
+<div class="centrada m45-top">
     <p>Líquidos disponíveis:</p>
     <div class="flex-slider">
         <div class="btn"><button name="líquido" class="escolha" onclick="escolherLiq(0)">Água</button></div>
@@ -37,13 +38,13 @@
     <span class="anchor" onclick="mostrarExtra('Tabela-de-Polaridade')">Tabela de Polaridade</span>
 </p>
 <div class="centrada">
-    <div id="Tabela-de-Polaridade" class="explicar">
+    <div id="Tabela-de-Polaridade" class="explicar explicar-no-border">
         <button class="fechar m0" onclick="mostrarExtra('Tabela-de-Polaridade')">X</button>
         <div class="overflow" style="max-width: 72vw;">
             <table class="resultados">
                 <tr class="vars">
-                    <td>Molécula</td>
-                    <td>Polaridade</td>
+                    <th scope="col">Molécula</th>
+                    <th scope="col">Polaridade</th>
                 </tr>
                 <tr>
                     <td>Água (H<sub>2</sub>O)</td>
@@ -77,55 +78,55 @@
 </div>
 <button class="submit m45-top" onclick="curva()">Misturar os Líquidos</button>
 <div class="texto-centrado m30-top">
-    <div id="a-menos" class="explicar is-visible">
+    <div id="a-menos" class="explicar explicar-no-border is-visible">
         <p>Escolhe 2 Líquidos para misturar.</p>
     </div>
-    <div id="110000" class="explicar">
+    <div id="110000" class="explicar explicar-no-border">
         <p>A Água e o Etanol misturaram-se.</p>
     </div>
-    <div id="101000" class="explicar">
+    <div id="101000" class="explicar explicar-no-border">
         <p>A Água e a Acetona misturaram-se.</p>
     </div>
-    <div id="100100" class="explicar">
+    <div id="100100" class="explicar explicar-no-border">
         <p>A Água e a Acetonitrila (ACN) misturaram-se.</p>
     </div>
-    <div id="100010" class="explicar">
+    <div id="100010" class="explicar explicar-no-border">
         <p>A Água e o Hexano formaram duas camadas (são imiscíveis).</p>
     </div>
-    <div id="100001" class="explicar">
+    <div id="100001" class="explicar explicar-no-border">
         <p>A Água e o Xileno formaram duas camadas (são imiscíveis).</p>
     </div>
-    <div id="011000" class="explicar">
+    <div id="011000" class="explicar explicar-no-border">
         <p>O Etanol e a Acetona misturaram-se.</p>
     </div>
-    <div id="010100" class="explicar">
+    <div id="010100" class="explicar explicar-no-border">
         <p>O Etanol e a Acetonitrila (ACN) misturaram-se.</p>
     </div>
-    <div id="010010" class="explicar">
+    <div id="010010" class="explicar explicar-no-border">
         <p>O Etanol e o Hexano misturaram-se.</p>
     </div>
-    <div id="010001" class="explicar">
+    <div id="010001" class="explicar explicar-no-border">
         <p>O Etanol e o Xileno misturaram-se.</p>
     </div>
-    <div id="001100" class="explicar">
+    <div id="001100" class="explicar explicar-no-border">
         <p>A Acetona e a Acetonitrila (ACN) misturaram-se.</p>
     </div>
-    <div id="001010" class="explicar">
+    <div id="001010" class="explicar explicar-no-border">
         <p>A Acetona e o Hexano misturaram-se.</p>
     </div>
-    <div id="001001" class="explicar">
+    <div id="001001" class="explicar explicar-no-border">
         <p>A Acetona e o Xileno misturaram-se.</p>
     </div>
-    <div id="000110" class="explicar">
+    <div id="000110" class="explicar explicar-no-border">
         <p>A Acetonitrila (ACN) e o Hexano formaram duas camadas (são imiscíveis).</p>
     </div>
-    <div id="000101" class="explicar">
+    <div id="000101" class="explicar explicar-no-border">
         <p>A Acetonitrila (ACN) e o Xileno misturaram-se.</p>
     </div>
-    <div id="000011" class="explicar">
+    <div id="000011" class="explicar explicar-no-border">
         <p>O Hexano e o Xileno misturaram-se.</p>
     </div>
-    <div id="a-mais" class="explicar">
+    <div id="a-mais" class="explicar explicar-no-border">
         <p>Escolhe apenas 2 Líquidos para misturar.</p>
     </div>
 </div>

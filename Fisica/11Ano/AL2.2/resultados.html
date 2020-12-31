@@ -1,21 +1,21 @@
 <h2 class="topico">Resultados</h2>
-
 <p>
     Usa os Sliders para alterar os valores indicados, de forma a poderes ver diferentes resultados.
 </p>
 <p class="m0">
     <span class="anchor" onclick="mostrarExtra('Sugestões-de-Exercícios')">Sugestões de Exercícios</span>
 </p>
-<div id="Sugestões-de-Exercícios" class="explicar" style="display: none;">
+<div id="Sugestões-de-Exercícios" class="explicar">
     <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
+    <h4 class="explicar">Sugestões de Exercícios</h4>
     <p class="m5-bot">Procedimento 1:</p>
-    <ul class="m0 m30-bot">
+    <ul>
         <li>
             Após simular o Assobio, usar o Intervalo de Tempo apresentado para calcular o Módulo da Velocidade de Propagação do Som no Ar.
         </li>
     </ul>
     <p class="m5-bot">Procedimento 2:</p>
-    <ul class="m0">
+    <ul>
         <li>
             Após fixar uma Frequência e uma Amplitude, afastar o Microfone do Altifalante, até que as duas ondas estejam em fase (com os picos e vales coincidentes) e calcular o Módulo da Velocidade de Propagação do Som no Ar.
         </li>
@@ -47,7 +47,7 @@
         </div>
     </div>
 </div>
-<div id="Procedimento1-Div" class="explicar is-visible m30-top" style="margin-bottom: 20px;">
+<div id="Procedimento1-Div" class="explicar explicar-no-border is-visible m30-top">
     <p>
         Irá ser emitido um <em>bip</em> com frequência de 1000Hz para simular um assobio curto.
     </p>
@@ -59,7 +59,7 @@
     <p><button id="fazer-bip" class="submit" onclick="curva()">Assobiar</button></p>
     <p class="m30-top"><span id="intervaloTempoValue"></span></p>
 </div>
-<div id="Procedimento2-Div" class="explicar" style="display: none; margin-bottom: 20px;">
+<div id="Procedimento2-Div" class="explicar explicar-no-border">
     <p>Definições do <mark class="normal">Gerador de Sinais</mark>:</p>
     <div class="flex-slider">
         <div><label for="freqSinal">Frequência do Sinal</label></div>
@@ -89,7 +89,7 @@
 
 <table class="resultados m45-top">
     <tr class="vars">
-        <td>Módulo da Velocidade de Propagação do Som no Ar (m/s)</td>
+        <th scope="col">Módulo da Velocidade de Propagação do Som no Ar (m/s)</th>
     </tr>
     <tr>
         <td><span id="velocidadeDoSomValue">343.4</span></td>
