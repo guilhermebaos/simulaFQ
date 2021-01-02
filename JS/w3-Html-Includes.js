@@ -1,3 +1,7 @@
+// Código do Statcounter https://statcounter.com/
+var sc_project=12454038, sc_invisible=1, sc_security="b1e05410", sc_https=1 
+
+
 // Retirado de: https://www.w3schools.com/howto/howto_html_include.asp
 
 function incluirHTML() {
