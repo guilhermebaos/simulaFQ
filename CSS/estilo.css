@@ -866,6 +866,10 @@ footer div.sub-footer div.info {
     white-space: normal;
 }
 
+div.info p {
+    padding: 0px 0px 10px 0px;
+}
+
 a.svg-social {
     margin: 10px 10px 10px 10px;
 }
