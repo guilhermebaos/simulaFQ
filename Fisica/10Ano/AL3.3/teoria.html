@@ -68,7 +68,7 @@
 <p>
     Iremos misturar duas amostras de água a temperaturas diferentes, a amostra <span class="serif">1</span> e a amostra <span class="serif">2</span>, no Sistema descrito acima.
 </p>
-<p>
+<p id="temperatura-final">
     A amostra mais quente irá ceder energia à amostra mais fria, até que ambas as amostras de água estejam à mesma temperatura.
 </p>
 <p>
@@ -82,7 +82,7 @@
     &hArr; c<sub>água</sub> &times; m<sub>1</sub> &times; (T<sub>f</sub> &minus; T<sub>1</sub>)<sup class="exp-contas" onclick="mostrarExpContas(5)">[5]</sup> &equals; &minus; c<sub>água</sub> &times; m<sub>2</sub> &times; (T<sub>f</sub> &minus; T<sub>2</sub>)<sup class="exp-contas" onclick="mostrarExpContas(5)">[5]</sup> &hArr; <br>
     &hArr; m<sub>1</sub> &times; (T<sub>f</sub> &minus; T<sub>1</sub>) &equals; &minus; m<sub>2</sub> &times; (T<sub>f</sub> &minus; T<sub>2</sub>)
 </div>
-<p class="exp-contas" name="exp-contas" style="display: none;"><sup class="exp-contas" onclick="mostrarExpContas(1)">[1]</sup>Como o Sistema é isolado, a sua energia interna é constante (<span class="serif">U &equals; k</span>), logo, a sua variação da energia interna será 0 (<span class="serif">&Delta;U &equals; 0</span>).</p>
+<p class="exp-contas" name="exp-contas" style="display: none;"><sup class="exp-contas" onclick="mostrarExpContas(1)">[1]</sup>Como o Sistema é isolado, a sua energia interna é constante (<span class="serif">U &equals; k</span>), logo, a sua variação da energia interna será 0 (<span class="serif">&Delta;U &equals; 0</span>). <a href="https://www.fq.pt/energia/1-lei-da-termodinamica" target="_blank" rel="external">Ver mais</a></p>
 <p class="exp-contas" name="exp-contas" style="display: none;"><sup class="exp-contas" onclick="mostrarExpContas(2)">[2]</sup>A variação da energia interna de um Sistema pode ser divida em transferências de energia sob a forma de Calor (<span class="serif">Q</span>) e sob a forma de Trabalho (<span class="serif">W</span>).</p>
 <p class="exp-contas" name="exp-contas" style="display: none;"><sup class="exp-contas" onclick="mostrarExpContas(3)">[3]</sup>Como a Força Resultante que atua no Sistema é nula, não há transferências de energia sob a forma de Trabalho (<span class="serif">W &equals; 0</span>).</p>
 <div class="exp-contas" name="exp-contas" style="display: none;">
@@ -185,16 +185,8 @@
     Mas, como não sabemos ainda o valor do <span class="serif">&Delta;H</span>, não podemos fazer nenhuma previsão em relação à temperatura final do sistema.
 </p>
 <p>
-    Então, iremos determiná-lo substituindo o <span class="serif">Q<sub>1</sub></span> da <span class="anchor" onclick="mostrarExtra('equação-acima')">equação acima</span> pela energia recebida pelo gelo, <span class="serif">Q<sub>gelo</sub></span>:
+    Então, iremos determiná-lo substituindo o <span class="serif">Q<sub>1</sub></span> da <a href="#temperatura-final">equação acima</a> pela energia recebida pelo gelo, <span class="serif">Q<sub>gelo</sub></span>:
 </p>
-<div id="equação-acima" class="explicar" style="display: none; border: none; margin-left: 0px; padding-left: 0px;">
-    <button class="fechar m30-top" onclick="mostrarExtra('equação-acima')">X</button><br>
-    <div class="contas">
-        <span class="invi">&hArr;</span> &Delta;U &equals; 0 &hArr; <br>
-        &hArr; Q &plus; W &equals; 0 &hArr; <br>
-        &hArr; Q<sub>1</sub> &plus; Q<sub>2</sub> &plus; 0 &equals; 0
-    </div>
-</div>
 <div class="contas">
     <span class="invi">&hArr;</span> Q<sub>gelo</sub> &equals; E<sub>fusão</sub><sup class="exp-contas" onclick="mostrarExpContas(6)">[6]</sup> &plus; E<sub>aquecimento</sub><sup class="exp-contas" onclick="mostrarExpContas(7)">[7]</sup> &hArr; <br>
     &hArr; Q<sub>gelo</sub> &equals; &Delta;H<sub>Fusão do Gelo</sub> &times; m<sub>gelo</sub> &plus; c<sub>água</sub> &times; m<sub>gelo</sub> &times; T<sub>f</sub>

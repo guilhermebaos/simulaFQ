@@ -81,6 +81,10 @@ header {
     margin: 0px;
 }
 
+.m0-bot {
+    margin-bottom: 0px !important;
+}
+
 .m5 {
     margin-top: 5px !important;
     margin-bottom: 5px !important;
@@ -300,6 +304,19 @@ sup.exp-contas:hover {
 sup.sobre-sub {
     position: relative;
     right: 0.5em;
+}
+
+/*
+Para colocar a seta acima dos vetores, colocar este sup com um &rarr; dentro à ESQUERDA da letra do vetor, dentro do span.serif
+*/
+sup.vetor {
+    display: inline-block;
+    position: relative;
+    width: 1px;
+    line-height: 0px;
+    right: 0.78em;
+    bottom: 0.4em;
+    font-size: 70%
 }
 
 sup sup {
