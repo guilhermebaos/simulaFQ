@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simula FQ - Pêndulo Gravítico</title>
+    
+    <link rel="shortcut icon" href="../../../Favicons/favicon.ico" type="image/x-icon">
+
+    <link rel="icon" href="../../../Favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="../../../Favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../Favicons/apple-touch-icon.png">
+    <link rel="manifest" href="../../../Favicons/site.webmanifest">
+
+    <link rel="stylesheet" href="../../../CSS/estilo.css">
+
+    <script src="../../../JS/w3-Html-Includes.js"></script>
+    <script src="../../../JS/explicar.js"></script>
+    <script src="https://kit.fontawesome.com/8b48590a50.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div incluir="../../../Layout/navbar.html" class="header"></div>
+    
+    <main>
+        <header>
+            <h1>Pêndulo Gravítico</h1>
+        </header>
+        
+        <section>
+            <div id="div-teoria">
+                <p>
+                    Esta Simulação não é precisa, mas pode ser usada para ângulos pequenos.
+                </p>
+                <p>
+                    Nesta Simulação vais poder ver o Movimento de um <span class="anchor" onclick="mostrarExtra('Pêndulo-Gravítico-ideal')">Pêndulo Gravítico ideal</span> ao longo do tempo, bem como analisar esse Movimento com base nos gráficos obtidos.
+                </p>
+                <div id="Pêndulo-Gravítico-ideal" class="explicar">
+                    <button class="fechar" onclick="mostrarExtra('Pêndulo-Gravítico-ideal')">X</button>
+                    <h4 class="explicar">Pêndulo Gravítico ideal</h4>
+                    <p>
+                        Um Pêndulo Gravítico ideal consiste num fio de massa desprezável, com uma das suas extermidades presa num ponto e a outra presa a um objeto.
+                    </p>
+                    <p>
+                        Nesse objeto atua apenas o seu Peso e a força de Tensão exercida pelo fio.
+                    </p>
+                </div>
+            </div>
+            <div id="div-resultados">
+                <div class="centrada m30">
+                    <div class="flex-slider">
+                        <div><label for="massaPendulo">Massa do Pêndulo</label></div>
+                        <div><span id="massaPenduloValue">1.000</span>kg<br>
+                        <input type="range" name="massaPendulo" id="massaPendulo" class="slider" min="100" max="10000" value="1000"></div>
+                    </div>
+                    <div class="flex-slider">
+                        <div><label for="comprimentoFio">Comprimento do Fio</label></div>
+                        <div><span id="comprimentoFioValue">3.50</span>m<br>
+                        <input type="range" name="comprimentoFio" id="comprimentoFio" class="slider" min="100" max="500" value="350"></div>
+                    </div>
+                    <div class="flex-slider">
+                        <div><label for="aGravitica">Aceleração Gravítica</label></div>
+                        <div><span id="aGraviticaValue">9.81</span>m/s<sup>2</sup><br>
+                        <input type="range" name="aGravitica" id="aGravitica" class="slider" min="200" max="2000" value="981"></div>
+                    </div>
+                    <div class="flex-slider">
+                        <div><label for="angMax">Ângulo Inicial</label></div>
+                        <div><span id="angMaxValue">45.0</span>&deg;<br>
+                        <input type="range" name="angMax" id="angMax" class="slider" min="0" max="900" value="450"></div>
+                    </div>
+                    <p class="m30"><span class="anchor" onclick="mostrarExtra('Mais-definições')">Mais definições</span></p>
+                    <div id="Mais-definições" class="explicar explicar-no-border" style="display: none;">
+                        <button class="fechar" onclick="mostrarExtra('Mais-definições')">X</button>
+                        <div class="flex-slider">
+                            <div><label for="tempoMax">Tempo de Gravação<br>de Dados</label></div>
+                            <div><span id="tempoMaxValue">10</span>s<br>
+                            <input type="range" name="tempoMax" id="tempoMax" class="slider" min="5" max="60" value="10"></div>
+                        </div>
+                    </div>
+
+                    <button id="reiniciar-Simulação" class="submit">Reiniciar a Simulação</button>
+                </div>
+                <div class="graf-overflow m5-bot">
+                    <div class="graf-container">
+                        <canvas id="canvasPendulo" class="simulacao" style="width: calc(100% - 4px);"></canvas>
+                    </div>
+                </div>
+                <button id="pausa-Simulação" class="submit m5-top">Pausa</button>
+            </div>
+        </section>
+        <section>
+            <h2 class="topico m0">Analisar o Movimento</h2>
+            <div id="recolherDados" class="explicar explicar-no-border is-visible">
+                <p class="m15-top">
+                    A recolher Dados sobre o Movimento do Pêndulo, aguarde <span id="esperar-segundos"></span> segundos...
+                </p>
+            </div>
+            <div id="verGráficos" class="explicar explicar-no-border">
+                <p>
+                    Escolhe os gráficos que queres ver para estudar o Movimento do Pêndulo, em função do tempo:
+                </p>
+                <p><span class="anchor" onclick="mostrarExtra('Ângulo')">Ângulo com a vertical</span></p>
+                <div id="Ângulo" class="explicar explicar-no-border">
+                    <h4 class="explicar">Ângulo com a vertical</h4>
+                    <div class="graf-overflow">
+                        <div class="graf-container">
+                            <div id="curvaAng"></div>
+                        </div>
+                    </div>
+                </div>
+                <p><span class="anchor" onclick="mostrarExtra('Energia')">Energia</span></p>
+                <div id="Energia" class="explicar explicar-no-border">
+                    <h4 class="explicar">Gráfico da Energia</h4>
+                    <p>(Ver a Legenda no topo do gráfico)</p>
+                    <div class="graf-overflow">
+                        <div class="graf-container">
+                            <div id="curvaEne"></div>
+                        </div>
+                    </div>
+                </div>
+                <p><span class="anchor" onclick="mostrarExtra('Posição')">Posição</span></p>
+                <div id="Posição" class="explicar explicar-no-border">
+                    <h4 class="explicar">Gráfico da Posição</h4>
+                    <p>(Ver a Legenda no topo do gráfico)</p>
+                    <div class="graf-overflow">
+                        <div class="graf-container">
+                            <div id="curvaPos"></div>
+                        </div>
+                    </div>
+                </div>
+                <p><span class="anchor" onclick="mostrarExtra('Velocidade')">Velocidade</span></p>
+                <div id="Velocidade" class="explicar explicar-no-border">
+                    <h4 class="explicar">Gráfico da Velocidade</h4>
+                    <p>(Ver a Legenda no topo do gráfico)</p>
+                    <div class="graf-overflow">
+                        <div class="graf-container">
+                            <div id="curvaVel"></div>
+                        </div>
+                    </div>
+                </div>
+                <p><span class="anchor" onclick="mostrarExtra('Aceleração')">Aceleração</span></p>
+                <div id="Aceleração" class="explicar explicar-no-border">
+                    <h4 class="explicar">Gráfico da Aceleração</h4>
+                    <p>(Ver a Legenda no topo do gráfico)</p>
+                    <div class="graf-overflow">
+                        <div class="graf-container">
+                            <div id="curvaAce"></div>
+                        </div>
+                    </div>
+                </div>
+                <p><span class="anchor" onclick="mostrarExtra('Jerk')">Jerk</span></p>
+                <div id="Jerk" class="explicar explicar-no-border">
+                    <h4 class="explicar">Gráfico do Jerk</h4>
+                    <div class="graf-overflow">
+                        <div class="graf-container">
+                            <div id="curvaJer"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <button id="para-o-topo" onclick="paraOTopo()">&uparrow;</button>
+    </main>
+
+    <footer incluir="../../../Layout/footer.html"></footer>
+
+    <script>
+        incluirHTML()
+    </script>
+    <script src="../../../JS/para-o-topo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+    <script type="module" src="JS/resultados.js"></script>
+    <script src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img class="statcounter" src="https://c.statcounter.com/12454038/0/b1e05410/1/" alt="Web Analytics"></a></div></noscript>
+</body>
+</html>

@@ -13,11 +13,11 @@ let F10_AL11 = {
 
 let massaCarrinho
 let angPlanoInclinado
-let forçaAtrito
+let forcaAtrito
 
 let massaCarrinhoResp
 let angPlanoInclinadoResp
-let forçaAtritoResp
+let forcaAtritoResp
 
 
 function prepararResultados() {
@@ -28,12 +28,12 @@ function prepararResultados() {
     // Selecionar Sliders
     massaCarrinho = document.getElementById('massaCarrinho')
     angPlanoInclinado = document.getElementById('angPlanoInclinado')
-    forçaAtrito = document.getElementById('forçaAtrito')
+    forcaAtrito = document.getElementById('forçaAtrito')
     
-    // Selecionar os Spans com os Valores dos Sliders
+    // Selecionar os Spans com os valores dos Sliders
     massaCarrinhoResp = document.getElementById('massaCarrinhoValue')
     angPlanoInclinadoResp = document.getElementById('angPlanoInclinadoValue')
-    forçaAtritoResp = document.getElementById('forçaAtritoValue')
+    forcaAtritoResp = document.getElementById('forçaAtritoValue')
     
     // Selecionar a div onde vai parar a curva
     F10_AL11.divCurva = document.getElementById('curva-Ec')
@@ -53,10 +53,10 @@ function prepararResultados() {
 
         atualizarAtritoMax()
     }
-    forçaAtrito.oninput = function atualizarForçaAtrito() {
-        let forçaAtritoValue = forçaAtrito.value / 1000
+    forcaAtrito.oninput = function atualizarForçaAtrito() {
+        let forçaAtritoValue = forcaAtrito.value / 1000
     
-        forçaAtritoResp.innerText = `${forçaAtritoValue.toFixed(3)}`
+        forcaAtritoResp.innerText = `${forçaAtritoValue.toFixed(3)}`
     }
 
     F10_AL11.preparado = true
@@ -73,11 +73,11 @@ function atualizarAtritoMax() {
     let FaMax = COF * Fnormal
     let FaMaxConvertido = Math.floor(FaMax * 1000)
 
-    if (forçaAtrito.value > FaMaxConvertido) {
-        forçaAtritoResp.innerText = `${(FaMaxConvertido / 1000).toFixed(3)}`
+    if (forcaAtrito.value > FaMaxConvertido) {
+        forcaAtritoResp.innerText = `${(FaMaxConvertido / 1000).toFixed(3)}`
     }
 
-    forçaAtrito.max = FaMaxConvertido
+    forcaAtrito.max = FaMaxConvertido
 }
 
 
@@ -87,7 +87,7 @@ function pontos() {
     // Inicializar variáveis
     let m = massaCarrinho.value / 100
     let theta = angPlanoInclinado.value / 10 * (Math.PI / 180) // Em radianos
-    let Fa = forçaAtrito.value / 1000
+    let Fa = forcaAtrito.value / 1000
 
     let declive = m * g * Math.sin(theta) - Fa
 

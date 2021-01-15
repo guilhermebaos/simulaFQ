@@ -337,6 +337,11 @@ canvas {
     z-index: -1;
 }
 
+canvas.simulacao {
+    border: 1px solid black;
+    width: 100%;
+}
+
 
 div {
     padding: 5px;
