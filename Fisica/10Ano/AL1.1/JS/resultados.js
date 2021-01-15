@@ -40,7 +40,7 @@ function prepararResultados() {
 
     // Atualizar os Sliders
     massaCarrinho.oninput = function atualizarMassaCarrinho() {
-        let massaCarrinhoValue = massaCarrinho.value * 10
+        let massaCarrinhoValue = massaCarrinho.value / 1
     
         massaCarrinhoResp.innerText = `${massaCarrinhoValue.toFixed(0)}`
 
@@ -66,7 +66,7 @@ function prepararResultados() {
 
 // Limitar a Força de Atrito Máxima Sentida pelo Carrinho
 function atualizarAtritoMax() {
-    let m = massaCarrinho.value / 100
+    let m = massaCarrinho.value / 1000
     let theta = angPlanoInclinado.value / 10 * (Math.PI / 180) // Em radianos
 
     let Fnormal = m * g * Math.cos(theta) // A Força normal é igual à componente do peso perpendicular à superfície
@@ -85,7 +85,7 @@ function atualizarAtritoMax() {
 function pontos() {
 
     // Inicializar variáveis
-    let m = massaCarrinho.value / 100
+    let m = massaCarrinho.value / 1000
     let theta = angPlanoInclinado.value / 10 * (Math.PI / 180) // Em radianos
     let Fa = forcaAtrito.value / 1000
 
@@ -155,7 +155,7 @@ function curva() {
                         fontFamily: '"Arial", "sans-serif"'
                     },
                     ticks: {
-                        max: 7,
+                        max: 15,
                         min: 0
                     }
                 }]

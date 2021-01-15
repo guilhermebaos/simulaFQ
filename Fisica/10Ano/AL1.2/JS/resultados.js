@@ -54,9 +54,9 @@ function prepararResultados() {
 
     // Atualizar os Sliders
     massaBola.oninput = function atualizarMassaBola() {
-        let massaBolaValue = massaBola.value / 1000
+        let massaBolaValue = massaBola.value / 1
     
-        massaBolaResp.innerText = `${massaBolaValue.toFixed(3)}`
+        massaBolaResp.innerText = `${massaBolaValue.toFixed(0)}`
     }
     raioBola.oninput = function atualizarRaioBola() {
         let raioBolaValue = raioBola.value / 10
