@@ -1,0 +1,49 @@
+<h2 class="topico">Resultados</h2>
+<p>
+    Usa os Sliders para alterar os valores indicados, de forma a poderes ver diferentes resultados.
+</p>
+<p class="m0">
+    <span class="anchor" onclick="mostrarExtra('Sugestões-de-Exercícios')">Sugestões de Exercícios</span>
+</p>
+<div id="Sugestões-de-Exercícios" class="explicar">
+    <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
+    <h4 class="explicar">Sugestões de Exercícios</h4>
+    <p class="m5-bot">
+        Após alterares os valores e Simulares a reação, mas antes de veres a Tabela dos Resultados.
+    </p>
+    <ul>
+        <li>Determina o Rendimento global do processo de Reciclagem do Cobre</li>
+    </ul>
+</div>
+
+<div class="centrada m30-top">
+    <div class="flex-slider">
+        <div><label for="massaInicial">Massa inicial de Cobre</label></div>
+        <div><span id="massaInicialValue">0.30</span>g<br>
+        <input type="range" name="massaInicial" id="massaInicial" class="slider" min="10" max="300" value="30"></div>
+    </div>
+    <div class="flex-slider">
+        <div><label for="purezaCobre">Pureza do Cobre</label></div>
+        <div><span id="purezaCobreValue">80.0</span>%<br>
+        <input type="range" name="purezaCobre" id="purezaCobre" class="slider" min="500" max="999" value="800"></div>
+    </div>
+    <div class="flex-slider m30-top">
+        <div><label for="rendimento">Rendimento</label></div>
+        <div><input type="range" name="rendimento" id="rendimento" class="slider" min="600" max="999" value="800"></div>
+    </div>
+    
+    <button id="fazer-curva-Síntese" class="submit" onclick="curva()">Reciclar o Cobre</button>
+
+    <p class="m45-top">Massa Final de Cobre: <span id="massaFinal">0.019</span>g</p>
+
+    <div class="overflow tabela-container m45-top">
+        <table class="resultados">
+            <tr class="vars">
+                <th scope="col">Rendimento (%)</td>
+            </tr>
+            <tr>
+                <td><span id="rendimentoValue">80.0</span></td>
+            </tr>
+        </table>
+    </div>
+</div>

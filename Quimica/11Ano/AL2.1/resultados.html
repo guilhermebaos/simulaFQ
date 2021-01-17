@@ -6,7 +6,7 @@
 <p>
     <span class="anchor" onclick="mostrarExtra('Sugestões-de-Exercícios')">Sugestões de Exercícios</span>
 </p>
-<div id="Sugestões-de-Exercícios" class="explicar" style="display: none;">
+<div id="Sugestões-de-Exercícios" class="explicar">
     <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
     <h4 class="explicar">Sugestões de Exercícios</h4>
     <p class="m5-bot">
@@ -22,38 +22,36 @@
 
 <div class="centrada m30">
     <div class="flex-slider">
-        <div>Titulante:</div>
+        <div>Titulante</div>
         <div class="flex-slider">
             <div class="btn"><button id="TitulanteHCl" class="escolha-atual" onclick="Titulante('HCl')">HCl</button></div>
             <div class="btn"><button id="TitulanteNaOH" class="escolha" onclick="Titulante('NaOH')">NaOH</button></div>  
         </div>
     </div>
-    <div class="flex-slider">
-        <div>Titulado:</div>
+    <div class="flex-slider m30-bot">
+        <div>Titulado</div>
         <div class="flex-slider">
             <div class="btn"><button id="TituladoHCl" class="escolha" onclick="Titulante('NaOH')">HCl</button></div>
             <div class="btn"><button id="TituladoNaOH" class="escolha-atual" onclick="Titulante('HCl')">NaOH</button></div>
         </div>
     </div>
-    <br>
     <div class="flex-slider">
-        <div><label for="ConcTitulante">Concentração do Titulante:</label></div>
+        <div><label for="ConcTitulante">Concentração do Titulante</label></div>
         <div><span id="ConcTitulanteValue">0.100</span>mol/l<br>
         <input type="range" name="ConcTitulante" id="ConcTitulante" class="slider" min="100" max="300" value="100"></div>
     </div>
-    <div class="flex-slider">
-        <div><label for="ConcTitulado">Concentração do Titulado: </label></div>
+    <div class="flex-slider m30-bot">
+        <div><label for="ConcTitulado">Concentração do Titulado</label></div>
         <div><span id="ConcTituladoValue">0.050</span>mol/l<br>
         <input type="range" name="ConcTitulado" id="ConcTitulado" class="slider" min="20" max="100" value="50"></div>
     </div>
-    <br>
     <div class="flex-slider">
-        <div><label for="VolTitulante">Volume de Titulante Adicionado de cada vez: </label></div>
+        <div><label for="VolTitulante">Volume de Titulante Adicionado de cada vez</label></div>
         <div><span id="VolTitulanteValue">0.10</span>ml<br>
         <input type="range" name="VolTitulante" id="VolTitulante" class="slider" min="5" max="20" value="10"></div>
     </div>
     <div class="flex-slider">
-        <div><label for="VolTitulado">Volume de Titulado no Balão de Erlenmeyer: </label></div>
+        <div><label for="VolTitulado">Volume de Titulado no Balão de Erlenmeyer</label></div>
         <div><span id="VolTituladoValue">25.00</span>ml<br>
         <input type="range" name="VolTitulado" id="VolTitulado" class="slider" min="10" max="50" value="25"></div>
     </div>
