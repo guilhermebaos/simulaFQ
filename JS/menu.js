@@ -1,7 +1,7 @@
 // Se necessário, fazer de forma a não ter de fazer mais Requests ao Server
 
 // Valores Iniciais das Variaveis
-let projetoALmenu = {
+let simulaFQmenu = {
     pronto: false,
     aberto: 'teoria.html'
 }
@@ -12,7 +12,7 @@ let divTeoria, divMaterial, divProcedimento, divResultados
 
 function carregar(ficheiro) {
     // Identificar os Elementos do Menu, após estes carregarem
-    if (!projetoALmenu.pronto) {
+    if (!simulaFQmenu.pronto) {
         divTeoria = document.getElementById('div-teoria')
         divMaterial = document.getElementById('div-material')
         divProcedimento = document.getElementById('div-procedimento')
@@ -23,11 +23,11 @@ function carregar(ficheiro) {
         liProcedimento = document.getElementById('procedimento')
         liResultados = document.getElementById('resultados')
 
-        projetoALmenu.pronto = true
+        simulaFQmenu.pronto = true
     }
     // Abrir um novo ficheiro
-    if (projetoALmenu.aberto != ficheiro) {
-        projetoALmenu.aberto = ficheiro
+    if (simulaFQmenu.aberto != ficheiro) {
+        simulaFQmenu.aberto = ficheiro
 
         liTeoria.style.textDecoration = ''
         liMaterial.style.textDecoration = ''
@@ -39,16 +39,16 @@ function carregar(ficheiro) {
         divProcedimento.style.display = 'none'
         divResultados.style.display = 'none'
 
-        if (projetoALmenu.aberto == 'teoria.html') {
+        if (simulaFQmenu.aberto == 'teoria.html') {
             liTeoria.style.textDecoration = 'underline'
             divTeoria.style.display = 'initial'
-        } else if (projetoALmenu.aberto == 'material.html') {
+        } else if (simulaFQmenu.aberto == 'material.html') {
             liMaterial.style.textDecoration = 'underline'
             divMaterial.style.display = 'initial'
-        } else if (projetoALmenu.aberto == 'procedimento.html') {
+        } else if (simulaFQmenu.aberto == 'procedimento.html') {
             liProcedimento.style.textDecoration = 'underline'
             divProcedimento.style.display = 'initial'
-        } else if (projetoALmenu.aberto == 'resultados.html') {
+        } else if (simulaFQmenu.aberto == 'resultados.html') {
             liResultados.style.textDecoration = 'underline'
             divResultados.style.display = 'initial'
             carregarJSResultados()

@@ -2,6 +2,10 @@
 const g = 9.80665   // Aceleração Gravitaconal
 
 
+// Constantes para a Simulação
+const RESOLUCAO = 10                        // Tamanho do deltaT em cada update
+
+
 // Inicializar Variáveis Globais
 
 // Usar um Objeto para proteger as variáveis com nomes comuns
@@ -24,12 +28,13 @@ let alturasTabela
 let razaoResp
 let EmDissipadaResp
 
+let canvasBola, ctx, simula
+
 
 function prepararResultados() {
     if (F10_AL12.preparado) {
         return
     }
-    
 
     // Selecionar Sliders
     massaBola = document.getElementById('massaBola')   
@@ -69,20 +74,40 @@ function prepararResultados() {
         alturaInicialResp.innerText = `${alturaInicialValue.toFixed(0)}`
     }
 
+
+    // SIMULAÇÂO
+    
+    // Selecionar o Canvas e o seu context
+    canvasBola = document.getElementById('canvasBola')
+
+    ctx = canvasBola.getContext('2d')
+
+    // Criar o Objeto Simula
+    simula = new window.Simula(canvasBola, RESOLUCAO, alturaInicial.max)
+
     F10_AL12.preparado = true
-    curva()
+    loopSimula()
 }
 
 
-// Lei v(t)
-function leiVelocidade(v0, a0, tempo) {
-    return v0 + a0 * tempo
-}
+// Corrige o tamanho do Canvas e corrige o DPI
+function fixDPI() {
+    // Usar variável global
+    if (simulaFQmenu.aberto !== 'resultados.html') return
 
+    // Obter o DPI do ecrã
+    let DPI = window.devicePixelRatio
 
-// Lei x(t)
-function leiPosicao(x0, v0, a0, tempo){
-    return x0 + v0 * tempo + 0.5 * a0 * (tempo ** 2)
+    // Altura do CSS
+    let altura_css = +getComputedStyle(canvasCurva).getPropertyValue('height').slice(0, -2) - 70
+    // Larura do CSS
+    let largura_css = +getComputedStyle(canvasBola).getPropertyValue('width').slice(0, -2)
+
+    // Altera o tamanho do canvas
+    canvasBola.width = largura_css * DPI
+    canvasBola.height = altura_css * DPI
+
+    simula.novoTamanho()
 }
 
 
@@ -122,64 +147,18 @@ function valoresTabela(alturas) {
 }
 
 
-// Calcular os Pontos do Gráfico h(t)
-function pontos() {
-    // Declarar variáveis e valores iniciais
-    let hf = 0.05
-    let hi = alturaInicial.value / 100
-    let e = (elasticidade.value / 100) ** 0.5
-
-    let t = 0
-    let x = hi
-    let v = 0
-    let a = -g
-
-    let tim = [t]
-    let pos = [x * 100]
-    let hQeR = []
-
-    let deltaT = Math.ceil(hi) * Math.ceil((1 + e)**2) / 1000 - 0.001
-
-    let hMax = hi
-
-    while (true) {
-        t += deltaT                         // Instante de tempo a que correspondem os valores calculados
-
-        x = leiPosicao(x, v, a, deltaT)     // Calcular o Xf de acrdo com o Xf e Vf do instante anterior
-        v = leiVelocidade(v, a, deltaT)     // Calcular o Vf de acordo com o Vf do instante anterior
-
-        if (x > hMax) {
-            hMax = x
-        } else if (x <= 0) {
-            x = 0                           // Quando está no Solo, a posição é 0
-            v *= -e                         // Inverte a velocidade e diminui o seu módulo
-            hQeR.push(hMax)                 // Guardar as alturas de Queda e de Ressalto
-            if (hMax < hf ||hQeR.length >= 25) {
-                break
-            } else {
-                hMax = 0
-            }
-        } 
-
-        // Guardar os valores
-        tim.push(t.toFixed(3))
-        pos.push(x * 100)
-    }
-    valoresTabela(hQeR)
-    return [tim, pos]
+// Reiniciar a Simulação
+function reiniciar() {
+    simula.reiniciar()
 }
 
 
+let canvasCurva
 
 // Mostra os Valores Relacionados com a Queda da Esfera
-function curva() {
+function curva(t, x) {
     // Remover o Canvas antigo
     F10_AL12.divCurva.innerHTML = ''
-
-    // Obter e guardar os resultados
-    let resultados = pontos()
-    let t = resultados[0]
-    let x = resultados[1]
 
     // Criar o canvas on de vai estar a curva
     canvasCurva = document.createElement('canvas')
@@ -199,6 +178,13 @@ function curva() {
             }]
         },
         options: {
+            animation: {
+                duration: 0
+            },
+            hover: {
+                animationDuration: 0
+            },
+            responsiveAnimationDuration: 0,
             scales: {
                 xAxes: [{
                     scaleLabel: {
@@ -218,7 +204,7 @@ function curva() {
                         fontFamily: '"Arial", "sans-serif"'
                     },
                     ticks: {
-                        max: 300,
+                        max: 500,
                         min: 0
                     } 
                 }]
@@ -247,3 +233,36 @@ function curva() {
         },
     })
 }
+
+
+// Criar o loop da Simulação
+let ultimoTempo
+
+function loopSimula(tempo) {
+    if (ultimoTempo === undefined) {
+        ultimoTempo = tempo
+        curva([], [])
+        fixDPI()
+        requestAnimationFrame(loopSimula)
+        return
+    }
+
+    let deltaTempo = tempo - ultimoTempo
+    ultimoTempo = tempo
+    
+    let dados
+    for (let i = 0; i < RESOLUCAO; i++) {
+        dados = simula.update(deltaTempo)
+    }
+    if (dados) {
+        valoresTabela(dados.hQeR)
+        curva(dados.tempo, dados.posY)
+    }
+
+    ctx.clearRect(0, 0, canvasBola.width, canvasBola.height)
+    simula.desenhar(ctx)
+
+    requestAnimationFrame(loopSimula)
+}
+
+window.onresize = fixDPI
