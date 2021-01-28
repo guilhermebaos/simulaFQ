@@ -5,7 +5,7 @@ export default class Bola {
 
         // Definições da Bola
         this.raio = 30
-        this.cor = 'orange'
+        this.cor = 'rgb(255, 130, 35)'
 
         // Escala (agora, de cm para metros)
         this.escala = 100

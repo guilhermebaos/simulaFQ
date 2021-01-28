@@ -3,7 +3,7 @@ const g = 9.80665   // Aceleração Gravitaconal
 
 
 // Constantes para a Simulação
-const RESOLUCAO = 10                        // Tamanho do deltaT em cada update
+const RESOLUCAO = 15                        // Tamanho do deltaT em cada update
 
 
 // Inicializar Variáveis Globais
@@ -138,9 +138,17 @@ function valoresTabela(alturas) {
 
         pontos.push([Number(hQ[pos]), Number(hR[pos])])
     }
-    
-    let retaMelhorAjuste = regression.linear(pontos);
-    let declive = retaMelhorAjuste.equation[0];
+
+    console.log(pontos)
+    let declive
+    if (pontos.length > 1) {
+        let retaMelhorAjuste = regression.linear(pontos)
+        declive = retaMelhorAjuste.equation[0]
+    } else if (pontos.length == 1) {
+        declive = pontos[0][1] / pontos[0][0]
+    } else {
+        declive = 0
+    }
     
     razaoResp.innerText = `${declive.toFixed(2)}`
     EmDissipadaResp.innerText = `${((1 - declive) * 100).toFixed(0)}%`

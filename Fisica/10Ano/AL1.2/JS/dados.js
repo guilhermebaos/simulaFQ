@@ -54,6 +54,8 @@ export default class Dados {
                 this.simula.acabou = true
             }
             this.dadosObtidos.hMax = 0
+        } else {
+            this.simula.acabou = this.simula.bola.velocidade.abs < 0.1 && h < this.simula.inputs.hf
         }
 
         this.dadosObtidos.posY.push(h * 100)

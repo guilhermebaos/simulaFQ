@@ -66,9 +66,11 @@ window.Simula = class Simula {
         deltaTempo /= 1000
         deltaTempo /= this.resolucao
 
+        let dados = this.dados.update(deltaTempo)
+
         this.simObjetos.forEach((objeto) => objeto.update(deltaTempo))
 
-        if (this.dados.update(deltaTempo)) {
+        if (dados) {
             return this.dados.dadosObtidos
         } else {
             return false
