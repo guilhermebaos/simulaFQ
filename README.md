@@ -23,4 +23,6 @@ Nestas áreas está reuniada toda a informação necessária à execução da At
 Uma Simulação dos Resultados Experimentais, permitindo aos alunos (e professores) fazer os seus próprios exercícios e previsões científicas, usando valores realistas e tendo a correção disponível.
 
 ---
+[Site de Teste](teste.simulafq.pt)
+---
 [Resumo das permissões da Licença](https://choosealicense.com/licenses/gpl-3.0/)
