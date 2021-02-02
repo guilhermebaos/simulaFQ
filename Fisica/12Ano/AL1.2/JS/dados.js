@@ -9,25 +9,12 @@ export default class Dados {
 
         // Tempo atual
         this.tempo = 0
-
-        // Objeto com os dados
-        this.dadosObtidos = {
-            tempo: [],
-            forca: [],
-            fa: [],
-            vel: [],
-            ace: []
-        }
     }
 
     reiniciar() {
         // Apaga os dados gravados
         this.contador = 0
         this.tempo = 0
-
-        for (let key in this.dadosObtidos) {
-            this.dadosObtidos[key] = []
-        }
     }
 
     update(deltaTempo) {
@@ -36,14 +23,17 @@ export default class Dados {
 
         if (this.contador % (this.ignorar * this.simula.resolucao) != 0) return false
 
+        // Objeto com os dados
+        this.dadosObtidos = []
+
         // Calcular e guardar os valores
         this.tempo += deltaTempo * this.ignorar * this.simula.resolucao
         
-        this.dadosObtidos.tempo.push(this.tempo.toFixed(3))
-        this.dadosObtidos.forca.push(this.simula.simObjetos[0].forca)
-        this.dadosObtidos.fa.push(Math.abs(this.simula.simObjetos[0].fa))
-        this.dadosObtidos.vel.push(this.simula.simObjetos[0].velocidade)
-        this.dadosObtidos.ace.push(this.simula.simObjetos[0].aceleracao)
+        this.dadosObtidos.push(this.tempo.toFixed(3))
+        this.dadosObtidos.push(this.simula.simObjetos[0].forca)
+        this.dadosObtidos.push(Math.abs(this.simula.simObjetos[0].fa))
+        this.dadosObtidos.push(this.simula.simObjetos[0].velocidade)
+        this.dadosObtidos.push(this.simula.simObjetos[0].aceleracao)
 
         return this.dadosObtidos
     }

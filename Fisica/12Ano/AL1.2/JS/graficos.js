@@ -1,9 +1,7 @@
 // GRÁFICOS
-window.graficos = (dados, divsCurvas) => {
+window.graficos = (divsCurvas) => {
     let divCurvaForcas = divsCurvas[0]
     let divCurvaCinetica = divsCurvas[1]
-
-    let tempo = dados.tempo
 
 
     // GRÁFICO DA FORÇA
@@ -20,21 +18,20 @@ window.graficos = (dados, divsCurvas) => {
     let graCurvaForca = new Chart(canvasCurvaForca, {
         type: 'line',
         data: {
-            labels: tempo,
+            labels: [],
             datasets: [{
-                data: dados.forca,
+                data: [],
                 label: 'Força Aplicada',
                 borderColor: 'rgb(0, 120, 255)',
                 fill: false
             },{
-                data: dados.fa,
+                data: [],
                 label: 'Força de Atrito',
                 borderColor: 'black',
                 fill: false
             }]
         },
         options: {
-            events: [''],   // Temporário - BUG https://github.com/chartjs/Chart.js/issues/3753
             animation: {
                 duration: 0
             },
@@ -61,7 +58,7 @@ window.graficos = (dados, divsCurvas) => {
                         fontFamily: '"Arial", "sans-serif"'
                     },
                     ticks: {
-                        max: 25,
+                        max: 100,
                         min: 0
                     }
                 }]
@@ -102,15 +99,15 @@ window.graficos = (dados, divsCurvas) => {
     let graCurvaCin = new Chart(canvasCurvaCinetica, {
         type: 'line',
         data: {
-            labels: tempo,
+            labels: [],
             datasets: [{
-                data: dados.vel,
+                data: [],
                 label: 'Componente Escalar da Velocidade',
                 borderColor: 'rgb(145, 200, 20)',
                 fill: false,
                 yAxisID: 'V'
             },{
-                data: dados.ace,
+                data: [],
                 label: 'Componente Escalar da Aceleração',
                 borderColor: 'rgb(250, 70, 10)',
                 fill: false,
@@ -118,7 +115,6 @@ window.graficos = (dados, divsCurvas) => {
             }]
         },
         options: {
-            events: [''],   // Temporário - BUG https://github.com/chartjs/Chart.js/issues/3753
             animation: {
                 duration: 0
             },
@@ -147,8 +143,8 @@ window.graficos = (dados, divsCurvas) => {
                         fontFamily: '"Arial", "sans-serif"'
                     },
                     ticks: {
-                        max: 120,
-                        min: -40
+                        max: 600,
+                        min: 0
                     }
                 },{
                     id: 'A',
@@ -161,8 +157,8 @@ window.graficos = (dados, divsCurvas) => {
                         fontFamily: '"Arial", "sans-serif"'
                     },
                     ticks: {
-                        max: 60,
-                        min: -20
+                        max: 300,
+                        min: 0
                     }
                 }]
             },
@@ -192,4 +188,24 @@ window.graficos = (dados, divsCurvas) => {
     })
 
     return [graCurvaForca, graCurvaCin]
+}
+
+
+// Atualizar os gráficos
+window.atualizarGraficos = (graficos, label, data) => {
+    graficos[0].data.labels.push(label)
+    graficos[0].data.datasets.forEach((dataset) => {
+        let d = data[0]
+        dataset.data.push(d)
+        data.shift()
+    })
+    graficos[0].update()
+
+    graficos[1].data.labels.push(label)
+    graficos[1].data.datasets.forEach((dataset) => {
+        let d = data[0]
+        dataset.data.push(d)
+        data.shift()
+    })
+    graficos[1].update()
 }

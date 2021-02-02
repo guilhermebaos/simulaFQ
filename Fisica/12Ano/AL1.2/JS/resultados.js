@@ -64,6 +64,7 @@ function prepararResultados() {
             dadosBtn.estado = '1'
             dadosBtn.innerText = 'Desligar'
             this.simula.dados.reiniciar()
+            graficos = window.graficos(F12_AL12.divCurva)
             recolherDados = true
         } else {
             dadosBtn.estado = '0'
@@ -173,7 +174,7 @@ function loopSimula(tempo) {
     if (ultimoTempo === undefined) {
         ultimoTempo = tempo
         fixDPI()
-        if (!graficos) graficos = window.graficos([], F12_AL12.divCurva)
+        if (!graficos) graficos = window.graficos(F12_AL12.divCurva)
         requestAnimationFrame(loopSimula)
         return
     }
@@ -186,7 +187,7 @@ function loopSimula(tempo) {
         dados = simula.update(deltaTempo)
     }
     if (dados && recolherDados) {
-        graficos = window.graficos(dados, F12_AL12.divCurva)
+        window.atualizarGraficos(graficos, dados[0], dados.slice(1, dados.lenght))
     }
 
     ctx.clearRect(0, 0, canvasSim.width, canvasSim.height)
