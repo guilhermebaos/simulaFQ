@@ -135,7 +135,6 @@ function valoresTabela(alturas) {
         pontos.push([Number(hQ[pos]), Number(hR[pos])])
     }
 
-    console.log(pontos)
     let declive
     if (pontos.length > 1) {
         let retaMelhorAjuste = regression.linear(pontos)
@@ -154,13 +153,14 @@ function valoresTabela(alturas) {
 // Reiniciar a Simulação
 function reiniciar() {
     simula.reiniciar()
+    grafico = curva()
 }
 
 
 let canvasCurva
 
 // Mostra os Valores Relacionados com a Queda da Esfera
-function curva(t, x) {
+function curva() {
     // Remover o Canvas antigo
     F10_AL12.divCurva.innerHTML = ''
 
@@ -173,9 +173,9 @@ function curva(t, x) {
     let graCurva = new Chart(canvasCurva, {
         type: 'line',
         data: {
-            labels: t,
+            labels: [],
             datasets: [{
-                data: x,
+                data: [],
                 label: 'Altura da Bola',
                 borderColor: 'blue',
                 fill: false
@@ -236,16 +236,27 @@ function curva(t, x) {
             }
         },
     })
+
+    return graCurva
+}
+
+
+// Atualiza o gráfico
+atualizarCurva = (grafico, label, data) => {
+    grafico.data.labels.push(label)
+    grafico.data.datasets[0].data.push(data)
+
+    grafico.update()
 }
 
 
 // Criar o loop da Simulação
-let ultimoTempo
+let ultimoTempo, grafico
 
 function loopSimula(tempo) {
     if (ultimoTempo === undefined) {
         ultimoTempo = tempo
-        curva([], [])
+        if (!grafico) grafico = curva()
         fixDPI()
         requestAnimationFrame(loopSimula)
         return
@@ -260,7 +271,7 @@ function loopSimula(tempo) {
     }
     if (dados) {
         valoresTabela(dados.hQeR)
-        curva(dados.tempo, dados.posY)
+        atualizarCurva(grafico, dados.tempo, dados.posY)
     }
 
     ctx.clearRect(0, 0, canvasBola.width, canvasBola.height)

@@ -5,15 +5,13 @@ export default class Dados {
 
         // Contador, para apenas guardar uma parte dos dados, para evitar sobrecarregar os gráficos
         this.contador = 0
-        this.ignorar = Math.ceil(this.simula.inputs.hi)        // Apenas grava 1 valor em cada this.ignorar
+        this.ignorar = Math.ceil(this.simula.inputs.hi / 2)        // Apenas grava 1 valor em cada this.ignorar
 
         // Tempo atual
         this.tempo = 0
 
         // Objeto com os dados
         this.dadosObtidos = {
-            tempo: [],
-            posY: [],
             hQeR: [],
             hMax: 0
         }
@@ -41,7 +39,7 @@ export default class Dados {
         // Calcular e guardar os valores
         this.tempo += deltaTempo * this.ignorar * this.simula.resolucao
 
-        this.dadosObtidos.tempo.push((this.tempo).toFixed(3))
+        this.dadosObtidos.tempo = (this.tempo).toFixed(3)
         
         let h = this.simula.bola.posicao.altura
         if (this.simula.bola.velocidade.y > 0) this.colisaoPossivel = true
@@ -58,7 +56,7 @@ export default class Dados {
             this.simula.acabou = this.simula.bola.velocidade.abs < 0.1 && h < this.simula.inputs.hf
         }
 
-        this.dadosObtidos.posY.push(h * 100)
+        this.dadosObtidos.posY = h * 100
 
         return this.dadosObtidos
     }
