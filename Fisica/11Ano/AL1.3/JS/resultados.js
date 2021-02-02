@@ -10,12 +10,10 @@ let F11_AL13 = {
     divCurva: ''
 }
 
-let massaCarrinho
+let massaCarrinho, massaCarrinhoResp
 let fAtrito
 
-let massaCarrinhoResp
-let aTravagemResp
-let fAtritoTravagemResp
+let aTravagemResp, fAtritoTravagemResp
 
 
 function prepararResultados() {
@@ -38,7 +36,7 @@ function prepararResultados() {
     fAtritoTravagemResp = document.getElementById('fAtritoTravagemValue')
 
     // Atualizar os Sliders
-    massaCarrinho.oninput = function atualizarMassaCarrinho() {
+    massaCarrinho.oninput = () => {
         let massaCarrinhoValue = massaCarrinho.value / 1000
     
         massaCarrinhoResp.innerText = `${massaCarrinhoValue.toFixed(3)}`
@@ -55,7 +53,6 @@ function pontos() {
     let m = massaCarrinhoValue = massaCarrinho.value / 1000
     let fa = fAtrito.value / 10
 
-    let P = m * g
     let a = fa / m
 
     let dx = 0
@@ -80,6 +77,7 @@ function pontos() {
             break
         }
     }
+    
     return [des, vel]
 }
 

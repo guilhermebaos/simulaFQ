@@ -11,19 +11,13 @@ let F10_AL33 = {
     processandoAnim: false
 }
 
-let massaQuente
-let tempQuente
-let massaFria
-let tempFria
-let massaGelo
+let massaQuente, massaQuenteResp
+let tempQuente, tempQuenteResp
+let massaFria, massaFriaResp
+let tempFriam, tempFriaResp
+let massaGelo, massaGeloResp
 
-let massaQuenteResp
-let tempQuenteResp
-let massaFriaResp
-let tempFriaResp
-let massaGeloResp
 let tempFinalResp
-
 let varEntalpiaGeloResp
 
 let escolhasMistura
@@ -60,27 +54,27 @@ function prepararResultados() {
     varEntalpiaGeloResp = document.getElementById('varEntalpiaGelo')
 
     // Atualizar os Sliders
-    massaQuente.oninput = function atualizarMassaQuente() {
+    massaQuente.oninput = () => {
         let massaQuenteValue = massaQuente.value / 10
     
         massaQuenteResp.innerText = `${massaQuenteValue.toFixed(1)}`
     }
-    tempQuente.oninput = function atualizarTempQuente() {
+    tempQuente.oninput = () => {
         let tempQuenteValue = tempQuente.value / 10
     
         tempQuenteResp.innerText = `${tempQuenteValue.toFixed(1)}`
     }
-    massaFria.oninput = function atualizarMassaFria() {
+    massaFria.oninput = () => {
         let massaFriaValue = massaFria.value / 10
     
         massaFriaResp.innerText = `${massaFriaValue.toFixed(1)}`
     }
-    tempFria.oninput = function atualizarTempFria() {
+    tempFria.oninput = () => {
         let tempFriaValue = tempFria.value / 10
     
         tempFriaResp.innerText = `${tempFriaValue.toFixed(1)}`
     }
-    massaGelo.oninput = function atualizarMassaGelo() {
+    massaGelo.oninput = () => {
         let massaGeloValue = massaGelo.value / 10
     
         massaGeloResp.innerText = `${massaGeloValue.toFixed(1)}`

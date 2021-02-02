@@ -1,6 +1,3 @@
-// Definir Constantes
-
-
 // Inicializar Variáveis Globais
 
 // Usar um Objeto para proteger as variáveis com nomes comuns
@@ -11,11 +8,9 @@ let Q10_AL21 = {
 
 let liqArray
 
-let liqEscolhidosBin = ['0', '0', '0', '0', '0', '0']
-let liqEscolhidosNum = 0
+let liqEscolhidosBin = ['0', '0', '0', '0', '0', '0'], liqEscolhidosNum = 0
 
-let resultadoAntigo = 'a-menos'
-let resultadoNovo
+let resultadoAntigo = 'a-menos', resultadoNovo
 
 
 function prepararResultados() {
@@ -26,7 +21,6 @@ function prepararResultados() {
     // Selecionar os Butões
     liqArray = document.getElementsByName('líquido')
     Q10_AL21.preparado = true
-    // curva()
 }
 
 

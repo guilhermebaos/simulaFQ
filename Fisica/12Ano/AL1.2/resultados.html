@@ -1,0 +1,107 @@
+<h2 class="topico">Resultados</h2>
+<p>
+    Usa os Sliders para alterar os valores indicados, de forma a poderes ver diferentes resultados.
+</p>
+<p class="m0">
+    <span class="anchor" onclick="mostrarExtra('Sugestões-de-Exercícios')">Sugestões de Exercícios</span>
+</p>
+<div id="Sugestões-de-Exercícios" class="explicar">
+    <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
+    <h4 class="explicar">Sugestões de Exercícios</h4>
+    <p class="m5-bot">
+        Após alterares os valores, mas antes de veres o gráfico:
+    </p>
+    <ul>
+        <li>Prevê se a altura do 1º Ressalto irá aumentar ou diminuir.</li>
+        <li>
+            A percentagem da Energia Mecânica dissipada em cada Ressalto será maior ou menor, comparado com antes de alterares os valores?
+        </li>
+    </ul>
+</div>
+
+<div class="centrada m30">
+    <div class="flex-slider">
+        <div><label for="massaBloco">Massa do Bloco</label></div>
+        <div><span id="massaBlocoValue">500</span>g<br>
+        <input type="range" name="massaBloco" id="massaBloco" class="slider" min="200" max="5000" value="500"></div>
+    </div>
+    <div class="flex-slider">
+        <div><label for="coefAtritoEstatico">Coeficiente de Atrito Estático</label></div>
+        <div><input type="range" name="coefAtritoEstatico" id="coefAtritoEstatico" class="slider" min="10" max="90" value="50"></div>
+    </div>
+    <div class="flex-slider">
+        <div><label for="coefAtritoCinetico">Coeficiente de Atrito Cinético</label></div>
+        <div><input type="range" name="coefAtritoCinetico" id="coefAtritoCinetico" class="slider" min="10" max="90" value="50"></div>
+    </div>
+
+    <button class="submit" onclick="reiniciar()">Novo Bloco</button>
+</div>
+<p class="nota">
+    O valor do Coeficiente de Atrito Cinético será sempre inferior ao valor do Coeficiente de Atrito Estático.
+</p>
+
+<div class="centrada m30-top">
+    <p>Montagem:</p>
+    <div class="flex-slider">
+        <div class="btn minw-180"><button name="montagens" class="escolha-atual" onclick="montagem(0)">Montagem 1</button></div>
+        <div class="btn minw-180"><button name="montagens" class="escolha" onclick="montagem(1)">Montagem 2</button></div>
+    </div>
+</div>
+<div id="Montagem0" class="explicar explicar-no-border is-visible">
+    <div class="flex-slider">
+        <div><label for="intForca">Intensidade da Força</label></div>
+        <div><span id="intForcaValue">0.00</span>N<br>
+        <input type="range" name="intForca" id="intForca" class="slider" min="0" max="10000" value="0"></div>
+    </div>
+</div>
+<div id="Montagem1" class="explicar explicar-no-border">
+    <div class="flex-slider">
+        <div><label for="massaAreia">Massa de Areia</label></div>
+        <div><span id="massaAreiaValue">50</span>g<br>
+        <input type="range" name="massaAreia" id="massaAreia" class="slider" min="50" max="10000" value="50"></div>
+    </div>
+</div>
+
+<div class="m15">
+    <p class="m5-bot">Legenda dos Vetores:</p>
+    <ul class="m0">
+        <li>Azul &rarr; Força Aplicada</li>
+        <li>Preto &rarr; Força de Atrito</li>
+        <li>Verde &rarr; Velocidade</li>
+        <li>Laranja &rarr; Aceleração</li>
+    </ul>
+</div>
+
+<div class="graf-overflow m5-bot">
+    <div class="graf-container">
+        <canvas id="canvasSim" class="simulacao" style="width: calc(100% - 4px);"></canvas>
+    </div>
+</div>
+
+<div>
+    <p>Sistema de aquisição de dados: <button id="interruptor" class="submit">Ligar</button></p>
+    
+    <div class="graf-overflow">
+        <div class="graf-container">
+            <div id="curva-ft" class="graf"></div>
+        </div>
+    </div>
+    <div class="graf-overflow">
+        <div class="graf-container">
+            <div id="curva-ct" class="graf"></div>
+        </div>
+    </div>
+</div>
+
+<div class="overflow" style="max-width: 72vw; margin: auto;">
+    <table class="resultados">
+        <tr class="vars">
+            <th scope="col">Coeficiente de Atrito Estático</th>
+            <th scope="col">Coeficiente de Atrito Dinâmico</th>
+        </tr>
+        <tr>
+            <td><span id="coefAtritoEstaticoValue">0.50</span></td>
+            <td><span id="coefAtritoCineticoValue">0.25</span></td>
+        </tr>
+    </table>
+</div>

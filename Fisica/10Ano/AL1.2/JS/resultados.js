@@ -14,14 +14,10 @@ let F10_AL12 = {
     divCurva: ''
 }
 
-let massaBola
-let raioBola
-let alturaInicial
+let massaBola, massaBolaResp
+let raioBola, raioBolaResp
+let alturaInicial, alturaInicialResp
 let elasticidade
-
-let massaBolaResp
-let raioBolaResp
-let alturaInicialResp
 
 let alturasTabela
 
@@ -58,17 +54,17 @@ function prepararResultados() {
     alturasTabela = document.getElementById('alturasTabela')
 
     // Atualizar os Sliders
-    massaBola.oninput = function atualizarMassaBola() {
+    massaBola.oninput = () => {
         let massaBolaValue = massaBola.value / 1
     
         massaBolaResp.innerText = `${massaBolaValue.toFixed(0)}`
     }
-    raioBola.oninput = function atualizarRaioBola() {
+    raioBola.oninput = () => {
         let raioBolaValue = raioBola.value / 10
     
         raioBolaResp.innerText = `${raioBolaValue.toFixed(1)}`
     }
-    alturaInicial.oninput = function atualizarAlturaInicial() {
+    alturaInicial.oninput = () => {
         let alturaInicialValue = alturaInicial.value / 1
     
         alturaInicialResp.innerText = `${alturaInicialValue.toFixed(0)}`

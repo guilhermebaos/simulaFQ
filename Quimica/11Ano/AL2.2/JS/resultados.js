@@ -1,5 +1,3 @@
-// Definir Constantes
-
 
 // Inicializar Variáveis Globais
 
@@ -9,13 +7,11 @@ let Q11_AL22 = {
     processandoAnim: false
 }
 
-let metais
-let cats
+let metais, cats
 
 let parEscolhido = [0, 1]
 
-let resultadoAntigo = '01'
-let resultadoNovo
+let resultadoAntigo = '01', resultadoNovo
 
 
 function prepararResultados() {

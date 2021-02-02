@@ -52,23 +52,23 @@ function prepararResultados() {
     Q11_AL21.divCurva = document.getElementById('curva-pH')
     
     // Atualizar os Sliders
-    ConcTitulante.oninput = function atualizarConcTitulante() {
+    ConcTitulante.oninput = () => {
         let ConcTitulanteValue = ConcTitulante.value / 1000
 
         ConcTitulanteResp.innerText = `${ConcTitulanteValue.toFixed(3)}`
     }
-    ConcTitulado.oninput = function atualizarConcTitulado() {
+    ConcTitulado.oninput = () => {
         let ConcTituladoValue = ConcTitulado.value / 1000
 
         ConcTituladoResp.innerText = `${ConcTituladoValue.toFixed(3)}`
     }
 
-    VolTitulante.oninput = function atualizarVolTitulante() {
+    VolTitulante.oninput = () => {
         let VolTitulanteValue = VolTitulante.value / 100
 
         VolTitulanteResp.innerText = `${VolTitulanteValue.toFixed(2)}`
     }
-    VolTitulado.oninput = function atualizarVolTitulado() {
+    VolTitulado.oninput = () => {
         let VolTituladoValue = VolTitulado.value / 1
         
         VolTituladoResp.innerText = `${VolTituladoValue.toFixed(2)}`
@@ -102,17 +102,14 @@ function Titulante(Tit) {
 function pontos() {
 
     // Inicializar variáveis
-    let nTitulante = 0
-    let nTitulado = 0
+    let nTitulante = 0, nTitulado = 0
 
     let CTitulante = ConcTitulante.value / 1000
     let CTitulado = ConcTitulado.value / 1000
 
-    let nH3O = 0
-    let nHO = 0
+    let nH3O = 0, nHO = 0
 
-    let CH3O = 0
-    let CHO = 0
+    let CH3O = 0, CHO = 0
     
     let volumeTitulante = 0
     let volumeTitulado = (VolTitulado.value * 1) / 1000
@@ -129,8 +126,7 @@ function pontos() {
     while (true) {
 
         // Reiniciar os n's
-        nH3O = 0
-        nHO = 0
+        nH3O = 0, nHO = 0
 
         nTitulante = volumeTitulante * CTitulante
         nTitulado = volumeTitulado * CTitulado
@@ -144,6 +140,7 @@ function pontos() {
             } else {
                 nH3O = nHO = 0
             }
+
         } else if (curvaTitulante == 'NaOH') {
             if (nTitulante > nTitulado) {
                 nHO = nTitulante - nTitulado

@@ -43,11 +43,9 @@ let Q11_AL23 = {
     divCurva: ''
 }
 
-let salArray
-let salEscolhidoPos = 0
+let salArray, salEscolhidoPos = 0
 
-let energiaResp
-let massaResp
+let energiaResp, massaResp
 
 
 function prepararResultados() {
@@ -242,6 +240,7 @@ function curva() {
             },
         })
     }
+    
     resultadosExtra()
 }
 

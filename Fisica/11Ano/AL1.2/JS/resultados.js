@@ -11,15 +11,10 @@ let F11_AL12 = {
     divCurva: ''
 }
 
-let massaCarrinho
-let massaCorpoSuspenso
-let alturaCorpoSuspenso
-let forçaAtrito
-
-let massaCarrinhoResp
-let massaCorpoSuspensoResp
-let alturaCorpoSuspensoResp
-let forçaAtritoResp
+let massaCarrinho, massaCarrinhoResp
+let massaCorpoSuspenso, massaCorpoSuspensoResp
+let alturaCorpoSuspenso, alturaCorpoSuspensoResp
+let forcaAtrito, forcaAtritoResp
 
 let aZona1Resp
 let corpoAtingiuSoloTResp
@@ -36,13 +31,13 @@ function prepararResultados() {
     massaCarrinho = document.getElementById('massaCarrinho')
     massaCorpoSuspenso = document.getElementById('massaCorpoSuspenso')
     alturaCorpoSuspenso = document.getElementById('alturaCorpoSuspenso')
-    forçaAtrito = document.getElementById('forçaAtrito')
+    forcaAtrito = document.getElementById('forçaAtrito')
 
     // Selecionar os Spans com os Valores dos Sliders
     massaCarrinhoResp = document.getElementById('massaCarrinhoValue')
     massaCorpoSuspensoResp = document.getElementById('massaCorpoSuspensoValue')
     alturaCorpoSuspensoResp = document.getElementById('alturaCorpoSuspensoValue')
-    forçaAtritoResp = document.getElementById('forçaAtritoValue')
+    forcaAtritoResp = document.getElementById('forçaAtritoValue')
 
     // Selecionar a div que vai ter a Curva
     F11_AL12.divCurva = document.getElementById('curva-vt')
@@ -53,29 +48,29 @@ function prepararResultados() {
     aZona2Resp = document.getElementById('aZona2Value')
 
     // Atualizar os Sliders
-    massaCarrinho.oninput = function atualizarMassaCarrinho() {
+    massaCarrinho.oninput = () => {
         let massaCarrinhoValue = massaCarrinho.value / 100
     
         massaCarrinhoResp.innerText = `${massaCarrinhoValue.toFixed(2)}`
 
         atualizarAtritoMax()
     }
-    massaCorpoSuspenso.oninput = function atualizarMassaCorpoSuspenso() {
+    massaCorpoSuspenso.oninput = () => {
         let massaCorpoSuspensoValue = massaCorpoSuspenso.value / 100
     
         massaCorpoSuspensoResp.innerText = `${massaCorpoSuspensoValue.toFixed(2)}`
 
         atualizarAtritoMax()
     }
-    alturaCorpoSuspenso.oninput = function atualizarAlturaCorpoSuspenso() {
+    alturaCorpoSuspenso.oninput = () => {
         let alturaCorpoSuspensoValue = alturaCorpoSuspenso.value / 100
     
         alturaCorpoSuspensoResp.innerText = `${alturaCorpoSuspensoValue.toFixed(2)}`
     }
-    forçaAtrito.oninput = function atualizarForçaAtrito() {
-        let forçaAtritoValue = forçaAtrito.value / 1000
+    forcaAtrito.oninput = () => {
+        let forçaAtritoValue = forcaAtrito.value / 1000
     
-        forçaAtritoResp.innerText = `${forçaAtritoValue.toFixed(3)}`
+        forcaAtritoResp.innerText = `${forçaAtritoValue.toFixed(3)}`
     }
 
     F11_AL12.preparado = true
@@ -93,11 +88,11 @@ function atualizarAtritoMax() {
 
     let FaMaxConvertido = Math.floor(FaMax * 1000)
 
-    if (forçaAtrito.value > FaMaxConvertido) {
-        forçaAtritoResp.innerText = `${(FaMaxConvertido / 1000).toFixed(3)}`
+    if (forcaAtrito.value > FaMaxConvertido) {
+        forcaAtritoResp.innerText = `${(FaMaxConvertido / 1000).toFixed(3)}`
     }
 
-    forçaAtrito.max = FaMaxConvertido
+    forcaAtrito.max = FaMaxConvertido
 }
 
 
@@ -123,7 +118,7 @@ function pontos() {
     let mSIST = mCa + mCS
 
     let PCS = mCS * g
-    let Fa = forçaAtrito.value / 1000
+    let Fa = forcaAtrito.value / 1000
     let Fr = PCS - Fa
 
     let t = 0

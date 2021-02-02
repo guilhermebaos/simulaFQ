@@ -24,13 +24,9 @@ let F10_AL32 = {
     divCurva: ''
 }
 
-let massaBloco
-let potResist
-let intervaloMedidas
-
-let massaBlocoResp
-let potResistResp
-let intervaloMedidasResp
+let massaBloco, massaBlocoResp
+let potResist, potResistResp
+let intervaloMedidas, intervaloMedidasResp
 
 let decliveResp
 let capacidadeResp
@@ -64,17 +60,17 @@ function prepararResultados() {
     F10_AL32.divCurva = document.getElementById('curva-CTM')
 
     // Atualizar os Sliders
-    massaBloco.oninput = function atualizarMassaBloco() {
+    massaBloco.oninput = () => {
         let massaBlocoValue = massaBloco.value / 1000
     
         massaBlocoResp.innerText = `${massaBlocoValue.toFixed(3)}`
     }
-    potResist.oninput = function atualizarPotResist() {
+    potResist.oninput = () => {
         let potResistValue = potResist.value / 1
     
         potResistResp.innerText = `${potResistValue.toFixed(0)}`
     }
-    intervaloMedidas.oninput = function atualizarIntervaloMedidas() {
+    intervaloMedidas.oninput = () => {
         let intervaloMedidasValue = intervaloMedidas.value / 1
     
         intervaloMedidasResp.innerText = `${intervaloMedidasValue.toFixed(0)}`

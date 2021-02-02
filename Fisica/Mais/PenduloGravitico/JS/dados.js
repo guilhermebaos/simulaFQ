@@ -86,7 +86,7 @@ export default class Dados {
 
         let aceLen = this.dadosObtidos.ace.length
         this.dadosObtidos.jer.push(
-            (this.dadosObtidos.ace[aceLen - 1] - this.dadosObtidos.ace[aceLen - 2]) / deltaTempo
+            (this.dadosObtidos.ace[aceLen - 1] - this.dadosObtidos.ace[aceLen - 2]) / deltaTempo / 1000
         )
 
         let tempEc = 0.5 * this.simula.pendulo.massa * this.simula.pendulo.velocidade.abs ** 2

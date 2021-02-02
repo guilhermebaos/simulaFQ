@@ -12,20 +12,15 @@ let Q10_AL11 = {
 let densidadeMax = 1.00 // g/cm^3
 let densidadeMin = 0.98 // g/cm^3
 
-let massaCemGotas
+let massaCemGotas, massaCemGotasResp
 
-let massaCemGotasResp
-
-let massaGotaResp
-let volumeGotaResp
-let nGotaResp
+let massaGotaResp, volumeGotaResp, nGotaResp
 
 
 function prepararResultados() {
     if (Q10_AL11.preparado) {
         return
     }
-
 
     // Selecionar Sliders
     massaCemGotas = document.getElementById('massaCemGotas')
@@ -42,14 +37,14 @@ function prepararResultados() {
 
     
     // Atualizar os Sliders
-    massaCemGotas.oninput = function atualizarMassaCemGotas() {
+    massaCemGotas.oninput = () => {
         let massaCemGotasValue = massaCemGotas.value * 10
     
         massaCemGotasResp.innerText = `${massaCemGotasValue.toFixed(0)}`
 
         corrigirVolumeCemGotas()
     }
-    volumeCemGotas.oninput = function atualizarVolumeCemGotas() {
+    volumeCemGotas.oninput = () => {
         let volumeCemGotasValue = volumeCemGotas.value / 100
     
         volumeCemGotasResp.innerText = `${volumeCemGotasValue.toFixed(2)}`

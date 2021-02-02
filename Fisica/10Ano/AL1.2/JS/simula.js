@@ -4,6 +4,7 @@ import Dados from '../JS/dados.js'
 // Classe que vai executar a Simulação
 window.Simula = class Simula {
     constructor(canvas, resolucao, hiMax) {
+        // Guardar o canvas
         this.canvas = canvas
         
         // Alturas Iniciais Mínima e Máxima
@@ -54,7 +55,7 @@ window.Simula = class Simula {
     juntarValores() {
         return {
             hi: alturaInicial.value / 100,          // Altura Inicial em Metros
-            hf : 0.05,                              // Altura 'Final'
+            hf : 0.03,                              // Altura 'Final'
             e: (elasticidade.value / 100) ** 0.5,   // Elasticidade em %
             g: 9.80665                              // Aceleração Gravítica
         }

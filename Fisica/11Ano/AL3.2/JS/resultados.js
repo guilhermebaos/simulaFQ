@@ -1,29 +1,23 @@
-// Definir Constantes
-
 // Inicializar Variáveis Globais
 
 // Usar um Objeto para proteger as variáveis com nomes comuns
-let F11_AL31 = {
+let F11_AL32 = {
     preparado: false,
     divCurva: '',
 }
 
-let linhas
-let distAoAlvo
+let linhas, linhasResp
+let distAoAlvo, distAoAlvoResp
 
-let linhasResp
-let distAoAlvoResp
 let distN1Resp
 let lambdaResp
 
-let corBtns
-let corEscolhida = 'red'
-let corEscolhidaPos = 0
-let corLambda = 633e-9
+let corBtns, corEscolhida = 'red',
+corEscolhidaPos = 0, corLambda = 633e-9
 
 
 function prepararResultados() {
-    if (F11_AL31.preparado) {
+    if (F11_AL32.preparado) {
         return
     }
     
@@ -40,27 +34,26 @@ function prepararResultados() {
     lambdaResp = document.getElementById('lambdaValue')
 
     // Selecionar a div que vai ter a Curva
-    F11_AL31.divCurva = document.getElementById('curva-laser')
+    F11_AL32.divCurva = document.getElementById('curva-laser')
 
     // Selecionar os Butões que permitem escolher a cor do laser
     corBtns = document.getElementsByName('cor-laser')
 
     // Atualizar os Sliders
-    linhas.oninput = function atualizarLinhas() {
+    linhas.oninput = () => {
         let linhasValue = linhas.value / 1
     
         linhasResp.innerText = `${linhasValue.toFixed(0)}`
         curva()
     }
-    distAoAlvo.oninput = function atualizarDistAoAlvo() {
+    distAoAlvo.oninput = () => {
         let distAoAlvoValue = distAoAlvo.value / 10
     
         distAoAlvoResp.innerText = `${distAoAlvoValue.toFixed(1)}`
         curva()
     }
-    
 
-    F11_AL31.preparado = true
+    F11_AL32.preparado = true
     curva()
 }
 
@@ -130,12 +123,12 @@ function curva() {
     lambdaResp.innerHTML = `${lambdaArr[0]} &times; 10<sup>${lambdaArr[1]}</sup>`
 
     // Remover o Canvas antigo
-    F11_AL31.divCurva.innerHTML = ''
+    F11_AL32.divCurva.innerHTML = ''
 
     // Criar o canvas onde vai estar a curva
     canvasCurva = document.createElement('canvas')
     canvasCurva.setAttribute('id', 'canvasCurva')
-    F11_AL31.divCurva.appendChild(canvasCurva)
+    F11_AL32.divCurva.appendChild(canvasCurva)
 
     // Obter e guardar os resultados
     let resultados = pontos()

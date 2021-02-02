@@ -9,18 +9,12 @@ let F11_AL21 = {
     divCurva: ''
 }
 
-let voltsDiv
-let segundosDiv
-let freqSinal
-let amplitudeSinal
+let voltsDiv, voltsDivResp
+let segundosDiv, segundosDivResp
+let freqSinal, freqSinalResp
+let amplitudeSinal, amplitudeSinalResp
 
-let voltsDivResp
-let segundosDivResp
-let freqSinalResp
-let amplitudeSinalResp
-
-let voltsDivNum = 1
-segundosDivNum = 500e-6
+let voltsDivNum = 1, segundosDivNum = 500e-6
 
 let aContext
 
@@ -47,7 +41,7 @@ function prepararResultados() {
     F11_AL21.divCurva = document.getElementById('curva-oscilos')
 
     // Atualizar os Sliders
-    voltsDiv.oninput = function atualizarVoltsDiv() {
+    voltsDiv.oninput = () => {
         let voltsDivValue = voltsDiv.value / 1
 
         let resp
@@ -83,7 +77,7 @@ function prepararResultados() {
         voltsDivResp.innerText = resp
         curva()
     }
-    segundosDiv.oninput = function atualizarSegundosDiv() {
+    segundosDiv.oninput = () => {
         let segundosDivValue = segundosDiv.value / 1
 
         let resp
@@ -119,13 +113,13 @@ function prepararResultados() {
         segundosDivResp.innerHTML = resp
         curva()
     }
-    freqSinal.oninput = function atualizarFreqSinal() {
+    freqSinal.oninput = () => {
         let freqSinalValue = freqSinal.value / 1
     
         freqSinalResp.innerText = `${freqSinalValue.toFixed(1)}`
         curva()
     }
-    amplitudeSinal.oninput = function atualizarAmplitudeSinal() {
+    amplitudeSinal.oninput = () => {
         let amplitudeSinalValue = amplitudeSinal.value / 1000
     
         amplitudeSinalResp.innerText = `${amplitudeSinalValue.toFixed(3)}`
@@ -197,8 +191,6 @@ function pontos() {
     let deltaT = Math.min(segundosDivNum / 30, T / 10) / 2
     let t = -3.22 * segundosDivNum
 
-    // Ideia: Fazer Desfazamentos
-
     let v
 
     let tArr = []
@@ -211,6 +203,7 @@ function pontos() {
 
         t += deltaT
     }
+
     return [tArr, vArr]
 }
 

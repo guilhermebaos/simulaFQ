@@ -21,22 +21,15 @@ let F11_AL11 = {
 let areaEsfera = PI * 0.02 ** 2    // m^2
 let calcularRAr = true
 
-let btnCalcularRAr
-let btnDesprezarRAr
+let btnCalcularRAr, btnDesprezarRAr
 
-let massaEsfera
-let raioEsfera
-let distCelulas
+let massaEsfera, massaEsferaResp
+let raioEsfera, raioEsferaResp
+let distCelulas, distCelulasResp
 
-let massaEsferaResp
-let raioEsferaResp
-let distCelulasResp
-
-let deltaT_celula2Resp
-let deltaT_quedaResp
+let deltaT_celula2Resp, deltaT_quedaResp
 let velocidadeCelula2Resp
-let gravidadeExperimentalResp
-let erroGravidadeExperimentalResp
+let gravidadeExperimentalResp, erroGravidadeExperimentalResp
 
 
 function prepararResultados() {
@@ -72,17 +65,17 @@ function prepararResultados() {
     erroGravidadeExperimentalResp = document.getElementById('erro-gravidade-experimental')
 
     // Atualizar os Sliders
-    massaEsfera.oninput = function atualizarMassaEsfera() {
+    massaEsfera.oninput = () => {
         let massaEsferaValue = massaEsfera.value / 1
     
         massaEsferaResp.innerText = `${massaEsferaValue.toFixed(0)}`
     }
-    raioEsfera.oninput = function atualizarRaioEsfera() {
+    raioEsfera.oninput = () => {
         let raioEsferaValue = raioEsfera.value / 10
     
         raioEsferaResp.innerText = `${raioEsferaValue.toFixed(1)}`
     }
-    distCelulas.oninput = function atualizarDistCelulas() {
+    distCelulas.oninput = () => {
         let distCelulasValue = distCelulas.value / 1
     
         distCelulasResp.innerText = `${distCelulasValue.toFixed(0)}`
@@ -213,7 +206,6 @@ function curva() {
     velocidadeCelula2Resp.innerText = `${vm.toFixed(3)}`
     gravidadeExperimentalResp.innerText = `${gExperimental.toFixed(2)}`
     erroGravidadeExperimentalResp.innerText = `${errogExperimental.toFixed(1)}`
-
 
     curvaExtra()
 }

@@ -1,6 +1,3 @@
-// Definir Constantes
-
-
 // Inicializar Variáveis Globais
 
 // Usar um Objeto para proteger as variáveis com nomes comuns
@@ -8,13 +5,10 @@ let Q10_AL23 = {
     preparado: false,
 }
 
-let concInicial
-let concDiluida
-let volumeSolu
+let concInicial, concInicialResp
+let concDiluida, concDiluidaResp
+let volumeSolu, volumeSoluResp
 
-let concInicialResp
-let concDiluidaResp
-let volumeSoluResp
 let fatorResp
 let volumeInicialResp
 
@@ -42,14 +36,14 @@ function prepararResultados() {
 
 
     // Atualizar os Sliders
-    concInicial.oninput = function atualizarConcInicial() {
+    concInicial.oninput = () => {
         let concInicialValue = concInicial.value / 1000
     
         concInicialResp.innerText = `${concInicialValue.toFixed(3)}`
 
         maxConcDiluida(concInicialValue)
     }
-    concDiluida.oninput = function atualizarConcDiluida() {
+    concDiluida.oninput = () => {
         let concDiluidaValue = concDiluida.value / 100000
         
         if (concDiluidaValue < 0.001) {
@@ -58,7 +52,7 @@ function prepararResultados() {
             concDiluidaResp.innerText = `${concDiluidaValue.toFixed(3)}`
         }
     }
-    volumeSolu.oninput = function atualizarVolumeSolu() {
+    volumeSolu.oninput = () => {
         let volumeSoluValue = volumeSolu.value / 1
 
         let resp

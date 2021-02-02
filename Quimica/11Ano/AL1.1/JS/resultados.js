@@ -7,19 +7,12 @@ let Q11_AL11 = {
 
 let massaProdutoMax
 
-let massaReagente1
-let volumeReagente2
-let massaProduto
+let massaReagente1, massaReagente1Resp
+let volumeReagente2, volumeReagente2Resp
+let massaProduto, massaProdutoResp
 
-let massaReagente1Resp
-let volumeReagente2Resp
-let massaProdutoResp
-
-let nC7H6O3Resp
-let nC4H6O3Resp
-let nC9H8O4Resp
-let reagenteLimitanteResp
-let rendimentoResp
+let nC7H6O3Resp, nC4H6O3Resp, nC9H8O4Resp
+let reagenteLimitanteResp, rendimentoResp
 
 
 function prepararResultados() {
@@ -45,21 +38,21 @@ function prepararResultados() {
     rendimentoResp = document.getElementById('rendimentoValue')
     
     // Atualizar os Sliders
-    massaReagente1.oninput = function atualizarMassaReagente1() {
+    massaReagente1.oninput = () => {
         let massaReagente1Value = massaReagente1.value / 100
     
         massaReagente1Resp.innerText = `${massaReagente1Value.toFixed(2)}`
 
         calcularMassaProdutoMax()
     }
-    volumeReagente2.oninput = function atualizarVolumeReagente2() {
+    volumeReagente2.oninput = () => {
         let volumeReagente2Value = volumeReagente2.value / 100
     
         volumeReagente2Resp.innerText = `${volumeReagente2Value.toFixed(2)}`
         
         calcularMassaProdutoMax()
     }
-    massaProduto.oninput = function atualizarMassaProduto() {
+    massaProduto.oninput = () => {
         let massaProdutoValue = massaProduto.value / 100
     
         massaProdutoResp.innerText = `${massaProdutoValue.toFixed(2)}`

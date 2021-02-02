@@ -8,20 +8,14 @@ let Q10_AL22 = {
     preparado: false,
 }
 
-let solutoArray
-let solEscolhidoPos = 0
+let solutoArray, solEscolhidoPos = 0
 
-let volumeSolu
-let concSolu
+let volumeSolu, volumeSoluResp
+let concSolu, concSoluResp
 
-let volumeSoluResp
-let concSoluResp
+let solutoEscolhidoResp, solutoMolarResp
 
-let solutoEscolhidoResp
-let solutoMolarResp
-
-let quantidadeSolutoResp
-let massaSolutoResp
+let quantidadeSolutoResp, massaSolutoResp
 
 let mMolar = 58.44
 let Vsol = 0.250
@@ -53,12 +47,12 @@ function prepararResultados() {
 
 
     // Atualizar os Sliders
-    concSolu.oninput = function atualizarConcSolu() {
+    concSolu.oninput = () => {
         let concSoluValue = concSolu.value / 1000
     
         concSoluResp.innerText = `${concSoluValue.toFixed(3)}`
     }
-    volumeSolu.oninput = function atualizarVolumeSolu() {
+    volumeSolu.oninput = () => {
         let volumeSoluValue = volumeSolu.value / 1
 
         let resp

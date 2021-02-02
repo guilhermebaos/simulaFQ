@@ -5,10 +5,8 @@ let Q10_AL12 = {
     preparado: false,
 }
 
-let salArray
-let salEscolhidoPos = 0
+let salArray, salEscolhidoResp, salEscolhidoPos = 0
 
-let salEscolhidoResp
 let corChamaResp
 
 
@@ -32,7 +30,6 @@ function prepararResultados() {
 
 // Altera o Sal escolhido, bem como a aparência dos butões
 function escolherSal(pos) {
-
     salArray[salEscolhidoPos].className = 'escolha'
     salArray[pos].className = 'escolha-atual'
 

@@ -1,6 +1,3 @@
-// Definir Constantes
-
-
 // Inicializar Variáveis Globais
 
 // Usar um Objeto para proteger as variáveis com nomes comuns

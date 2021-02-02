@@ -9,11 +9,8 @@ let F10_AL21 = {
     divCurva: ''
 }
 
-let forçaEletromotriz
-let resistInterna
-
-let forçaEletromotrizResp
-let resistInternaResp
+let forcaEletromotriz, forcaEletromotrizResp
+let resistInterna, resistInternaResp
 
 
 function prepararResultados() {
@@ -22,23 +19,23 @@ function prepararResultados() {
     }
     
     // Selecionar Sliders
-    forçaEletromotriz = document.getElementById('forçaEletromotriz')
+    forcaEletromotriz = document.getElementById('forçaEletromotriz')
     resistInterna = document.getElementById('resistInterna')
 
     // Selecionar os Spans com os Valores dos Sliders
-    forçaEletromotrizResp = document.getElementById('forçaEletromotrizValue')
+    forcaEletromotrizResp = document.getElementById('forçaEletromotrizValue')
     resistInternaResp = document.getElementById('resistInternaValue')
     
     // Selecionar a div onde vai parar a curva
     F10_AL21.divCurva = document.getElementById('curva-Pilha')
 
     // Atualizar os Sliders
-    forçaEletromotriz.oninput = function atualizarForçaEletromotriz() {
-        let forçaEletromotrizValue = forçaEletromotriz.value / 10
+    forcaEletromotriz.oninput = () => {
+        let forçaEletromotrizValue = forcaEletromotriz.value / 10
     
-        forçaEletromotrizResp.innerText = `${forçaEletromotrizValue.toFixed(1)}`
+        forcaEletromotrizResp.innerText = `${forçaEletromotrizValue.toFixed(1)}`
     }
-    resistInterna.oninput = function atualizarResistInterna() {
+    resistInterna.oninput = () => {
         let resistInternaValue = resistInterna.value / 100
     
         resistInternaResp.innerText = `${resistInternaValue.toFixed(2)}`
@@ -52,7 +49,7 @@ function prepararResultados() {
 // Calcular os Pontos do Gráfico U = f(I)
 function pontos() {
     // Declarar variáveis e valores iniciais
-    let fe = forçaEletromotriz.value / 10
+    let fe = forcaEletromotriz.value / 10
     let r = resistInterna.value / 100
 
     let U, R

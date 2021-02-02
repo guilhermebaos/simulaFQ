@@ -8,34 +8,27 @@ const nRev = 1.40
 // Inicializar Variáveis Globais
 
 // Usar um Objeto para proteger as variáveis com nomes comuns
-let F11_AL31 = {
+let F11_AL32 = {
     preparado: false,
     divCurva: '',
     processandoAnim: false
 }
 
-let angIncide
-let angIncideRefra
-let indiceRefra
-let angIncideRefleTot
-let larguraFibra
-
-let angIncideResp
-let angIncideRefraResp
-let indiceRefraResp
-let angIncideRefleTotResp
-let larguraFibraResp
+let angIncide, angIncideResp
+let angIncideRefra, angIncideRefraResp
+let indiceRefra, indiceRefraResp
+let angIncideRefleTot, angIncideRefleTotResp
+let larguraFibra, larguraFibraResp
 
 let angRefResp
 let angCritResp
 let nAcrResp
 
-let fenomBtns
-let fenomEscolhido = 0
+let fenomBtns, fenomEscolhido = 0
 
 
 function prepararResultados() {
-    if (F11_AL31.preparado) {
+    if (F11_AL32.preparado) {
         return
     }
     
@@ -59,19 +52,19 @@ function prepararResultados() {
     nAcrResp = document.getElementById('nAcrValue')
 
     // Selecionar a div que vai ter a Curva
-    F11_AL31.divCurva = document.getElementById('curva-laser')
+    F11_AL32.divCurva = document.getElementById('curva-laser')
 
     // Selecionar os Butões que permitem escolher o Procedimento
     fenomBtns = document.getElementsByName('Fenómenos')
 
     // Atualizar os Sliders
-    angIncide.oninput = function atualizarAngIncide() {
+    angIncide.oninput = () => {
         let angIncideValue = angIncide.value / 10
     
         angIncideResp.innerText = `${angIncideValue.toFixed(1)}`
         curva()
     }
-    angIncideRefra.oninput = function atualizarAngIncideRefra() {
+    angIncideRefra.oninput = () => {
         let angIncideRefraValue = angIncideRefra.value / 10
 
         if (angIncideRefraValue > 90) {
@@ -81,7 +74,7 @@ function prepararResultados() {
         angIncideRefraResp.innerText = `${angIncideRefraValue.toFixed(1)}`
         curva()
     }
-    indiceRefra.oninput = function atualizarIndiceRefra() {
+    indiceRefra.oninput = () => {
         let indiceRefraValue = indiceRefra.value / 1
     
         if (indiceRefraValue <= 20) {
@@ -93,20 +86,20 @@ function prepararResultados() {
         }
         curva()
     }
-    angIncideRefleTot.oninput = function atualizarAngIncideRefleTot() {
+    angIncideRefleTot.oninput = () => {
         let angIncideRefleTotValue = angIncideRefleTot.value / 10
     
         angIncideRefleTotResp.innerText = `${angIncideRefleTotValue.toFixed(1)}`
         curva()
     }
-    larguraFibra.oninput = function atualizarLarguraFibra() {
+    larguraFibra.oninput = () => {
         let larguraFibraValue = larguraFibra.value / 1
     
         larguraFibraResp.innerText = `${larguraFibraValue.toFixed(0)}`
         curva()
     }
 
-    F11_AL31.preparado = true
+    F11_AL32.preparado = true
     curva()
 }
 
@@ -115,8 +108,8 @@ function prepararResultados() {
 function fenomeno(num) {
     if (num == fenomEscolhido) return
     else {
-        if (F11_AL31.processandoAnim) return
-        F11_AL31.processandoAnim = true
+        if (F11_AL32.processandoAnim) return
+        F11_AL32.processandoAnim = true
 
         fenomBtns[fenomEscolhido].className = 'escolha'
         fenomBtns[num].className = 'escolha-atual'
@@ -133,7 +126,7 @@ function fenomeno(num) {
         mostrarExtra(`Fenómeno${fenomEscolhido}`)
         window.setTimeout(mostrarExtra, mostrarExtraTempo, `Fenómeno${num}`)
         window.setTimeout(function() {
-            F11_AL31.processandoAnim = false
+            F11_AL32.processandoAnim = false
         }, mostrarExtraTempo * 2)
 
         // Mostrar a Tabela das Respostas
@@ -149,11 +142,11 @@ function fenomeno(num) {
 // Mudar a background-image do gráfico
 function prepCurva() {
     if (fenomEscolhido == 0) {
-        F11_AL31.divCurva.style.backgroundImage = 'url("Imagens/Metal-background.png")'
+        F11_AL32.divCurva.style.backgroundImage = 'url("Imagens/Metal-background.png")'
     } else if (fenomEscolhido == 1) {
-        F11_AL31.divCurva.style.backgroundImage = 'url("Imagens/Acrilico-background.png")'
+        F11_AL32.divCurva.style.backgroundImage = 'url("Imagens/Acrilico-background.png")'
     } else if (fenomEscolhido == 2) {
-        F11_AL31.divCurva.style.backgroundImage = ''
+        F11_AL32.divCurva.style.backgroundImage = ''
     }
 }
 
@@ -177,6 +170,7 @@ function pontos() {
 
         let angR = Math.PI - incI
         let decliveR = Math.tan(angR)
+
         while (x <= 20.1) {
             if (x < 0) {
                 y = decliveI * x
@@ -188,6 +182,7 @@ function pontos() {
             xArr.push(x)
             yArr.push(y)
         }
+
         return [xArr, yArr]
 
     } else if (fenomEscolhido == 1) {
@@ -233,6 +228,7 @@ function pontos() {
             xArr.push(x)
             yArr.push(y)
         }
+
         return [xArr, yArr]
 
     } else if (fenomEscolhido == 2) {
@@ -255,6 +251,7 @@ function pontos() {
 
         let xInicial = 0
         let xStep = 0.05
+
         while (x <= 20 + xStep) {
             y = xSec * decliveAtual
 
@@ -277,6 +274,7 @@ function pontos() {
             fBaixoArr.push(fibraBaixo * 1.02)
             fTopoArr.push(fibraTopo * 1.02)
         }
+
         return [xArr, yArr, fBaixoArr, fTopoArr]
     }
 }
@@ -285,12 +283,12 @@ function pontos() {
 // Calcula e mostra os Resultados da Tabela
 function curva() {
     // Remover o Canvas antigo
-    F11_AL31.divCurva.innerHTML = ''
+    F11_AL32.divCurva.innerHTML = ''
 
     // Criar o canvas onde vai estar a curva
     canvasCurva = document.createElement('canvas')
     canvasCurva.setAttribute('id', 'canvasCurva')
-    F11_AL31.divCurva.appendChild(canvasCurva)
+    F11_AL32.divCurva.appendChild(canvasCurva)
 
     if (fenomEscolhido == 0) {
         // Obter e guardar os resultados

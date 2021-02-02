@@ -6,18 +6,12 @@ let Q10_AL13 = {
     preparado: false,
 }
 
-let metalArray
-let metalEscolhidoPos = 0
+let metalArray, metalEscolhidoPos = 0
 
-let massaEsfera
-let massaPic
+let massaEsfera, massaEsferaResp
+let massaPic, massaPicResp
 
-let massaEsferaResp
-let massaPicResp
-
-let massaAResp
-let massaBResp
-let massaCResp
+let massaAResp, massaBResp, massaCResp
 
 let dRelativaResp
 let erroRelativoResp
@@ -51,12 +45,12 @@ function prepararResultados() {
     dTabeladoResp = document.getElementById('dTabeladoValue')
     
     // Atualizar os Sliders
-    massaEsfera.oninput = function atualizarMassaEsfera() {
+    massaEsfera.oninput = () => {
         let massaEsferaValue = massaEsfera.value / 10
     
         massaEsferaResp.innerText = `${massaEsferaValue.toFixed(1)}`
     }
-    massaPic.oninput = function atualizarMassaPic() {
+    massaPic.oninput = () => {
         let massaPicValue = massaPic.value / 10
     
         massaPicResp.innerText = `${massaPicValue.toFixed(1)}`

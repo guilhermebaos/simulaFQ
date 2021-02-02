@@ -1,6 +1,3 @@
-// Definir Constantes
-
-
 // Inicializar Variáveis Globais
 
 // Usar um Objeto para proteger as variáveis com nomes comuns
@@ -10,29 +7,21 @@ let F11_AL22 = {
     processandoAnim: false
 }
 
-let voltsDiv
-let segundosDiv
-let freqSinal
-let amplitudeSinal
-let distMicrofone
-let temperaturaAr
-let mangueira
+let voltsDiv, voltsDivResp
+let segundosDiv, segundosDivResp
+let freqSinal, freqSinalResp
+let amplitudeSinal, amplitudeSinalResp
+let distMicrofone, distMicrofoneResp
+let temperaturaAr, temperaturaArResp
+let mangueira, mangueiraResp
 
-let voltsDivResp
-let segundosDivResp
-let freqSinalResp
-let amplitudeSinalResp
-let distMicrofoneResp
-let temperaturaArResp
-let mangueiraResp
 let velocidadeDoSomResp
 let intervaloTempoResp
 
 let voltsDivNum = 1
 segundosDivNum = 500e-6
 
-let procedimento1
-let procedimento2
+let procedimento1, procedimento2
 let procedimentoEscolhido = 1
 
 
@@ -70,7 +59,7 @@ function prepararResultados() {
     procedimento2 = document.getElementById('Procedimento2')
 
     // Atualizar os Sliders
-    voltsDiv.oninput = function atualizarVoltsDiv() {
+    voltsDiv.oninput = () => {
         let voltsDivValue = voltsDiv.value / 1
 
         let resp
@@ -108,7 +97,7 @@ function prepararResultados() {
             curva()
         }
     }
-    segundosDiv.oninput = function atualizarSegundosDiv() {
+    segundosDiv.oninput = () => {
         let segundosDivValue = segundosDiv.value / 1
 
         let resp
@@ -146,25 +135,25 @@ function prepararResultados() {
             curva()
         }
     }
-    freqSinal.oninput = function atualizarFreqSinal() {
+    freqSinal.oninput = () => {
         let freqSinalValue = freqSinal.value / 1
     
         freqSinalResp.innerText = `${freqSinalValue.toFixed(1)}`
         curva()
     }
-    amplitudeSinal.oninput = function atualizarAmplitudeSinal() {
+    amplitudeSinal.oninput = () => {
         let amplitudeSinalValue = amplitudeSinal.value / 1000
     
         amplitudeSinalResp.innerText = `${amplitudeSinalValue.toFixed(3)}`
         curva()
     }
-    distMicrofone.oninput = function atualizarDistMicrofone() {
+    distMicrofone.oninput = () => {
         let distMicrofoneValue = distMicrofone.value / 10
     
         distMicrofoneResp.innerText = `${distMicrofoneValue.toFixed(2)}`
         curva()
     }
-    temperaturaAr.oninput = function atualizarTemperaturaAr() {
+    temperaturaAr.oninput = () => {
         let temperaturaArValue = temperaturaAr.value / 10
     
         temperaturaArResp.innerText = `${temperaturaArValue.toFixed(1)}`
@@ -174,7 +163,7 @@ function prepararResultados() {
         }
         velocidadeDoSomResp.innerText = vSomTemp(temperaturaArValue).toFixed(1)
     }
-    mangueira.oninput = function atualizarMangueira() {
+    mangueira.oninput = () => {
         let mangueiraValue = mangueira.value / 1
     
         mangueiraResp.innerText = `${mangueiraValue.toFixed(0)}`
@@ -331,6 +320,7 @@ function pontos2() {
     let tArr = []
     let vArr = []
     let microVArr = []
+    
     while (t < 3.22 * segundosDivNum) {
         v = A * Math.sin(fAng * t) / voltsDivNum
 
@@ -342,6 +332,7 @@ function pontos2() {
 
         t += deltaT
     }
+
     return [tArr, vArr, microVArr]
 }
 

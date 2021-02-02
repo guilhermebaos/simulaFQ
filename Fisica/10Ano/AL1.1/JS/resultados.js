@@ -11,13 +11,9 @@ let F10_AL11 = {
     divCurva: ''
 }
 
-let massaCarrinho
-let angPlanoInclinado
-let forcaAtrito
-
-let massaCarrinhoResp
-let angPlanoInclinadoResp
-let forcaAtritoResp
+let massaCarrinho, massaCarrinhoResp
+let angPlanoInclinado, angPlanoInclinadoResp
+let forcaAtrito, forcaAtritoResp
 
 
 function prepararResultados() {
@@ -39,21 +35,21 @@ function prepararResultados() {
     F10_AL11.divCurva = document.getElementById('curva-Ec')
 
     // Atualizar os Sliders
-    massaCarrinho.oninput = function atualizarMassaCarrinho() {
+    massaCarrinho.oninput = () => {
         let massaCarrinhoValue = massaCarrinho.value / 1
     
         massaCarrinhoResp.innerText = `${massaCarrinhoValue.toFixed(0)}`
 
         atualizarAtritoMax()
     }
-    angPlanoInclinado.oninput = function atualizarAngPlanoInclinado() {
+    angPlanoInclinado.oninput = () => {
         let angPlanoInclinadoValue = angPlanoInclinado.value / 10
     
         angPlanoInclinadoResp.innerText = `${angPlanoInclinadoValue.toFixed(1)}`
 
         atualizarAtritoMax()
     }
-    forcaAtrito.oninput = function atualizarForçaAtrito() {
+    forcaAtrito.oninput = () => {
         let forçaAtritoValue = forcaAtrito.value / 1000
     
         forcaAtritoResp.innerText = `${forçaAtritoValue.toFixed(3)}`
@@ -155,7 +151,7 @@ function curva() {
                         fontFamily: '"Arial", "sans-serif"'
                     },
                     ticks: {
-                        max: 15,
+                        max: 16,
                         min: 0
                     }
                 }]

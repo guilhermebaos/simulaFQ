@@ -1,0 +1,244 @@
+<h2 class="topico">Objetivo</h2>
+<p>
+    Relacionar a Força de Atrito com a Força Normal e com os materiais em contacto. Determinar os coeficientes de atrito estático e cinético.
+</p>
+
+<h2 class="topico">Método</h2>
+<p>
+    Nesta AL, serão usadas duas montagens diferentes, onde diferentes forças irão estar a atuar sobre um bloco, de massa conhecida, que está inicialmente em repouso:
+</p>
+<ul>
+    <li><strong>Montagem 1</strong></li>
+    <p class="m5-top">
+        Colocamos o bloco numa superfície horizontal e usamos um sensor de força e um sistema de aquisição de dados para sabermos a força que estamos a aplicar no bloco.
+    </p>
+    <li><strong>Montagem 2</strong></li>
+    <p>
+        Colocamos o bloco numa superfície horizontal, ligado por um fio inextensível a um recipiente suspenso, com um sensor de movimento e um sistema de aquisição de dados colocado de forma a podermos obter o gráfico velocidade-tempo do bloco.
+    </p>
+</ul>
+
+<h3 class="sub-topico">Relacionar a Força de Atrito com a Força Normal</h3>
+<p>
+    Usando a Montagem 1, exercemos uma força de intensidade crescente sobre o bloco em repouso, de forma a determinar as intensidades da Força de Atrito Estático máxima e da Força de Atrito Cinético média.
+</p>
+<p>
+    Repetimos esse procedimento pelo menos mais 4 vezes, colocando corpos de massa conhecida sobre o bloco, de forma a aumentar a massa do conjunto e a intensidade da Força Normal exercida sobre o bloco.
+</p>
+<p>
+    De seguida, usamos a seguinte igualdade para determinar os coeficientes de atrito, com base nos valores obtidos:
+</p>
+<div class="contas">
+    <span class="invi">&hArr;</span> |F<sub>ae max</sub>| &equals; &mu;<sub>e</sub> &times; |N| <br>
+    <span class="invi">&hArr;</span> |F<sub>ac</sub>| &equals; &mu;<sub>c</sub> &times; |N|
+</div>
+<table class="explicar">
+    <tr>
+        <td>F<sub>ae max</sub></td>
+        <td>&rarr;</td>
+        <td>Força de Atrito Estático máxima</td>
+    </tr>
+    <tr>
+        <td>&mu;<sub>e</sub></td>
+        <td>&rarr;</td>
+        <td>Coeficiente de atrito estático</td>
+    </tr>
+    <tr>
+        <td>N</td>
+        <td>&rarr;</td>
+        <td>Força Normal</td>
+    </tr>
+    <tr>
+        <td>F<sub>ac</sub></td>
+        <td>&rarr;</td>
+        <td>Força de Atrito Cinético</td>
+    </tr>
+    <tr>
+        <td>&mu;<sub>c</sub></td>
+        <td>&rarr;</td>
+        <td>Coeficiente de atrito cinético</td>
+    </tr>
+    <tr>
+        <td>|X|</td>
+        <td>&rarr;</td>
+        <td>Módulo do Vetor X</td>
+    </tr>
+</table>
+<p class="m0">
+    Para tal, usamos a calculadora gráfica para traçar a reta de melhor ajuste ao gráfico de abcissa <span class="serif">|N|</span> e ordenada <span class="serif">|F<sub>ae max</sub>|</span> ou <span class="serif">|F<sub>ac</sub>|</span>, cujo declive será o respetivo coeficiente de atrito (<span class="anchor" onclick="mostrarExtra('Declive=Coeficiente-de-Atrito')">Porquê?</span>).
+</p>
+<div id="Declive=Coeficiente-de-Atrito" class="explicar" style="display: none;">
+    <button class="fechar" onclick="mostrarExtra('Declive=Coeficiente-de-Atrito')">X</button>
+    <p>
+        A reta de melhor ajuste terá equação <span class="serif">y = mx + b</span>, sendo que <span class="serif">b &ap; 0</span>.
+    </p>
+    <p>
+        Logo, se <span class="serif">y</span> corresponde a <span class="serif">|F<sub>ae max</sub>|</span> e <span class="serif">x</span> a <span class="serif">|N|</span>, então, temos que:
+    </p>
+    <div class="contas">
+        <span class="invi">&hArr;</span> |F<sub>ae max</sub>| &equals; m &times; |N| + 0
+    </div>
+    <p class="m5-bot m15-top">
+        Comparando esta equação com a que está acima, podemos perceber que:
+    </p>
+    <div class="contas">
+        <span class="invi">&hArr;</span> m &equals; &mu;<sub>e</sub>
+    </div>
+</div>
+
+<h3 class="sub-topico">Relacionar a Força de Atrito com os Materiais em Contacto</h3>
+<p>
+    Repetindo o processo anterior, mas com uma face do bloco revestida com um material diferente apoiada no plano, determinamos os coeficientes de atrito para vários pares de materiais em contacto.
+</p>
+
+<h3 class="sub-topico">Determinar o Coeficiente de Atrito Estático</h3>
+<p>
+    Usando a Montagem 2, vamos adicionado areia ao recipiente suspendo, até que o bloco fique na eminência de deslizar.
+</p>
+<p>
+    Nesse momento, sabemos que <span class="serif">|F<sub>a</sub>| &equals; |F<sub>ae max</sub>|</span>. Então, podemos determinar o Coeficiente de Atrito Estático da seguinte forma:
+</p>
+<div class="contas">
+    <span class="invi">&hArr;</span> |F<sub>r Sistema</sub>| &equals; 0<sup class="exp-contas" onclick="mostrarExpContas(1)">[1]</sup> &hArr; <br>
+    &hArr; |P<sub>recipiente</sub>| &minus; |F<sub>ae max</sub>|<sup class="exp-contas" onclick="mostrarExpContas(2)">[2]</sup> &equals; 0 &hArr; <br>
+    &hArr; |F<sub>ae max</sub>| &equals; |P<sub>recipiente</sub>| &hArr; <br>
+    &hArr; &mu;<sub>e</sub> &times; |N| &equals; m<sub>recipiente</sub> &times; g &hArr; <br>
+    &hArr; &mu;<sub>e</sub> &times; m<sub>bloco</sub> &times; g<sup class="exp-contas" onclick="mostrarExpContas(3)">[3]</sup> &equals; m<sub>recipiente</sub> &times; g &hArr; <br>
+    &hArr; &mu;<sub>e</sub> &equals; <div class="frac"><span>m<sub>recipiente</sub> &times; g</span><span class="denom">m<sub>bloco</sub> &times; g</span></div> &hArr; <br>
+    &hArr; &mu;<sub>e</sub> &equals; <div class="frac"><span>m<sub>recipiente</sub></span><span class="denom">m<sub>bloco</sub></span></div>
+</div>
+<p class="exp-contas" name="exp-contas" style="display: none;"><sup class="exp-contas" onclick="mostrarExpContas(1)">[1]</sup> Quando o bloco está em iminência de se mover, o Sistema ainda está em repouso, logo, a Força Resultante é nula.</p>
+<p class="exp-contas" name="exp-contas" style="display: none;"><sup class="exp-contas" onclick="mostrarExpContas(2)">[2]</sup> Como vimos na <a href="../../11Ano/AL1.2/index.html" rel="prev">AL 1.2 do 11º Ano</a>, a Força Resultante deste Sistema é <span class="serif">|P<sub>corpo suspenso</sub>| &minus; |F<sub>a bloco</sub>|</span>.</p>
+<div class="exp-contas" name="exp-contas" style="display: none;"><sup class="exp-contas" onclick="mostrarExpContas(3)">[3]</sup>
+    <p>
+        A Reação Normal exercida sobre o bloco é, em módulo, igual ao Peso do bloco, logo:
+    </p>
+    <div class="contas">
+        <span class="invi">&hArr;</span> |N| &equals; |P<sub>bloco</sub>| &hArr; <br>
+        &hArr; |N| &equals; m<sub>bloco</sub> &times;
+    </div>
+</div>
+<table class="explicar">
+    <tr>
+        <td>F<sub>r Sistema</sub></td>
+        <td>&rarr;</td>
+        <td>Força Resultante do Sistema</td>
+    </tr>
+    <tr>
+        <td>P<sub>recipiente</sub></td>
+        <td>&rarr;</td>
+        <td>Peso do recipiente suspenso</td>
+    </tr>
+    <tr>
+        <td>F<sub>ae max</sub></td>
+        <td>&rarr;</td>
+        <td>Força de Atrito Estático máxima</td>
+    </tr>
+    <tr>
+        <td>m<sub>recipiente</sub></td>
+        <td>&rarr;</td>
+        <td>Massa do Peso do recipiente suspenso</td>
+    </tr>
+    <tr>
+        <td>g</td>
+        <td>&rarr;</td>
+        <td>Módulo da aceleração gravítica</td>
+    </tr>
+    <tr>
+        <td>&mu;<sub>e</sub></td>
+        <td>&rarr;</td>
+        <td>Coeficiente de atrito estático</td>
+    </tr>
+    <tr>
+        <td>N</td>
+        <td>&rarr;</td>
+        <td>Força Normal exercida no bloco</td>
+    </tr>
+    <tr>
+        <td>m<sub>bloco</sub></td>
+        <td>&rarr;</td>
+        <td>Massa do bloco</td>
+    </tr>
+    <tr>
+        <td>|X|</td>
+        <td>&rarr;</td>
+        <td>Módulo do Vetor X</td>
+    </tr>
+</table>
+
+<h3 class="sub-topico">Determinar o Coeficiente de Atrito Cinético</h3>
+<p>
+    Usando a Montagem 2, seguramos no bloco enquanto enchemos o recipiente de areia, de forma a que, assim que o largarmos, haja movimento.
+</p>
+<p>
+    Assim que largarmos o bloco, sabemos que <span class="serif">|F<sub>a</sub>| &equals; |F<sub>ac</sub>|</span>. Então, podemos determinar o Coeficiente de Atrito Cinético da seguinte forma:
+</p>
+<div class="contas">
+    <span class="invi">&hArr;</span> |F<sub>r Sistema</sub>| &equals; m<sub>Sistema</sub> &times; |a| &hArr; <br>
+    &hArr; |P<sub>recipiente</sub>| &minus; |F<sub>ac</sub>| &equals; m<sub>Sistema</sub> &times; |a| &hArr; <br>
+    &hArr; |F<sub>ac</sub>| &equals; |P<sub>recipiente</sub>| &minus; m<sub>Sistema</sub> &times; |a| &hArr; <br>
+    &hArr; &mu;<sub>c</sub> &times; |N| &equals; m<sub>recipiente</sub> &times; g &minus; m<sub>Sistema</sub> &times; |a| &hArr; <br>
+    &hArr; &mu;<sub>c</sub> &times; m<sub>bloco</sub> &times; g &equals; m<sub>recipiente</sub> &times; g &minus; (m<sub>bloco</sub> &plus; m<sub>recipiente</sub>) &times; |a| &hArr; <br>
+    &hArr; &mu;<sub>c</sub> &equals; <div class="frac"><span>m<sub>recipiente</sub> &times; g</span><span class="denom">m<sub>bloco</sub> &times; g</span></div> &minus; <div class="frac"><span>(m<sub>bloco</sub> &plus; m<sub>recipiente</sub>) &times; |a|</span><span class="denom">m<sub>bloco</sub> &times; g</span></div> &hArr; <br>
+    &hArr; &mu;<sub>c</sub> &equals; <div class="frac"><span>m<sub>recipiente</sub></span><span class="denom">m<sub>bloco</sub></span></div> &minus; <div class="frac"><span>(m<sub>bloco</sub> &plus; m<sub>recipiente</sub>) &times; |a|</span><span class="denom">m<sub>bloco</sub> &times; g</span></div>
+</div>
+<table class="explicar">
+    <tr>
+        <td>F<sub>r Sistema</sub></td>
+        <td>&rarr;</td>
+        <td>Força Resultante do Sistema</td>
+    </tr>
+    <tr>
+        <td>m<sub>Sistema</sub></td>
+        <td>&rarr;</td>
+        <td>Massa do Sistema Bloco + Recipiente suspenso</td>
+    </tr>
+    <tr>
+        <td>a</td>
+        <td>&rarr;</td>
+        <td>Aceleração do Sistema Bloco + Recipiente suspenso</td>
+    </tr>
+    <tr>
+        <td>P<sub>recipiente</sub></td>
+        <td>&rarr;</td>
+        <td>Peso do recipiente suspenso</td>
+    </tr>
+    <tr>
+        <td>F<sub>ac</sub></td>
+        <td>&rarr;</td>
+        <td>Força de Atrito Cinético</td>
+    </tr>
+    <tr>
+        <td>m<sub>recipiente</sub></td>
+        <td>&rarr;</td>
+        <td>Massa do Peso do recipiente suspenso</td>
+    </tr>
+    <tr>
+        <td>g</td>
+        <td>&rarr;</td>
+        <td>Módulo da aceleração gravítica</td>
+    </tr>
+    <tr>
+        <td>&mu;<sub>e</sub></td>
+        <td>&rarr;</td>
+        <td>Coeficiente de atrito estático</td>
+    </tr>
+    <tr>
+        <td>N</td>
+        <td>&rarr;</td>
+        <td>Força Normal exercida no bloco</td>
+    </tr>
+    <tr>
+        <td>m<sub>bloco</sub></td>
+        <td>&rarr;</td>
+        <td>Massa do bloco</td>
+    </tr>
+    <tr>
+        <td>|X|</td>
+        <td>&rarr;</td>
+        <td>Módulo do Vetor X</td>
+    </tr>
+</table>
+<p>
+    Destes valores, o único que é desconhecido é o do módulo da aceleração. Para o determinarmos, traçamos uma reta de melhor ajuste ao gráfico velocidade-tempo criado pelo sistema de aquisição de dados, sendo o seu declive o módulo da aceleração.
+</p>
