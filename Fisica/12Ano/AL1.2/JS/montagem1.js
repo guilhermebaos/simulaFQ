@@ -28,10 +28,7 @@ export default class Montagem1 {
         }
 
         // Multiplicador do tamanho dos vetores
-        this.tamanhoVetor = 10
-
-        // Zoom Out
-        this.zoomOut = 1
+        this.tamanhoVetor = 3
         
         this.reiniciar()
     }
@@ -92,14 +89,14 @@ export default class Montagem1 {
         ctx.fillRect(0, this.simula.altura - this.plano.posY, this.simula.largura, this.plano.altura)
 
         // Desenhar o Bloco no local indicado pela posição
-        let xBloco = this.posicao / this.zoomOut
+        let xBloco = this.posicao
         let yBloco = this.simula.altura - this.plano.posY - this.bloco.altura
         ctx.fillStyle = this.bloco.cor
         ctx.fillRect(xBloco, yBloco, this.bloco.largura, this.bloco.altura)
 
-        // Desenhar os vetores Força, Fa e Aceleração
+        // Desenhar os vetores Força, Fa, Velocidade e Aceleração
         xBloco += this.bloco.largura / 2
-        yBloco += this.bloco.altura / 2
+        yBloco -= this.bloco.altura / 2
 
         if (this.forca != 0) {
             this.simula.desenharVetor(xBloco, yBloco, xBloco + this.forca * this.tamanhoVetor, yBloco, this.corVetores.forca)

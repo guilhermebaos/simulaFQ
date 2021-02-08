@@ -27,6 +27,7 @@ let dadosBtn
 // Ligar ou desligar a aquisição de dados
 let recolherDados = false
 
+let simula, ctx
 function prepararResultados() {
     if (F12_AL12.preparado) {
         return
@@ -55,7 +56,7 @@ function prepararResultados() {
     // Selecionar os Butões que permitem escolher o Procedimento
     montagemBtns = document.getElementsByName('montagens')
 
-    // Butão associado ao recolher dados
+    // Botão associado ao recolher dados
     dadosBtn = document.getElementById('interruptor')
     dadosBtn.estado = '0'
 
@@ -63,7 +64,7 @@ function prepararResultados() {
         if (dadosBtn.estado == '0') {
             dadosBtn.estado = '1'
             dadosBtn.innerText = 'Desligar'
-            this.simula.dados.reiniciar()
+            simula.dados.reiniciar()
             graficos = window.graficos(F12_AL12.divCurva)
             recolherDados = true
         } else {
@@ -130,7 +131,7 @@ function montagem(num) {
         montagemEscolhida = num
     }
 
-    simula.reiniciar(montagemEscolhida)
+    reiniciar()
 }
 
 
@@ -157,6 +158,15 @@ function fixDPI() {
 
 // Reiniciar a Simulação
 function reiniciar() {
+    intForca.value = intForca.min
+    intForcaResp.innerText = `${Number(intForca.min).toFixed(2)}`
+
+    massaAreia.value = massaAreia.min
+    massaAreiaResp.innerText = `${Number(massaAreia.min).toFixed(0)}`
+
+    // Reiniciar os gráficos
+    graficos = window.graficos(F12_AL12.divCurva)
+
     simula.reiniciar(montagemEscolhida)
 
     let cae = coefAtritoEstatico.value / 100

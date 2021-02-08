@@ -54,9 +54,6 @@ export default class Montagem2 {
 
         // Multiplicador do tamanho dos vetores
         this.tamanhoVetor = 10
-
-        // Zoom Out
-        this.zoomOut = 1
         
         this.reiniciar()
     }
@@ -126,7 +123,7 @@ export default class Montagem2 {
         ctx.fillRect(0, this.simula.altura - this.plano.posY, this.simula.largura * 0.85, this.plano.altura)
 
         // Desenhar o Bloco no local indicado pela posição
-        let xBloco = this.posicao / this.zoomOut
+        let xBloco = this.posicao
         let yBloco = this.simula.altura - this.plano.posY - this.bloco.altura
 
         ctx.fillStyle = this.bloco.cor
