@@ -96,7 +96,7 @@ export default class Montagem1 {
 
         // Desenhar os vetores Força, Fa, Velocidade e Aceleração
         xBloco += this.bloco.largura / 2
-        yBloco -= this.bloco.altura / 2
+        yBloco += this.bloco.altura / 2
 
         if (this.forca != 0) {
             this.simula.desenharVetor(xBloco, yBloco, xBloco + this.forca * this.tamanhoVetor, yBloco, this.corVetores.forca)
@@ -105,14 +105,10 @@ export default class Montagem1 {
             this.simula.desenharVetor(xBloco, yBloco, xBloco + this.fa * this.tamanhoVetor, yBloco, this.corVetores.fa)
         }
         if (this.velocidade != 0) {
-            let posVetor = 0.8
-
-            this.simula.desenharVetor(xBloco, yBloco * posVetor, xBloco + this.velocidade * this.tamanhoVetor, yBloco * posVetor, this.corVetores.velocidade)
+            this.simula.desenharVetor(xBloco, yBloco - this.bloco.altura, xBloco + this.velocidade * this.tamanhoVetor, yBloco - this.bloco.altura, this.corVetores.velocidade)
         }
         if (this.aceleracao != 0) {
-            let posVetor = 0.8
-
-            this.simula.desenharVetor(xBloco, yBloco * posVetor, xBloco + this.aceleracao * this.tamanhoVetor, yBloco * posVetor, this.corVetores.aceleracao)
+            this.simula.desenharVetor(xBloco, yBloco - this.bloco.altura, xBloco + this.aceleracao * this.tamanhoVetor, yBloco - this.bloco.altura, this.corVetores.aceleracao)
         }
     }
 }

@@ -14,7 +14,7 @@ export default class Montagem2 {
 
         // Definições do Plano Horizontal
         this.plano = {
-            posY: this.simula.altura * 0.75,
+            posY: this.simula.altura * 0.6,
             altura: 20,
             largura: 0.85,              // Em proporção à largura do canvas
             cor: 'rgb(10, 100, 230)'
@@ -187,14 +187,10 @@ export default class Montagem2 {
             this.simula.desenharVetor(xBloco, yBloco, xBloco + this.fa * this.tamanhoVetor, yBloco, this.corVetores.fa)
         }
         if (this.velocidade != 0) {
-            let posVetor = 0.8
-
-            this.simula.desenharVetor(xBloco, yBloco * posVetor, xBloco + this.velocidade * this.tamanhoVetor, yBloco * posVetor, this.corVetores.velocidade)
+            this.simula.desenharVetor(xBloco, yBloco - this.bloco.altura, xBloco + this.velocidade * this.tamanhoVetor, yBloco - this.bloco.altura, this.corVetores.velocidade)
         }
         if (this.aceleracao != 0) {
-            let posVetor = 0.8
-
-            this.simula.desenharVetor(xBloco, yBloco * posVetor, xBloco + this.aceleracao * this.tamanhoVetor, yBloco * posVetor, this.corVetores.aceleracao)
+            this.simula.desenharVetor(xBloco, yBloco - this.bloco.altura, xBloco + this.aceleracao * this.tamanhoVetor, yBloco - this.bloco.altura, this.corVetores.aceleracao)
         }
     }
 }
