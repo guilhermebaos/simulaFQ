@@ -193,19 +193,12 @@ window.graficos = (divsCurvas) => {
 
 // Atualizar os gráficos
 window.atualizarGraficos = (graficos, label, data) => {
-    graficos[0].data.labels.push(label)
-    graficos[0].data.datasets.forEach((dataset) => {
-        let d = data[0]
-        dataset.data.push(d)
-        data.shift()
+    graficos.forEach((grafico) => {
+        grafico.data.labels.push(label)
+        grafico.data.datasets.forEach((dataset) => {
+            let d = data.shift()
+            dataset.data.push(d)
+        })
+        grafico.update()
     })
-    graficos[0].update()
-
-    graficos[1].data.labels.push(label)
-    graficos[1].data.datasets.forEach((dataset) => {
-        let d = data[0]
-        dataset.data.push(d)
-        data.shift()
-    })
-    graficos[1].update()
 }
