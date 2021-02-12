@@ -1,0 +1,255 @@
+<h2 class="topico">Objetivo</h2>
+<p>
+    Determinar a variação da Energia Cinética em colisões inelásticas e determinar o coeficiente de restituição numa colisão com um alvo fixo.
+</p>
+
+
+<h2 class="topico">Definição Teórica</h2>
+<h3 id="Coeficiente de Restituição" class="sub-topico">Coeficiente de Restituição</h3>
+<p>
+    O coeficiente de restituição, <span class="serif">e</span>, avalia a elasticidade dos materiais de dois corpos. Em qualquer colisão: <span class="serif">0 &le; e &le; 1</span>
+</p>
+<p>Em colisões frontais, está definido por:</p>
+<div class="contas">
+    <span class="invi">&hArr;</span> e &equals; <div class="frac"><span>v<sub>afastamento</sub></span><span class="denom">v<sub>aproximação</sub></span></div> &hArr; <br>
+    &hArr; e &equals; <div class="frac"><span>|v'<sub>1</sub> &minus; v'<sub>2</sub>|</span><span class="denom">|v<sub>1</sub> &minus; v<sub>2</sub>|</span></div><sup class="exp-contas" onclick="mostrarExpContas(1)">[1]</sup>
+</div>
+<div class="exp-contas" name="exp-contas" style="display: none;"><sup class="exp-contas" onclick="mostrarExpContas(1)">[1]</sup>
+    <p>
+        A velocidade a que se aproximam ou afastam é a diferença das componentes escalares das velocidades, quanto mais diferentes forem as suas velocidades, mais rápido se aproximam ou afastam.
+    </p>
+    <p>
+        Isto apenas é válido para colisões frontais, em que as velocidades têm a mesma direção (sendo que o sentido pode ou não ser o mesmo).
+    </p>
+</div>
+<table class="explicar">
+    <tr>
+        <td>v<sub>afastamento</sub></td>
+        <td>&rarr;</td>
+        <td>Velocidade a que se afastam os corpos após a colisão</td>
+    </tr>
+    <tr>
+        <td>v<sub>aproximação</sub></td>
+        <td>&rarr;</td>
+        <td>Velocidade a que se aproximam os corpos antes da colisão</td>
+    </tr>
+    <tr>
+        <td>v'<sub>1</sub></td>
+        <td>&rarr;</td>
+        <td>Componente escalar da velocidade do corpo 1 após a colisão</td>
+    </tr>
+    <tr>
+        <td>v'<sub>2</sub></td>
+        <td>&rarr;</td>
+        <td>Componente escalar da velocidade do corpo 2 após a colisão</td>
+    </tr>
+    <tr>
+        <td>v<sub>1</sub></td>
+        <td>&rarr;</td>
+        <td>Componente escalar da velocidade do corpo 1 antes da colisão</td>
+    </tr>
+    <tr>
+        <td>v<sub>2</sub></td>
+        <td>&rarr;</td>
+        <td>Componente escalar da velocidade do corpo 2 antes da colisão</td>
+    </tr>
+</table>
+<h3 class="sub-topico">Tipos de Colisões</h3>
+<dl>
+    <dt>Colisões Elásticas</dt>
+    <dd>
+        Há Conservação do Momento Linear e da Energia Cinética, <span class="serif">e &equals; 1</span>
+    </dd>
+    
+    <dt>Colisões Inelásticas</dt>
+    <dd>
+        Há Conservação do Momento Linear mas não da Energia Cinética, <span class="serif">0 &lt; e &lt; 1</span>
+    </dd>
+    
+    <dt>Colisões perfeitamente Inelásticas</dt>
+    <dd>
+        Há conservação do Momento Linear e a perda de Energia Cinética é máxima, <span class="serif">e &equals; 0</span>. Após a colisão os corpos deslocam-se como um só corpo cuja massa é a soma das massas dos dois corpos.
+    </dd>
+</dl>
+
+<h2 class="topico">Método</h2>
+<p>
+    Tal como na <a href="../AL1.2/index.html" rel="prev">AL anterior</a>, iremos usar duas montagens diferentes, ambas envolvendo um carrinho de massa conhecida, com uma tira opaca que nos permita <span class="anchor" onclick="mostrarExtra('medir-a-sua-velocidade')">medir a sua velocidade</span> usando uma célula fotoelétrica:
+</p>
+<div id="medir-a-sua-velocidade" class="explicar">
+    <button class="fechar" onclick="mostrarExtra('medir-a-sua-velocidade')">X</button>
+    <h4 class="explicar">Medir a Velocidade</h4>
+    <p>
+        A célula fotoelétrica emite um feixe na direção de um recetor. A tira opaca irá bloqueá-lo. O cronómetro irá medir o intervalo de tempo desde que o feixe foi interrompido até ao instante em que volta a ser detetado pelo recetor, medindo assim o &Delta;t no qual a tira percorre uma distância igual à sua largura. <a href="https://www.fq.pt/laboratorio/material-de-medicao#celula-fotoeletrica" target="_blank" rel="external">Ver mais</a>
+    </p>
+    <p>
+        Supondo que a velocidade do carrinho é constante enquanto a tira atravessa o feixe, podemos calculá-la da seguinte forma:
+    </p>
+    <div class="contas">
+        <span class="invi">&hArr;</span> v &equals; v<sub>média</sub> &equals; <div class="frac"><span>largura<sub>tira</span><span class="denom">&Delta;t</span></div>
+    </div>
+</div>
+<dl class="m0">
+    <dt>Montagem 1</dt>
+    <dd>
+        Colocamos o carrinho numa superfície horizontal. À sua frente colocamos outro carrinho. Posicionamos duas células fotoelétricas para que possam medir a velocidade do 1º carrinho antes e após a colisão.
+    </dd>
+
+    <dt>Montagem 2</dt>
+    <dd>
+        Colocamos o carrinho na mesma superfície horizontal. No final dela fixamos uma peça. Por fim, posicionamos uma célula fotoelétrica para que possamos medir o tempo de passagem pela célula antes e após a colisão.
+    </dd>
+</dl>
+
+<h3 class="sub-topico">Colisão inelástica</h3>
+<p>
+    Utilizando a Montagem 1, lançamos o 1º carrinho sobre o 2º, de forma a que, após a colisão, os dois sigam juntos.
+</p>
+<p>
+    Registamos as velocidades do 1º carrinho antes e após a colisão, alteramos a massa de pelo menos um dos carrinhos e repetimos o lançamento, de preferência com uma velocidade inicial diferente.
+</p>
+<p>
+    Utilizando os vários pares de valores registados, calculamos o momento linear e a energia cinética antes e após a colisão e determinamos a percentagem de energia cinética dissipada:
+</p>
+
+<h4 class="sub-sub-topico m5-bot m30-top">Momento Linear</h4>
+<p>
+    Podemos calcular o momento linear usando apenas as componentes escalares, já que estamos a considerar que todos os Movimentos são retilíneos e, por isso, a uma dimensão.
+</p>
+<p>Antes da colisão: <span class="serif">p &equals; m<sub>1</sub> &times; v<sub>1</sub></span><sup class="exp-contas" onclick="mostrarExpContas(2)">[2]</sup></p>
+<p class="exp-contas" name="exp-contas" style="display: none;"><sup class="exp-contas" onclick="mostrarExpContas(2)">[2]</sup>O momento linear do carrinho 2 é nulo, pois este está em repouso.</p>
+<p>Após a colisão: <span class="serif">p &equals; (m<sub>1</sub> &plus; m<sub>2</sub>) &times; v'<sub>1</sub></span><sup class="exp-contas" onclick="mostrarExpContas(3)">[3]</sup></p>
+<p class="exp-contas" name="exp-contas" style="display: none;"><sup class="exp-contas" onclick="mostrarExpContas(3)">[3]</sup>Como os carrinhos se movem em conjunto, podemos considerá-los apenas um corpo. A sua massa e igual à soma das massas dos carrinhos e a sua velocidade é igual à velocidade de qualquer um dos carrinhos (<span class="serif">v' &equals; v'<sub>1</sub> &equals; v'<sub>2</sub></span>)</p>
+<table class="explicar">
+    <tr>
+        <td>p</td>
+        <td>&rarr;</td>
+        <td>Componente escalar do Momento Linear do Sistema</td>
+    </tr>
+    <tr>
+        <td>m<sub>1</sub></td>
+        <td>&rarr;</td>
+        <td>Massa do corpo 1</td>
+    </tr>
+    <tr>
+        <td>v<sub>1</sub></td>
+        <td>&rarr;</td>
+        <td>Componente escalar da velocidade do corpo 1 antes da colisão</td>
+    </tr>
+    <tr>
+        <td>v'<sub>1</sub></td>
+        <td>&rarr;</td>
+        <td>Componente escalar da velocidade do corpo 1 após a colisão</td>
+    </tr>
+    <tr>
+        <td>m<sub>2</sub></td>
+        <td>&rarr;</td>
+        <td>Massa do Corpo 2</td>
+    </tr>
+    <tr>
+        <td>v'<sub>2</sub></td>
+        <td>&rarr;</td>
+        <td>Componente escalar da velocidade do corpo 2 após a colisão</td>
+    </tr>
+</table>
+
+<h4 class="sub-sub-topico m5-bot m30-top">Energia Cinética</h4>
+<p class="m5-bot">Antes da colisão:</p>
+<div class="contas">
+    <span class="invi">&hArr;</span> E<sub>c</sub> &equals; E<sub>c<sub>1</sub></sub> &plus; E<sub>c<sub>2</sub></sub> &hArr; <br>
+    &hArr; E<sub>c</sub> &equals; <div class="frac"><span>1</span><span class="denom">2</span></div> m<sub>1</sub>v<sub>1</sub><sup>2</sup> &plus; 0
+</div>
+<p class="m5-bot">Após a colisão:</p>
+<div class="contas">
+    <span class="invi">&hArr;</span> E<sub>c</sub> &equals; E<sub>c<sub>1</sub></sub> &plus; E<sub>c<sub>2</sub></sub> &hArr; <br>
+    &hArr; E<sub>c</sub> &equals; <div class="frac"><span>1</span><span class="denom">2</span></div> m<sub>1</sub>v'<sub>1</sub><sup>2</sup> &plus; <div class="frac"><span>1</span><span class="denom">2</span></div> m<sub>2</sub>v'<sub>2</sub><sup>2</sup>
+</div>
+<table class="explicar">
+    <tr>
+        <td>E<sub>c</sub></td>
+        <td>&rarr;</td>
+        <td>Energia Cinética do Sistema</td>
+    </tr>
+    <tr>
+        <td>m<sub>1</sub></td>
+        <td>&rarr;</td>
+        <td>Massa do corpo 1</td>
+    </tr>
+    <tr>
+        <td>v<sub>1</sub></td>
+        <td>&rarr;</td>
+        <td>Componente escalar da velocidade do corpo 1 antes da colisão</td>
+    </tr>
+    <tr>
+        <td>v'<sub>1</sub></td>
+        <td>&rarr;</td>
+        <td>Componente escalar da velocidade do corpo 1 após a colisão</td>
+    </tr>
+    <tr>
+        <td>m<sub>2</sub></td>
+        <td>&rarr;</td>
+        <td>Massa do Corpo 2</td>
+    </tr>
+    <tr>
+        <td>v'<sub>2</sub></td>
+        <td>&rarr;</td>
+        <td>Componente escalar da velocidade do corpo 2 após a colisão</td>
+    </tr>
+</table>
+<p>
+    Iremos verificar que, apesar do Momento Linear se conservar, parte da Energia Cinética ter-se-à dissipado.
+</p>
+<p class="m0">
+    Por último, podemos também concluir que o Coeficiente de Restituição é <span class="anchor" onclick="mostrarExtra('Coeficiente-de-Restituição-Nulo')">nulo</span>.
+</p>
+<div id="Coeficiente-de-Restituição-Nulo" class="explicar" style="display: none;">
+    <button class="fechar" onclick="mostrarExtra('Coeficiente-de-Restituição-Nulo')">X</button>
+    <p>Como vimos <a href="#Coeficiente de Restituição">acima</a>:</p>
+    <div class="contas">
+        <span class="invi">&hArr;</span> e &equals; <div class="frac"><span>|v'<sub>1</sub> &minus; v'<sub>2</sub>|</span><span class="denom">|v<sub>1</sub> &minus; v<sub>2</sub>|</span></div>
+    </div>
+    <p>
+        Após a colisão, os carros seguem juntos, como tal, não se estão a afastar, logo <span class="serif">v'<sub>1</sub> &equals; v'<sub>2</sub></span>, então <span class="serif">e &equals; 0</span>
+    </p>
+</div>
+
+<h3 class="sub-topico">Colisão com um alvo Fixo</h3>
+<p>
+    Utilizando a Montagem 2, lançamos o carrinho de forma a que este colida com o alvo fixado anteriormente no fim do plano.
+</p>
+<p>
+    Registamos as velocidades e os tempos de passagem pela célula fotoelétrica e repetimos o lançamento com uma velocidade inicial diferente.
+</p>
+<p>
+    Após 7 colisões com o mesmo par de materiais envolvidos, utilizamos a seguinte equação para calcular o Coeficiente de Restituição:
+</p>
+<div class="contas">
+    <span class="invi">&hArr;</span> e &equals; <div class="frac"><span>|v'<sub>1</sub> &minus; v'<sub>2</sub>|</span><span class="denom">|v<sub>1</sub> &minus; v<sub>2</sub>|</span></div> &hArr; <br>
+    &hArr; e &equals; <div class="frac"><span>|v'<sub>1</sub>|</span><span class="denom">|v<sub>1</sub>|</span></div><sup class="exp-contas" onclick="mostrarExpContas(4)">[4]</sup> &hArr; <br>
+    &hArr; |v<sub>1</sub>| &times; e &equals; |v'<sub>1</sub>|
+</div>
+<p class="exp-contas" name="exp-contas" style="display: none;"><sup class="exp-contas" onclick="mostrarExpContas(4)">[4]</sup>Como o alvo está fixo, a sua velocidade antes e após a colisão é nula (<span class="serif">v<sub>2</sub> &equals; v'<sub>2</sub> &equals; 0</span>).</p>
+<p>
+    Para tal, traçamos uma reta de melhor ajuste a um conjunto de pontos de ordenada <span class="serif">|v'<sub>1</sub>|</span> e abcissa <span class="serif">|v<sub>1</sub>|</span> (<span class="anchor" onclick="mostrarExtra('Declive=Coeficiente-de-Restituição-Nulo')">Porquê?</span>).
+</p>
+<div id="Declive=Coeficiente-de-Restituição-Nulo" class="explicar" style="display: none;">
+    <button class="fechar" onclick="mostrarExtra('Declive=Coeficiente-de-Restituição-Nulo')">X</button>
+    <p>
+        A reta de melhor ajuste terá equação <span class="serif">y = mx + b</span>, sendo que <span class="serif">b &ap; 0</span>.
+    </p>
+    <p>
+        Logo, se <span class="serif">y</span> corresponde a <span class="serif">|v'<sub>1</sub>|</span> e <span class="serif">x</span> a <span class="serif">|v<sub>1</sub>|</span>, então, temos que:
+    </p>
+    <div class="contas">
+        <span class="invi">&hArr;</span> |v'<sub>1</sub>| &equals; m &times; |v<sub>1</sub>| + 0
+    </div>
+    <p class="m5-bot m15-top">
+        Comparando esta equação com a que está acima, podemos perceber que:
+    </p>
+    <div class="contas">
+        <span class="invi">&hArr;</span> m &equals; e
+    </div>
+</div>
+<p>
+    Por fim, podemos trocar os materiais envolvidos na colisão com o alvo fixo e repetir este procedimento.
+</p>
