@@ -72,8 +72,9 @@ window.graficos = (divsCurvas) => {
                     },
                     label: function(tooltipItem, data) {
                         let value = Number(tooltipItem.value).toFixed(3)
+                        let label = data.datasets[tooltipItem.datasetIndex].label || ''
     
-                        return 'Intensidade: ' + value + 'N'
+                        return `Intensidade da ${label}: ${value}N`
                     }
                 },
                 custom: function(tooltip) {

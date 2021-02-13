@@ -21,6 +21,8 @@ let coefAtritoCinetico, coefAtritoCineticoResp
 let intForca, intForcaResp
 let massaAreia, massaAreiaResp
 
+let materialArray, materialEscolhidoPos = 0
+
 let montagemBtns
 let dadosBtn
 
@@ -44,6 +46,9 @@ function prepararResultados() {
     massaBlocoResp = document.getElementById('massaBlocoValue')
     intForcaResp = document.getElementById('intForcaValue')
     massaAreiaResp = document.getElementById('massaAreiaValue')
+
+    // Selecionar os butões com os materiais
+    materialArray = document.getElementsByName('material')
 
     // Selecionar os Spans com os Resultados da Tabela
     coefAtritoEstaticoResp = document.getElementById('coefAtritoEstaticoValue')
@@ -154,6 +159,27 @@ function fixDPI() {
 
     simula.novoTamanho()
 }
+
+
+// Altera os coeficientes
+function escolherMaterial(pos) {
+    materialArray[materialEscolhidoPos].className = 'escolha'
+    materialArray[pos].className = 'escolha-atual'
+
+    materialEscolhidoPos = pos
+
+    if (materialEscolhidoPos == 0) {
+        coefAtritoEstatico.value = 30
+        coefAtritoCinetico.value = 23
+    } else if (materialEscolhidoPos == 1) {
+        coefAtritoEstatico.value = 25
+        coefAtritoCinetico.value = 17
+    } else if (materialEscolhidoPos == 2) {
+        coefAtritoEstatico.value = 27
+        coefAtritoCinetico.value = 22
+    }
+}
+
 
 
 // Reiniciar a Simulação
