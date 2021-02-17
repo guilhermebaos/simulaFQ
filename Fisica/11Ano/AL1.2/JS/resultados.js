@@ -1,5 +1,5 @@
 // Definir Constantes
-const g = 9.80665   // Aceleração Gravitaconal
+const g = 9.81      // Aceleração Gravitaconal
 const CAM = 0.1     // Razão máxima entre a Resultante das Forças de Atrito e o Peso do Corpo Suspenso
 
 

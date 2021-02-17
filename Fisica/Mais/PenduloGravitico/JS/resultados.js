@@ -1,6 +1,9 @@
 import Simula from '../JS/simula.js'
 import graficos from '../JS/graficos.js'
 
+// Obter o DPR do ecrã
+const DPR = window.devicePixelRatio
+
 
 // INPUTS
 
@@ -80,25 +83,22 @@ let canvasPendulo = document.getElementById('canvasPendulo')
 
 let ctx = canvasPendulo.getContext('2d')
 
+ctx.scale(DPR, DPR)
 
-
-
-// Obter o DPI do ecrã
-let DPI = window.devicePixelRatio
 
 
 // Dimensões do Canvas
-fixDPI()
+fixDPR()
 
-function fixDPI() {
+function fixDPR() {
     // Altura do CSS
     let altura_css = +getComputedStyle(canvasPendulo).getPropertyValue("height").slice(0, -2)
     // Larura do CSS
     let largura_css = +getComputedStyle(canvasPendulo).getPropertyValue("width").slice(0, -2)
 
     // Altera o tamanho do canvas
-    canvasPendulo.setAttribute('width', largura_css * DPI)
-    canvasPendulo.setAttribute('height', altura_css * DPI)
+    canvasPendulo.width = largura_css * DPR
+    canvasPendulo.height = altura_css * DPR
 }
 
 

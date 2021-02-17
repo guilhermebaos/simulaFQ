@@ -1,5 +1,5 @@
 // Definir Constantes
-const g = 9.80665   // Aceleração Gravitaconal
+const g = 9.81      // Aceleração Gravitaconal
 
 
 // Inicializar Variáveis Globais

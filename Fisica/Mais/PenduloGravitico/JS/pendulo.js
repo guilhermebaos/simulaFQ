@@ -7,7 +7,7 @@ export default class Pendulo {
         this.raio = 16
         this.cor = 'red'
 
-        // Escala (agora, de cm para metros)
+        // Escala (agora, de metros para cm)
         this.escala = 100
 
         // Ponto de fixação do fio

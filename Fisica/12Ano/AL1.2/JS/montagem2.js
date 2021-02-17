@@ -40,7 +40,7 @@ export default class Montagem2 {
             larguraBorder: 4,
             corBorder: 'black',
             corBackground: 'rgba(0, 0, 0, 0.05)',
-            corAreia: 'yellow',
+            corAreia: 'rgb(247, 229, 167)',
             areiaMax: this.simula.inputVariavel.massaAreia.max / 1000
         }
 

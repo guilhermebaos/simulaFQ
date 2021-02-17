@@ -1,5 +1,8 @@
 // Definir Constantes
-const g = 9.80665   // Aceleração Gravitaconal
+const g = 9.81   // Aceleração Gravitaconal
+
+// Obter o DPR do ecrã
+const DPR = window.devicePixelRatio
 
 
 // Constantes para a Simulação
@@ -78,6 +81,8 @@ function prepararResultados() {
 
     ctx = canvasBola.getContext('2d')
 
+    ctx.scale(DPR, DPR)
+
     // Criar o Objeto Simula
     simula = new window.Simula(canvasBola, RESOLUCAO, alturaInicial.max)
 
@@ -86,13 +91,10 @@ function prepararResultados() {
 }
 
 
-// Corrige o tamanho do Canvas e corrige o DPI
-function fixDPI() {
+// Corrige o tamanho do Canvas e corrige o DPR
+function fixDPR() {
     // Usar variável global
     if (simulaFQmenu.aberto !== 'resultados.html') return
-
-    // Obter o DPI do ecrã
-    let DPI = window.devicePixelRatio
 
     // Altura do CSS
     let altura_css = +getComputedStyle(canvasCurva).getPropertyValue('height').slice(0, -2) - 70
@@ -100,8 +102,8 @@ function fixDPI() {
     let largura_css = +getComputedStyle(canvasBola).getPropertyValue('width').slice(0, -2)
 
     // Altera o tamanho do canvas
-    canvasBola.width = largura_css * DPI
-    canvasBola.height = altura_css * DPI
+    canvasBola.width = largura_css * DPR
+    canvasBola.height = altura_css * DPR
 
     simula.novoTamanho()
 }
@@ -257,7 +259,7 @@ function loopSimula(tempo) {
     if (ultimoTempo === undefined) {
         ultimoTempo = tempo
         if (!grafico) grafico = curva()
-        fixDPI()
+        fixDPR()
         requestAnimationFrame(loopSimula)
         return
     }
@@ -280,4 +282,4 @@ function loopSimula(tempo) {
     requestAnimationFrame(loopSimula)
 }
 
-window.onresize = fixDPI
+window.onresize = fixDPR

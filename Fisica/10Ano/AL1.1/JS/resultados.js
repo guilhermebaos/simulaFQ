@@ -1,6 +1,6 @@
 // Definir Constantes
 const COF = 0.1 // Coeficiente de Fricção entre o carrinho e o plano
-const g = 9.80665 // Aceleração Gravitaconal
+const g = 9.81 // Aceleração Gravitaconal
 
 
 // Inicializar Variáveis Globais

@@ -1,6 +1,6 @@
 // Definir Constantes
 const PI = Math.PI
-const g = 9.80665   // Aceleração Gravitaconal
+const g = 9.81      // Aceleração Gravitaconal
 const densidadeAr = 1.225 // kg/m^3
 const CRar = 0.5    // Coeficiente de Resistência do ar para uma esfera, aproximado para Reynolds entre 2*10^3 e 2*10^5
                     // Razões para a aproximação ser razoável -> https://www.grc.nasa.gov/www/K-12/airplane/dragsphere.html e https://aerotoolbox.com/reynolds-number-calculator/
