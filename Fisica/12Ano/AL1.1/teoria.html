@@ -1,0 +1,170 @@
+<h2 class="topico">Objetivo</h2>
+<p>
+    Estudar o lançamento horizontal: determinar a relação entre o alcance e a velocidade inicial de um projétil.
+</p>
+
+<h2 class="topico">Relação Teórica</h2>
+<p>
+    O projétil será lançado horizontalmente, com uma velocidade inicial conhecida e igual a <span class="serif">v<sub>0</sub></span>.
+</p>
+<p>
+    Vamos considerar o seguinte sistema de eixos, com origem na vertical do ponto em que a bola perde o contacto com a rampa:
+</p>
+<!--Imagem da Simulação-->
+<p>Podemos então escrever as equações do movimento do projétil:</p>
+<div class="contas">
+    <span class="invi">&hArr;</span> a<sub>x</sub> &equals; 0 &nbsp;&and;&nbsp; a<sub>y</sub> &equals; &minus;g <br>
+</div>
+<div class="contas">
+    <span class="invi">&hArr;</span> v<sub>x</sub>(t) &equals; v<sub>0</sub> &nbsp;&and;&nbsp; v<sub>y</sub>(t) &equals; &minus;gt <br>
+</div>
+<div class="contas">
+    <span class="invi">&hArr;</span> x(t) &equals; v<sub>0</sub>t &nbsp;&and;&nbsp; y(t) &equals; h &minus; <div class="frac"><span>1</span><span class="denom">2</span></div> gt<sup>2</sup> <br>
+</div>
+<table class="explicar">
+    <tr>
+        <td>a<sub>x</sub></td>
+        <td>&rarr;</td>
+        <td>Componente da Aceleração segundo o eixo Ox</td>
+    </tr>
+    <tr>
+        <td>a<sub>y</sub></td>
+        <td>&rarr;</td>
+        <td>Componente da Aceleração segundo o eixo Oy</td>
+    </tr>
+    <tr>
+        <td>g</td>
+        <td>&rarr;</td>
+        <td>Módulo da aceleração gravítica</td>
+    </tr>
+    <tr>
+        <td>v<sub>x</sub></td>
+        <td>&rarr;</td>
+        <td>Componente da Velocidade segundo o eixo Ox</td>
+    </tr>
+    <tr>
+        <td>v<sub>y</sub></td>
+        <td>&rarr;</td>
+        <td>Componente da Velocidade segundo o eixo Oy</td>
+    </tr>
+    <tr>
+        <td>t</td>
+        <td>&rarr;</td>
+        <td>Instante de tempo</td>
+    </tr>
+    <tr>
+        <td>x</td>
+        <td>&rarr;</td>
+        <td>Componente da posição segundo o eixo Ox</td>
+    </tr>
+    <tr>
+        <td>y</td>
+        <td>&rarr;</td>
+        <td>Componente da posição segundo o eixo Oy</td>
+    </tr>
+    <tr>
+        <td>h</td>
+        <td>&rarr;</td>
+        <td>Altura de lançamento</td>
+    </tr>
+</table>
+<p>
+    Podemos então calcular o tempo de queda, <span class="serif">t<sub>q</sub></span>:
+</p>
+<div class="contas">
+    <span class="invi">&hArr;</span> y(t<sub>q</sub>) &equals; 0 &hArr; <br>
+    &hArr; h &minus; <div class="frac"><span>1</span><span class="denom">2</span></div> gt<sub>q</sub><sup>2</sup> &equals; 0 &hArr; <br>
+    &hArr; <div class="frac"><span>1</span><span class="denom">2</span></div> gt<sub>q</sub><sup>2</sup> &equals; h &hArr; <br>
+    &hArr; t<sub>q</sub><sup>2</sup> &equals; <div class="frac"><span>2h</span><span class="denom">g</span></div> &hArr; <br>
+    &hArr; t<sub>q</sub> &equals; <span class="pre-sqrt">&Sqrt;</span><span class="sqrt">(2h / g)</span>
+</div>
+<p class="m30-top">
+    Utilizando esse valor, podemos calcular o Alcance do projétil, <span class="serif">A</span>:
+</p>
+<div class="contas">
+    <span class="invi">&hArr;</span> A &equals; x(t<sub>q</sub>) &hArr; <br>
+    &hArr; A &equals; v<sub>0</sub><span class="pre-sqrt">&Sqrt;</span><span class="sqrt">(2h / g)</span>
+</div>
+
+<h2 class="topico">Método</h2>
+<p>
+    Experimentalmente, iremos abandonar uma esfera em diferentes pontos de uma rampa, que irá lançar a bola horizontalmente.
+</p>
+<p>
+    No final da rampa iremos colocar uma célula fotoelétrica e medir o tempo de passagem do projétil por essa célula.
+</p>
+<p>
+    A partir desse itnervalo de tempo, podemos calcular a sua velocidade inicial da seguinte forma:
+</p>
+<div class="contas">
+    <span class="invi">&hArr;</span> v &equals; <div class="frac"><span>|&Delta;r|</span><span class="denom">&Delta;t</span></div><sup class="exp-contas" onclick="mostrarExpContas(1)">[1]</sup> &hArr; <br>
+    &hArr; v &equals; <div class="frac"><span>d<sub>esfera</sub></span><span class="denom">&Delta;t</span></div>
+</div>
+<p class="exp-contas" name="exp-contas" style="display: none;"><sup class="exp-contas" onclick="mostrarExpContas(1)">[1]</sup>A velocidade de passagem pela célula é suposta costante, daí podermos usar a fórmula da velocidade média para determinar velocidade instantânea.
+</p>
+<table class="explicar">
+    <tr>
+        <td>v</td>
+        <td>&rarr;</td>
+        <td>Velocidade Inicial do lançamento horizontal</td>
+    </tr>
+    <tr>
+        <td>|&Delta;r|</td>
+        <td>&rarr;</td>
+        <td>Deslocamento do projétil</td>
+    </tr>
+    <tr>
+        <td>&Delta;t</td>
+        <td>&rarr;</td>
+        <td>Intervalo de tempo de passagem pela célula</td>
+    </tr>
+    <tr>
+        <td>d<sub>projétil</sub></td>
+        <td>&rarr;</td>
+        <td>Diâmetro do projétil</td>
+    </tr>
+</table>
+<p>
+    Para medir o alcance, usamos uma caixa com areia (ou com papel químico), que deve estar <span class="anchor" onclick="mostrarExtra('posicionada-na-vertical')">posicionada na vertical</span> do ponto em que a bola sai da rampa.
+</p>
+<div id="posicionada-na-vertical" class="explicar" style="display: none;">
+    <button class="fechar" onclick="mostrarExtra('posicionada-na-vertical')">X</button>
+    <h4 class="explicar">Posição da caixa</h4>
+    <p>
+        A bola sai da rampa de forma a que a sua posição inicial segundo o eixo Ox é <span class="serif">0</span>, logo, a borda da caixa também tem de ter <span class="serif">x &equals; 0</span>.
+    </p>
+    <p>
+        Para isso, tem de estar na vertical do ponto onde a bola perde contacto com a rampa, como mostra a imagem abaixo.
+    </p>
+</div>
+<p>
+    O alcance da bola para um determinado lançamento será igual à distância entre o centro da marca deixada pela bola na caixa e a borda da caixa:
+</p>
+<p>
+    Para cada posição inicial, calculamos a velocidade mais provável, utilizando o tempo de passagem medido pela célula e o diâmetro do projétil, e o alcance mais provável. De seguida, determinamos a reta de melhor ajuste, por regressão linear, ao conjunto de pontos de ordenada <span class="serif">A</span> e abcissa <span class="serif">v<sub>0</sub></span>, <span class="serif">A &equals; f(v<sub>0</sub>)</span></span>.
+</p>
+<p>
+    O declive da reta obtida será igual a <span class="serif"><span class="pre-sqrt">&Sqrt;</span><span class="sqrt">(2h / g)</span></span> (<span class="anchor" onclick="mostrarExtra('Declive=2h/g')">Porquê?</span>).
+</p>
+<div id="Declive=2h/g" class="explicar" style="display: none;">
+    <button class="fechar" onclick="mostrarExtra('Declive=2h/g')">X</button>
+    <h4 class="explicar">Porquê?</h4>
+    <p>
+        A reta de melhor ajuste terá equação <span class="serif">y = mx + b</span>, sendo que <span class="serif">b &ap; 0</span>.
+    </p>
+    <p>
+        Logo, se <span class="serif">y</span> corresponder a <span class="serif">A</span> e <span class="serif">x</span> a <span class="serif">v<sub>0</sub></span>, então, temos que:
+    </p>
+    <div class="contas">
+        <span class="invi">&hArr;</span> A &equals; m &times; v<sub>0</sub> + 0
+    </div>
+    <p class="m5-bot m15-top">
+        Comparando esta equação com a que está acima, podemos perceber que:
+    </p>
+    <div class="contas">
+        <span class="invi">&hArr;</span> m &equals; <span class="pre-sqrt">&Sqrt;</span><span class="sqrt">(2h / g)</span>
+    </div>
+</div>
+<p>
+    Podemos comparar o declive experimental com o valor teórico, e, se estes forem significativamente diferentes, tentamos determinar possíveis fatores que tenham contribuido para o erro.
+</p>

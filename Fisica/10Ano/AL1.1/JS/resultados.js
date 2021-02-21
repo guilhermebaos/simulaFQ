@@ -1,6 +1,12 @@
 // Definir Constantes
-const COF = 0.1 // Coeficiente de Fricção entre o carrinho e o plano
+const cac = 0.1 // Coeficiente de Atrito Cinético máximo entre o carrinho e o plano
 const g = 9.81 // Aceleração Gravitaconal
+
+// Obter o DPR do ecrã
+const DPR = window.devicePixelRatio
+
+// Constantes para a Simulação
+const RESOLUCAO = 15                        // Tamanho do deltaT em cada update
 
 
 // Inicializar Variáveis Globais
@@ -12,10 +18,15 @@ let F10_AL11 = {
 }
 
 let massaCarrinho, massaCarrinhoResp
+let posCarrinho, posCarrinhoResp
 let angPlanoInclinado, angPlanoInclinadoResp
 let forcaAtrito, forcaAtritoResp
+let larguraTira, larguraTiraResp
+
+let tempoPassagemResp
 
 
+let simula, ctx
 function prepararResultados() {
     if (F10_AL11.preparado) {
         return
@@ -23,13 +34,18 @@ function prepararResultados() {
     
     // Selecionar Sliders
     massaCarrinho = document.getElementById('massaCarrinho')
+    posCarrinho = document.getElementById('posCarrinho')
     angPlanoInclinado = document.getElementById('angPlanoInclinado')
     forcaAtrito = document.getElementById('forçaAtrito')
+    larguraTira = document.getElementById('larguraTira')
     
     // Selecionar os Spans com os valores dos Sliders
     massaCarrinhoResp = document.getElementById('massaCarrinhoValue')
+    posCarrinhoResp = document.getElementById('posCarrinhoValue')
     angPlanoInclinadoResp = document.getElementById('angPlanoInclinadoValue')
-    forcaAtritoResp = document.getElementById('forçaAtritoValue')
+    forcaAtritoResp = document.getElementById('forcaAtritoValue')
+    larguraTiraResp = document.getElementById('larguraTiraValue')
+    tempoPassagemResp = document.getElementById('tempoPassagemValue')
     
     // Selecionar a div onde vai parar a curva
     F10_AL11.divCurva = document.getElementById('curva-Ec')
@@ -42,6 +58,11 @@ function prepararResultados() {
 
         atualizarAtritoMax()
     }
+    posCarrinho.oninput = () => {
+        let posCarrinhoValue = posCarrinho.value / 10
+    
+        posCarrinhoResp.innerText = `${posCarrinhoValue.toFixed(1)}`
+    }
     angPlanoInclinado.oninput = () => {
         let angPlanoInclinadoValue = angPlanoInclinado.value / 10
     
@@ -49,14 +70,47 @@ function prepararResultados() {
 
         atualizarAtritoMax()
     }
-    forcaAtrito.oninput = () => {
-        let forçaAtritoValue = forcaAtrito.value / 1000
+    larguraTira.oninput = () => {
+        let larguraTiraValue = larguraTira.value / 10
     
-        forcaAtritoResp.innerText = `${forçaAtritoValue.toFixed(3)}`
+        larguraTiraResp.innerText = `${larguraTiraValue.toFixed(1)}`
     }
 
+
+    // SIMULAÇÂO
+    
+    // Selecionar o Canvas e o seu context
+    canvasSim = document.getElementById('canvasSim')
+
+    ctx = canvasSim.getContext('2d')
+
+    ctx.scale(DPR, DPR)
+
+    // Criar o Objeto Simula
+    simula = new window.Simula(canvasSim, RESOLUCAO)
+
     F10_AL11.preparado = true
-    curva()
+    loopSimula()
+}
+
+
+// Corrige o tamanho do Canvas e corrige o DPR
+function fixDPR() {
+    // Usar variável global
+    if (simulaFQmenu.aberto !== 'resultados.html') return
+
+    // Altura do CSS
+    let altura_css = +getComputedStyle(canvasSim).getPropertyValue('height').slice(0, -2)
+    // Larura do CSS
+    let largura_css = +getComputedStyle(canvasSim).getPropertyValue('width').slice(0, -2)
+    
+    // Altera o tamanho do canvas
+    canvasSim.width = largura_css * DPR
+    canvasSim.height = altura_css * DPR
+
+    canvasSim.style.height = altura_css + 'px'
+
+    simula.novoTamanho()
 }
 
 
@@ -66,119 +120,46 @@ function atualizarAtritoMax() {
     let theta = angPlanoInclinado.value / 10 * (Math.PI / 180) // Em radianos
 
     let Fnormal = m * g * Math.cos(theta) // A Força normal é igual à componente do peso perpendicular à superfície
-    let FaMax = COF * Fnormal
+    let FaMax = cac * Fnormal
     let FaMaxConvertido = Math.floor(FaMax * 1000)
-
-    if (forcaAtrito.value > FaMaxConvertido) {
-        forcaAtritoResp.innerText = `${(FaMaxConvertido / 1000).toFixed(3)}`
-    }
 
     forcaAtrito.max = FaMaxConvertido
 }
 
 
-// Obter os Valores da Ec para várias distâncias percorridas
-function pontos() {
+// Reiniciar a Simulação
+function reiniciar() {
+    simula.reiniciar()
+}
 
-    // Inicializar variáveis
-    let m = massaCarrinho.value / 1000
-    let theta = angPlanoInclinado.value / 10 * (Math.PI / 180) // Em radianos
-    let Fa = forcaAtrito.value / 1000
 
-    let declive = m * g * Math.sin(theta) - Fa
+// Criar o loop da Simulação
+let ultimoTempo, graficos, resultadosSim
 
-    let Ec = 0
-
-    let xd = []
-    let yEc = []
-
-    // Calcular a Ec para d de 0 a 1 metros
-    for (let d = 0; d <= 1.01; d += 0.01) {
-        Ec = declive * d
-
-        xd.push(Math.round(d * 100))
-        yEc.push(Ec.toFixed(4))
+function loopSimula(tempo) {
+    if (ultimoTempo === undefined) {
+        ultimoTempo = tempo
+        fixDPR()
+        requestAnimationFrame(loopSimula)
+        reiniciar()
+        return
     }
 
-    return [xd, yEc]
-}
-
-
-// Traçar o gráfico Ec = f(d)
-function curva() {
-    // Remover o Canvas antigo
-    F10_AL11.divCurva.innerHTML = ''
-
-    // Obter e guardar os resultados
-    let resultados = pontos()
-    let xd = resultados[0]
-    let yEc = resultados[1]
-
-    // Criar o canvas on de vai estar a curva
-    canvasCurva = document.createElement('canvas')
-    canvasCurva.setAttribute('id', 'canvasCurva')
-    F10_AL11.divCurva.appendChild(canvasCurva)
-
-    // Criar o Chart Object
-    let graCurva = new Chart(canvasCurva, {
-        type: 'line',
-        data: {
-            labels: xd,
-            datasets: [{
-                data: yEc,
-                label: 'Energia Cinética do Carrinho',
-                borderColor: 'blue',
-                fill: false
-            }]
-        },
-        options: {
-            scales: {
-                xAxes: [{
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Distância Percorrida/ cm',
-                        fontColor: 'black',
-                        fontSize: 13,
-                        fontFamily: '"Arial", "sans-serif"'
-                    }
-                }],
-                yAxes: [{
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Energia Cinética do Carrinho/ J',
-                        fontColor: 'black',
-                        fontSize: 13,
-                        fontFamily: '"Arial", "sans-serif"'
-                    },
-                    ticks: {
-                        max: 16,
-                        min: 0
-                    }
-                }]
-            },
-            legend: {
-                display: false,
-            },
-            tooltips: {
-                callbacks: {
-                    title: function(tooltipItems, data) {
-                        let tooltipItem = tooltipItems[0]
-
-                        return 'Distância Percorrida: ' + tooltipItem.label + 'cm'
-                    },
-                    label: function(tooltipItem, data) {
-                        let value = Number(tooltipItem.value).toFixed(3)
+    let deltaTempo = tempo - ultimoTempo
+    ultimoTempo = tempo
     
-                        return 'Energia Cinética: ' + value + 'J'
-                    }
-                },
-                custom: function(tooltip) {
-                    if (!tooltip) return
-                    tooltip.displayColors = false
-                },
-            }
-        },
-    })
+    for (let i = 0; i < RESOLUCAO; i++) {
+        resultadosSim = simula.update(deltaTempo)
+        if (resultadosSim){
+            tempoPassagemResp.innerText = `${(larguraTira.value / 10 / resultadosSim * 1000).toFixed(2)}`
+            forcaAtritoResp.innerText = `${(forcaAtrito.value / 1000).toFixed(3)}`
+        }
+    }
+
+    ctx.clearRect(0, 0, canvasSim.width, canvasSim.height)
+    simula.desenhar(ctx)
+
+    requestAnimationFrame(loopSimula)
 }
 
-// Ideia: Permitir variar o COF máximo
+window.onresize = fixDPR

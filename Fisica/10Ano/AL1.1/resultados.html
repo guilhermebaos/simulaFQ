@@ -9,14 +9,14 @@
     <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
     <h4 class="explicar">Sugestões de Exercícios</h4>
     <p class="m5-bot">
-        Após alterares os valores, mas antes de veres o gráfico:
+        Antes de veres a tabela com a Intensidade da Força de Atrito:
     </p>
     <ul>
         <li>
-            Calcula a Energia Cinética que o Carrinho terá após percorrer 60cm.
+            Através de uma regressão linear utilizando os dados de 5 Simulações, determina a Intensidade da Força de Atrito, suposta constante, que está a atuar sobre o carrinho.
         </li>
         <li>
-            Determina o declive da Energia Cinética em função da distância percorrida.
+            Compara o valor obtido com o da Tabela abaixo e calcula o erro relativo.
         </li>
     </ul>
 </div>
@@ -28,27 +28,60 @@
         <input type="range" name="massaCarrinho" id="massaCarrinho" class="slider" min="100" max="2000" value="500"></div>
     </div>
     <div class="flex-slider">
+        <div><label for="posCarrinho">Posição do Carrinho</label></div>
+        <div><span id="posCarrinhoValue">50.0</span>cm<br>
+        <input type="range" name="posCarrinho" id="posCarrinho" class="slider" min="100" max="2000" value="500"></div>
+    </div>
+    <div class="flex-slider">
         <div><label for="angPlanoInclinado">Ângulo do Plano Inclinado</label></div>
         <div><span id="angPlanoInclinadoValue">20.0</span>º<br>
         <input type="range" name="angPlanoInclinado" id="angPlanoInclinado" class="slider" min="100" max="450" value="200"></div>
     </div>
     <div class="flex-slider">
+        <div><label for="larguraTira">Largura da Tira</label></div>
+        <div><span id="larguraTiraValue">2.0</span>cm<br>
+        <input type="range" name="larguraTira" id="larguraTira" class="slider" min="15" max="60" value="20"></div>
+    </div>
+    <div class="flex-slider m15-top">
         <div><label for="forçaAtrito">Força de Atrito</label></div>
-        <div><span id="forçaAtritoValue">0.100</span>N<br>
-        <input type="range" name="forçaAtrito" id="forçaAtrito" class="slider" min="0" max="460" value="200"></div>
+        <div><input type="range" name="forçaAtrito" id="forçaAtrito" class="slider" min="0" max="460" value="200"></div>
     </div>
 
-    <button id="fazer-curva-Ec" class="submit" onclick="curva()">Traçar a função <span class="serif">E<sub>c</sub> = f(d)</span></button>
+    <button class="submit" onclick="reiniciar()">Largar o Carrinho</button>
 </div>
 
-<div class="graf-overflow">
+<div class="graf-overflow m15">
     <div class="graf-container">
-        <div id="curva-Ec"></div>
+        <canvas id="canvasSim" class="simulacao" style="width: calc(100% - 4px);"></canvas>
     </div>
+</div>
+<p class="nota">
+    O ponto vermelho representa o feixe laser da célula fotoelétrica, indicando onde deve estar posicionada.
+</p>
+
+<div class="overflow m45" style="max-width: 72vw;">
+    <table class="resultados">
+        <tr class="vars">
+            <th scope="col">Tempo de Passagem pela Célula Fotoelétrica/ ms</th>
+        </tr>
+        <tr>
+            <td><span id="tempoPassagemValue">25.65</span></td>
+        </tr>
+    </table>
+</div>
+<div class="overflow m45" style="max-width: 72vw;">
+    <table class="resultados">
+        <tr class="vars">
+            <th scope="col">Intensidade da Força de Atrito/ N</th>
+        </tr>
+        <tr>
+            <td><span id="forcaAtritoValue">0.200</span></td>
+        </tr>
+    </table>
 </div>
 
 <div>
     <p class="nota">
-        A Força de Atrito máxima está limitada de acordo com a massa do Carrinho e a inclinação do Plano, de forma a termos resultados mais realistas (Coeficiente de Atrito Dinâmico Máximo &equals; 0.1).
+        A Força de Atrito máxima está limitada de acordo com a massa do Carrinho e a inclinação do Plano, de forma a termos resultados mais realistas (<a href="../../12Ano/AL1.2/index.html" rel="next">Coeficiente de Atrito Cinético</a> Máximo &equals; 0.1).
     </p>
 </div>

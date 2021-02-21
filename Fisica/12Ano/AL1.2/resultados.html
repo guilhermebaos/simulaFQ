@@ -36,7 +36,7 @@
     <p class="m0 m30-top">
         <span class="anchor" onclick="mostrarExtra('Materiais-Reais')">Materiais reais</span>
     </p>
-    <div id="Materiais-Reais" class="explicar" style="display: none;">
+    <div id="Materiais-Reais" class="explicar">
         <button class="fechar" onclick="mostrarExtra('Materiais-Reais')">X</button>
         <p>Material de que é feito o bloco:</p>
         <div class="flex-slider">
@@ -84,6 +84,11 @@
 </div>
 
 <div class="m15">
+    <div id="Novo-Bloco" class="centrada explicar explicar-no-border">
+        <p class="nota">
+            Após alterar o bloco, clique em 'Novo Bloco' &uparrow;
+        </p>
+    </div>
     <p class="m5-bot">Legenda dos Vetores:</p>
     <ul class="m0">
         <li>Azul &rarr; Força Aplicada</li>
@@ -120,7 +125,7 @@
     <table class="resultados">
         <tr class="vars">
             <th scope="col">Coeficiente de Atrito Estático</th>
-            <th scope="col">Coeficiente de Atrito Cniético</th>
+            <th scope="col">Coeficiente de Atrito Cinético</th>
         </tr>
         <tr>
             <td><span id="coefAtritoEstaticoValue">0.50</span></td>

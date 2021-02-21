@@ -1,0 +1,62 @@
+<h2 class="topico">Resultados</h2>
+<p>
+    Usa os Sliders para alterar os valores indicados, de forma a poderes ver diferentes resultados.
+</p>
+<p class="m0">
+    <span class="anchor" onclick="mostrarExtra('Sugestões-de-Exercícios')">Sugestões de Exercícios</span>
+</p>
+<div id="Sugestões-de-Exercícios" class="explicar">
+    <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
+    <h4 class="explicar">Sugestões de Exercícios</h4>
+    <p class="m5-bot">
+        Após alterares os valores, mas antes de abandonares a bola.
+    </p>
+    <ul>
+        <li>Faz uma previsão do alcance do próximo lançamento.</li>
+        <li>
+            Utilizando dados de vários lançamentos, faz uma regressão linear ao conjunto de pontos de ordenada <span class="serif">A</span> e abcissa <span class="serif">v<sub>0</sub></span>. Usa o valor do declive dessa reta para determinar o valor da aceleração gravítica.
+        </li>
+    </ul>
+</div>
+
+<div class="centrada m30">
+    <div class="flex-slider">
+        <div><label for="dEsfera">Diâmetro da Esfera</label></div>
+        <div><span id="dEsferaValue">2.0</span>cm<br>
+        <input type="range" name="dEsfera" id="dEsfera" class="slider" min="15" max="50" value="20"></div>
+    </div>
+    <div class="flex-slider">
+        <div><label for="hInicial">Altura Inicial</label></div>
+        <div><span id="hInicialValue">1.50</span>m<br>
+        <input type="range" name="hInicial" id="hInicial" class="slider" min="130" max="300" value="150"></div>
+    </div>
+    <div class="flex-slider">
+        <div><label for="hLanc">Altura de Lançamento</label></div>
+        <div><span id="hLancValue">1.00</span>m<br>
+        <input type="range" name="hLanc" id="hLanc" class="slider" min="50" max="125" value="100"></div>
+    </div>
+    <p class="nota">Todos os atritos foram desprezados</p>
+</div>
+
+<button class="submit" onclick="reiniciar()">Reiniciar a Simulação</button>
+<div class="graf-overflow m15">
+    <div class="graf-container">
+        <canvas id="canvasSim" class="simulacao" style="width: calc(100% - 4px);"></canvas>
+    </div>
+</div>
+<p class="nota">
+    O ponto vermelho representa o feixe laser da célula fotoelétrica, indicando onde deve estar posicionada.
+</p>
+
+<div class="overflow" style="max-width: 72vw; margin: auto;">
+    <table class="resultados">
+        <tr class="vars">
+            <th scope="col">Tempo de Passagem pela célula fotoelétrica/ ms</th>
+            <th scope="col">Alcance/ m</th>
+        </tr>
+        <tr>
+            <td><span id="tempoPassagemValue">6.38</span></td>
+            <td><span id="alcanceValue">1.41</span></td>
+        </tr>
+    </table>
+</div>
