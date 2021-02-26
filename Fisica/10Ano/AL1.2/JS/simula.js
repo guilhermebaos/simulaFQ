@@ -28,7 +28,7 @@ window.Simula = class Simula {
 
         this.dados = new Dados(this)
 
-        this.acabou = false
+        this.reiniciar()
     }
 
     // Reiniciar a Simulação
@@ -36,6 +36,7 @@ window.Simula = class Simula {
         // Simulação já acabou
         this.acabou = false
 
+        this.novoTamanho()
         this.inputs = this.juntarValores()
         this.simObjetos.forEach((objeto) => objeto.reiniciar())
         this.dados.reiniciar()
@@ -54,10 +55,12 @@ window.Simula = class Simula {
     // Juntar os valores para serem usados pela Simulação
     juntarValores() {
         return {
+            r: raioBola.value / 10,
+            rMax: raioBola.max / 10,
             hi: alturaInicial.value / 100,          // Altura Inicial em Metros
             hf : 0.03,                              // Altura 'Final'
             e: (elasticidade.value / 100) ** 0.5,   // Elasticidade em %
-            g: 9.80665                              // Aceleração Gravítica
+            g: 9.81                                 // Aceleração Gravítica
         }
     }
 

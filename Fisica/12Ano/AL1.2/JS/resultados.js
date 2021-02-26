@@ -206,7 +206,6 @@ function escolherMaterial(pos) {
 }
 
 
-
 // Reiniciar a Simulação
 function reiniciar() {
     intForca.value = intForca.min
@@ -233,8 +232,6 @@ function reiniciar() {
 // Novo Bloco inesperado
 function novoBloco() {
     reiniciar()
-    
-    console.log('Pog')
 
     if (F12_AL12.processandoAnim) return
 

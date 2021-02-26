@@ -4,9 +4,8 @@ const g = 9.81   // Aceleração Gravitaconal
 // Obter o DPR do ecrã
 const DPR = window.devicePixelRatio
 
-
-// Constantes para a Simulação
-const RESOLUCAO = 15                        // Tamanho do deltaT em cada update
+// Tamanho do deltaT em cada update (maior resolução, menor deltaT)
+const RESOLUCAO = 15                        
 
 
 // Inicializar Variáveis Globais
@@ -27,9 +26,7 @@ let alturasTabela
 let razaoResp
 let EmDissipadaResp
 
-let canvasBola, ctx, simula
-
-
+let canvasSim, ctx, simula
 function prepararResultados() {
     if (F10_AL12.preparado) {
         return
@@ -77,17 +74,19 @@ function prepararResultados() {
     // SIMULAÇÂO
     
     // Selecionar o Canvas e o seu context
-    canvasBola = document.getElementById('canvasBola')
+    canvasSim = document.getElementById('canvasSim')
 
-    ctx = canvasBola.getContext('2d')
+    ctx = canvasSim.getContext('2d')
 
     ctx.scale(DPR, DPR)
 
     // Criar o Objeto Simula
-    simula = new window.Simula(canvasBola, RESOLUCAO, alturaInicial.max)
+    simula = new window.Simula(canvasSim, RESOLUCAO, alturaInicial.max)
 
     F10_AL12.preparado = true
+
     loopSimula()
+    reiniciar()
 }
 
 
@@ -99,11 +98,11 @@ function fixDPR() {
     // Altura do CSS
     let altura_css = +getComputedStyle(canvasCurva).getPropertyValue('height').slice(0, -2) - 70
     // Larura do CSS
-    let largura_css = +getComputedStyle(canvasBola).getPropertyValue('width').slice(0, -2)
+    let largura_css = +getComputedStyle(canvasSim).getPropertyValue('width').slice(0, -2)
 
     // Altera o tamanho do canvas
-    canvasBola.width = largura_css * DPR
-    canvasBola.height = altura_css * DPR
+    canvasSim.width = largura_css * DPR
+    canvasSim.height = altura_css * DPR
 
     simula.novoTamanho()
 }
@@ -276,7 +275,7 @@ function loopSimula(tempo) {
         atualizarCurva(grafico, dados.tempo, dados.posY)
     }
 
-    ctx.clearRect(0, 0, canvasBola.width, canvasBola.height)
+    ctx.clearRect(0, 0, canvasSim.width, canvasSim.height)
     simula.desenhar(ctx)
 
     requestAnimationFrame(loopSimula)

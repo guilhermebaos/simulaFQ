@@ -31,14 +31,8 @@ function prepararResultados() {
 
     // Atualizar os Sliders
     forcaEletromotriz.oninput = () => {
-        let forçaEletromotrizValue = forcaEletromotriz.value / 10
-    
-        forcaEletromotrizResp.innerText = `${forçaEletromotrizValue.toFixed(1)}`
     }
     resistInterna.oninput = () => {
-        let resistInternaValue = resistInterna.value / 100
-    
-        resistInternaResp.innerText = `${resistInternaValue.toFixed(2)}`
     }
 
     F10_AL21.preparado = true
@@ -82,6 +76,11 @@ function pontos() {
 
 // Mostra os Valores Relacionados com a Queda da Esfera
 function curva() {
+    // Valores adicionais da Tabela
+    forcaEletromotrizResp.innerText = `${(forcaEletromotriz.value / 10).toFixed(1)}`
+
+    resistInternaResp.innerText = `${(resistInterna.value / 100).toFixed(2)}`
+
     // Remover o Canvas antigo
     F10_AL21.divCurva.innerHTML = ''
 

@@ -66,7 +66,6 @@ function prepararResultados() {
         if (dadosBtn.estado == '0') {
             dadosBtn.estado = '1'
             dadosBtn.innerText = 'Desligar'
-            // simula.dados.reiniciar()
             graficos = window.graficos(F12_AL13.divCurva)
             recolherDados = true
         } else {

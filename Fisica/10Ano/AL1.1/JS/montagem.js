@@ -126,6 +126,8 @@ export default class Montagem {
             y: -this.tira.altura * this.aTrig.cos
         }
 
+        this.tira.larguraCm = this.tira.largura * this.pxToCm
+
         // Laser
         this.laser.x = this.rampa.fimPx.xReal - this.OxPx * this.aTrig.cos + this.carrinho.dp.x + this.aTrig.sin * (this.carrinho.altura / 2 + this.tira.altura / 2)
         this.laser.y = this.simula.altura - this.OxPx * this.aTrig.sin + this.carrinho.dp.y - this.aTrig.cos * (this.carrinho.altura / 2 + this.tira.altura / 2)
@@ -141,7 +143,7 @@ export default class Montagem {
         }
 
         // Cinética
-        this.posicao = this.d + this.OxCm
+        this.posicao = this.d + this.OxCm - this.tira.larguraCm / 2
         this.velocidade = 0
         this.aceleracao = -this.g * this.aTrig.sin + this.fa / this.m
 
@@ -155,7 +157,7 @@ export default class Montagem {
             this.posicao += this.velocidade * deltaTempo + 0.5 * this.aceleracao * deltaTempo ** 2
             this.velocidade += this.aceleracao * deltaTempo
 
-            if (this.posicao <= this.OxCm && !this.devolveu) {
+            if (this.posicao + this.tira.larguraCm / 2 <= this.OxCm && !this.devolveu) {
                 this.devolveu = true
                 return Math.abs(this.velocidade)
             }

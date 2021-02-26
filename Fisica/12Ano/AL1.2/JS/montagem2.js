@@ -142,6 +142,14 @@ export default class Montagem2 {
         ctx.arc(xRoldana, yRoldana, this.roldana.raio, 0, 2 * Math.PI)
         ctx.fill()
 
+        // Unir a Roldana ao plano
+        ctx.strokeStyle = this.fio.cor
+        ctx.lineWidth = this.fio.largura
+        ctx.beginPath()
+        ctx.moveTo(xRoldana, yRoldana)
+        ctx.lineTo(xRoldana - this.roldana.raio - 1, yRoldana - this.roldana.raio + this.bloco.altura / 2 + 1)
+        ctx.stroke()
+
         // Desenhar o Fio
         let xFimFio = xRoldana + this.roldana.raio
         let yFimFio = yBloco + this.fio.comprimento + this.posicao
@@ -178,7 +186,7 @@ export default class Montagem2 {
 
 
 
-        // Desenhar os vetores Força, Fa e Aceleração
+        // Desenhar os vetores Força, Fa, Velocidade e Aceleração
 
         if (this.forca != 0) {
             this.simula.desenharVetor(xBloco, yBloco, xBloco + this.forca * this.tamanhoVetor, yBloco, this.corVetores.forca)

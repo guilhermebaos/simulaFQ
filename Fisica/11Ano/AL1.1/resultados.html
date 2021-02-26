@@ -13,10 +13,7 @@
     </p>
     <ul>
         <li>
-            Desprezando a Resistência do Ar, prevê se uma variação na Massa irá variar a aceleração gravítica obtida.
-        </li>
-        <li>
-            Desprezando a Resistência do Ar, calcula o tempo de queda da esfera entre as Células, sendo <span class="serif">g &equals; 9.81ms<sup>-2</sup></span>.
+            Se duplicarmos a distância entre as Células, o que irá acontecer ao tempo de queda entre as duas Células?
         </li>
     </ul>
     <p class="m5-bot">Após veres apenas a 1ª Tabela com os Resultados:</p>
@@ -25,9 +22,15 @@
             Calcula o valor experimental para a aceleração gravítica.
         </li>
         <li>
-            Calcula o erro relativo para a aceleração gravítica calculada, sendo <span class="serif">g &equals; 9.81ms<sup>-2</sup></span>.
+            Calcula o erro relativo para a aceleração gravítica calculada, sendo <span class="serif">g &equals; 9.81ms<sup>-2</sup></span> e confirma os valores obtidos na 2ª Tabela com os Resultados.
         </li>
     </ul>
+    <p class="m5-bot">
+        Se a Resistência do Ar for desprezável, a massa afetará o tempo de queda?
+    </p>
+    <p class="m5-bot">
+        Se a Resistência do Ar <strong>não</strong> for desprezável e se tanto o raio da Esfera como a Distância entre as Células forem máximas, a massa irá afetar o tempo de queda?
+    </p>
 </div>
 
 <div class="centrada m30-top">
@@ -38,13 +41,13 @@
     </div>
     <div class="flex-slider">
         <div><label for="raioEsfera">Raio da Esfera</label></div>
-        <div><span id="raioEsferaValue">2.0</span>cm<br>
-        <input type="range" name="raioEsfera" id="raioEsfera" class="slider" min="15" max="50" value="20"></div>
+        <div><span id="raioEsferaValue">4.0</span>cm<br>
+        <input type="range" name="raioEsfera" id="raioEsfera" class="slider" min="25" max="75" value="40"></div>
     </div>
     <div class="flex-slider">
         <div><label for="distCelulas">Distância entre as Células</label></div>
-        <div><span id="distCelulasValue">60</span>cm<br>
-        <input type="range" name="distCelulas" id="distCelulas" class="slider" min="40" max="120" value="60"></div>
+        <div><span id="distCelulasValue">40</span>cm<br>
+        <input type="range" name="distCelulas" id="distCelulas" class="slider" min="20" max="80" value="40"></div>
     </div>
     <div class="flex-slider">
         <div>Resistência do Ar</div>
@@ -52,24 +55,30 @@
             <div class="btn"><button id="calcularRAr" class="escolha-atual" onclick="mudarCalcularRAr(true)">Calcular <span class="serif">(R<sub>Ar</sub> &NotEqual; 0)</span></button></div>
             <div class="btn"><button id="desprezarRAr" class="escolha" onclick="mudarCalcularRAr(false)">Desprezar <span class="serif">(R<sub>Ar</sub> &equals; 0)</span></button></div>
         </div>
-    </div><br>
-
-    <button id="fazer-curva-Esfera" class="submit" onclick="curva()">Atualizar a Tabela dos Resultados Experimentais</button>
-
-    <div class="overflow m45-top">
-        <table class="resultados">
-            <tr class="vars">
-                <th scope="col">&Delta;t <sub>passagem pela 2ª Célula</sub>/ ms</th>
-                <th scope="col">&Delta;t <sub>queda entre as Células</sub>/ ms</th>
-                <th scope="col">v <sub>passagem pela 2ª Célula</sub>/ <span class="nbsp">ms<sup>-1</sup></span></th>
-            </tr>
-            <tr>
-                <td><span id="deltaT-celula2"></span></td>
-                <td><span id="deltaT-queda"></span></td>
-                <td><span id="velocidade-celula2"></span></td>
-            </tr>
-        </table>
     </div>
+
+    <button class="submit" onclick="reiniciar(true)">Largar a Esfera</button>
+</div>
+
+<div class="centrada m30">
+    <div id="canvas-container" class="canvas-container" style="max-width: 150px;">
+        <canvas id="canvasSim" class="simulacao"></canvas>
+    </div>
+</div>
+<div class="overflow m45-bot">
+    <table class="resultados">
+        <tr class="vars">
+            <th scope="col">&Delta;t <sub>passagem pela 2ª Célula</sub>/ ms</th>
+            <th scope="col">&Delta;t <sub>queda entre as Células</sub>/ ms</th>
+        </tr>
+        <tr>
+            <td><span id="deltaT-celula2">27.34</span></td>
+            <td><span id="deltaT-queda">285.9</span></td>
+        </tr>
+    </table>
+</div>
+
+<div>
     <div class="overflow m45-top">
         <table class="resultados">
             <tr class="vars">
@@ -77,65 +86,17 @@
                 <th scope="col">Erro Relativo (%)</th>
             </tr>
             <tr>
-                <td><span id="gravidade-experimental"></span></td>
-                <td><span id="erro-gravidade-experimental"></span></td>
+                <td><span id="gravidade-experimental">10.24</span></td>
+                <td><span id="erro-gravidade-experimental">4.3</span></td>
             </tr>
         </table>
     </div>
 </div>
 <div class="nota m15-top">
     <p>
-        Valor Tabelado para o g: <span class="nbsp">9.80665 ms<sup>-2</sup></span>
+        Valor Tabelado para o g: <span class="nbsp">9.81 ms<sup>-2</sup></span>
     </p>
     <p>
         A Resistência do Ar foi calculada de forma aproximada usando 0.5 como o Coeficiente de Resistência Aerodinâmica da Esfera.
     </p>
-</div>
-<p>
-    <span class="anchor" onclick="mostrarExtra('gráficos-extra')">Ver Gráficos Extra - Leis x(t), v(t), a(t) e j(t)</span>
-</p>
-<div id="gráficos-extra" class="explicar">
-    <button class="fechar" onclick="mostrarExtra('gráficos-extra')">X</button>
-    <p class="m15-top">
-        O Eixo usado tem origem na posição incial da esfera e o sentido do Movimento
-    </p>
-    <ul>
-        <li><span class="anchor" onclick="mostrarExtra('gráfico-extra-xt')">Ver Gráfico x(t) - Posição-Tempo</span></li>
-        <li><span class="anchor" onclick="mostrarExtra('gráfico-extra-vt')">Ver Gráfico v(t) - Velocidade-Tempo</span></li>
-        <li><span class="anchor" onclick="mostrarExtra('gráfico-extra-at')">Ver Gráfico a(t) - Aceleração-Tempo</span></li>
-        <li><span class="anchor" onclick="mostrarExtra('gráfico-extra-jt')">Ver Gráfico j(t) - Jerk-Tempo</span></li>
-    </ul>
-    
-    <div id="gráfico-extra-xt" class="explicar explicar-no-border">
-        <button class="fechar" onclick="mostrarExtra('gráfico-extra-xt')">X</button>
-        <div class="graf-overflow m30-top">
-            <div class="graf-container">
-                <div id="curva-xt"></div>
-            </div>
-        </div>
-    </div>
-    <div id="gráfico-extra-vt" class="explicar explicar-no-border">
-        <button class="fechar" onclick="mostrarExtra('gráfico-extra-vt')">X</button>
-        <div class="graf-overflow m30-top">
-            <div class="graf-container">
-                <div id="curva-vt"></div>
-            </div>
-        </div>
-    </div>
-    <div id="gráfico-extra-at" class="explicar explicar-no-border">
-        <button class="fechar" onclick="mostrarExtra('gráfico-extra-at')">X</button>
-        <div class="graf-overflow m30-top">
-            <div class="graf-container">
-                <div id="curva-at"></div>
-            </div>
-        </div>
-    </div>
-    <div id="gráfico-extra-jt" class="explicar explicar-no-border">
-        <button class="fechar" onclick="mostrarExtra('gráfico-extra-jt')">X</button>
-        <div class="graf-overflow m30-top">
-            <div class="graf-container">
-                <div id="curva-jt"></div>
-            </div>
-        </div>
-    </div>
 </div>

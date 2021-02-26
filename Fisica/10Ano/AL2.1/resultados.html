@@ -9,11 +9,11 @@
     <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
     <h4 class="explicar">Sugestões de Exercícios</h4>
     <p class="m5-bot">
-        Após alterares os valores, mas antes de veres o gráfico:
+        Após alterares os valores e veres o gráfico:
     </p>
     <ul>
         <li>
-            Calcula a diferença de potencial nos terminais da Pilha quando esta é percorrida por uma Corrente de 0.500A.
+            Determina a Força Eletromotriz da Pilha e a sua Resistência Interna.
         </li>
     </ul>
 </div>
@@ -21,13 +21,11 @@
 <div class="centrada m30">
     <div class="flex-slider">
         <div><label for="forçaEletromotriz">Força Eletromotriz</label></div>
-        <div><span id="forçaEletromotrizValue">9,0</span>V<br>
-        <input type="range" name="forçaEletromotriz" id="forçaEletromotriz" class="slider" min="30" max="100" value="90"></div>
+        <div><input type="range" name="forçaEletromotriz" id="forçaEletromotriz" class="slider" min="30" max="100" value="90"></div>
     </div>
     <div class="flex-slider">
         <div><label for="resistInterna">Resistência Interna</label></div>
-        <div><span id="resistInternaValue">3,00</span>&ohm;<br>
-        <input type="range" name="resistInterna" id="resistInterna" class="slider" min="1" max="500" value="300"></div>
+        <div><input type="range" name="resistInterna" id="resistInterna" class="slider" min="1" max="500" value="300"></div>
     </div>    
 
     <button id="fazer-curva-Pilha" class="submit" onclick="curva()">Traçar a função <span class="serif">U = f(I)</span></button>
@@ -37,4 +35,17 @@
     <div class="graf-container">
         <div id="curva-Pilha"></div>
     </div>
+</div>
+
+<div class="overflow" style="max-width: 72vw; margin: auto;">
+    <table class="resultados">
+        <tr class="vars">
+            <th scope="col">Força Eletromotriz/ V</th>
+            <th scope="col">Resistência Interna/ &ohm;</th>
+        </tr>
+        <tr>
+            <td><span id="forçaEletromotrizValue">9.0</span></td>
+            <td><span id="resistInternaValue">3.00</span></td>
+        </tr>
+    </table>
 </div>

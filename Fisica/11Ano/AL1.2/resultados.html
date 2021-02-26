@@ -10,10 +10,12 @@
     <button class="fechar" onclick="mostrarExtra('Sugestões-de-Exercícios')">X</button>
     <h4 class="explicar">Sugestões de Exercícios</h4>
     <p class="m5-bot">
-        Após alterares os valores, mas antes de veres o gráfico:
+        Após alterares os valores, mas antes de fazeres a Simulação:
     </p>
     <ul>
-        <li>Calcula a aceleração adquirida pelo Carrinho.</li>
+        <li>
+            Calcula a aceleração adquirida pelo Carrinho, imediatamente após ser largado.
+        </li>
         <li>Calcula o instante no qual o Corpo suspenso atinge o solo.</li>
         <li>Calcula o módulo da velocidade máxima atingida pelo carrinho.</li>
     </ul>
@@ -38,39 +40,53 @@
     <div class="flex-slider">
         <div><label for="forçaAtrito">Resultante das Forças de Atrito</label></div>
         <div><span id="forçaAtritoValue">0.000</span>N<br>
-        <input type="range" name="forçaAtrito" id="forçaAtrito" class="slider" min="0" max="490" value="0"></div>
+        <input type="range" name="forçaAtrito" id="forçaAtrito" class="slider" min="0" max="2943" value="0"></div>
     </div>
 
-    <button id="fazer-curva-Velocidade-Tempo" class="submit" onclick="curva()">Traçar o Gráfico Velocidade-Tempo</button>
+    <button class="submit" onclick="reiniciar(true)">Largar o Bloco</button>
+</div>
+
+<div class="m15">
+    <p class="m5-bot">Legenda dos Vetores:</p>
+    <ul class="m0">
+        <li>Verde &rarr; Velocidade</li>
+        <li>Laranja &rarr; Aceleração</li>
+    </ul>
+</div>
+
+<div id="canvas-container" class="canvas-container">
+    <canvas id="canvasSim" class="simulacao"></canvas>
 </div>
 
 <div class="graf-overflow m30-top">
+    <p>Sistema de aquisição de dados: <button id="interruptor" class="submit">Ligar</button></p>
+
     <div class="graf-container">
         <div id="curva-vt"></div>
     </div>
+    <p class="nota">
+        Para veres o valor correspondente a um ponto, desliga o sistema e coloca o rato por cima do ponto
+    </p>
 </div>
 
 <div class="centrada">
     <div class="overflow" style="max-width: 72vw;">
         <table class="resultados">
             <tr class="vars">
-                <th scope="col">a <sub>1ª Zona</sub></th>
-                <th scope="col">t <sub>Corpo Suspenso Atinge o Solo</sub></th>
-                <th scope="col">a <sub>2ª Zona</sub></th>
+                <th scope="col">a <sub>1ª Zona</sub> / ms<sup>&minus;2</sup></th>
+                <th scope="col">t <sub>Corpo Suspenso Atinge o Solo</sub> / s</th>
+                <th scope="col">a <sub>2ª Zona</sub> / ms<sup>&minus;2</sup></th>
             </tr>
             <tr>
-                <td><span id="aZona1Value">6.538</span></td>
-                <td><span id="corpoAtingiuSoloTValue">6.538</span></td>
-                <td><span id="aZona2Value">0.000</td>
+                <td><span id="aZona1Value">6.54</span></td>
+                <td><span id="corpoAtingiuSoloTValue">0.39</span></td>
+                <td><span id="aZona2Value">0.00</td>
             </tr>
         </table>
     </div>
 </div>
 <div class="nota m30-top">
     <p class="m5">
-        O módulo da Resultante das Forças de Atrito é suposto constante e está limitado de modo a que haja Movimento, isto é, o Peso do Corpo Suspenso é muito superior, em módulo, à Força de Atrito.
-    </p>
-    <p class="m5">
-        Esta Resultante inclui não só a Força de Atrito entre o Carrinho e o Plano, mas também a Resistência do Ar e Atritos que possam existir na Roldana.
+        A Resultante das Forças de Atrito é suposta constante e tem uma intensidade limitada de modo a que haja Movimento, isto é, o Peso do Corpo Suspenso é muito superior, em módulo, à Força de Atrito.
     </p>
 </div>

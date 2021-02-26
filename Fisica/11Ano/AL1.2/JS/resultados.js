@@ -1,6 +1,15 @@
 // Definir Constantes
 const g = 9.81      // Aceleração Gravitaconal
-const CAM = 0.1     // Razão máxima entre a Resultante das Forças de Atrito e o Peso do Corpo Suspenso
+const CAM = 0.3     // Razão máxima entre a Resultante das Forças de Atrito e o Peso do Corpo Suspenso
+                 
+// Obter o DPR do ecrã
+const DPR = window.devicePixelRatio
+   
+// Constantes a passar para a Simulação
+const RESOLUCAO = 15   
+const CONSTANTES = {
+    g: g
+}
 
 
 // Inicializar Variáveis Globais
@@ -20,8 +29,11 @@ let aZona1Resp
 let corpoAtingiuSoloTResp
 let aZona2Resp
 
+// Ligar ou desligar a aquisição de dados
+let dadosBtn
+let recolherDados = false
 
-
+let canvasSim, ctx, simula
 function prepararResultados() {
     if (F11_AL12.preparado) {
         return
@@ -46,6 +58,24 @@ function prepararResultados() {
     aZona1Resp = document.getElementById('aZona1Value')
     corpoAtingiuSoloTResp = document.getElementById('corpoAtingiuSoloTValue')
     aZona2Resp = document.getElementById('aZona2Value')
+    
+    // Botão associado ao recolher dados
+    dadosBtn = document.getElementById('interruptor')
+    dadosBtn.estado = '0'
+
+    dadosBtn.onclick = () => {
+        if (dadosBtn.estado == '0') {
+            dadosBtn.estado = '1'
+            dadosBtn.innerText = 'Desligar'
+            simula.dados.reiniciar()
+            graficos = window.graficos(F11_AL12.divCurva)
+            recolherDados = true
+        } else {
+            dadosBtn.estado = '0'
+            dadosBtn.innerText = 'Ligar'
+            recolherDados = false
+        }
+    }
 
     // Atualizar os Sliders
     massaCarrinho.oninput = () => {
@@ -54,6 +84,7 @@ function prepararResultados() {
         massaCarrinhoResp.innerText = `${massaCarrinhoValue.toFixed(2)}`
 
         atualizarAtritoMax()
+        reiniciar()
     }
     massaCorpoSuspenso.oninput = () => {
         let massaCorpoSuspensoValue = massaCorpoSuspenso.value / 100
@@ -61,20 +92,37 @@ function prepararResultados() {
         massaCorpoSuspensoResp.innerText = `${massaCorpoSuspensoValue.toFixed(2)}`
 
         atualizarAtritoMax()
+        reiniciar()
     }
     alturaCorpoSuspenso.oninput = () => {
         let alturaCorpoSuspensoValue = alturaCorpoSuspenso.value / 100
     
         alturaCorpoSuspensoResp.innerText = `${alturaCorpoSuspensoValue.toFixed(2)}`
+        reiniciar()
     }
     forcaAtrito.oninput = () => {
         let forçaAtritoValue = forcaAtrito.value / 1000
     
         forcaAtritoResp.innerText = `${forçaAtritoValue.toFixed(3)}`
+        reiniciar()
     }
+    
+
+    // SIMULAÇÂO
+    
+    // Selecionar o Canvas e o seu context
+    canvasSim = document.getElementById('canvasSim')
+
+    ctx = canvasSim.getContext('2d')
+
+    ctx.scale(DPR, DPR)
+
+    // Criar o Objeto Simula
+    simula = new window.Simula(canvasSim, RESOLUCAO, CONSTANTES)
 
     F11_AL12.preparado = true
-    curva()
+    loopSimula()
+    reiniciar()
 }
 
 
@@ -84,7 +132,7 @@ function atualizarAtritoMax() {
 
     // Limitar o Atrito para que a Força Resultante realize trabalho Positivo sobre o Carrinho (para isso, P >> Fa, caso contrário o Carrinho poderia ficar parado)
     let Fresultante = mCS * g               // Força Resultante do Sistema Ideal = Peso do Corpo Suspenso
-    let FaMax = CAM * Fresultante           // A Força de Atrito não poderá ser maior do que 0.1 * o Peso do Corpo Suspenso
+    let FaMax = CAM * Fresultante           // A Força de Atrito não poderá ser maior do que CAM * o Peso do Corpo Suspenso
 
     let FaMaxConvertido = Math.floor(FaMax * 1000)
 
@@ -96,150 +144,72 @@ function atualizarAtritoMax() {
 }
 
 
-// Lei v(t)
-function leiVelocidade(v0, a0, tempo) {
-    return v0 + a0 * tempo
+// Corrige o tamanho do Canvas e corrige o DPR
+function fixDPR() {
+    // Usar variável global
+    if (simulaFQmenu.aberto !== 'resultados.html') return
+
+    // Altura do CSS
+    let altura_css = +getComputedStyle(canvasSim).getPropertyValue('height').slice(0, -2)
+    // Larura do CSS
+    let largura_css = +getComputedStyle(canvasSim).getPropertyValue('width').slice(0, -2)
+
+    // Altera o tamanho do canvas
+    canvasSim.width = largura_css * DPR
+    canvasSim.height = altura_css * DPR
+
+    simula.novoTamanho()
 }
 
 
-// Lei x(t)
-function leiPosicao(x0, v0, a0, tempo){
-    return x0 + v0 * tempo + 0.5 * a0 * (tempo ** 2)
+// Reiniciar a Simulação
+function reiniciar(start=false) {
+    let m = massaCarrinho.value / 100
+    let mSusp = massaCorpoSuspenso.value / 100
+    let hSusp = alturaCorpoSuspenso.value / 100
+    let fa = forcaAtrito.value / 1000
+
+    let a1 = (mSusp * g - fa) / (m + mSusp)
+    let t = (2 * hSusp / a1) ** 0.5
+    let a2 = -fa / m
+
+    aZona1Resp.innerText = `${a1.toFixed(2)}`
+    corpoAtingiuSoloTResp.innerText = `${t.toFixed(2)}`
+    aZona2Resp.innerText = `${a2.toFixed(2)}`
+
+    if (start && recolherDados) graficos = window.graficos(F11_AL12.divCurva)
+
+    simula.reiniciar(start)
 }
 
 
-// Calcular os Pontos dos Gráfico vt e valores Tabela Resultados
-function pontos() {
-    // Declarar variáveis e valores iniciais
-    let mCa = massaCarrinho.value / 100
-    let mCS = massaCorpoSuspenso.value / 100
-    let h = alturaCorpoSuspenso.value / 100
+// Criar o loop da Simulação
+let ultimoTempo, graficos
 
-    let mSIST = mCa + mCS
-
-    let PCS = mCS * g
-    let Fa = forcaAtrito.value / 1000
-    let Fr = PCS - Fa
-
-    let t = 0
-    let x = 0
-    let v = 0
-    let a = Fr / mSIST
-
-    let tim = [t]
-    let pos = [x]
-    let vel = [v]
-    let acc = [a]
-    let deltaT = 0.01
-
-    let corpoAtingiuSolo = false
-    let corpoAtingiuSoloT = 0
-
-    while (true) {
-        t += deltaT
-
-        x = leiPosicao(x, v, a, deltaT)                 // Calcular o Xf de acrdo com o Xf e Vf do instante anterior e a aceleração deste
-        v = leiVelocidade(v, a, deltaT)                 // Calcular o Vf de acordo com o Vf do instante anterior e a aceleração deste
-
-        if (x >= h && !corpoAtingiuSolo) {              // O Corpo Suspenso atinge o Solo
-            Fr -= PCS                                   // Altera-se a força Resultante do Sistema
-            aZona1Resp.innerText = `${a.toFixed(3)}`
-            corpoAtingiuSolo = true
-            corpoAtingiuSoloT = t
-            corpoAtingiuSoloTResp.innerText = `${t.toFixed(3)}`
-            a = Fr / mSIST                              // ALtera-se a aceleração do Carrinho
-            aZona2Resp.innerText = `${a.toFixed(3)}`
-        } else if (corpoAtingiuSolo && t > 7 && t > corpoAtingiuSoloT + 2) {
-            break
-        }
-
-        if (v < 0) {v = 0}
-
-        // Guardar os valores
-        tim.push(t.toFixed(3))
-        pos.push(x)
-        vel.push(v)
-        acc.push(a)
+function loopSimula(tempo) {
+    if (ultimoTempo === undefined) {
+        ultimoTempo = tempo
+        fixDPR()
+        if (!graficos) graficos = window.graficos(F11_AL12.divCurva)
+        requestAnimationFrame(loopSimula)
+        return
     }
-    return [tim, pos, vel, acc]
-}
 
-
-// Traçar o gráfico Velocidade-Tempo
-function curva() {
-    // Remover o Canvas antigo
-    F11_AL12.divCurva.innerHTML = ''
-
-    // Obter e guardar os resultados
-    let resultados = pontos()
-    let tem = resultados[0]
-    let vel = resultados[2]
-
-    // Criar o canvas onde vai estar a curva
-    canvasCurva = document.createElement('canvas')
-    canvasCurva.setAttribute('id', 'canvasCurva')
-    F11_AL12.divCurva.appendChild(canvasCurva)
-
-    // Criar o Chart Object
-    let graCurva = new Chart(canvasCurva, {
-        type: 'line',
-        data: {
-            labels: tem,
-            datasets: [{
-                data: vel,
-                label: 'Módulo da Velocidade do Carrinho',
-                borderColor: 'blue',
-                fill: false
-            }]
-        },
-        options: {
-            scales: {
-                xAxes: [{
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Tempo/ s',
-                        fontColor: 'black',
-                        fontSize: 13,
-                        fontFamily: '"Arial", "sans-serif"'
-                    }
-                }],
-                yAxes: [{
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Módulo da Velocidade do Carrinho/ m/s',
-                        fontColor: 'black',
-                        fontSize: 13,
-                        fontFamily: '"Arial", "sans-serif"'
-                    },
-                    ticks: {
-                        max: 8,
-                        min: 0
-                    }
-                }]
-            },
-            legend: {
-                display: false,
-            },
-            tooltips: {
-                callbacks: {
-                    title: function(tooltipItems, data) {
-                        let tooltipItem = tooltipItems[0]
-
-                        return 'Tempo: ' + tooltipItem.label + 's'
-                    },
-                    label: function(tooltipItem, data) {
-                        let value = Number(tooltipItem.value).toFixed(3)
+    let deltaTempo = tempo - ultimoTempo
+    ultimoTempo = tempo
     
-                        return 'Velocidade: ' + value + 'm/s'
-                    }
-                },
-                custom: function(tooltip) {
-                    if (!tooltip) return
-                    tooltip.displayColors = false
-                },
-            }
-        },
-    })
+    let dados
+    for (let i = 0; i < RESOLUCAO; i++) {
+        dados = simula.update(deltaTempo)
+    }
+    if (dados && recolherDados) {
+        window.atualizarGraficos(graficos, dados[0], dados.slice(1, dados.lenght))
+    }
+
+    ctx.clearRect(0, 0, canvasSim.width, canvasSim.height)
+    simula.desenhar(ctx)
+
+    requestAnimationFrame(loopSimula)
 }
 
-// Ideia: Mostrar os Gráficos x-t e a-t
+window.onresize = fixDPR
