@@ -5,7 +5,7 @@ const g = 9.80665   // Aceleração Gravitaconal
 const DPR = window.devicePixelRatio
 
 // Constantes para a Simulação
-const RESOLUCAO = 15                        // Tamanho do deltaT em cada update
+const RESOLUCAO = 25                        // Tamanho do deltaT em cada update
 
 
 // Inicializar Variáveis Globais
@@ -46,16 +46,22 @@ function prepararResultados() {
         let dEsferaValue = dEsfera.value / 10
 
         dEsferaResp.innerText = `${dEsferaValue.toFixed(1)}`
+
+        reiniciar()
     }
     hInicial.oninput = () => {
         let hInicialValue = hInicial.value / 100
     
         hInicialResp.innerText = `${hInicialValue.toFixed(2)}`
+
+        reiniciar()
     }
     hLanc.oninput = () => {
         let hLancValue = hLanc.value / 100
     
         hLancResp.innerText = `${hLancValue.toFixed(2)}`
+
+        reiniciar()
     }
 
 
@@ -69,7 +75,7 @@ function prepararResultados() {
     ctx.scale(DPR, DPR)
 
     // Criar o Objeto Simula
-    simula = new window.Simula(canvasSim, RESOLUCAO)
+    simula = new window.Simula(canvasSim)
 
     F12_AL11.preparado = true
     loopSimula()
@@ -97,8 +103,8 @@ function fixDPR() {
 
 
 // Reiniciar a Simulação
-function reiniciar() {
-    simula.reiniciar()
+function reiniciar(start=false) {
+    simula.reiniciar(start)
 }
 
 
@@ -114,7 +120,7 @@ function loopSimula(tempo) {
         return
     }
 
-    let deltaTempo = tempo - ultimoTempo
+    let deltaTempo = (tempo - ultimoTempo) / 1000 / RESOLUCAO
     ultimoTempo = tempo
     
     for (let i = 0; i < RESOLUCAO; i++) {

@@ -2,24 +2,27 @@ import Montagem from '../JS/montagem.js'
 
 // Classe que vai executar a Simulação
 window.Simula = class Simula {
-    constructor(canvas, resolucao) {
+    constructor(canvas) {
         // Guardar o canvas
         this.canvas = canvas
 
-        // Resolução (Tamanho do deltaT) e Updates por Frame
-        this.resolucao = resolucao
+        // Primeiros Inputs
+        this.inputs = this.juntarValores()
 
-        this.reiniciar()
+        // Criar o Objeto Montagem
+        this.montagem = new Montagem(this)
 
         // Tamanho da Simulação
         this.novoTamanho()
+        
+        this.reiniciar()
     }
 
     // Reiniciar a Simulação
-    reiniciar() {
+    reiniciar(start=false) {
         this.inputs = this.juntarValores()
 
-        this.montagem = new Montagem(this)
+        this.montagem.reiniciar(start)
     }
 
     // Atualizar o tamanho do canvas
@@ -47,9 +50,6 @@ window.Simula = class Simula {
     }
 
     update(deltaTempo) {
-        deltaTempo /= 1000
-        deltaTempo /= this.resolucao
-
         return this.montagem.update(deltaTempo)
     }
 

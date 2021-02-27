@@ -6,12 +6,12 @@ window.Simula = class Simula {
     constructor(canvas, resolucao, hiMax) {
         // Guardar o canvas
         this.canvas = canvas
-        
-        // Alturas Iniciais Mínima e Máxima
-        this.hiMax = hiMax
 
         // Resolução (Tamanho do deltaT) e Updates por Frame
         this.resolucao = resolucao
+        
+        // Alturas Iniciais Mínima e Máxima
+        this.hiMax = hiMax
 
         // Tamanho da Simulação
         this.novoTamanho()
@@ -22,23 +22,23 @@ window.Simula = class Simula {
         // Objetos da Simulação
         this.bola = new Bola(this)
 
-        this.simObjetos = [
-            this.bola
-        ]
-
         this.dados = new Dados(this)
 
         this.reiniciar()
     }
 
     // Reiniciar a Simulação
-    reiniciar() {
+    reiniciar(start=false) {
         // Simulação já acabou
         this.acabou = false
 
+        // Começar a Simulação
+        this.start = start
+
         this.novoTamanho()
         this.inputs = this.juntarValores()
-        this.simObjetos.forEach((objeto) => objeto.reiniciar())
+        
+        this.bola.reiniciar()
         this.dados.reiniciar()
     }
 
@@ -65,14 +65,11 @@ window.Simula = class Simula {
     }
 
     update(deltaTempo) {
-        if (this.acabou) return
-
-        deltaTempo /= 1000
-        deltaTempo /= this.resolucao
+        if (this.acabou || !this.start) return
 
         let dados = this.dados.update(deltaTempo)
 
-        this.simObjetos.forEach((objeto) => objeto.update(deltaTempo))
+        this.bola.update(deltaTempo)
 
         if (dados) {
             return this.dados.dadosObtidos
@@ -82,6 +79,6 @@ window.Simula = class Simula {
     }
 
     desenhar(ctx) {
-        this.simObjetos.forEach((objeto) => objeto.desenhar(ctx))
+        this.bola.desenhar(ctx)
     }
 }

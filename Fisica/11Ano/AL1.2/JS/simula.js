@@ -95,7 +95,6 @@ window.Simula = class Simula {
     // Juntar os valores para serem usados pela Simulação
     juntarValores() {
         return {
-            g: this.constantes.g * 100,             // Aceleração Gravítica
             m: massaCarrinho.value / 100,           // Massa do carrinho em kg
             mMax: massaCarrinho.max / 100,          // Massa Máxima do carrinho
             mSusp: massaCorpoSuspenso.value / 100,  // Massa do Corpo Suspenso
@@ -107,9 +106,6 @@ window.Simula = class Simula {
     }
 
     update(deltaTempo) {
-        deltaTempo /= 1000
-        deltaTempo /= this.resolucao
-
         this.montagem.update(deltaTempo)
 
         let dados = this.dados.update(deltaTempo)

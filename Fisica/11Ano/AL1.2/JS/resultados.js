@@ -195,7 +195,7 @@ function loopSimula(tempo) {
         return
     }
 
-    let deltaTempo = tempo - ultimoTempo
+    let deltaTempo = (tempo - ultimoTempo) / 1000 / RESOLUCAO
     ultimoTempo = tempo
     
     let dados

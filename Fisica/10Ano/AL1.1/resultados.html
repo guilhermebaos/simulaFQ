@@ -13,12 +13,18 @@
     </p>
     <ul>
         <li>
-            Através de uma regressão linear utilizando os dados de 5 Simulações, determina a Intensidade da Força de Atrito, suposta constante, que está a atuar sobre o carrinho.
+            Utilizando os dados de 5 Simulações, relaciona a Energia Cinética do Carrinho com a distância percorrida por ele através de uma regressão linear.
+        </li>
+        <li>
+            Utilizando o declive da reta obtida, determina a Intensidade da Força de Atrito, suposta constante, que está a atuar sobre o carrinho.
         </li>
         <li>
             Compara o valor obtido com o da Tabela abaixo e calcula o erro relativo.
         </li>
     </ul>
+    <p class="nota">
+        Geralmente, quanto mais pequena for a Força de Atrito, maior o erro relativo!
+    </p>
 </div>
 
 <div class="centrada m30">
@@ -47,7 +53,7 @@
         <div><input type="range" name="forçaAtrito" id="forçaAtrito" class="slider" min="0" max="460" value="200"></div>
     </div>
 
-    <button class="submit" onclick="reiniciar()">Largar o Carrinho</button>
+    <button class="submit" onclick="reiniciar(true)">Largar o Carrinho</button>
 </div>
 
 <div class="graf-overflow m15">
@@ -65,7 +71,7 @@
             <th scope="col">Tempo de Passagem pela Célula Fotoelétrica/ ms</th>
         </tr>
         <tr>
-            <td><span id="tempoPassagemValue">25.65</span></td>
+            <td><span id="tempoPassagemValue">11.50</span></td>
         </tr>
     </table>
 </div>
@@ -82,7 +88,7 @@
 
 <div>
     <p class="nota">
-        A velocidade de passagem pela célula é suposta constante e igual à velocidade do carrinho quando o feixe está a meio da tira opaca.
+        A posição do carrinho é a distância entre a célula fotoelétrica e o centro da tira opaca, medida paralelamente ao plano inclinado.
     </p>
     <p class="nota">
         A Força de Atrito máxima está limitada de acordo com a massa do Carrinho e a inclinação do Plano, de forma a termos resultados mais realistas (<a href="../../12Ano/AL1.2/index.html" rel="next">Coeficiente de Atrito Cinético</a> Máximo &equals; 0.1).

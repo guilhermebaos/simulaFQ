@@ -118,9 +118,6 @@ window.Simula = class Simula {
     }
 
     update(deltaTempo) {
-        deltaTempo /= 1000
-        deltaTempo /= this.resolucao
-
         let dados = this.dados.update(deltaTempo)
 
         this.simObjetos.forEach((objeto) => objeto.update(deltaTempo))

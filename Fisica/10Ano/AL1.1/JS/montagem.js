@@ -11,25 +11,25 @@ export default class Montagem {
         this.rampa = {
             largura: 10,
             fim: 0.9,                   // Posição x do início da rampa
-            desfazamento: 0.1,
+            razaoDesfazamento: 0.1,
             cor: 'rgb(10, 100, 230)',   // em função do tamanho do canvas
         }
 
         // Definições do Carrinho
         this.carrinho = {
-            largura: 100,
-            altura: 50,
+            larguraMax: 100,
+            alturaMax: 50,
             cor: 'rgb(255, 130, 35)',
 
             // Em função da largura do Carrinho
-            raioRodas: 0.12,
-            distRodas: 0.3,
+            razaoRaioRodas: 0.12,
+            razaoDistRodas: 0.3,
             corRodas: 'black',
         }
 
         // Definições da Tira opaca
         this.tira = {
-            altura: 0.60,
+            razaoAltura: 0.60,
             cor: 'grey'
         }
 
@@ -42,19 +42,23 @@ export default class Montagem {
         // Parede no fim da rampa
         this.parede = {
             largura: 20,
-            altura: 2,
+            razaoAltura: 2,
             cor: 'black'
         }
 
         // Início do eixo Ox, em função da largura do carrinho
-        this.OxCm = 0.75
+        this.razaoOxCm = 0.75
         
         this.reiniciar()
     }
 
     // Reiniciar a Simulação
-    reiniciar() {
-        // Já devolveu a velocidade de passagem pela célula?
+    reiniciar(start=false) {
+
+        // Lançar o Carrinho
+        this.start = start
+
+        // Já devolveu o tempo de passagem pela célula
         this.devolveu = false
 
         // Altura Real da Simulação, em cm
@@ -83,7 +87,7 @@ export default class Montagem {
 
 
         // Rampa
-        this.rampa.desfazamento *= this.simula.largura, // Ajusta a rampa ao ecrã
+        this.rampa.desfazamento = this.rampa.razaoDesfazamento * this.simula.largura, // Ajusta a rampa ao ecrã
         this.rampa.fimPx = {
             x: this.rampa.fim * this.simula.largura + this.rampa.desfazamento * this.aTrig.cos,
             xReal: this.rampa.fim * this.simula.largura,
@@ -95,8 +99,8 @@ export default class Montagem {
         }
 
         // Carrinho
-        this.carrinho.largura *= (this.m / this.mMax) ** (1/3)
-        this.carrinho.altura *= (this.m / this.mMax) ** (1/3)
+        this.carrinho.largura = this.carrinho.larguraMax * (this.m / this.mMax) ** (1/3)
+        this.carrinho.altura = this.carrinho.alturaMax * (this.m / this.mMax) ** (1/3)
 
         this.carrinho.larguraCm = this.carrinho.largura * this.pxToCm
         
@@ -105,11 +109,11 @@ export default class Montagem {
             y: this.carrinho.largura * this.aTrig.sin
         }
 
-        this.carrinho.raioRodas *= this.carrinho.largura
-        this.carrinho.distRodas *= this.carrinho.largura
+        this.carrinho.raioRodas = this.carrinho.razaoRaioRodas * this.carrinho.largura
+        this.carrinho.distRodas = this.carrinho.razaoDistRodas *  this.carrinho.largura
 
         // Origem do eixo Ox
-        this.OxCm *= this.carrinho.larguraCm + this.parede.largura * this.pxToCm 
+        this.OxCm = this.razaoOxCm * this.carrinho.larguraCm + this.parede.largura * this.pxToCm 
         this.OxPx = this.OxCm * this.cmToPx
         
         // Deslocamento perpendicular (à rampa) do carrinho
@@ -120,7 +124,7 @@ export default class Montagem {
 
         // Tira opaca
         this.tira.largura = this.l * this.cmToPx
-        this.tira.altura *= this.carrinho.altura
+        this.tira.altura = this.tira.razaoAltura * this.carrinho.altura
         this.tira.delta = {
             x: this.tira.altura * this.aTrig.sin,
             y: -this.tira.altura * this.aTrig.cos
@@ -134,7 +138,7 @@ export default class Montagem {
 
         // Parede
         this.parede.larguraCm = this.parede.largura * this.pxToCm
-        this.parede.altura *= this.carrinho.altura
+        this.parede.altura = this.parede.razaoAltura *  this.carrinho.altura
         this.parede.x = this.rampa.fimPx.xReal + this.aTrig.sin * (this.rampa.largura / 2)
         this.parede.y = this.simula.altura - this.aTrig.cos * (this.rampa.largura / 2)
         this.parede.delta = {
@@ -143,23 +147,34 @@ export default class Montagem {
         }
 
         // Cinética
-        this.posicao = this.d + this.OxCm - this.tira.larguraCm / 2
+        this.posicao = this.d + this.OxCm
         this.velocidade = 0
         this.aceleracao = -this.g * this.aTrig.sin + this.fa / this.m
 
         this.posicaoMin = this.carrinho.larguraCm / 2 + this.parede.larguraCm / 2
+
+        // Tempo no qual começa a intersetar o feixe da célula
+        this.tempo = 0
+        this.inicioDeltaT = undefined
     }
 
     update(deltaTempo) {
+        if (!this.start) return
+
+        this.tempo += deltaTempo
         if (this.posicao <= this.posicaoMin) {
             this.posicao = this.posicaoMin
+            this.start = false
         } else {
             this.posicao += this.velocidade * deltaTempo + 0.5 * this.aceleracao * deltaTempo ** 2
             this.velocidade += this.aceleracao * deltaTempo
 
-            if (this.posicao + this.tira.larguraCm / 2 <= this.OxCm && !this.devolveu) {
+            if (this.posicao <= this.OxCm && !this.inicioDeltaT) {
+                this.inicioDeltaT = this.tempo
+            }
+            else if (this.posicao + this.tira.larguraCm <= this.OxCm && !this.devolveu) {
                 this.devolveu = true
-                return Math.abs(this.velocidade)
+                return this.tempo - this.inicioDeltaT
             }
         }
     }

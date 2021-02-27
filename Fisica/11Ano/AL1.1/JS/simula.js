@@ -2,12 +2,9 @@ import Bola from '../JS/bola.js'
 
 // Classe que vai executar a Simulação
 window.Simula = class Simula {
-    constructor(canvas, resolucao, constantes) {
+    constructor(canvas, constantes) {
         // Guardar o canvas
         this.canvas = canvas
-
-        // Resolução (Tamanho do deltaT) e Updates por Frame
-        this.resolucao = resolucao
 
         // Constantes
         this.constantes = constantes
@@ -51,11 +48,6 @@ window.Simula = class Simula {
     }
 
     update(deltaTempo) {
-        if (this.acabou) return
-
-        deltaTempo /= 1000
-        deltaTempo /= this.resolucao
-
         return this.bola.update(deltaTempo)
     }
 

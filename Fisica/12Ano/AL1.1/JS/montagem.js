@@ -47,7 +47,10 @@ export default class Montagem {
     }
 
     // Reiniciar a Bola
-    reiniciar() {
+    reiniciar(start=false) {
+        // Lançar a Bola
+        this.start = start
+        
         // Conversões de Unidades
         this.cmToPx = this.simula.altura / this.hSimCm
         this.pxToCm = this.hSimCm / this.simula.altura
@@ -97,14 +100,21 @@ export default class Montagem {
             rampa: Math.asin((this.rampa.raioCm - this.hiRampa) / this.rampa.raioCm) * this.rampa.raioCm,
             rampaMax: Math.PI * this.rampa.raioCm  / 2
         }
+        this.posicao.ang = this.posicao.rampa / this.rampa.raioCm
         this.velocidade = {x: 0, y: 0, rampa: 0}
         this.aceleracao = {x: 0, y: this.g, rampa: 0}
 
-
         // .rampa refere-se ao eixo tangencial à rampa em cada ponto
+
+        // Tempo
+        this.tempo = 0
     }
 
     update(deltaTempo) {
+        if (!this.start) return
+
+        this.tempo += deltaTempo
+
         // Cinética enquanto a bola está na rampa
         if (this.posicao.rampa < this.posicao.rampaMax) {
             // Ângulo já percorrido da rampa
@@ -120,6 +130,7 @@ export default class Montagem {
         // Atingiu o chão
         else if (this.posicao.y >= this.yMaxEsfera) {
             this.posicao.y = this.yMaxEsfera
+            this.start = false
             return [undefined, this.posicao.x - this.rampa.fimCm]
         }
          
@@ -201,8 +212,8 @@ export default class Montagem {
         ctx.beginPath()
         if (this.posicao.rampa < this.posicao.rampaMax) {
             ctx.arc(
-                centroRampa.x - Math.cos(this.posicao.ang) * this.rampa.raio + this.esfera.raio - 1,
-                centroRampa.y + Math.sin(this.posicao.ang) * this.rampa.raio - this.esfera.raio + 1,
+                centroRampa.x - Math.cos(this.posicao.ang) * (this.rampa.raio - this.esfera.raio - this.rampa.largura / 2),
+                centroRampa.y + Math.sin(this.posicao.ang) * (this.rampa.raio - this.esfera.raio - this.rampa.largura / 2),
                 this.esfera.raio, 0, 2 * Math.PI
             )
         }

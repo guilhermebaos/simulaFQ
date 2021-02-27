@@ -7,7 +7,7 @@ export default class Montagem1 {
         // Definições do Bloco
         this.bloco = {
             posXi: 10,
-            largura: 150 * (this.simula.inputs.m / this.simula.inputs.mMax) ** (1/3),
+            largura: 150 * (this.simula.inputs.A / this.simula.inputs.Amax) ** (1/3),
             altura: 75 * (this.simula.inputs.m / this.simula.inputs.mMax) ** (1/3),
             cor: 'rgb(255, 130, 35)'
         }
@@ -66,7 +66,7 @@ export default class Montagem1 {
 
         // Determinar a Força de Atrito
         if (this.velocidade > 0) {
-            this.fa = - this.fac
+            this.fa = -this.fac
         } else if (this.forca <= this.faemax) {
             this.fa = -this.forca
         } else {
@@ -80,7 +80,6 @@ export default class Montagem1 {
         this.posicao += this.velocidade * deltaTempo + 0.5 * this.aceleracao * deltaTempo ** 2
 
         this.velocidade += this.aceleracao * deltaTempo
-
     }
 
     desenhar(ctx) {

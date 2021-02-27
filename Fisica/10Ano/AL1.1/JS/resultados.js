@@ -6,7 +6,7 @@ const g = 9.81 // Aceleração Gravitaconal
 const DPR = window.devicePixelRatio
 
 // Constantes para a Simulação
-const RESOLUCAO = 15                        // Tamanho do deltaT em cada update
+const RESOLUCAO = 25                        // Tamanho do deltaT em cada update
 
 
 // Inicializar Variáveis Globais
@@ -46,9 +46,6 @@ function prepararResultados() {
     forcaAtritoResp = document.getElementById('forcaAtritoValue')
     larguraTiraResp = document.getElementById('larguraTiraValue')
     tempoPassagemResp = document.getElementById('tempoPassagemValue')
-    
-    // Selecionar a div onde vai parar a curva
-    F10_AL11.divCurva = document.getElementById('curva-Ec')
 
     // Atualizar os Sliders
     massaCarrinho.oninput = () => {
@@ -57,11 +54,15 @@ function prepararResultados() {
         massaCarrinhoResp.innerText = `${massaCarrinhoValue.toFixed(0)}`
 
         atualizarAtritoMax()
+
+        reiniciar()
     }
     posCarrinho.oninput = () => {
         let posCarrinhoValue = posCarrinho.value / 10
     
         posCarrinhoResp.innerText = `${posCarrinhoValue.toFixed(1)}`
+
+        reiniciar()
     }
     angPlanoInclinado.oninput = () => {
         let angPlanoInclinadoValue = angPlanoInclinado.value / 10
@@ -69,11 +70,15 @@ function prepararResultados() {
         angPlanoInclinadoResp.innerText = `${angPlanoInclinadoValue.toFixed(1)}`
 
         atualizarAtritoMax()
+
+        reiniciar()
     }
     larguraTira.oninput = () => {
         let larguraTiraValue = larguraTira.value / 10
     
         larguraTiraResp.innerText = `${larguraTiraValue.toFixed(1)}`
+
+        reiniciar()
     }
 
 
@@ -87,7 +92,7 @@ function prepararResultados() {
     ctx.scale(DPR, DPR)
 
     // Criar o Objeto Simula
-    simula = new window.Simula(canvasSim, RESOLUCAO)
+    simula = new window.Simula(canvasSim)
 
     F10_AL11.preparado = true
     loopSimula()
@@ -128,8 +133,8 @@ function atualizarAtritoMax() {
 
 
 // Reiniciar a Simulação
-function reiniciar() {
-    simula.reiniciar()
+function reiniciar(start=false) {
+    simula.reiniciar(start)
 }
 
 
@@ -145,13 +150,13 @@ function loopSimula(tempo) {
         return
     }
 
-    let deltaTempo = tempo - ultimoTempo
+    let deltaTempo = (tempo - ultimoTempo) / 1000 / RESOLUCAO
     ultimoTempo = tempo
     
     for (let i = 0; i < RESOLUCAO; i++) {
         resultadosSim = simula.update(deltaTempo)
         if (resultadosSim){
-            tempoPassagemResp.innerText = `${(larguraTira.value / 10 / resultadosSim * 1000).toFixed(2)}`
+            tempoPassagemResp.innerText = `${(resultadosSim * 1000).toFixed(2)}`
             forcaAtritoResp.innerText = `${(forcaAtrito.value / 1000).toFixed(3)}`
         }
     }

@@ -63,11 +63,15 @@ function prepararResultados() {
         let raioBolaValue = raioBola.value / 10
     
         raioBolaResp.innerText = `${raioBolaValue.toFixed(1)}`
+        
+        reiniciar()
     }
     alturaInicial.oninput = () => {
         let alturaInicialValue = alturaInicial.value / 1
     
         alturaInicialResp.innerText = `${alturaInicialValue.toFixed(0)}`
+        
+        reiniciar()
     }
 
 
@@ -152,9 +156,11 @@ function valoresTabela(alturas) {
 
 
 // Reiniciar a Simulação
-function reiniciar() {
-    simula.reiniciar()
-    grafico = curva()
+function reiniciar(start=false) {
+    simula.reiniciar(start)
+    if (start) {
+        grafico = curva()
+    }
 }
 
 
@@ -263,7 +269,7 @@ function loopSimula(tempo) {
         return
     }
 
-    let deltaTempo = tempo - ultimoTempo
+    let deltaTempo = (tempo - ultimoTempo) / 1000 / RESOLUCAO
     ultimoTempo = tempo
     
     let dados

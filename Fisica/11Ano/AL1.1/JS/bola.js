@@ -17,11 +17,20 @@ export default class Bola {
         // Escala (agora, de cm para metros)
         this.escala = 100
         
+        // Constantes
+        this.g = this.simula.constantes.g
+        this.densidadeAr = this.simula.constantes.densidadeAr
+        this.CRar = this.simula.constantes.CRar
+        
         this.reiniciar()
     }
 
     // Reiniciar a Bola
     reiniciar(start=false) {
+        // Largar a bola
+        this.start = start
+
+        // Altura da Simulação
         this.hSimCm = this.simula.inputs.hSimCm
 
         // Conversões de Unidades
@@ -34,11 +43,6 @@ export default class Bola {
         this.r = this.simula.inputs.r
         this.rMax = this.simula.inputs.rMax
         this.d = this.simula.inputs.d
-        
-        // Constantes
-        this.g = this.simula.constantes.g
-        this.densidadeAr = this.simula.constantes.densidadeAr
-        this.CRar = this.simula.constantes.CRar
 
         // Bola
         this.bola.raio = this.r * this.cmToPx
@@ -65,9 +69,6 @@ export default class Bola {
         this.aceleracao = (this.fr / this.m) * this.escala
 
         this.tempo = 0
-
-        // Largar a bola
-        this.start = start
 
         // Tempo no qual a bola começou a intersetar o feixe inferior
         this.inicioDeltaT2 = undefined
@@ -100,11 +101,12 @@ export default class Bola {
             this.inicioDeltaT2 = this.tempo
             return [undefined, this.tempo]
         }
-        if  (this.posicao.y - this.r >= this.lasers.pos2cm && this.inicioDeltaT2) {
+        else if  (this.posicao.y - this.r >= this.lasers.pos2cm && this.inicioDeltaT2) {
             this.deltaT2 = this.tempo - this.inicioDeltaT2
             this.inicioDeltaT2 = undefined
             return [this.deltaT2, undefined]
         }
+        else if (this.posicao.y - this.r >= this.hSimCm) this.start = false
     }
 
     desenhar(ctx) {

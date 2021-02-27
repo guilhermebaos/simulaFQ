@@ -7,7 +7,7 @@ export default class Montagem2 {
         // Definições do Bloco
         this.bloco = {
             posXi: 10,
-            largura: 150 * (this.simula.inputs.m / this.simula.inputs.mMax) ** (1/3),
+            largura: 150 * (this.simula.inputs.A / this.simula.inputs.Amax) ** (1/3),
             altura: 75 * (this.simula.inputs.m / this.simula.inputs.mMax) ** (1/3),
             cor: 'rgb(255, 130, 35)'
         }

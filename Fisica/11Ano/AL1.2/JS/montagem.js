@@ -57,6 +57,9 @@ export default class Montagem {
         // Altura da Simulação
         this.hSimCm = this.hSuspMax * 1.75
 
+        // Constantes
+        this.g = this.simula.constantes.g * 100
+
 
         // Multiplicador do tamanho dos vetores
         this.tamanhoVetor = 0.2
@@ -66,13 +69,15 @@ export default class Montagem {
 
     // Reiniciar a Bola
     reiniciar(start=false) {
+        // Abandonar o carro
+        this.start = start
+
         // Conversões de Unidades
         this.cmToPx = this.simula.altura / this.hSimCm
         this.pxToCm = this.hSimCm / this.simula.altura
 
 
         // Inputs
-        this.g = this.simula.inputs.g
         this.m = this.simula.inputs.m
         this.mSusp = this.simula.inputs.mSusp
         this.hSusp = this.simula.inputs.hSusp
@@ -107,9 +112,6 @@ export default class Montagem {
         } else {
             this.aceleracao = 0
         }
-
-        // Abandonar o carro
-        this.start = start
     }
 
     update(deltaTempo) {

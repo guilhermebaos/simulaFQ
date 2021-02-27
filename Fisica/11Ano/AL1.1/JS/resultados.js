@@ -109,7 +109,7 @@ function prepararResultados() {
     ctx.scale(DPR, DPR)
 
     // Criar o Objeto Simula
-    simula = new window.Simula(canvasSim, RESOLUCAO, CONSTANTES)
+    simula = new window.Simula(canvasSim, CONSTANTES)
 
     F11_AL11.preparado = true
     loopSimula()
@@ -174,7 +174,7 @@ function loopSimula(tempo) {
         return
     }
 
-    let deltaTempo = tempo - ultimoTempo
+    let deltaTempo = (tempo - ultimoTempo) / 1000 / RESOLUCAO
     ultimoTempo = tempo
     
     let dados

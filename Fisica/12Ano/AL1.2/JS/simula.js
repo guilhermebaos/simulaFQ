@@ -110,18 +110,17 @@ window.Simula = class Simula {
     // Juntar os valores para serem usados pela Simulação
     juntarValores() {
         return {
-            g: 9.81,                                                // Aceleração Gravítica
-            m: massaBloco.value / 1000,                             // Massa do Bloco em kg
-            mMax: massaBloco.max / 1000,                            // Massa Máxima do Bloco
-            cae: coefAtritoEstatico.value / 100,                          // Coeficiente de Atrito Estático
+            g: 9.81,                            // Aceleração Gravítica
+            m: massaBloco.value / 1000,         // Massa do Bloco em kg
+            mMax: massaBloco.max / 1000,        // Massa Máxima do Bloco
+            A: areaContacto.value,              // Área de Contacto
+            Amax: areaContacto.max,             // Área de Contacto Máximo
+            cae: coefAtritoEstatico.value / 100,                    // Coeficiente de Atrito Estático
             cac: coefAtritoEstatico.value * coefAtritoCinetico.value / 10000    // Coeficiente de Atrito Cinético
         }
     }
 
     update(deltaTempo) {
-        deltaTempo /= 1000
-        deltaTempo /= this.resolucao
-
         let dados = this.dados.update(deltaTempo)
 
         this.simObjetos.forEach((objeto) => objeto.update(deltaTempo))

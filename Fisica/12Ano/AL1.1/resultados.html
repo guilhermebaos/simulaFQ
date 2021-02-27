@@ -38,7 +38,7 @@
     <p class="nota">Todos os atritos foram desprezados</p>
 </div>
 
-<button class="submit" onclick="reiniciar()">Reiniciar a Simulação</button>
+<button class="submit" onclick="reiniciar(true)">Largar a Esfera</button>
 <div class="graf-overflow m15">
     <div class="graf-container">
         <canvas id="canvasSim" class="simulacao" style="width: calc(100% - 4px);"></canvas>
@@ -60,3 +60,6 @@
         </tr>
     </table>
 </div>
+<p class="nota m45-top">
+    A velocidade de passagem pela célula fotoelétrica é suposta constante e igual à velocidade da esfera assim que <strong>começa</strong> a intersetar o feixe.
+</p>

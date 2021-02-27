@@ -19,6 +19,7 @@ let F12_AL12 = {
 }
 
 let massaBloco, massaBlocoResp
+let areaContacto
 let coefAtritoEstatico, coefAtritoEstaticoResp
 let coefAtritoCinetico, coefAtritoCineticoResp
 let intForca, intForcaResp
@@ -43,6 +44,7 @@ function prepararResultados() {
 
     // Selecionar Sliders
     massaBloco = document.getElementById('massaBloco')
+    areaContacto = document.getElementById('areaContacto')
     coefAtritoEstatico = document.getElementById('coefAtritoEstatico')
     coefAtritoCinetico = document.getElementById('coefAtritoCinetico')
     intForca = document.getElementById('intForca')
@@ -91,6 +93,11 @@ function prepararResultados() {
     
         massaBlocoResp.innerText = `${massaBlocoValue.toFixed(0)}`
 
+        if (intForca.value != intForca.min || massaAreia.value != massaAreia.min) {
+            reiniciar()
+        } else blocoAlterado = true
+    }
+    areaContacto.oninput = () => {
         if (intForca.value != intForca.min || massaAreia.value != massaAreia.min) {
             reiniciar()
         } else blocoAlterado = true
@@ -258,7 +265,7 @@ function loopSimula(tempo) {
         return
     }
 
-    let deltaTempo = tempo - ultimoTempo
+    let deltaTempo = (tempo - ultimoTempo) / 1000 / RESOLUCAO
     ultimoTempo = tempo
     
     let dados
