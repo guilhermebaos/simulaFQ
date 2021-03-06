@@ -1,5 +1,13 @@
 // Inicializar Variáveis Globais
 
+// Obter o DPR do ecrã
+const DPR = window.devicePixelRatio
+
+// Constantes para a Simulação
+const raioPontos = 3
+const larguraSim = 100  // cm
+
+
 // Usar um Objeto para proteger as variáveis com nomes comuns
 let F11_AL32 = {
     preparado: false,
@@ -15,7 +23,7 @@ let lambdaResp
 let corBtns, corEscolhida = 'red',
 corEscolhidaPos = 0, corLambda = 633e-9
 
-
+let canvasSim, ctx
 function prepararResultados() {
     if (F11_AL32.preparado) {
         return
@@ -44,17 +52,25 @@ function prepararResultados() {
         let linhasValue = linhas.value / 1
     
         linhasResp.innerText = `${linhasValue.toFixed(0)}`
-        curva()
+        desenharLaser()
     }
     distAoAlvo.oninput = () => {
         let distAoAlvoValue = distAoAlvo.value / 10
     
         distAoAlvoResp.innerText = `${distAoAlvoValue.toFixed(1)}`
-        curva()
+        desenharLaser()
     }
+    
+    // Selecionar o canvas
+    canvasSim = document.getElementById('canvasSim')
+
+    ctx = canvasSim.getContext('2d')
+
+    ctx.scale(DPR, DPR)
+
 
     F11_AL32.preparado = true
-    curva()
+    fixDPR()
 }
 
 
@@ -70,8 +86,12 @@ function corLaser(num) {
         else if (num == 1) {corLambda = 514e-9; corEscolhida = 'green'}
         else if (num == 2) {corLambda = 488e-9; corEscolhida = 'blue'}
 
-        curva()
+        desenharLaser()
     }
+
+    // Atualizar os Resultados da Tabela
+    lambdaArr = String(corLambda).split('e')
+    lambdaResp.innerHTML = `${lambdaArr[0]} &times; 10<sup>${lambdaArr[1]}</sup>`
 }
 
 
@@ -80,118 +100,84 @@ function pontos() {
     let d = linhas.value ** -1 * 1e-3
     let L = distAoAlvo.value / 1000
 
-    // Cria os arrays com os valores
+    // Cria o array com a posição horizontal dos pontos
     let xArr = []
-    let yArr = []
-    for (let x = -1; x <= 1; x += 0.001) {
-        xArr.push(x.toFixed(3))
-        yArr.push(null)
-    }
-    let a, pos
+
+    let a
     for (let n = 0; n <= 100; n++) {
         // Define a posição horizontal do máximos de ordem n
-        a = Math.sqrt((L**2 * n**2 * corLambda**2)/(d**2 - n**2 * corLambda**2)).toFixed(3)
+        a = Math.sqrt((L**2 * n**2 * corLambda**2)/(d**2 - n**2 * corLambda**2))
         
         if (n == 1) distN1Resp.innerText = (2 * a * 100).toFixed(1)
 
-        // Coloca y = 1 nos máximos de ordem n, cuja posição horizontal será a e -a
-        pos = xArr.findIndex(element => element == a)
-        yArr[pos] = 1
+        xArr.push(a * 100)
 
-        pos = xArr.findIndex(element => element == -a)
-        yArr[pos] = 1
-
-        if (a > 1) break
+        if (a > larguraSim / 100) break
     }
-
-    escala = []
-    for (let p = 0; p <= 20; p++) {
-        escala.push(null)
-    }
-    for (p = 0; p <= 100; p++) {
-        escala.push(0.1)
-    }
-
-    return [xArr, yArr, escala]
+    
+    return xArr
 }
 
-
-// Calcula e mostra os Resultados da Tabela
-function curva() {
-    // Atualizar os Resultados da Tabela
-    lambdaArr = String(corLambda).split('e')
-    lambdaResp.innerHTML = `${lambdaArr[0]} &times; 10<sup>${lambdaArr[1]}</sup>`
-
-    // Remover o Canvas antigo
-    F11_AL32.divCurva.innerHTML = ''
-
-    // Criar o canvas onde vai estar a curva
-    canvasCurva = document.createElement('canvas')
-    canvasCurva.setAttribute('id', 'canvasCurva')
-    F11_AL32.divCurva.appendChild(canvasCurva)
-
+// Desenhar no canvas
+function desenharLaser() {
+    // Dimensões do Canvas
+    let largura = canvasSim.width
+    let altura = canvasSim.height
+    
     // Obter e guardar os resultados
-    let resultados = pontos()
-    let x = resultados[0]
-    let y = resultados[1]
-    let e = resultados[2]
+    let xArr = pontos()
 
-    // Criar o Chart Object
-    let graCurva = new Chart(canvasCurva, {
-        type: 'line',
-        data: {
-            labels: x,
-            datasets: [{
-                data: y,
-                label: 'Laser',
-                borderColor: corEscolhida,
-                fill: false
-            },
-            {
-                data: e,
-                label: 'Escala',
-                borderColor: 'black',
-                backgroundColor: 'black',
-                fill: false
-            }]
-        },
-        options: {
-            animation: {
-                duration: 0
-            },
-            hover: {
-                animationDuration: 0
-            },
-            responsiveAnimationDuration: 0,
-            elements: {
-                point: {
-                    radius: 4,
-                    hitRadius: 1,
-                    hoverRadius: 4,
-                    backgroundColor: corEscolhida
-                }
-            },
-            scales: {
-                xAxes: [{
-                    display: false,
-                    labelString: '',
-                }],
-                yAxes: [{
-                    display: false,
-                    ticks: {
-                        max: 2,
-                        min: 0
-                    }
-                }]
-            },
-            legend: {
-                display: false,
-            },
-            tooltips: {
-                enabled: false
-            }
-        },
-    })
+    // Converter de cm para Pixeis
+    let cmToPx = largura / larguraSim
+
+    xArr = xArr.map(x => x * cmToPx)
+
+    let x
+
+    x = xArr[0]
+
+    // Limpar a imagem anterior
+    ctx.clearRect(0, 0, canvasSim.width, canvasSim.height)
+
+    
+    // Desenhar os Pontos do Alvo
+    ctx.fillStyle = corEscolhida
+
+    ctx.beginPath()
+    ctx.arc(x + largura / 2, altura / 2, raioPontos, 0, Math.PI * 2)
+    for (let i = 1; i < xArr.length; i++) {
+        x = xArr[i]
+        ctx.arc(x + largura / 2, altura / 2, raioPontos, 0, Math.PI * 2)
+        ctx.arc(-x + largura / 2, altura / 2, raioPontos, 0, Math.PI * 2)
+    }
+    ctx.fill()
+
+    // Desenhar a linha preta
+    ctx.strokeStyle = 'black'
+    ctx.lineWidth = 4
+
+    ctx.beginPath()
+    ctx.moveTo(largura * 0.05, altura * 0.95)
+    ctx.lineTo(largura * 0.15, altura * 0.95)
+    ctx.stroke()
 }
 
-// Ideia: Ângulo Crítico na Refração
+
+// Corrige o tamanho do Canvas e corrige o DPR
+function fixDPR() {
+    // Usar variável global
+    if (simulaFQmenu.aberto !== 'resultados.html') return
+
+    // Altura do CSS
+    let altura_css = +getComputedStyle(canvasSim).getPropertyValue('height').slice(0, -2)
+    // Larura do CSS
+    let largura_css = +getComputedStyle(canvasSim).getPropertyValue('width').slice(0, -2)
+
+    // Altera o tamanho do canvas
+    canvasSim.width = largura_css * DPR
+    canvasSim.height = altura_css * DPR
+
+    desenharLaser()
+}
+
+window.onresize = fixDPR

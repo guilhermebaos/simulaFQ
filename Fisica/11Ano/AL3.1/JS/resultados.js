@@ -4,11 +4,26 @@ const nAr = 1.00
 const nNuc = 1.60
 const nRev = 1.40
 
+// Obter o DPR do ecrã
+const DPR = window.devicePixelRatio
+
+// Constantes para a Simulação
+const corLaser = 'red'
+const larguraLaser = 3
+
+// Centro Vertical de cada Simulação
+const CENTRO = {
+    fenom0: 0.7,
+    fenom1: 0.5,
+    fenom2: 0.5
+}
+const raioFenom1 = 0.4
+
 
 // Inicializar Variáveis Globais
 
 // Usar um Objeto para proteger as variáveis com nomes comuns
-let F11_AL32 = {
+let F11_AL31 = {
     preparado: false,
     divCurva: '',
     processandoAnim: false
@@ -26,9 +41,9 @@ let nAcrResp
 
 let fenomBtns, fenomEscolhido = 0
 
-
+let canvasSim, ctx
 function prepararResultados() {
-    if (F11_AL32.preparado) {
+    if (F11_AL31.preparado) {
         return
     }
     
@@ -49,10 +64,7 @@ function prepararResultados() {
     // Selecionar os Spans com os Resultados da Tabela
     angRefResp = document.getElementById('angRefValue')
     angCritResp = document.getElementById('angCritValue')
-    nAcrResp = document.getElementById('nAcrValue')
-
-    // Selecionar a div que vai ter a Curva
-    F11_AL32.divCurva = document.getElementById('curva-laser')
+    nAcrResp = document.getElementById('nAcrValue') 
 
     // Selecionar os Butões que permitem escolher o Procedimento
     fenomBtns = document.getElementsByName('Fenómenos')
@@ -62,7 +74,7 @@ function prepararResultados() {
         let angIncideValue = angIncide.value / 10
     
         angIncideResp.innerText = `${angIncideValue.toFixed(1)}`
-        curva()
+        desenharLaser()
     }
     angIncideRefra.oninput = () => {
         let angIncideRefraValue = angIncideRefra.value / 10
@@ -72,7 +84,7 @@ function prepararResultados() {
         }
     
         angIncideRefraResp.innerText = `${angIncideRefraValue.toFixed(1)}`
-        curva()
+        desenharLaser()
     }
     indiceRefra.oninput = () => {
         let indiceRefraValue = indiceRefra.value / 1
@@ -84,70 +96,61 @@ function prepararResultados() {
         } else {
             indiceRefraResp.innerText = 'Intermédio'
         }
-        curva()
+        desenharLaser()
     }
     angIncideRefleTot.oninput = () => {
         let angIncideRefleTotValue = angIncideRefleTot.value / 10
     
         angIncideRefleTotResp.innerText = `${angIncideRefleTotValue.toFixed(1)}`
-        curva()
+        desenharLaser()
     }
     larguraFibra.oninput = () => {
-        let larguraFibraValue = larguraFibra.value / 1
+        let larguraFibraValue = larguraFibra.value / 10
     
-        larguraFibraResp.innerText = `${larguraFibraValue.toFixed(0)}`
-        curva()
+        larguraFibraResp.innerText = `${larguraFibraValue.toFixed(1)}`
+        desenharLaser()
     }
+    
+    // Selecionar o canvas
+    canvasSim = document.getElementById('canvasSim')
 
-    F11_AL32.preparado = true
-    curva()
+    ctx = canvasSim.getContext('2d')
+
+    ctx.scale(DPR, DPR)
+
+
+    F11_AL31.preparado = true
+    fixDPR()
 }
 
 
 // Esolher o fenómeno a estudar
 function fenomeno(num) {
-    if (num == fenomEscolhido) return
-    else {
-        if (F11_AL32.processandoAnim) return
-        F11_AL32.processandoAnim = true
+    if (num == fenomEscolhido || F11_AL31.processandoAnim) return
 
-        fenomBtns[fenomEscolhido].className = 'escolha'
-        fenomBtns[num].className = 'escolha-atual'
+    F11_AL31.processandoAnim = true
 
-        // Esconder e mostrar o gráfico
-        mostrarExtra('graf-anim')
-        window.setTimeout(function() {
-            mostrarExtra('graf-anim')
-            prepCurva()
-            curva()
-        }, mostrarExtraTempo)
+    fenomBtns[fenomEscolhido].className = 'escolha'
+    fenomBtns[num].className = 'escolha-atual'
 
-        // Esconder e mostrar a opção selecionada
-        mostrarExtra(`Fenómeno${fenomEscolhido}`)
-        window.setTimeout(mostrarExtra, mostrarExtraTempo, `Fenómeno${num}`)
-        window.setTimeout(function() {
-            F11_AL32.processandoAnim = false
-        }, mostrarExtraTempo * 2)
+    // Esconder e mostrar o gráfico
+    window.setTimeout(function() {
+        desenharLaser()
+    }, mostrarExtraTempo)
 
-        // Mostrar a Tabela das Respostas
-        if (num == 1 || fenomEscolhido == 1) {
-            mostrarExtra('respostas')
-        }
+    // Esconder e mostrar a opção selecionada
+    mostrarExtra(`Fenómeno${fenomEscolhido}`)
+    window.setTimeout(mostrarExtra, mostrarExtraTempo, `Fenómeno${num}`)
+    window.setTimeout(function() {
+        F11_AL31.processandoAnim = false
+    }, mostrarExtraTempo * 2)
 
-        fenomEscolhido = num
+    // Mostrar a Tabela das Respostas
+    if (num == 1 || fenomEscolhido == 1) {
+        mostrarExtra('respostas')
     }
-}
 
-
-// Mudar a background-image do gráfico
-function prepCurva() {
-    if (fenomEscolhido == 0) {
-        F11_AL32.divCurva.style.backgroundImage = 'url("Imagens/Metal-background.png")'
-    } else if (fenomEscolhido == 1) {
-        F11_AL32.divCurva.style.backgroundImage = 'url("Imagens/Acrilico-background.png")'
-    } else if (fenomEscolhido == 2) {
-        F11_AL32.divCurva.style.backgroundImage = ''
-    }
+    fenomEscolhido = num
 }
 
 
@@ -158,318 +161,258 @@ function graus(radianos) {return radianos * (180 / Math.PI)}
 
 // Calcula o caminho tomado pelo laser
 function pontos() {
-    let x = -20
-    let y
+    let largura = canvasSim.width
+    let altura = canvasSim.height
+
+    let x, y
+
+    let incI, decliveI, angR, decliveR, moverX, moverY
 
     let xArr = []
     let yArr = []
-    if (fenomEscolhido == 0) {
-        // Inclinação e Declive do feixe incidente
-        let incI = radianos(angIncide.value / 10 + 90)
-        let decliveI = Math.tan(incI)
+    switch (fenomEscolhido) {
+        case 0:
+            // Inclinação e Declive do feixe Incidente
+            incI = radianos(angIncide.value / 10 + 90)
+            decliveI = Math.tan(incI)
+    
+            // Inclinação e Declive do feixe Refletido
+            angR = Math.PI - incI
+            decliveR = Math.tan(angR)
+    
+            // Deslocar X, como se o referencial onde as retas vão ser traçadas tivesse origem no centro do canvas
+            moverX = largura / 2
+            moverY = altura * CENTRO.fenom0
+    
+            // Feixe Incidente
+            x = -largura / 2
+            xArr.push(x + moverX)
+            yArr.push(-decliveI * x + moverY)
+    
+            // Ponto de Incidência
+            x = 0
+            xArr.push(x + moverX)
+            yArr.push(moverY)
+    
+            // Feixe Refletido
+            x = largura / 2
+            xArr.push(x + moverX)
+            yArr.push(-decliveR * x + moverY)
+    
+    
+            return [xArr, yArr]
+        case 1:
+            // Inclinação e Declive do feixe incidente
+            incI = radianos(angIncideRefra.value / 10 + 90)
+            decliveI = Math.tan(incI)
+    
+            angI = radianos(angIncideRefra.value / 10)
+            nAcr = 1.00 + indiceRefra.value / 100
 
-        let angR = Math.PI - incI
-        let decliveR = Math.tan(angR)
+            // Raio do Acrílico
+            let raioA = altura * raioFenom1
 
-        while (x <= 20.1) {
-            if (x < 0) {
-                y = decliveI * x
-            } else {
-                y = decliveR * x
-            }
-            x += 0.1
-
-            xArr.push(x)
-            yArr.push(y)
-        }
-
-        return [xArr, yArr]
-
-    } else if (fenomEscolhido == 1) {
-        // Inclinação e Declive do feixe incidente
-        let incI = radianos(angIncideRefra.value / 10 + 90)
-        let decliveI = Math.tan(incI)
-
-        let angI = radianos(angIncideRefra.value / 10)
-        let nAcr = 1.00 + indiceRefra.value / 100
-
-        // Calcular o Declive do feixe refratado
-        let decliveR
-        let angR
-        if (graus(angI) <= 90) {
-            let sinAngR = (nAr * Math.sin(angI)) / nAcr         // Lei de Snell-Descartes
-            angR = Math.asin(sinAngR)                           // Ângulo de Refração
-            decliveR = -Math.tan(Math.PI/2 - angR)              // Declive do feixe refratado
+            // Declive do feixe após sair do acrílico
+            let decliveFinal, ySaida
+    
+            // Calcular o Declive do feixe refratado
             
-            angRefResp.innerText = graus(angR).toFixed(2)       // Mostrar o Valor do Ângulo de Refração
-        } else {
-            let sinAngR = (nAcr * Math.sin(Math.PI - angI)) / nAr   // Lei de Snell-Descartes
-            if (sinAngR < 1) {
-                angR = Math.asin(sinAngR)                       // Ângulo de Refração
-                decliveR = Math.tan(Math.PI/2 - angR)           // Declive do feixe refratado
-            } else {
-                angR = Math.PI - angI                           // Ângulo de Refração
-                decliveR = Math.tan(-Math.PI/2 + angR)          // Declive do feixe refratado
-            }
+            // Se o feixe incidir primeiro no ar
+            if (graus(angI) <= 90) {
+                let sinAngR = (nAr * Math.sin(angI)) / nAcr         // Lei de Snell-Descartes
+                angR = Math.asin(sinAngR)                           // Ângulo de Refração
+                decliveR = -Math.tan(Math.PI/2 - angR)              // Declive do feixe refratado
+                
+                angRefResp.innerText = graus(angR).toFixed(2)       // Mostrar o Valor do Ângulo de Refração
+
+                decliveFinal = decliveI
+                ySaida = -decliveR * Math.sqrt(raioA ** 2 / (1 + decliveR ** 2))
+            } 
             
-            angRefResp.innerText = graus(angR).toFixed(2)       // Mostrar o Valor do Ângulo de Refração
-        }
-        angCritResp.innerText = graus(Math.asin(nAr / nAcr)).toFixed(2)
-
-        // Calucular os pontos do gráfico y = f(x) para o feixe
-        while (x <= 20.1) {
-            if (x < 0) {
-                y = decliveI * x
-            } else {
-                y = decliveR * x
-            }
-            x += 0.1
-
-            xArr.push(x)
-            yArr.push(y)
-        }
-
-        return [xArr, yArr]
-
-    } else if (fenomEscolhido == 2) {
-        let lFibra = larguraFibra.value / 1
-        let fibraBaixo = -lFibra / 2
-        let fibraTopo = lFibra / 2
-
-        let fBaixoArr = []
-        let fTopoArr = []
-
-        // Inclinação e Declive do feixe incidente
-        let incI = radianos(angIncideRefleTot.value / 10 + 90)
-        let decliveI = Math.tan(incI)
-
-        let angR = Math.PI - incI
-        let decliveR = Math.tan(angR)
-
-        let decliveAtual = decliveI // Determinar o declive do feixe - Se é o mesmo da incidência ou se é da reflexão
-        let xSec = 0                // x usado para calcular o y de cada parte das sucessivas reflexões do feixe
-
-        let xInicial = 0
-        let xStep = 0.05
-
-        while (x <= 20 + xStep) {
-            y = xSec * decliveAtual
-
-            if (y < fibraBaixo) {
-                if (xInicial == 0) {
-                    xInicial = xSec
+            // Se o feixe incidir primeiro no acrílico
+            else {
+                let sinAngR = (nAcr * Math.sin(Math.PI - angI)) / nAr   // Lei de Snell-Descartes
+                if (sinAngR < 1) {
+                    angR = Math.asin(sinAngR)                       // Ângulo de Refração
+                    decliveR = Math.tan(Math.PI/2 - angR)           // Declive do feixe refratado
+                } else {
+                    angR = Math.PI - angI                           // Ângulo de Refração
+                    decliveR = Math.tan(-Math.PI/2 + angR)          // Declive do feixe refratado
                 }
-                decliveAtual = decliveR
-                xSec = -xInicial
-            } else if (y > fibraTopo) {
-                decliveAtual = decliveI
-                xSec = -xInicial
+                
+                angRefResp.innerText = graus(angR).toFixed(2)       // Mostrar o Valor do Ângulo de Refração
+
+                decliveFinal = decliveR
+                ySaida = 0
             }
-            x += xStep
-            xSec += xStep
+            nAcrResp.innerText = `${nAcr.toFixed(2)}`
+            angCritResp.innerText = graus(Math.asin(nAr / nAcr)).toFixed(2)
+    
+            // Deslocar X, como se o referencial onde as retas vão ser traçadas tivesse origem no centro do canvas
+            moverX = largura / 2
+            moverY = altura * CENTRO.fenom1
 
-            xArr.push(x)
-            yArr.push(y)
+            // Feixe Incidente
+            x = -largura / 2
+            xArr.push(x + moverX)
+            yArr.push(-decliveI * x + moverY)
+    
+            // Ponto de Incidência
+            x = 0
+            xArr.push(x + moverX)
+            yArr.push(moverY)
+    
+            // Feixe Refletido ou Refratado
+            x = Math.sqrt(raioA ** 2 / (1 + decliveR ** 2))
+            xArr.push(x + moverX)
+            yArr.push(-decliveR * x + moverY)
 
-            fBaixoArr.push(fibraBaixo * 1.02)
-            fTopoArr.push(fibraTopo * 1.02)
-        }
+            x = largura / 2
+            xArr.push(x + moverX)
+            yArr.push(-decliveFinal * x + moverY + ySaida)
+    
+            return [xArr, yArr]
+        case 2:
+            // Definições da Fibra Ótica
+            let lFibra = larguraFibra.value / 1
+            let fibraBaixo = lFibra
+            let fibraTopo = -lFibra
+            let distFibras = lFibra * 2
+    
+            // Inclinação e Declive do feixe incidente
+            incI = radianos(angIncideRefleTot.value / 10 + 90)
+            decliveI = Math.tan(incI)
+    
+            angR = Math.PI - incI
+            decliveR = Math.tan(angR)
 
-        return [xArr, yArr, fBaixoArr, fTopoArr]
+            // Próxima fibra que vai causar reflexão
+            let proxFibra = fibraBaixo
+
+            xArr.push(0)
+            yArr.push(altura / 2)
+
+            moverX = fibraBaixo / decliveR
+            moverY = altura * CENTRO.fenom2
+
+            xArr.push(moverX)
+            yArr.push(proxFibra + moverY)
+            proxFibra = fibraTopo
+
+            let deltaMoverX = distFibras / decliveR
+            while (moverX <= largura) {
+                moverX += deltaMoverX
+
+                xArr.push(moverX)
+                yArr.push(proxFibra + moverY)
+                if (proxFibra == fibraBaixo) {
+                    proxFibra = fibraTopo
+                }
+                else {
+                    proxFibra = fibraBaixo
+                }
+            }
+    
+            return [xArr, yArr, fibraBaixo + larguraLaser + moverY, fibraTopo - larguraLaser + moverY]
+        default:
+            break
     }
+    return [0, 0]
+}
+
+// Desenhar no canvas
+function desenharLaser() {
+    // Dimensões do Canvas
+    let largura = canvasSim.width
+    let altura = canvasSim.height
+    
+    // Obter e guardar os resultados
+    let resultados = pontos()
+    let xArr = resultados[0]
+    let yArr = resultados[1]
+    let fB, fT
+    if (resultados.length > 2) {
+        fB = resultados[2]
+        fT = resultados[3]
+    }
+
+    let x, y
+
+    x = xArr[0]
+    y = yArr[0]
+
+    // Limpar a imagem anterior
+    ctx.clearRect(0, 0, canvasSim.width, canvasSim.height)
+
+    // Desenhar o background
+    switch (fenomEscolhido) {
+        case 0:
+            // Desenhar o Metal
+            ctx.fillStyle = 'gray'
+            ctx.fillRect(0, altura * CENTRO.fenom0, largura, altura)
+
+            // Desenhar o eixo que divide o metal
+            ctx.strokeStyle = 'black'
+            ctx.lineWidth = larguraLaser - 1
+            ctx.beginPath()
+            ctx.moveTo(largura / 2, altura)
+            ctx.lineTo(largura / 2, 0)
+            ctx.stroke()
+            break
+        case 1:
+            let raioA = altura * raioFenom1
+
+            // Desenhar o Acrílico
+            ctx.fillStyle = 'lightgray'
+            ctx.beginPath()
+            ctx.arc(largura / 2, altura * CENTRO.fenom1, raioA, 0, Math.PI)
+            ctx.fill()
+            break
+        case 2:
+            ctx.strokeStyle = 'black'
+            ctx.lineWidth = larguraLaser
+            ctx.beginPath()
+            ctx.moveTo(0, fB)
+            ctx.lineTo(largura, fB)
+            ctx.moveTo(0, fT)
+            ctx.lineTo(largura, fT)
+            ctx.stroke()
+            break
+        default:
+            break
+    }
+
+    // Desenhar o Laser
+    ctx.strokeStyle = corLaser
+    ctx.lineWidth = larguraLaser
+
+    ctx.beginPath()
+    ctx.moveTo(x, y)
+    ctx.lineTo(x, y)
+    for (let i = 1; i < xArr.length; i++) {
+        x = xArr[i]
+        y = yArr[i]
+        ctx.lineTo(x, y)
+    }
+    ctx.stroke()
 }
 
 
-// Calcula e mostra os Resultados da Tabela
-function curva() {
-    // Remover o Canvas antigo
-    F11_AL32.divCurva.innerHTML = ''
+// Corrige o tamanho do Canvas e corrige o DPR
+function fixDPR() {
+    // Usar variável global
+    if (simulaFQmenu.aberto !== 'resultados.html') return
 
-    // Criar o canvas onde vai estar a curva
-    canvasCurva = document.createElement('canvas')
-    canvasCurva.setAttribute('id', 'canvasCurva')
-    F11_AL32.divCurva.appendChild(canvasCurva)
+    // Altura do CSS
+    let altura_css = +getComputedStyle(canvasSim).getPropertyValue('height').slice(0, -2)
+    // Larura do CSS
+    let largura_css = +getComputedStyle(canvasSim).getPropertyValue('width').slice(0, -2)
 
-    if (fenomEscolhido == 0) {
-        // Obter e guardar os resultados
-        let resultados = pontos()
-        let x = resultados[0]
-        let y = resultados[1]
+    // Altera o tamanho do canvas
+    canvasSim.width = largura_css * DPR
+    canvasSim.height = altura_css * DPR
 
-        // Criar o Chart Object
-        let graCurva = new Chart(canvasCurva, {
-            type: 'line',
-            data: {
-                labels: x,
-                datasets: [{
-                    data: y,
-                    label: 'Laser',
-                    borderColor: 'rgb(255, 0, 0)',
-                    fill: false
-                }]
-            },
-            options: {
-                animation: {
-                    duration: 0
-                },
-                hover: {
-                    animationDuration: 0
-                },
-                responsiveAnimationDuration: 0,
-                elements: {
-                    point: {
-                        radius: 1,
-                        hitRadius: 1,
-                        hoverRadius: 4
-                    }
-                },
-                scales: {
-                    xAxes: [{
-                        display: false,
-                        labelString: '',
-                    }],
-                    yAxes: [{
-                        display: false,
-                        ticks: {
-                            max: 14,
-                            min: -6.15
-                        }
-                    }]
-                },
-                legend: {
-                    display: false,
-                },
-                tooltips: {
-                    enabled: false
-                }
-            },
-        })
-    } else if (fenomEscolhido == 1) {
-        // Atualizar Resutlados na Tabela
-        nAcrResp.innerText = (1.00 + indiceRefra.value / 100).toFixed(2)
-
-        // Obter e guardar os resultados
-        let resultados = pontos()
-        let x = resultados[0]
-        let y = resultados[1]
-
-        // Criar o Chart Object
-        let graCurva = new Chart(canvasCurva, {
-            type: 'line',
-            data: {
-                labels: x,
-                datasets: [{
-                    data: y,
-                    label: 'Laser',
-                    borderColor: 'rgb(255, 0, 0)',
-                    fill: false
-                }]
-            },
-            options: {
-                animation: {
-                    duration: 0
-                },
-                hover: {
-                    animationDuration: 0
-                },
-                responsiveAnimationDuration: 0,
-                elements: {
-                    point: {
-                        radius: 1,
-                        hitRadius: 1,
-                        hoverRadius: 4
-                    }
-                },
-                scales: {
-                    xAxes: [{
-                        display: false,
-                        labelString: '',
-                    }],
-                    yAxes: [{
-                        display: false,
-                        ticks: {
-                            max: 10,
-                            min: -10
-                        }
-                    }]
-                },
-                legend: {
-                    display: false,
-                },
-                tooltips: {
-                    enabled: false
-                }
-            },
-        })
-    } else if (fenomEscolhido == 2) {
-        // Obter e guardar os resultados
-        let resultados = pontos()
-        let x = resultados[0]
-        let y = resultados[1]
-        let fB = resultados[2]
-        let fT = resultados[3]
-
-        // Criar o Chart Object
-        let graCurva = new Chart(canvasCurva, {
-            type: 'line',
-            data: {
-                labels: x,
-                datasets: [{
-                    data: y,
-                    label: 'Laser',
-                    borderColor: 'rgb(255, 0, 0)',
-                    fill: false
-                },
-                {
-                    data: fB,
-                    label: 'Fibra Ótica Baixo',
-                    borderColor: 'rgb(0, 0, 0)',
-                    fill: false
-                },
-                {
-                    data: fT,
-                    label: 'Fibra Ótica Topo',
-                    borderColor: 'rgb(0, 0, 0)',
-                    fill: false
-                }]
-            },
-            options: {
-                animation: {
-                    duration: 0
-                },
-                hover: {
-                    animationDuration: 0
-                },
-                responsiveAnimationDuration: 0,
-                elements: {
-                    point: {
-                        radius: 1,
-                        hitRadius: 1,
-                        hoverRadius: 4
-                    }
-                },
-                scales: {
-                    xAxes: [{
-                        display: false,
-                        labelString: '',
-                    }],
-                    yAxes: [{
-                        display: false,
-                        ticks: {
-                            max: 10,
-                            min: -10
-                        }
-                    }]
-                },
-                legend: {
-                    display: false,
-                },
-                tooltips: {
-                    enabled: false
-                }
-            },
-        })
-    }
+    desenharLaser()
 }
 
-// Ideia: Ângulo Crítico na Refração
+window.onresize = fixDPR

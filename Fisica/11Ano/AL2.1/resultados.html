@@ -52,7 +52,7 @@
     <div class="flex-slider">
         <div><label for="freqSinal">Frequência do Sinal</label></div>
         <div><span id="freqSinalValue">1000</span>Hz<br>
-        <input type="range" name="freqSinal" id="freqSinal" class="slider" min="10" max="10000" value="1000"></div>
+        <input type="range" name="freqSinal" id="freqSinal" class="slider" min="11" max="10000" value="1000"></div>
     </div>
     <div class="flex-slider">
         <div><label for="amplitudeSinal">Amplitude do Sinal</label></div>
@@ -60,14 +60,15 @@
         <input type="range" name="amplitudeSinal" id="amplitudeSinal" class="slider" min="50" max="4000" value="1000"></div>
     </div>
 </div>
-<p>
-    Ecrã do Osciloscópio:
-</p>
+<p>Ecrã do Osciloscópio:</p>
 <div class="graf-overflow">
     <div class="graf-container">
-        <div id="curva-oscilos" class="graf-background" style="background-image: url('Imagens/Osci-background.png')"></div>
+        <div id="curva-oscilos" class="graf-background" style="background-image: url('Imagens/Osci-background.png')">
+            <canvas id="canvasSim" class="simulacao" style="border: none;"></canvas>
+        </div>
     </div>
 </div>
+
 <!--Permitir ouvir Sons de 1Hz a 20kHz, talvez um slider diferente-->
 <p class="m0 m30-top">
     Podemos também ouvir o Som correspondente ao Sinal elétrico produzido pelo Gerador de Sinais:

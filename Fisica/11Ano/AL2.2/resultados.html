@@ -54,10 +54,10 @@
     <div class="flex-slider">
         <div><label for="mangueira">Comprimento da Mangueira:</label></div>
         <div><span id="mangueiraValue">100</span>m<br>
-        <input type="range" name="mangueira" id="mangueira" class="slider" min="90" max="150" value="100"></div>
+        <input type="range" name="mangueira" id="mangueira" class="slider" min="90" max="300" value="100"></div>
     </div>
-    <p><button id="fazer-bip" class="submit" onclick="curva()">Assobiar</button></p>
-    <p class="m30-top"><span id="intervaloTempoValue"></span></p>
+    <p><button id="fazer-bip" class="submit" onclick="desenharSom()">Assobiar</button></p>
+    <p class="m30"><span id="intervaloTempoValue"></span></p>
 </div>
 <div id="Procedimento2-Div" class="explicar explicar-no-border">
     <p>Definições do <mark class="normal">Gerador de Sinais</mark>:</p>
@@ -80,10 +80,12 @@
         A intesidade do Som captada pelo Microfone é suposta constante e igual à intensidade do Som junto ao Altifalante.
     </p>
 </div>
-<p>Ecrã do Osciloscópio:</p>
+<h3 class="sub-topico m15">Ecrã do Osciloscópio:</h3>
 <div class="graf-overflow">
     <div class="graf-container">
-        <div id="curva-oscilos" class="graf-background" style="background-image: url('Imagens/Osci-background.png')"></div>
+        <div id="curva-oscilos" class="graf-background" style="background-image: url('Imagens/Osci-background.png')">
+            <canvas id="canvasSim" class="simulacao" style="border: none;"></canvas>
+        </div>
     </div>
 </div>
 

@@ -76,6 +76,9 @@
     <p class="m15">
         O laser vermelho irá incidir no interior de uma fibra ótica.
     </p>
+    <p class="m15">
+        É considerado que ocorre sempre reflexão total, independentemente do ângulo de incidência.
+    </p>
     <div class="flex-slider">
         <div><label for="angIncideRefleTot">Ângulo de Incidência</label></div>
         <div><span id="angIncideRefleTotValue">30.0</span>º<br>
@@ -84,16 +87,12 @@
     <div class="flex-slider">
         <div><label for="larguraFibra">Largura da Fibra Ótica</label></div>
         <div><span id="larguraFibraValue">10</span>&micro;m<br>
-        <input type="range" name="larguraFibra" id="larguraFibra" class="slider" min="1" max="15" value="10"></div>
+        <input type="range" name="larguraFibra" id="larguraFibra" class="slider" min="10" max="150" value="100"></div>
     </div>
 </div>
 
-<div id="graf-anim" class="explicar explicar-no-border is-visible">
-    <div class="graf-overflow">
-        <div class="graf-container">
-            <div id="curva-laser" class="graf-background" style="background-image: url('Imagens/Metal-background.png');"></div>
-        </div>
-    </div>
+<div id="canvas-container" class="canvas-container">
+    <canvas id="canvasSim" class="simulacao redondo"></canvas>
 </div>
 
 <div id="respostas" class="explicar explicar-no-border">

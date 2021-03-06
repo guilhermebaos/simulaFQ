@@ -1,12 +1,20 @@
 // Definir Constantes
+const divsT = 3.215     // Número de Divisões do Osciloscópio no eixo do tempo
+const divsV = 2.04      // Número de Divisões do Osciloscópio no eixo dos Volts
 
+// Obter o DPR do ecrã
+const DPR = window.devicePixelRatio
+
+// Definições do gráfico
+const cor = 'rgb(160, 230, 200)'
+const largura = 3
+const larguraEixos = 2            // Largura dos eixos do Osciloscópio
 
 // Inicializar Variáveis Globais
 
 // Usar um Objeto para proteger as variáveis com nomes comuns
 let F11_AL21 = {
     preparado: false,
-    divCurva: ''
 }
 
 let voltsDiv, voltsDivResp
@@ -18,7 +26,7 @@ let voltsDivNum = 1, segundosDivNum = 500e-6
 
 let aContext
 
-
+let canvasSim, ctx
 function prepararResultados() {
     if (F11_AL21.preparado) {
         return
@@ -36,9 +44,6 @@ function prepararResultados() {
     segundosDivResp = document.getElementById('segundosDivValue')
     freqSinalResp = document.getElementById('freqSinalValue')
     amplitudeSinalResp = document.getElementById('amplitudeSinalValue')
-
-    // Selecionar a div que vai ter a Curva
-    F11_AL21.divCurva = document.getElementById('curva-oscilos')
 
     // Atualizar os Sliders
     voltsDiv.oninput = () => {
@@ -75,7 +80,7 @@ function prepararResultados() {
         }
     
         voltsDivResp.innerText = resp
-        curva()
+        desenharSom()
     }
     segundosDiv.oninput = () => {
         let segundosDivValue = segundosDiv.value / 1
@@ -111,28 +116,35 @@ function prepararResultados() {
         }
     
         segundosDivResp.innerHTML = resp
-        curva()
+        desenharSom()
     }
     freqSinal.oninput = () => {
         let freqSinalValue = freqSinal.value / 1
     
         freqSinalResp.innerText = `${freqSinalValue.toFixed(1)}`
-        curva()
+        desenharSom()
     }
     amplitudeSinal.oninput = () => {
         let amplitudeSinalValue = amplitudeSinal.value / 1000
     
         amplitudeSinalResp.innerText = `${amplitudeSinalValue.toFixed(3)}`
-        curva()
+        desenharSom()
     }
 
-
+    // Selecionar o Contexto áudio do browser
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
     aContext = new AudioContext();
+
+    // Selecionar o canvas
+    canvasSim = document.getElementById('canvasSim')
+
+    ctx = canvasSim.getContext('2d')
+
+    ctx.scale(DPR, DPR)
     
     F11_AL21.preparado = true
-    curva()
+    fixDPR()
 }
 
 
@@ -155,24 +167,24 @@ function criarSom(arr) {
     fonte.start(0)
 }
 
-function somSinudoidal(sampleNumber, tom) {
-    let sampleFreq = aContext.sampleRate / tom
+function somSinudoidal(sampleFreq, sampleNumber) {
     return Math.sin(sampleNumber / (sampleFreq / (Math.PI * 2)))
 }
 
+// Toca o som com a frequência e amplitude desejadas
 function tocarSom() {
     let somArr = [],
     volume = amplitudeSinal.value / 1000 * 0.1,
     segundos = 1,
     tom = freqSinal.value / 1
 
+    let sampleFreq = aContext.sampleRate / tom
     for (let i = 0; i < aContext.sampleRate * segundos; i++) {
-        somArr[i] = somSinudoidal(i, tom) * volume
+        somArr[i] = somSinudoidal(sampleFreq, i) * volume
     }
 
     criarSom(somArr)
 }
-    
 
 
 // Traçar o gráfico correspondente ao Sinal do Gerador de Sinais
@@ -188,89 +200,86 @@ function pontos() {
     let fAng = 2 * Math.PI / T
 
     // Escolher o intervalo e o delta T
-    let deltaT = Math.min(segundosDivNum / 30, T / 10) / 2
-    let t = -3.22 * segundosDivNum
+    let deltaT = T / 200
+    let t = -divsT * segundosDivNum
 
     let v
 
+    // Arrays com os valores do t e V
     let tArr = []
     let vArr = []
-    while (t < 3.22 * segundosDivNum) {
-        v = A * Math.sin(fAng * t) / voltsDivNum
+    while (t < divsT * segundosDivNum) {
+        v = A * Math.sin(fAng * t)
 
-        tArr.push((t*1000).toFixed(3))
+        tArr.push(t)
         vArr.push(v)
 
         t += deltaT
     }
-
+    
     return [tArr, vArr]
 }
 
-
-// Mostrar o gráfico
-function curva() {
-    // Remover o Canvas antigo
-    F11_AL21.divCurva.innerHTML = ''
-
-    // Obter e guardar os resultados
+// Desenhar a onda Sinusoidal que representa o Som criado
+function desenharSom() {
+    // Valores de t e de V
     let resultados = pontos()
-    let t = resultados[0]
-    let v = resultados[1]
+    let tArr = resultados[0]
+    let vArr = resultados[1]
 
-    // Criar o canvas onde vai estar a curva
-    canvasCurva = document.createElement('canvas')
-    canvasCurva.setAttribute('id', 'canvasCurva')
-    F11_AL21.divCurva.appendChild(canvasCurva)
+    // Valores máximos para o t e para o V
+    let maxT = divsT * 2 * segundosDivNum
+    let maxV = divsV * 2 * voltsDivNum
 
-    // Criar o Chart Object
-    let graCurva = new Chart(canvasCurva, {
-        type: 'line',
-        data: {
-            labels: t,
-            datasets: [{
-                data: v,
-                label: 'Tensão',
-                borderColor: 'rgb(160, 230, 200)',
-                fill: false
-            }]
-        },
-        options: {
-            animation: {
-                duration: 0
-            },
-            hover: {
-                animationDuration: 0
-            },
-            responsiveAnimationDuration: 0,
-            elements: {
-                point: {
-                    radius: 1,
-                    hitRadius: 1,
-                    hoverRadius: 4
-                }
-            },
-            scales: {
-                xAxes: [{
-                    display: false,
-                    labelString: '',
-                }],
-                yAxes: [{
-                    display: false,
-                    ticks: {
-                        max: 2.04,
-                        min: -2.04
-                    }
-                }]
-            },
-            legend: {
-                display: false,
-            },
-            tooltips: {
-                enabled: false
-            }
-        },
-    })
+    // Converções das coordenadas para Pixeis
+    let tToPx = canvasSim.width / maxT
+    let vToPx = canvasSim.height / maxV
+
+    // Converter cada valor para pixeis
+    tArr = tArr.map(t => (t + maxT / 2) * tToPx)
+    vArr = vArr.map(v => (maxV / 2 - v) * vToPx + larguraEixos)
+
+    let t, v
+
+    t = tArr[0]
+    v = vArr[0]
+
+    // Limpar a imagem anterior
+    ctx.clearRect(0, 0, canvasSim.width, canvasSim.height)
+
+    // Desenhar a onda
+    ctx.strokeStyle = cor
+    ctx.lineWidth = largura
+
+    ctx.beginPath()
+    ctx.moveTo(t, v)
+    ctx.lineTo(t, v)
+    for (let i = 1; i < tArr.length; i++) {
+        t = tArr[i]
+        v = vArr[i]
+        ctx.lineTo(t, v)
+    }
+    ctx.stroke()
 }
+
+
+// Corrige o tamanho do Canvas e corrige o DPR
+function fixDPR() {
+    // Usar variável global
+    if (simulaFQmenu.aberto !== 'resultados.html') return
+
+    // Altura do CSS
+    let altura_css = +getComputedStyle(canvasSim).getPropertyValue('height').slice(0, -2)
+    // Larura do CSS
+    let largura_css = +getComputedStyle(canvasSim).getPropertyValue('width').slice(0, -2)
+
+    // Altera o tamanho do canvas
+    canvasSim.width = largura_css * DPR
+    canvasSim.height = altura_css * DPR
+
+    desenharSom()
+}
+
+window.onresize = fixDPR
 
 // Ideia: Permitir Input do Microfone
