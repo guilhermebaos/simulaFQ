@@ -223,7 +223,7 @@ function curva() {
                 xAxes: [{
                     scaleLabel: {
                         display: true,
-                        labelString: 'Volume de Titulante Adicionado/ ml',
+                        labelString: 'Volume de Titulante Adicionado/ mL',
                         fontColor: 'black',
                         fontSize: 13,
                         fontFamily: '"Arial", "sans-serif"'
@@ -247,7 +247,7 @@ function curva() {
                     title: function(tooltipItems, data) {
                         let tooltipItem = tooltipItems[0]
 
-                        return 'Volume de Titulante Adicionado: ' + tooltipItem.label + 'ml'
+                        return 'Volume de Titulante Adicionado: ' + tooltipItem.label + 'mL'
                     },
                     label: function(tooltipItem, data) {
                         let value = Number(tooltipItem.value).toFixed(2)
