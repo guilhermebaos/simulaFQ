@@ -4,7 +4,7 @@ export default class Dados {
         this.simula = simula
 
         // Contador, para apenas guardar uma parte dos dados, para evitar sobrecarregar os gráficos
-        this.contador = 0
+        this.contador = -1
         this.ignorar = 3        // Apenas grava 1 valor em cada this.ignorar
 
         // Tempo atual
@@ -13,7 +13,7 @@ export default class Dados {
 
     reiniciar() {
         // Apaga os dados gravados
-        this.contador = 0
+        this.contador = -1
         this.tempo = 0
     }
 
@@ -25,13 +25,13 @@ export default class Dados {
 
         // Objeto com os dados
         this.dadosObtidos = []
-
-        // Calcular e guardar os valores
-        this.tempo += deltaTempo * this.ignorar * this.simula.resolucao
         
         this.dadosObtidos.push(this.tempo.toFixed(3))
         this.dadosObtidos.push(this.simula.montagem.velocidade / 100)
         this.dadosObtidos.push(this.simula.montagem.aceleracao / 100)
+        
+        // Calcular e guardar os valores
+        this.tempo += deltaTempo * this.ignorar * this.simula.resolucao
 
         return this.dadosObtidos
     }

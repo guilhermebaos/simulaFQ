@@ -275,10 +275,11 @@ function loopSimula(tempo) {
     let dados
     for (let i = 0; i < RESOLUCAO; i++) {
         dados = simula.update(deltaTempo)
-    }
-    if (dados) {
-        valoresTabela(dados.hQeR)
-        atualizarCurva(grafico, dados.tempo, dados.posY)
+        if (dados) {
+            console.log(dados)
+            valoresTabela(dados.hQeR)
+            atualizarCurva(grafico, dados.tempo, dados.posY)
+        }
     }
 
     ctx.clearRect(0, 0, canvasSim.width, canvasSim.height)

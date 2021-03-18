@@ -4,7 +4,7 @@ export default class Dados {
         this.simula = simula
 
         // Contador, para apenas guardar uma parte dos dados, para evitar sobrecarregar os gráficos
-        this.contador = 0
+        this.contador = -1
         this.ignorar = Math.ceil(this.simula.inputs.hi / 2)        // Apenas grava 1 valor em cada this.ignorar
 
         // Tempo atual
@@ -20,7 +20,7 @@ export default class Dados {
 
     reiniciar() {
         // Apaga os dados gravados
-        this.contador = 0
+        this.contador = -1
         this.tempo = 0
 
         for (let key in this.dadosObtidos) {
@@ -37,8 +37,6 @@ export default class Dados {
         if (this.contador % (this.ignorar * this.simula.resolucao) != 0) return false
 
         // Calcular e guardar os valores
-        this.tempo += deltaTempo * this.ignorar * this.simula.resolucao
-
         this.dadosObtidos.tempo = (this.tempo).toFixed(3)
         
         let h = this.simula.bola.posicao.altura
@@ -57,6 +55,8 @@ export default class Dados {
         }
 
         this.dadosObtidos.posY = h * 100
+
+        this.tempo += deltaTempo * this.ignorar * this.simula.resolucao
 
         return this.dadosObtidos
     }

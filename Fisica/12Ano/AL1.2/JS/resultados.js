@@ -271,9 +271,9 @@ function loopSimula(tempo) {
     let dados
     for (let i = 0; i < RESOLUCAO; i++) {
         dados = simula.update(deltaTempo)
-    }
-    if (dados && recolherDados) {
-        window.atualizarGraficos(graficos, dados[0], dados.slice(1, dados.lenght))
+        if (dados && recolherDados) {
+            window.atualizarGraficos(graficos, dados[0], dados.slice(1, dados.lenght))
+        }
     }
 
     ctx.clearRect(0, 0, canvasSim.width, canvasSim.height)
