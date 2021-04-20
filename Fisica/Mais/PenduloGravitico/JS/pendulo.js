@@ -27,6 +27,7 @@ export default class Pendulo {
         this.ang = this.simula.inputs.ang
         this.angSin = Math.sin(this.ang)
         this.angCos = Math.cos(this.ang)
+        this.reto = Math.PI / 2
 
         // Posição da Bola
         this.posicao = {
@@ -34,12 +35,44 @@ export default class Pendulo {
             y: this.fioPos.y + this.angCos * this.comp
         }
 
-        this.velocidade = {x: 0, y: 0, abs: 0}
+        this.velocidade = {angular: 0, x: 0, y: 0, abs: 0}
+        this.aceleracao = {angular: 0, angularTemp: 0, x: 0, y: 0, abs: 0, temp:{}}
+
+        // Peso
+        this.peso = this.massa * this.g
+
+        // Momento de Inércia
+        this.inercia = this.massa * this.comp ** 2
     }
 
+    // Passei para as grandezas angulares, pois dava resultados mais precisos em ângulos grandes, em vez de calcular as componentes em Ox e em Oy de todas as forças, com a ajuda de https://www.burakkanber.com/blog/physics-in-javascript-rigid-bodies-part-1-pendulum-clock/
     update(deltaTempo) {
-        // Módulo das forças a atuar na bola
-        this.peso = this.massa * this.g
+        // Novo Ângulo
+        this.ang += this.velocidade.angular * deltaTempo + 0.5 * this.aceleracao.angular * (deltaTempo ** 2)
+        
+        // Fazer cache dos valores Trignométricos
+        this.angSin = Math.sin(this.ang)
+        this.angCos = Math.cos(this.ang)
+        this.angCosCalc = Math.cos(this.ang + this.reto)
+
+        // Módulo da tensão a atuar na bola
+        this.forcaCentripta = this.angCosCalc * this.peso * this.comp
+
+        // Aceleração Nova
+        this.aceleracao.angularTemp = this.forcaCentripta / this.inercia
+
+        // Velocidade Angular, calculada com a média da aceleração atual e anterior
+        this.velocidade.angular += (this.aceleracao.angular + this.aceleracao.angularTemp) / 2 * deltaTempo
+
+        // Atualizar a aceleração
+        this.aceleracao.angular = this.aceleracao.angularTemp
+
+        // Posição da Bola
+        this.posicao.x = this.fioPos.x + this.angSin * this.comp
+        this.posicao.y = this.fioPos.y + this.angCos * this.comp
+
+
+        // Calcular outros valores
         this.tensao = this.angCos * this.peso + this.massa * (this.velocidade.abs ** 2) / this.comp
 
         // Força Resultante
@@ -48,43 +81,23 @@ export default class Pendulo {
             y: this.peso - this.angCos * this.tensao
         }
         
-        // Aceleração da Bola
-        this.aceleracao = {
+        // Aceleração atual da Bola
+        this.aceleracao.temp = {
             x: this.resultante.x / this.massa,
             y: this.resultante.y / this.massa
         }
 
-        this.aceleracao.abs = (this.aceleracao.x ** 2 + this.aceleracao.y ** 2) ** 0.5
-
-
-        // Posição da Bola
-        this.posicao.x += this.velocidade.x * deltaTempo + 0.5 * this.aceleracao.x * deltaTempo ** 2
-        this.posicao.y += this.velocidade.y * deltaTempo + 0.5 * this.aceleracao.y * deltaTempo ** 2
-
-
-        // Velocidade da Bola
-        this.velocidade.x += this.aceleracao.x * deltaTempo
-        this.velocidade.y += this.aceleracao.y * deltaTempo
+        // Velocidade da Bola, calculada com a média da aceleração atual e da última aceleração
+        this.velocidade.x += (this.aceleracao.x + this.aceleracao.temp.x) / 2 * deltaTempo
+        this.velocidade.y += (this.aceleracao.y + this.aceleracao.temp.y) / 2 * deltaTempo
 
         this.velocidade.abs = (this.velocidade.x ** 2 + this.velocidade.y ** 2) ** 0.5
-        
 
-        // Novo Ângulo
-        let vetor1 = {x: 0, y: 1, abs: 1}
-        let vetor2 = {
-            x: this.posicao.x - this.fioPos.x,
-            y: this.posicao.y - this.fioPos.y
-        }
-        vetor2.abs = (vetor2.x ** 2 + vetor2.y ** 2) ** 0.5
+        // Atualizar a aceleração
+        this.aceleracao.x = this.aceleracao.temp.x
+        this.aceleracao.y = this.aceleracao.temp.y
 
-        this.angCos = (vetor1.y * vetor2.y) / (vetor1.abs * vetor2.abs)
-        
-        if (this.posicao.x > this.fioPos.x) {
-            this.ang = - Math.acos(this.angCos)
-        } else {
-            this.ang = Math.acos(this.angCos)
-        }
-        this.angSin = Math.sin(this.ang)
+        this.aceleracao.abs = (this.aceleracao.x ** 2 + this.aceleracao.y ** 2) ** 0.5
     }
 
     desenhar(ctx) {

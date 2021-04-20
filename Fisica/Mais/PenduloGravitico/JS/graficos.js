@@ -438,7 +438,7 @@ export default function graficos(dados, divsCurvas) {
             labels: tempo,
             datasets: [{
                 data: dados.jer,
-                label: 'Módulo do Jerk',
+                label: 'Componente escalar do Jerk',
                 borderColor: 'blue',
                 fill: false
             }]
@@ -464,7 +464,7 @@ export default function graficos(dados, divsCurvas) {
                 yAxes: [{
                     scaleLabel: {
                         display: true,
-                        labelString: 'Jerk/ m/s²/s',
+                        labelString: 'Jerk/ m/s³',
                         fontColor: 'black',
                         fontSize: 13,
                         fontFamily: '"Arial", "sans-serif"'
@@ -482,7 +482,7 @@ export default function graficos(dados, divsCurvas) {
                         let value = Number(tooltipItem.value).toFixed(2)
                         
                         // Label variável
-                        return 'Jerk: ' + value + 'm/s²/s'
+                        return 'Jerk: ' + value + 'm/s³'
                     }
                 },
                 custom: function(tooltip) {

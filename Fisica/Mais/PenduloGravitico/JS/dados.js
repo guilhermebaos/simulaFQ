@@ -32,12 +32,16 @@ export default class Dados {
             em: []
         }
         this.dadosEntregues = false
+
+        // Escala dos Dados
+        this.escala = this.simula.pendulo.escala
     }
 
     reiniciar() {
         // Apaga os dados gravados
         this.contador = 0
         this.tempo = 0
+        this.escala = this.simula.pendulo.escala
 
         // Atualizar o tempo até o qual vamos gravar dados, em s
         this.tempoFinal = this.simula.inputs.tempoMax
@@ -70,11 +74,13 @@ export default class Dados {
 
         this.dadosObtidos.tempo.push((this.tempo).toFixed(3))
 
+        // Guardar o Ângulo
         this.dadosObtidos.ang.push(this.simula.pendulo.ang * (180 / Math.PI))
 
+        // Guardar a Posição
         this.dadosObtidos.pos.push(((this.simula.pendulo.posicao.x - this.simula.pendulo.fioPos.x) ** 2 + (this.simula.altura - this.simula.pendulo.posicao.y) ** 2) ** 0.5)
-        this.dadosObtidos.posX.push(this.simula.pendulo.posicao.x - this.simula.pendulo.fioPos.x)
-        this.dadosObtidos.posY.push(this.simula.altura - this.simula.pendulo.posicao.y)
+        this.dadosObtidos.posX.push((this.simula.pendulo.posicao.x - this.simula.pendulo.fioPos.x) * this.escala)
+        this.dadosObtidos.posY.push((this.simula.pendulo.comp - this.simula.pendulo.posicao.y) * this.escala)
 
         this.dadosObtidos.vel.push(this.simula.pendulo.velocidade.abs)
         this.dadosObtidos.velX.push(this.simula.pendulo.velocidade.x)

@@ -49,7 +49,7 @@ export default class Simula {
     juntarValores() {
         return {
             massa: massaPendulo.value / 1000,           // Massa em kg
-            comp: comprimentoFio.value / 100,           // Comprimento em cm
+            comp: comprimentoFio.value / 100,           // Comprimento em m
             g: aGravitica.value / 100,                  // g em m/s^2
             ang: - angMax.value / 10 * (Math.PI / 180),   // Ângulo em Radianos
             tempoMax: tempoMax.value / 1
@@ -65,6 +65,9 @@ export default class Simula {
     }
 
     update(deltaTempo) {
+        // Evitar que o intervalo de tempo seja superior a 100ms
+        if (deltaTempo > 50) deltaTempo = 50
+
         if (this.estado !== ESTADOS.EM_PROGRESSO) return
 
         deltaTempo /= 1000
