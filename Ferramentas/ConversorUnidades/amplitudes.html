@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Amplitudes - SimulaFQ</title>
+    
+    <link rel="shortcut icon" href="../../../Favicons/favicon.ico" type="image/x-icon">
+
+    <link rel="icon" href="../../../Favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="../../../Favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../Favicons/apple-touch-icon.png">
+    <link rel="manifest" href="../../../Favicons/site.webmanifest">
+
+    <link rel="stylesheet" href="../../../CSS/estilo.css">
+
+    <script src="../../../JS/w3-Html-Includes.js"></script>
+    <script src="../../../JS/explicar.js"></script>
+    <script src="https://kit.fontawesome.com/8b48590a50.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div incluir="../../../Layout/navbar.html" class="header"></div>
+    
+    <main>
+        <header>
+            <h1>Conversor de Unidades de Amplitude</h1>
+        </header>
+        
+        <section>
+            <h2 class="topico">Escolhe as Unidades</h3>
+            <p>
+                Converter de:
+                <select id="converterDe" name="converterDe" class="unidades" onchange="amplitude(true)">
+                    <option value="rad">Radiano (rad)</option>
+                    <optgroup label="Grau e as suas Subdivisões">
+                        <option value="°" selected>Grau (&deg;)</option>
+                        <option value="'">Minuto (')</option>
+                        <option value="''">Segundo ('')</option>
+                    </optgroup>
+                </select>
+            </p>
+            <p>
+                Para:
+                <select id="converterPara" name="converterPara" class="unidades" onchange="amplitude(true)">
+                    <option value="rad">Radiano (rad)</option>
+                    <optgroup label="Grau e as suas Subdivisões">
+                        <option value="°">Grau (&deg;)</option>
+                        <option value="'" selected>Minuto (')</option>
+                        <option value="''">Segundo ('')</option>
+                    </optgroup>
+                </select>
+            </p>
+            
+            <h2 class="topico">Insere o Valor a Converter</h3>
+            <p>
+                <input type="number" id="converterNum" name="converterNum" class="converter" oninput="amplitude()" value=0><span name="unidadesDe">&deg;</span> &equals;
+                <input type="number" id="converterResultado" name="converterResultado" class="converter" oninput="amplitude(false, true)" value=0><span name="unidadesPara">'</span>
+            </p>
+            
+            <h2 class="topico">Vê a Explicação</h3>
+            <ol name="explicação" class="explicar">
+                <li>
+                    Converter de <span name="unidadesDeExtenso">Grau</span> para <span name="unidadesParaExtenso">Minuto</span>: Multiplicar por <span name="razao" class="serif">60</span>
+                </li>
+            </ol>
+            <ol name="explicação" class="explicar">
+                <li>
+                    Converter de Radiano para Grau: Multiplicar por <div class="frac serif"><span>180</span><span class="denom">&pi;</span></div>
+                </li>
+            </ol>
+            <ol name="explicação" class="explicar">
+                <li>
+                    Converter de Grau para Radiano: Multiplicar por <div class="frac serif"><span>&pi;</span><span class="denom">180</span></div>
+                </li>
+            </ol>
+            
+            <h3 class="sub-topico">Igualdades Importantes</h3>
+            <ul class="teoria explicar">
+                <li>
+                    <span class="serif">1&deg; &equals; <div class="frac"><span>&pi;</span><span class="denom">180</span></div> rad</span>
+                </li>
+                <li><span class="serif">1&deg; &equals; 60'</span></li>
+                <li><span class="serif">1' &equals; 60''</span></li>
+            </ul>
+        </section>
+
+        <button id="para-o-topo" onclick="paraOTopo()">&uparrow;</button>
+    </main>
+
+    <footer incluir="../../../Layout/footer.html"></footer>
+
+    <script>
+        incluirHTML()
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bignumber.js@9.0.1/bignumber.min.js"></script>
+    <script src="../../../JS/para-o-topo.js"></script>
+    <script src="JS/conversor.js"></script>
+    <script src="JS/amplitude.js"></script>
+    <script>amplitude(true)</script>
+    <script src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img class="statcounter" src="https://c.statcounter.com/12454038/0/b1e05410/1/" alt="Web Analytics"></a></div></noscript>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Unidades - SimulaFQ</title>
+    
+    <link rel="shortcut icon" href="../../../Favicons/favicon.ico" type="image/x-icon">
+
+    <link rel="icon" href="../../../Favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="../../../Favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../Favicons/apple-touch-icon.png">
+    <link rel="manifest" href="../../../Favicons/site.webmanifest">
+
+    <link rel="stylesheet" href="../../../CSS/estilo.css">
+
+    <script src="../../../JS/w3-Html-Includes.js"></script>
+    <script src="../../../JS/explicar.js"></script>
+    <script src="https://kit.fontawesome.com/8b48590a50.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div incluir="../../../Layout/navbar.html" class="header"></div>
+    
+    <main>
+        <header>
+            <h1>Conversor de Unidades</h1>
+        </header>
+        
+        <section>
+            <h2 class="topico">Escolhe a Grandeza</h2>
+            <p class="nota">Ordenadas por ordem alfabética.</p>
+            <div class="grandeza-container">
+                <div class="grandeza" onclick="grandeza('amplitudes.html')"><div><a href="amplitudes.html" rel="next">Amplitudes</a></div></div>
+                <div class="grandeza" onclick="grandeza('area.html')"><div><a href="area.html" rel="next">Área</a></div></div>
+                <div class="grandeza" onclick="grandeza('comprimento.html')"><div><a href="comprimento.html" rel="next">Comprimento</a></div></div>
+                <div class="grandeza" onclick="grandeza('energia.html')"><div><a href="energia.html" rel="next">Energia</a></div></div>
+                <div class="grandeza" onclick="grandeza('massa.html')"><div><a href="massa.html" rel="next">Massa</a></div></div>
+                <div class="grandeza" onclick="grandeza('forca.html')"><div><a href="forca.html" rel="next">Força</a></div></div>
+                <div class="grandeza" onclick="grandeza('pressao.html')"><div><a href="pressao.html" rel="next">Pressão</a></div></div>
+                <div class="grandeza" onclick="grandeza('potencia.html')"><div><a href="potencia.html" rel="next">Potência</a></div></div>
+                <div class="grandeza" onclick="grandeza('quantidade.html')"><div><a href="quantidade.html" rel="next">Quantidade</a></div></div>
+                <div class="grandeza" onclick="grandeza('tempo.html')"><div><a href="tempo.html" rel="next">Tempo</a></div></div>
+                <div class="grandeza" onclick="grandeza('velocidade.html')"><div><a href="velocidade.html" rel="next">Velocidade</a></div></div>
+                <div class="grandeza" onclick="grandeza('volume.html')"><div><a href="volume.html" rel="next">Volume</a></div></div>
+            </div>
+
+            <div class="pc-only">
+                <h3 class="sub-topico">Dica:</h3>
+                <p>
+                    Quando vires uma caixa de seleção como esta, clica nela e começa a escrever a palavra que queres encontrar!
+                </p>
+                <select class="unidades">
+                    <optgroup label="Múltiplos e Submúltiplos do Metro">
+                        <option value="pm">Picómetros (pm)</option>
+                        <option value="nm">Nanómetros (mm)</option>
+                        <option value="μm">Micrómetros (&mu;m)</option>
+                        <option value="mm">Milímetro (mm)</option>
+                        <option value="cm">Centímetro (cm)</option>
+                        <option value="dm">Decímetro (dm)</option>
+                        <option value="m" selected>Metro (m)</option>
+                        <option value="dam">Decâmetro (dam)</option>
+                        <option value="hm">Hectómetro (hm)</option>
+                        <option value="km">Kilómetro (km)</option>
+                        <option value="Mm">Megametro (Mm)</option>
+                        <option value="Gm">Gigametro (Gm)</option>
+                        <option value="Tm">Terametro (Tm)</option>
+                    </optgroup>
+                    <optgroup label="Sistema Imperial">
+                        <option value="in">Polegada (in)</option>
+                        <option value="ft">Pé (ft)</option>
+                    </optgroup>
+                    <optgroup label="Medidas do Espaço">
+                        <option value="UA">Unidade Astronómica (UA)</option>
+                        <option value="Segundo-Luz">Segundo-Luz</option>
+                    </optgroup>
+                </select>
+                <p class="nota m15">
+                    Seleciona a caixa e escreve 'k', de kilómetro.
+                </p>
+            </div>
+        </section>
+
+        <button id="para-o-topo" onclick="paraOTopo()">&uparrow;</button>
+    </main>
+
+    <footer incluir="../../../Layout/footer.html"></footer>
+
+    <script>
+        incluirHTML()
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bignumber.js@9.0.1/bignumber.min.js"></script>
+    <script src="../../../JS/para-o-topo.js"></script>
+    <script src="JS/conversor.js"></script>
+    <script src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img class="statcounter" src="https://c.statcounter.com/12454038/0/b1e05410/1/" alt="Web Analytics"></a></div></noscript>
+</body>
+</html>

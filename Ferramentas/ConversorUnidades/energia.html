@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Energias - SimulaFQ</title>
+    
+    <link rel="shortcut icon" href="../../../Favicons/favicon.ico" type="image/x-icon">
+
+    <link rel="icon" href="../../../Favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="../../../Favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../Favicons/apple-touch-icon.png">
+    <link rel="manifest" href="../../../Favicons/site.webmanifest">
+
+    <link rel="stylesheet" href="../../../CSS/estilo.css">
+
+    <script src="../../../JS/w3-Html-Includes.js"></script>
+    <script src="../../../JS/explicar.js"></script>
+    <script src="https://kit.fontawesome.com/8b48590a50.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div incluir="../../../Layout/navbar.html" class="header"></div>
+    
+    <main>
+        <header>
+            <h1>Conversor de Unidades de Energia</h1>
+        </header>
+        
+        <section>
+            <h2 class="topico">Escolhe as Unidades</h3>
+            <p>
+                Converter de:
+                <select id="converterDe" name="converterDe" class="unidades" onchange="energia(true)">
+                    <optgroup label="Múltiplos e Submúltiplos do Joule">
+                        <option value="mJ">Milijoule (mJ)</option>
+                        <option value="J">Joule (J)</option>
+                        <option value="kJ">Kilojoule (kJ)</option>
+                        <option value="MJ">Megajoule (MJ)</option>
+                        <option value="GJ">Gigajoule (GJ)</option>
+                        <option value="TJ">Terajoule (TJ)</option>
+                    </optgroup>
+                    <optgroup label="Potência X Energia">
+                        <option value="Ws">Watt segundo (Ws)</option>
+                        <option value="kWh" selected>Kilowatt hora (kWh)</option>
+                    </optgroup>
+                    <optgroup label="Múltiplos da Caloria">
+                        <option value="cal">Caloria (cal)</option>
+                        <option value="kcal">Kilocaloria (kcal)</option>
+                    </optgroup>
+                </select>
+            </p>
+            <p>
+                Para:
+                <select id="converterPara" name="converterPara" class="unidades" onchange="energia(true)">
+                    <optgroup label="Múltiplos e Submúltiplos do Joule">
+                        <option value="mJ">Milijoule (mJ)</option>
+                        <option value="J">Joule (J)</option>
+                        <option value="kJ" selected>Kilojoule (kJ)</option>
+                        <option value="MJ">Megajoule (MJ)</option>
+                        <option value="GJ">Gigajoule (GJ)</option>
+                        <option value="TJ">Terajoule (TJ)</option>
+                    </optgroup>
+                    <optgroup label="Potência X Energia">
+                        <option value="Ws">Watt segundo (Ws)</option>
+                        <option value="kWh">Kilowatt hora (kWh)</option>
+                    </optgroup>
+                    <optgroup label="Múltiplos da Caloria">
+                        <option value="cal">Caloria (cal)</option>
+                        <option value="kcal">Kilocaloria (kcal)</option>
+                    </optgroup>
+                </select>
+            </p>
+            
+            <h2 class="topico">Insere o Valor a Converter</h3>
+            <p>
+                <input type="number" id="converterNum" name="converterNum" class="converter" oninput="energia()" value=0><span name="unidadesDe">J</span> &equals;
+                <input type="number" id="converterResultado" name="converterResultado" class="converter" oninput="energia(false, true)" value=0><span name="unidadesPara">Ws</span>
+            </p>
+            
+            <h2 class="topico">Vê a Explicação</h3>
+            <ol name="explicação" class="explicar">
+                <li>
+                    Converter de <span name="unidadesDeExtenso">Joule</span> para <span name="unidadesParaExtenso">Kilojoule</span>: Multiplicar por <span name="razao" class="serif">0.001</span>
+                </li>
+            </ol>
+            <ol name="explicação" class="explicar">
+                <li>
+                    Converter de <span name="unidadesDeExtensoPot">Watt</span> para <span name="unidadesParaExtensoPot">Kilowatt</span>: Multiplicar por <span name="razaoPot" class="serif">0.001</span>
+                </li>
+                <li>
+                    Converter de <span name="unidadesDeExtensoTempo">Segundo</span> para <span name="unidadesParaExtensoPot">Hora</span>: Multiplicar por <span name="razaoTempo" class="serif">3600</span>
+                </li>
+                <li>
+                    Converter de <span name="unidadesDeExtenso">Watt segundo</span> para <span name="unidadesParaExtenso">Kilowatt Hora</span>: Multiplicar por <span class="serif-grande"><span name="razaoPot"></span> &times; <span name="razaoTempo"></span> &equals; <span name='razao'></span></span>
+                </li>
+            </ol>
+            <ol name="explicação" class="explicar">
+                <li>
+                    Converter de <span name="unidadesDeExtenso">Joule</span> para Joule: Multiplicar por <span name="razaoEnergia" class="serif">1</span>
+                </li>
+                <li>Joule &equals; Watt segundo</li>
+                <li>
+                    Converter de Watt para <span name="unidadesParaExtensoPot">Kilowatt</span>: Multiplicar por <span name="razaoPot" class="serif">0.001</span>
+                </li>
+                <li>
+                    Converter de Segundo para <span name="unidadesParaExtensoTempo">Hora</span>: Multiplicar por <span name="razaoTempo" class="serif">3600</span>
+                </li>
+                <li>
+                    Converter de <span name="unidadesDeExtenso">Joule</span> para <span name="unidadesParaExtenso">Kilowatt Hora</span>: Multiplicar por <span class="serif-grande"><span name="razaoEnergia">1</span> &times; <span name="razaoPot">0.001</span> &times; <span name="razaoTempo">3600</span> &equals; <span name='razao'></span></span>
+                </li>
+            </ol>
+            <ol name="explicação" class="explicar">
+                <li>
+                    Converter de <span name="unidadesDeExtensoPot">Kilowatt</span> para Watt: Multiplicar por <span name="razaoPot" class="serif">1000</span>
+                </li>
+                <li>
+                    Converter de <span name="unidadesDeExtensoTempo">Hora</span> para Segundo: Multiplicar por <span name="razaoTempo" class="serif">3600</span>
+                </li>
+                <li>Joule &equals; Watt segundo</li>
+                <li>
+                    Converter de Joule para <span name="unidadesParaExtenso">Joule</span>: Multiplicar por <span name="razaoEnergia" class="serif">1</span>
+                </li>
+                <li>
+                    Converter de <span name="unidadesDeExtenso">Killowatt hora</span> para <span name="unidadesParaExtenso">Joule</span>: Multiplicar por <span class="serif-grande"><span name="razaoPot">1000</span> &times; <span name="razaoTempo">3600</span> &times; <span name="razaoEnergia">1</span> &equals; <span name='razao'></span></span>
+                </li>
+            </ol>
+            <ol name="explicação" class="explicar">
+                <li>Joule &equals; Watt segundo</li>
+            </ol>
+            <h3 class="sub-topico">Igualdades Importantes</h3>
+            <ul class="teoria explicar">
+                <li>
+                    <span class="serif">1 J &equals; 1 Ws</span> (<span class="anchor" onclick="mostrarExtra('Porquê?')">Porquê?</span>)
+                </li>
+                <div id="Porquê?" class="explicar"><button class="fechar" onclick="mostrarExtra('Porquê?')">X</button>
+                    <h4 class="explicar">Porquê?</h4>
+                    <p>Pela fórmula da Potência:</p>
+                    <div class="contas">
+                        <span class="invi">&hArr;</span> P &equals; <div class="frac"><span>E</span><span class="denom">&Delta;t</span></div> &hArr; <br>
+                        &hArr; P &times; &Delta;t &equals; E
+                    </div>
+                    <p>Logo, substituindo pelas unidades do SI:</p>
+                    <div class="contas">
+                        <span class="invi">&hArr;</span> W &times; s &equals; J
+                    </div>
+                    <p>Ou seja, Watt segundo é exatamente igual a Joule.</p>
+                </div>
+                <li><span class="serif">1kWh &equals; 3.6 &times; 10<sup class="sem-altura">6</sup>J</span></li>
+                <li><span class="serif">1cal &equals; 4.184J</span></li>
+            </ul>
+        </section>
+
+        <button id="para-o-topo" onclick="paraOTopo()">&uparrow;</button>
+    </main>
+
+    <footer incluir="../../../Layout/footer.html"></footer>
+
+    <script>
+        incluirHTML()
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bignumber.js@9.0.1/bignumber.min.js"></script>
+    <script src="../../../JS/para-o-topo.js"></script>
+    <script src="JS/conversor.js"></script>
+    <script src="JS/energia.js"></script>
+    <script>energia(true)</script>
+    <script src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img class="statcounter" src="https://c.statcounter.com/12454038/0/b1e05410/1/" alt="Web Analytics"></a></div></noscript>
+</body>
+</html>

@@ -1,8 +1,32 @@
 <nav>
-    <ul class="navbar">
-        <li><a href="/index.html">SimulaFQ</a>
-        </li><li><a href="/Fisica/index.html">Física</a>
-        </li><li><a href="/Quimica/index.html">Química</a>
-        </li>
-    </ul>
+    <div class="menu">
+        <ul class="navbar">
+            <li><a href="/index.html">SimulaFQ</a>
+            </li><li class="pc-only"><a href="/Fisica/index.html">Física</a>
+            </li><li class="pc-only"><a href="/Quimica/index.html">Química</a>
+            </li>
+        </ul>
+    </div>
+    <button class="dropdown" onclick="dropdown()" onblur="dropdown(500)">
+        <div class="dropdown-icon"></div>
+        <div class="dropdown-icon"></div>
+        <div class="dropdown-icon"></div>
+    </button>
+
+    <div id="dropdown-items" class="dropdown-items">
+        <div class="mobile-only">
+            <ul class="dropdown-links">
+                <li class="m15-bot"><strong>Atividades Laboratoriais</strong></li>
+                <li><p class="m1"><a href="/Fisica/index.html">&rarr; Física</a></p></li>
+                <li><p><a href="/Quimica/index.html">&rarr; Química</a></p></li>
+            </ul>
+        </div>
+        <div>
+            <ul class="dropdown-links">
+                <li class="m15-bot"><strong>Ferramentas</strong></li>
+                <li><p class="m1"><a href="/Ferramentas/ConversorUnidades/index.html">&rarr; Conversor de Unidades</a></p></li>
+                <li><p class="m1"><a href="/Ferramentas/MaisSites/index.html">&rarr; Mais Sites</a></p></li>
+            </ul>
+        </div>
+    </div>
 </nav>

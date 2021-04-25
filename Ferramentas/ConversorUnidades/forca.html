@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Forças - SimulaFQ</title>
+    
+    <link rel="shortcut icon" href="../../../Favicons/favicon.ico" type="image/x-icon">
+
+    <link rel="icon" href="../../../Favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="../../../Favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../Favicons/apple-touch-icon.png">
+    <link rel="manifest" href="../../../Favicons/site.webmanifest">
+
+    <link rel="stylesheet" href="../../../CSS/estilo.css">
+
+    <script src="../../../JS/w3-Html-Includes.js"></script>
+    <script src="../../../JS/explicar.js"></script>
+    <script src="https://kit.fontawesome.com/8b48590a50.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div incluir="../../../Layout/navbar.html" class="header"></div>
+    
+    <main>
+        <header>
+            <h1>Conversor de Unidades de Força</h1>
+        </header>
+        <section>
+            <h2 class="topico">Escolhe as Unidades</h3>
+            <p>
+                Converter de:
+                <select id="converterDe" name="converterDe" class="unidades" onchange="forca(true)">
+                    <optgroup label="Múltiplos e Submúltiplos do Newton">
+                        <option value="μN">Micronewton (μN)</option>
+                        <option value="mN">Milinewton (mN)</option>
+                        <option value="cN">Centinewton (cN)</option>
+                        <option value="dN">Decinewton (dN)</option>
+                        <option value="N">Newton (N)</option>
+                        <option value="daN">Decanewton (daN)</option>
+                        <option value="hN">Hectonewton (hN)</option>
+                        <option value="kN" selected>Kilonewton (kN)</option>
+                        <option value="MN">Meganewton (MN)</option>
+                        <option value="GN">Giganewton (GN)</option>
+                        <option value="TN">Teranewton (TN)</option>
+                    </optgroup>
+                </select>
+            </p>
+            <p>
+                Para:
+                <select id="converterPara" name="converterPara" class="unidades" onchange="forca(true)">
+                    <optgroup label="Múltiplos e Submúltiplos do newton">
+                        <option value="μN">Micronewton (μN)</option>
+                        <option value="mN">Milinewton (mN)</option>
+                        <option value="cN">Centinewton (cN)</option>
+                        <option value="dN">Decinewton (dN)</option>
+                        <option value="N" selected>Newton (N)</option>
+                        <option value="daN">Decanewton (daN)</option>
+                        <option value="hN">Hectonewton (hN)</option>
+                        <option value="kN">Kilonewton (kN)</option>
+                        <option value="MN">Meganewton (MN)</option>
+                        <option value="GN">Giganewton (GN)</option>
+                        <option value="TN">Teranewton (TN)</option>
+                    </optgroup>
+                </select>
+            </p>
+            
+            <h2 class="topico">Insere o Valor a Converter</h3>
+            <p>
+                <input type="number" id="converterNum" name="converterNum" class="converter" oninput="forca()" value=0><span name="unidadesDe">kN</span> &equals;
+                <input type="number" id="converterResultado" name="converterResultado" class="converter" oninput="forca(false, true)" value=0><span name="unidadesPara">N</span>
+            </p>
+            
+            <h2 class="topico">Vê a Explicação</h3>
+            <ol name="explicação" class="explicar">
+                <li>
+                    Converter de <span name="unidadesDeExtenso">Kilonewton</span> para <span name="unidadesParaExtenso">Newton</span>: Multiplicar por <span name="razao" class="serif">1000</span>
+                </li>
+            </ol>
+        </section>
+
+        <button id="para-o-topo" onclick="paraOTopo()">&uparrow;</button>
+    </main>
+
+    <footer incluir="../../../Layout/footer.html"></footer>
+
+    <script>
+        incluirHTML()
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bignumber.js@9.0.1/bignumber.min.js"></script>
+    <script src="../../../JS/para-o-topo.js"></script>
+    <script src="JS/conversor.js"></script>
+    <script src="JS/forca.js"></script>
+    <script>forca(true)</script>
+    <script src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img class="statcounter" src="https://c.statcounter.com/12454038/0/b1e05410/1/" alt="Web Analytics"></a></div></noscript>
+</body>
+</html>

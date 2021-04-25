@@ -4,7 +4,7 @@ const template_id = 'projetoal'
 
 // Selecionar os Select com a informação
 let temaSelect = document.getElementById('tema')
-let textoALSelect = document.getElementById('textoAL')
+let paginaSelect = document.getElementById('pagina')
 let zonaSelect = document.getElementById('zona')
 let principalSelect = document.getElementById('principal')
 let btnEnviar = document.getElementById('enviar')
@@ -16,7 +16,7 @@ function enviarEmail() {
     // Conteúdo do Email
     let templateParams = {
         'tema': temaSelect.value,
-        'textoAL': textoALSelect.value,
+        'pagina': paginaSelect.value,
         'zona': zonaSelect.value,
         'principal': principalSelect.value 
     }
@@ -24,7 +24,7 @@ function enviarEmail() {
     // Enviar o Email e dizer no butão o resultado
     emailjs.send(service_id, template_id, templateParams).then(function() {
         btnEnviar.innerHTML = 'Enviado!'
-        setTimeout(function() {window.location = '/Atividades-Laboratoriais/index.html'}, 3000)
+        setTimeout(function() {window.location = '/index.html'}, 3000)
     }, function(erro) {
         alert('Problema no envio do Email! Tente mais tarde!')
         console.log(JSON.stringify(erro))
