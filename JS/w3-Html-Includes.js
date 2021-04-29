@@ -1,3 +1,6 @@
+// Código do Statcounter https://statcounter.com/
+var sc_project=12454038, sc_invisible=1, sc_security="b1e05410", sc_https=1 
+
 // Funcionalidade da navbar
 var navbarDropdown
 function dropdown(delay=0) {
