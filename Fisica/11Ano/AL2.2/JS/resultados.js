@@ -315,7 +315,7 @@ function pontos(A=0) {
         // Declarar variáveis e valores iniciais
         let f = freqSinal.value / 1
         let A = amplitudeSinal.value / 1000
-        let d = distMicrofone.value / 1000
+        let d = -distMicrofone.value / 1000
         let tAr = temperaturaAr.value / 1
     
         // Calcular Período e Frequência Angular
