@@ -123,8 +123,6 @@ export default class Simula {
         if (this.estado == ESTADOS.PAUSA) {
             ctx.fillStyle = 'rgba(0, 0, 0, 0.2)'
             ctx.fillRect(0, 0, this.largura, this.altura)
-        } else {
-            
         }
     }
 }

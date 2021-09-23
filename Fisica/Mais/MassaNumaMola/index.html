@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Massa Numa Mola - SimulaFQ</title>
+    
+    <link rel="shortcut icon" href="../../../Favicons/favicon.ico" type="image/x-icon">
+
+    <link rel="icon" href="../../../Favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="../../../Favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../Favicons/apple-touch-icon.png">
+    <link rel="manifest" href="../../../Favicons/site.webmanifest">
+
+    <link rel="stylesheet" href="../../../CSS/estilo.css">
+
+    <script src="../../../JS/w3-Html-Includes.js"></script>
+    <script src="../../../JS/explicar.js"></script>
+    <script src="https://kit.fontawesome.com/8b48590a50.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div incluir="../../../Layout/navbar.html" class="header"></div>
+    
+    <main>
+        <header>
+            <h1>Massa Numa Mola</h1>
+        </header>
+        
+        <section>
+            <div id="div-teoria">
+                <p class="m0">
+                    Nesta Simulação vais poder ver o movimento de uma <span class="anchor" onclick="mostrarExtra('Massa-Numa-Mola-Ideal')">Massa Numa Mola ideal</span> ao longo do tempo, bem como analisar esse movimento com base nos gráficos obtidos.
+                </p>
+                <div id="Massa-Numa-Mola-Ideal" class="explicar">
+                    <button class="fechar" onclick="mostrarExtra('Massa-Numa-Mola-Ideal')">X</button>
+                    <h4 class="explicar">Massa Numa Mola ideal</h4>
+                    <p>
+                        Uma Massa Numa Mola ideal consiste numa mola presa a uma superfície imóvel numa ponta e a uma massa na outra.
+                    </p>
+                    <p>
+                        Iremos estudar o moviemento da massa, onde apenas atua a Força Gravítica e a Força Elástica da mola.
+                    </p>
+                </div>
+            </div>
+            <div id="div-resultados">
+                <div class="centrada m30">
+                    <div class="flex-slider">
+                        <div><label for="valorMassa">Valor da Massa</label></div>
+                        <div><span id="valorMassaValue">1.000</span>kg<br>
+                        <input type="range" name="valorMassa" id="valorMassa" class="slider" min="100" max="10000" value="1000"></div>
+                    </div>
+                    <div class="flex-slider">
+                        <div><label for="constanteElastica">Constante Elástica da Mola</label></div>
+                        <div><span id="constanteElasticaValue">1.00</span>N/m<br>
+                        <input type="range" name="constanteElastica" id="constanteElastica" class="slider" min="10" max="1000" value="100"></div>
+                    </div>
+                    <div class="flex-slider">
+                        <div><label for="comprimentoMola">Comprimento da Mola em Repouso</label></div>
+                        <div><span id="comprimentoMolaValue">4.00</span>m<br>
+                        <input type="range" name="comprimentoMola" id="comprimentoMola" class="slider" min="100" max="500" value="400"></div>
+                    </div>
+                    <div class="flex-slider">
+                        <div><label for="posInicial">Posição Inicial da Massa</label></div>
+                        <div><span id="posInicialValue">3.50</span>m<br>
+                        <input type="range" name="posInicial" id="posInicial" class="slider" min="0" max="700" value="350"></div>
+                    </div>
+                    <div class="flex-slider">
+                        <div><label for="aGravitica">Aceleração Gravítica</label></div>
+                        <div><span id="aGraviticaValue">9.81</span>m/s<sup>2</sup><br>
+                        <input type="range" name="aGravitica" id="aGravitica" class="slider" min="200" max="2000" value="981"></div>
+                    </div>
+
+                    <button id="reiniciar-Simulação" class="submit">Largar a Massa</button>
+                </div>
+                <div class="graf-overflow m5-bot">
+                    <div class="graf-container">
+                        <canvas id="canvasSim" class="simulacao" style="width: calc(100% - 4px);"></canvas>
+                    </div>
+                </div>
+                <button id="pausa-Simulação" class="submit m5-top">Pausa</button>
+            </div>
+        </section>
+        <section>
+            <h2 class="topico m0">Analisar o Movimento</h2>
+            <p>
+                Escolhe os gráficos que queres ver para estudar o Movimento da Massa, em função do tempo:
+            </p>
+            <p><span class="anchor" onclick="mostrarExtra('Energia')">Energia</span></p>
+            <div id="Energia" class="explicar explicar-no-border">
+                <h4 class="explicar">Gráfico da Energia</h4>
+                <p>(Ver a Legenda no topo do gráfico)</p>
+                <div class="graf-overflow">
+                    <div class="graf-container">
+                        <div id="curvaEne"></div>
+                    </div>
+                </div>
+                <p>
+                    O ponto de energia potencial gravítica nula é o ponto onde a massa tem altura mínima.
+                </p>
+                <p>
+                    A Energia Mecânica não se conserva pois a força exercida pela mola não é conservativa.
+                </p>
+            </div>
+            <p><span class="anchor" onclick="mostrarExtra('Posição')">Posição</span></p>
+            <div id="Posição" class="explicar explicar-no-border">
+                <h4 class="explicar">Gráfico da Posição</h4>
+                <div class="graf-overflow">
+                    <div class="graf-container">
+                        <div id="curvaPos"></div>
+                    </div>
+                </div>
+            </div>
+            <p><span class="anchor" onclick="mostrarExtra('Velocidade')">Velocidade</span></p>
+            <div id="Velocidade" class="explicar explicar-no-border">
+                <h4 class="explicar">Gráfico da Velocidade</h4>
+                <div class="graf-overflow">
+                    <div class="graf-container">
+                        <div id="curvaVel"></div>
+                    </div>
+                </div>
+            </div>
+            <p><span class="anchor" onclick="mostrarExtra('Aceleração')">Aceleração</span></p>
+            <div id="Aceleração" class="explicar explicar-no-border">
+                <h4 class="explicar">Gráfico da Aceleração</h4>
+                <div class="graf-overflow">
+                    <div class="graf-container">
+                        <div id="curvaAce"></div>
+                    </div>
+                </div>
+            </div>
+            <p><span class="anchor" onclick="mostrarExtra('Jerk')">Jerk</span></p>
+            <div id="Jerk" class="explicar explicar-no-border">
+                <h4 class="explicar">Gráfico do Jerk</h4>
+                <div class="graf-overflow">
+                    <div class="graf-container">
+                        <div id="curvaJer"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <button id="para-o-topo" onclick="paraOTopo()">&uparrow;</button>
+    </main>
+
+    <footer incluir="../../../Layout/footer.html"></footer>
+
+    <script>
+        incluirHTML()
+    </script>
+    <script src="../../../JS/para-o-topo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+    <script type="module" src="JS/resultados.js"></script>
+    <script src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img class="statcounter" src="https://c.statcounter.com/12454038/0/b1e05410/1/" alt="Web Analytics"></a></div></noscript>
+</body>
+</html>
