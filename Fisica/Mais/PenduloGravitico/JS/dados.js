@@ -82,6 +82,7 @@ export default class Dados {
         this.dadosObtidos.posX.push((this.simula.pendulo.posicao.x - this.simula.pendulo.fioPos.x) * this.escala)
         this.dadosObtidos.posY.push((this.simula.pendulo.comp - this.simula.pendulo.posicao.y) * this.escala)
 
+        // Guardar a Velocidade
         this.dadosObtidos.vel.push(this.simula.pendulo.velocidade.abs)
         this.dadosObtidos.velX.push(this.simula.pendulo.velocidade.x)
         this.dadosObtidos.velY.push(this.simula.pendulo.velocidade.y)
@@ -90,11 +91,15 @@ export default class Dados {
         this.dadosObtidos.aceX.push(this.simula.pendulo.aceleracao.x)
         this.dadosObtidos.aceY.push(this.simula.pendulo.aceleracao.y)
 
+        // Guardar a Aceleração
         let aceLen = this.dadosObtidos.ace.length
+
+        // Calcular e Guardar o Jerk
         this.dadosObtidos.jer.push(
             (this.dadosObtidos.ace[aceLen - 1] - this.dadosObtidos.ace[aceLen - 2]) / deltaTempo / 1000
         )
 
+        // Calcular e Guardar as Energias
         let tempEc = 0.5 * this.simula.pendulo.massa * this.simula.pendulo.velocidade.abs ** 2
         let tempEpg = this.simula.pendulo.massa * this.simula.pendulo.g * (this.simula.pendulo.comp - this.simula.pendulo.posicao.y)
         this.dadosObtidos.ec.push(tempEc)

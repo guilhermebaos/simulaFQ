@@ -56,7 +56,7 @@ export default class Dados {
         this.dadosObtidos.push(this.massa.aceleracao)
 
         // Jerk
-        this.dadosObtidos.push((this.massa.aceleracao - this.ultimaAceleracao) / deltaTempo)
+        this.dadosObtidos.push((this.massa.aceleracao - this.ultimaAceleracao) / (deltaTempo * 1000))
         this.ultimaAceleracao = this.massa.aceleracao
         
         // Calcular e guardar os valores

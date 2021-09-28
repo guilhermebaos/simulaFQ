@@ -1,4 +1,4 @@
-export default class Pendulo {
+export default class Esfera {
     constructor(simula) {
         // Simulação
         this.simula = simula
