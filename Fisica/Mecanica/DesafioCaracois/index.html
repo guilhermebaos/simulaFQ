@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio dos Caracóis - SimulaFQ</title>
+    
+    <link rel="shortcut icon" href="../../../Favicons/favicon.ico" type="image/x-icon">
+
+    <link rel="icon" href="../../../Favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="../../../Favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../Favicons/apple-touch-icon.png">
+    <link rel="manifest" href="../../../Favicons/site.webmanifest">
+
+    <link rel="stylesheet" href="../../../CSS/estilo.css">
+
+    <script src="../../../JS/w3-Html-Includes.js"></script>
+    <script src="../../../JS/explicar.js"></script>
+    <script src="https://kit.fontawesome.com/8b48590a50.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div incluir="../../../Layout/navbar.html" class="header"></div>
+    
+    <main>
+        <header>
+            <h1>Desafio dos Caracóis</h1>
+        </header>
+        
+        <section>
+            <div id="div-teoria">
+                <p class="m0">
+                    Esta é uma simulação do desafio dos caracóis. Este desafio consiste em analisar o movimento de 4 caracóis colocados nos vértices de um quadrado, que se movem com velocidade de módulo constante no sentido do caracol no vértice a seguir ao seu.
+                </p>
+            </div>
+            <div id="div-resultados">
+                <div class="centrada m30">
+                    <div class="flex-slider">
+                        <div><label for="rapidez">Rapidez dos Caracóis</label></div>
+                        <div><span id="rapidezValue">20.0</span>m/s<br>
+                        <input type="range" name="rapidez" id="rapidez" class="slider" min="5" max="200" value="20"></div>
+                    </div>
+                    <div class="flex-slider">
+                        <div><label for="distInicial">Distância Inicial</label></div>
+                        <div><span id="distInicialValue">300.0</span>m<br>
+                        <input type="range" name="distInicial" id="distInicial" class="slider" min="10" max="750" value="300"></div>
+                    </div>
+                    <p class="m30"><span class="anchor" onclick="mostrarExtra('Mais-definições')">Mais definições</span></p>
+                    <div id="Mais-definições" class="explicar explicar-no-border" style="display: none;">
+                        <button class="fechar" onclick="mostrarExtra('Mais-definições')">X</button>
+
+                        <div>
+                            <label for="desenharQuadrado">Desenhar o Quadrado?</label>
+                            <input checked type="checkbox" value="true" name="desenharQuadrado" id="desenharQuadrado" class="simCheck">
+                        </div>
+                        <div>
+                            <label for="apagarQuadrado">Apagar o Quadrado?</label>
+                            <input checked type="checkbox" value="true" name="apagarQuadrado" id="apagarQuadrado" class="simCheck">
+                        </div>
+                    </div>
+
+                    <button id="reiniciar-Simulação" class="submit">Colocar os Caracóis em Movimento</button>
+                </div>
+                <div class="graf-overflow m5-bot">
+                    <div class="graf-container">
+                        <canvas id="canvasSimTop" class="simulacao" style="width: calc(100% - 4px);"></canvas>
+                        <canvas id="canvasSimBot" class="simulacao layer-canvas" style="width: calc(100% - 4px);"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p>
+                    Como podemos ver, os caracóis começam nos vértices do quadrado e, ao moverem-se para o caracol no vértice seguinte, mantêm-se sempre nos vértices de um quadrado!
+                </p>
+            </div>
+        </section>
+
+        <button id="para-o-topo" onclick="paraOTopo()">&uparrow;</button>
+    </main>
+
+    <footer incluir="../../../Layout/footer.html"></footer>
+
+    <script>
+        incluirHTML()
+    </script>
+    <script src="../../../JS/para-o-topo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+    <script type="module" src="JS/resultados.js"></script>
+    <script src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img class="statcounter" src="https://c.statcounter.com/12454038/0/b1e05410/1/" alt="Web Analytics"></a></div></noscript>
+</body>
+</html>
