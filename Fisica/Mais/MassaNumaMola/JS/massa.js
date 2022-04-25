@@ -49,9 +49,16 @@ export default class Massa {
         this.fe = - this.k *(this.posicao - this.l)
         this.aceleracao = (this.g + this.fe) / this.m
 
-        this.posicaoEquilibrio = this.xI + this.g / this.k
+        // A posição de equilíbrio é a posição onde
+        // a força elástica e a gravítica são simétricas
+        this.posicaoEquilibrio = this.l + this.g / this.k
 
-        this.alturaMinima = this.xI + (this.posicaoEquilibrio - this.xI) * 2
+
+        // A amplitude do movimento é a distenção, que é igual
+        // à diferença entre a posição de equilíbrio e a posição inicial
+
+        // Logo a altura mínima é 2 * distenção + this.xI = 
+        this.alturaMinima = 2 * this.posicaoEquilibrio - this.xI
         this.altura = this.alturaMinima - this.posicao
         
         this.posicaoPx = this.posicao * this.mToPx
@@ -61,8 +68,9 @@ export default class Massa {
         if (!this.start) return
 
         this.posicao += this.velocidade * deltaTempo + 0.5 * this.aceleracao * deltaTempo ** 2
-        this.velocidade += -this.k * (this.posicao - this.posicaoEquilibrio) / this.m * deltaTempo
+
         // this.velocidade += this.aceleracao * deltaTempo
+        this.velocidade += -this.k * (this.posicao - this.posicaoEquilibrio) / this.m * deltaTempo
 
         this.fe = - this.k *(this.posicao - this.l)
         this.aceleracao = (this.g + this.fe) / this.m

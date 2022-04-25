@@ -34,8 +34,13 @@ function criarGraficos(divsCurvas) {
                 fill: false
             },{
                 data: [],
-                label: 'Energia Mecânica',
+                label: 'Energia Potencial Elástica',
                 borderColor: 'blue',
+                fill: false
+            },{
+                data: [],
+                label: 'Energia Mecânica',
+                borderColor: 'black',
                 fill: false
             }]
         },

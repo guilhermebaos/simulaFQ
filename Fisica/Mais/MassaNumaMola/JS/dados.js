@@ -5,7 +5,7 @@ export default class Dados {
 
         // Contador, para apenas guardar uma parte dos dados, para evitar sobrecarregar os gráficos
         this.contador = -1
-        this.contadorMax = 2e05
+        this.contadorMax = 6e4
         this.ignorarMin = 1
         this.ignorar = this.ignorarMin
 
@@ -42,9 +42,11 @@ export default class Dados {
         // Energias Cinética, Potencial e Mecânica
         let Ec = 0.5 * this.massa.m * (this.massa.velocidade ** 2)
         let Epg = this.massa.m * this.massa.g * this.massa.altura
+        let Epe = 0.5 * this.massa.k * (this.massa.posicao - this.massa.l) ** 2
         this.dadosObtidos.push(Ec)
         this.dadosObtidos.push(Epg)
-        this.dadosObtidos.push(Ec + Epg)
+        this.dadosObtidos.push(Epe)
+        this.dadosObtidos.push(Ec + Epg + Epe)
 
         // Posição
         this.dadosObtidos.push(this.massa.posicao)
