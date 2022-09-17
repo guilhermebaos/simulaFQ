@@ -8,7 +8,6 @@ const DPR = window.devicePixelRatio
 let rapidez, rapidezResp
 let distInicial, distInicialResp
 
-let desenharQuadrado, apagarQuadrado
 
 // Selecionar os Sliders
 rapidez = document.getElementById('rapidez')
@@ -70,6 +69,9 @@ const RESOLUCAO = 100                 // Tamanho do deltaT em cada update
 // Criar o Objeto Simula
 const simula = new Simula(canvasSimSnail, canvasSimQuadrado, RESOLUCAO)
 
+// Cronómetro
+let cronometroHtml = document.getElementById("tempo")
+let cronometro = 0
 
 // Criar o loop da Simulação
 let ultimoTempo
@@ -84,6 +86,11 @@ function loopSimula(tempo) {
 
     let deltaTempo = (tempo - ultimoTempo) / 1000 / RESOLUCAO
     ultimoTempo = tempo
+
+    if (!simula.stop) {
+        cronometro += deltaTempo
+        cronometroHtml.innerText = (cronometro * RESOLUCAO).toFixed(2)
+    }
     
     for (let i = 0; i < RESOLUCAO; i++) {
         simula.update(deltaTempo)
@@ -95,11 +102,18 @@ function loopSimula(tempo) {
 
 
 // Botão de Reiniciar a Simulação
+let started = 0
 let btnReiniciar = document.getElementById('reiniciar-Simulação')
 btnReiniciar.addEventListener('click', (() => {
+    if (!started) {
+        requestAnimationFrame(loopSimula)
+    }
+
     ctxSnail.clearRect(0, 0, canvasSimSnail.width, canvasSimSnail.height)
     ctxQuadrado.clearRect(0, 0, canvasSimQuadrado.width, canvasSimQuadrado.height)
     simula.reiniciar()
+
+    cronometro = 0
     btnReiniciar.innerText = 'Reiniciar a Simulação'
 }))
 
@@ -110,5 +124,4 @@ window.onresize = fixDPR
 fixDPR()
 window.setTimeout(() => {
     simula.reiniciar()
-    requestAnimationFrame(loopSimula)
 }, 200)

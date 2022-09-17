@@ -29,6 +29,7 @@ export default class Simula {
 
     reiniciar() {
         this.inputs = this.juntarValores()
+        this.stop = false
 
         // Calcular as coordenadas dos caracóis
         this.coords = [
@@ -78,6 +79,7 @@ export default class Simula {
         let mySnail = this.snails[0]
         if (mySnail.direction) if (mySnail.direction.x ** 2 + mySnail.direction.y ** 2 < 1) {
             this.inputs.desenharQuadrado = false
+            this.stop = true
             return
         }
 
